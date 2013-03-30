@@ -1,0 +1,59 @@
+;**************************************************************
+;  Copyright (c) ZyXEL Communications Corp. 2002
+;  Swvzneo.inf  -- ZyXEL Omni56K NEO VOICE INF
+;  Version 1.00 -- Last revised date: 03/20/2002
+;**************************************************************
+
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+provider=%Mfg%
+LayoutFile=layout.inf
+
+[ClassInstall]
+Addreg=Class.AddReg
+
+[Class.AddReg]
+HKR,,,,%MediaClassName%
+HKR,,Icon,,"-1"
+HKR,,Installer,,mmci.dll
+
+[Manufacturer]
+%Mfg%=ZD1051
+
+[ZD1051]
+%ZD56.DeviceDesc%= ZD56, MODEMWAVE\ZyXEL_Omni56K_NEO
+%ZD56.DeviceDesc%= ZD56, MODEMWAVE\ZyXEL_Omni56K_NEO,_Plug&Play
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+MSSERWAVE.CopyList = 11 ; LDID_SYS
+
+[ZD56]
+AddReg=MSSERWAVE.AddReg, ZD56.AddReg
+
+[MSSERWAVE.CopyList]
+serwave.vxd,,
+serwvdrv.drv,,
+vmodctl.dll,,
+
+[ZD56.AddReg]
+HKR,Drivers\wave\serwvdrv.drv,Description,,%ZD56.DeviceDesc%
+HKR,Config,XformModule,  , "umdmxfrm.dll"
+HKR,Config,XformID,     1, 04, 00, 00, 00
+HKR,Config,WaveDevices,  1, 02, 00
+
+[MSSERWAVE.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\wave,,,
+HKR,,Driver,,serwave.vxd
+HKR,Drivers\wave\serwvdrv.drv,Driver,,serwvdrv.drv
+HKR,Drivers,SubClasses,,"wave"
+
+[Strings]
+Mfg="ZyXEL Communications Corp."
+ZD56.DeviceDesc="ZyXEL Omni56K NEO Modem Serial Wave Device"
+MediaClassName="Sound, video and game controllers"

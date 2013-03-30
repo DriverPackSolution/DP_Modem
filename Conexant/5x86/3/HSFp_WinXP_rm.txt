@@ -1,0 +1,54 @@
+
+This document describes the steps required to properly install the Windows XP HSF Generic Drivers, which accompany this document. Please understand that the modem drivers you will be installing are intended for basic modem operations and are generally not supported.
+Conexant Systems, Inc.  03/15/2004
+            
+
+****************************************************************************
+Table of Contents
+
+I.  Extract the generic modem driver.
+
+II.  What is new in Windows XP?
+   
+III.   Instructions for Windows XP.
+  i.   Upgrading the modem driver with the generic modem drivers using HXFSetup.exe.
+ 
+****************************************************************************
+
+I.  Extracting the generic modem driver.
+
+  1.  Download the WinXP HSF Generic Driver from the website (www.conexant.com). 
+  2.  To extract the driver double clicking on the HSF_WinXP.exe file and pointed the your C:\ drive.
+
+**Note:  It is recommended that you take note of the exact location of the extracted files, as you will be required to use this information during the installation process.  
+         On how to download the generic modem drivers please read the document "Instructions on How to Download Generic Drivers".
+
+****************************************************************************
+
+II.  What is new in Windows XP?
+
+  In WinXP, when the system is booted up it automatically detects the modem and install the modem with in-build drivers when you upgrade your Operating System from Win9x, WinME or Win2K.  
+  Allow about 30 seconds for the Windows XP to recognize what type of modem it is installed on the system.  Once windows have finished installing the in-build drivers now you can proceed with the upgrade.
+  If your modem is not supported in Windows XP inbuild driver, then XP will ask for you to point windows to the drivers, which we recommend to Cancel.  You need to contact the modem manufacturer for a WinXP suitable driver or you can use the WinXP driver that we provide for the HSF modem.  
+  
+****************************************************************************
+
+III.  Instructions for Windows XP.
+
+  i.   Upgrading the modem driver with the generic modem drivers using HXFSetup.exe.
+
+    1.  Go to the folder where the modem driver is located, C:\HSF_WinXP, and double click on the HXFSetup.exe file.
+    2.  By clicking on the HXFSetup.exe, you will be uninstalling in-build modem driver and installing the HSF generic modem driver that was downloaded from the Conexant website.
+    3.  The Windows XP operating system will prompt you with a software installation alert.  This dialog explains how the software you are attempting to install has not passed Windows Logo testing. To install drivers click on "Continue Anyway" when prompted.
+    4.  If during the installation process, the "Found New Hardware Wizard" pops up which indicates that you need to direct it to the drivers.
+    5.  Select "Install from a list or specific location (Advanced)" and then click Next.
+    6.  Check on "Don't search. I will choose the driver to install." and click Next.
+    7.  To direct windows to the drivers click on "Hard Disk" and go the folder where the drivers are located, C:\HSF_WinXP.
+    8.  Open the GENHSF5.INF file and click OK.
+    9.  Click Next on the next window and allow a few seconds for the installation process.
+    10. During the installation process Windows will prompt you again to ensure that you know that the software has not been tested for the Windows logo. Click on "Continue Anyway" to install the modem.
+    11. Click on Finish when ready and the generic modem driver is installed.
+
+
+
+

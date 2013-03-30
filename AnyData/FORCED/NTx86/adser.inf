@@ -1,0 +1,195 @@
+; Windows XP Virtual Serial Port Setup File
+; Copyright (c) 2006-2007 Qualcomm Incorporated
+; Manufacturer: Qualcomm Incorporated
+;
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %ANYDATA%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer  = 07/08/2009,2.0.6.7
+CatalogFile.ntx86=adser_x86.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+  1000 = %DISKNAME%,"",,
+
+[SourceDisksFiles]
+  adusbser.sys = 1000
+
+
+[Manufacturer]
+%ANYDATA% = AnyDataSerialPort
+
+[AnyDataSerialPort]
+%AnyDATADevice011% = AnyDATAportInstall00, USB\VID_16D5&PID_6001&MI_01
+%AnyDATADevice021% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_01
+%AnyDATADevice022% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_02
+%AnyDATADevice031% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_01
+%AnyDATADevice032% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_02
+%AnyDATADevice911% = AnyDATAportInstall00, USB\VID_16D5&PID_6091&MI_01
+%AnyDATADevice921% = AnyDATAportInstall00, USB\VID_16D5&PID_6092&MI_01
+%AnyDATADevice922% = AnyDATAportInstall00, USB\VID_16D5&PID_6092&MI_02
+%AnyDATADevice931% = AnyDATAportInstall00, USB\VID_16D5&PID_6093&MI_01
+%AnyDATADevice932% = AnyDATAportInstall00, USB\VID_16D5&PID_6093&MI_02
+
+%AnyDATADevice011_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6501&MI_01
+%AnyDATADevice021_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_01
+%AnyDATADevice022_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_02
+%AnyDATADevice031_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_01
+%AnyDATADevice032_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_02
+%AnyDATADevice041_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_01
+%AnyDATADevice042_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_02
+%AnyDATADevice043_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_03
+%AnyDATADevice911_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6591&MI_01
+%AnyDATADevice921_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6592&MI_01
+%AnyDATADevice922_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6592&MI_02
+%AnyDATADevice931_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6593&MI_01
+%AnyDATADevice932_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6593&MI_02
+%AnyDATADevice941_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6594&MI_01
+%AnyDATADevice942_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6594&MI_02
+%AnyDATADevice943_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6594&MI_03
+
+%AnyDATADevice011_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6801&MI_01
+%AnyDATADevice021_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_01
+%AnyDATADevice022_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_02
+%AnyDATADevice031_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_01
+%AnyDATADevice032_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_02
+%AnyDATADevice041_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_01
+%AnyDATADevice042_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_02
+%AnyDATADevice043_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_03
+%AnyDATADevice911_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6891&MI_01
+%AnyDATADevice921_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6892&MI_01
+%AnyDATADevice922_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6892&MI_02
+%AnyDATADevice931_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6893&MI_01
+%AnyDATADevice932_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6893&MI_02
+%AnyDATADevice941_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6894&MI_01
+%AnyDATADevice942_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6894&MI_02
+%AnyDATADevice943_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6894&MI_03
+
+%AnyDATADevice011_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6201&MI_01
+%AnyDATADevice021_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_01
+%AnyDATADevice022_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_02
+%AnyDATADevice031_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_01
+%AnyDATADevice032_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_02
+%AnyDATADevice041_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_01
+%AnyDATADevice042_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_02
+%AnyDATADevice043_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_03
+%AnyDATADevice911_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6291&MI_01
+%AnyDATADevice921_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6292&MI_01
+%AnyDATADevice922_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6292&MI_02
+%AnyDATADevice931_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6293&MI_01
+%AnyDATADevice932_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6293&MI_02
+%AnyDATADevice941_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6294&MI_01
+%AnyDATADevice942_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6294&MI_02
+%AnyDATADevice943_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6294&MI_03
+
+[AnyDATAportInstall00.NT]
+CopyFiles=ADUsbDriverFiles
+AddReg = All00, AddReg
+
+
+[ADUsbDriverFiles]
+adusbser.sys
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[AnyDATAportInstall00.NT.Services]
+AddService=adusbser,  0x00000002, AD_USBSerialService
+
+[AD_USBSerialService]
+DisplayName   = %ADUSBSER%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\adusbser.sys
+
+
+[All00]
+HKR,,NTMPDriver,,adusbser.sys
+
+[AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKLM,SYSTEM\CurrentControlSet\Services\adusbser,QCDriverSelectiveSuspendIdleTime,0x10001,30
+
+[Strings]
+ANYDATA   = "AnyDATA.NET"
+AnyDATADevice011 = "AnyDATA CDMA USB Serial Device (PID 6001)"
+AnyDATADevice021 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6002)"
+AnyDATADevice022 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6002)"
+AnyDATADevice031 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6003)"
+AnyDATADevice032 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6003)"
+AnyDATADevice911 = "AnyDATA CDMA HSU Serial Device (PID 6091)"
+AnyDATADevice921 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6092)"
+AnyDATADevice922 = "AnyDATA CDMA HSU Serial 2 (NMEA) Device (PID 6092)"
+AnyDATADevice931 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6093)"
+AnyDATADevice932 = "AnyDATA CDMA HSU Serial 2 (AUX) Device (PID 6093)"
+
+AnyDATADevice011_65 = "AnyDATA CDMA USB Serial Device (PID 6501)"
+AnyDATADevice021_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6502)"
+AnyDATADevice022_65 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6502)"
+AnyDATADevice031_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6503)"
+AnyDATADevice032_65 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6503)"
+AnyDATADevice041_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6504)"
+AnyDATADevice042_65 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6504)"
+AnyDATADevice043_65 = "AnyDATA CDMA USB Serial 3 (AUX) Device (PID 6504)"
+AnyDATADevice911_65 = "AnyDATA CDMA HSU Serial Device (PID 6591)"
+AnyDATADevice921_65 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6592)"
+AnyDATADevice922_65 = "AnyDATA CDMA HSU Serial 2 (NMEA) Device (PID 6592)"
+AnyDATADevice931_65 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6593)"
+AnyDATADevice932_65 = "AnyDATA CDMA HSU Serial 2 (AUX) Device (PID 6593)"
+AnyDATADevice941_65 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6594)"
+AnyDATADevice942_65 = "AnyDATA CDMA HSU Serial 2 (NMEA) Device (PID 6594)"
+AnyDATADevice943_65 = "AnyDATA CDMA HSU Serial 3 (AUX) Device (PID 6594)"
+
+AnyDATADevice011_68 = "AnyDATA CDMA USB Serial Device (PID 6801)"
+AnyDATADevice021_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6802)"
+AnyDATADevice022_68 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6802)"
+AnyDATADevice031_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6803)"
+AnyDATADevice032_68 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6803)"
+AnyDATADevice041_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6804)"
+AnyDATADevice042_68 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6804)"
+AnyDATADevice043_68 = "AnyDATA CDMA USB Serial 3 (AUX) Device (PID 6804)"
+AnyDATADevice911_68 = "AnyDATA CDMA HSU Serial Device (PID 6891)"
+AnyDATADevice921_68 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6892)"
+AnyDATADevice922_68 = "AnyDATA CDMA HSU Serial 2 (NMEA) Device (PID 6892)"
+AnyDATADevice931_68 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6893)"
+AnyDATADevice932_68 = "AnyDATA CDMA HSU Serial 2 (AUX) Device (PID 6893)"
+AnyDATADevice941_68 = "AnyDATA CDMA HSU Serial 1 (DIAG) Device (PID 6894)"
+AnyDATADevice942_68 = "AnyDATA CDMA HSU Serial 2 (NMEA) Device (PID 6894)"
+AnyDATADevice943_68 = "AnyDATA CDMA HSU Serial 3 (AUX) Device (PID 6894)"
+
+AnyDATADevice011_62 = "AnyDATA WCDMA USB Serial Device (PID 6201)"
+AnyDATADevice021_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6202)"
+AnyDATADevice022_62 = "AnyDATA WCDMA USB Serial 2 (NMEA) Device (PID 6202)"
+AnyDATADevice031_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6203)"
+AnyDATADevice032_62 = "AnyDATA WCDMA USB Serial 2 (AUX) Device (PID 6203)"
+AnyDATADevice041_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6204)"
+AnyDATADevice042_62 = "AnyDATA WCDMA USB Serial 2 (NMEA) Device (PID 6204)"
+AnyDATADevice043_62 = "AnyDATA WCDMA USB Serial 3 (AUX) Device (PID 6204)"
+AnyDATADevice911_62 = "AnyDATA WCDMA HSU Serial Device (PID 6291)"
+AnyDATADevice921_62 = "AnyDATA WCDMA HSU Serial 1 (DIAG) Device (PID 6292)"
+AnyDATADevice922_62 = "AnyDATA WCDMA HSU Serial 2 (NMEA) Device (PID 6292)"
+AnyDATADevice931_62 = "AnyDATA WCDMA HSU Serial 1 (DIAG) Device (PID 6293)"
+AnyDATADevice932_62 = "AnyDATA WCDMA HSU Serial 2 (AUX) Device (PID 6293)"
+AnyDATADevice941_62 = "AnyDATA WCDMA HSU Serial 1 (DIAG) Device (PID 6294)"
+AnyDATADevice942_62 = "AnyDATA WCDMA HSU Serial 2 (NMEA) Device (PID 6294)"
+AnyDATADevice943_62 = "AnyDATA WCDMA HSU Serial 3 (AUX) Device (PID 6294)"
+
+;AnyDATADevice011_62 = "FOMA A2502 USB Serial Device"
+;AnyDATADevice021_62 = "FOMA A2502 USB Serial 1 Device"
+;AnyDATADevice022_62 = "FOMA A2502 USB Serial 2 Device"
+;AnyDATADevice031_62 = "FOMA A2502 USB Serial 1 Device"
+;AnyDATADevice032_62 = "FOMA A2502 USB Serial 2 Device"
+;AnyDATADevice041_62 = "FOMA A2502 USB Serial 1 Device"
+;AnyDATADevice042_62 = "FOMA A2502 USB Serial 2 Device"
+;AnyDATADevice043_62 = "FOMA A2502 USB Serial 3 Device"
+
+ADUSBSER = "AnyDATA USB Device for Legacy Serial Communication"
+DISKNAME = "AnyDATA USB Modem Driver installation"
+

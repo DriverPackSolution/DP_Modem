@@ -1,0 +1,146 @@
+[Version]
+Signature="$WINDOWS NT$"
+;
+; We'll install our device into the "Ports" class of
+;  devices
+;
+Class=Ports
+ClassGUID={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider%
+CatalogFile.NTx86=t36gsen.cat
+CatalogFile.NTamd64=t36gsen.cat
+DriverVer=04/20/2012,7.2.0.2
+
+;
+; Manufacturer section
+;
+[Manufacturer]
+%ManufacturerName%=t36wgps,NTx86,NTamd64
+
+
+[t36wgps.NTx86]
+"Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_130c&Mi_09
+"Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_1311&Mi_09
+"Ericsson F5521gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_1314&Mi_09
+"Ericsson F5321gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_131B&Mi_09
+"Ericsson H5321gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_1319&Mi_09
+"Ericsson C5621gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstx86, TOSHIBA\GPS2\VID_0930&PID_1321&Mi_09
+
+
+[t36wgps.NTamd64]
+"Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_130c&Mi_09
+"Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_1311&Mi_09
+"Ericsson F5521gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_1314&Mi_09
+"Ericsson F5321gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_131B&Mi_09
+"Ericsson H5321gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_1319&Mi_09
+"Ericsson C5621gw for TOSHIBA Mobile Broadband GPS Port" = GpsInstAmd64, TOSHIBA\GPS2\VID_0930&PID_1321&Mi_09
+
+
+[GpsInstx86]
+CopyFiles=GpsCopyFilesx86
+AddReg=Gps.NT.AddReg
+
+[GpsInstAmd64]
+CopyFiles=GpsCopyFilesAmd64
+AddReg=Gps.NT.AddReg
+
+;
+; DestinationDirs section. Indicates
+;  where the files in the CopyFiles section
+;  should be copied to on the target system.
+;
+; "12" is expanded by the installer to be 
+;  %SystemRoot%\System32\Drivers
+;
+[DestinationDirs]
+DefaultDestDir=12
+
+;
+; CopyFiles section, which lists all of the files that 
+;  need to be copied from the installation disk to 
+;  the target system
+;
+[GpsCopyFilesx86]
+t36wgps.sys
+
+[GpsCopyFilesAmd64]
+t36wgps64.sys
+
+
+[SourceDisksFiles.x86]
+t36wgps.sys=1
+
+[SourceDisksFiles.amd64]
+t36wgps64.sys=1
+
+
+[SourceDisksNames.x86]
+1=%DiskDesc%,,,\i386
+
+[SourceDisksNames.amd64]
+1=%DiskDesc%,,,\amd64
+
+[GpsInstx86.Services]
+AddService = t36wgps, 0x00000002, GpsAddServiceX86
+
+
+[GpsInstAmd64.Services]
+AddService = t36wgps, 0x00000002, GpsAddServiceAmd64
+
+;
+; AddService section. This section is used to create
+;  all of the values that will appear beneath the 
+;  HKLM\System\CCS\Services\{ServiceName} key
+;
+[GpsAddServicex86]
+DisplayName    = %ServiceName%
+Description    = %ServiceDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\t36wgps.sys
+
+
+;
+; AddService section. This section is used to create
+;  all of the values that will appear beneath the 
+;  HKLM\System\CCS\Services\{ServiceName} key
+;
+[GpsAddServiceAmd64]
+DisplayName    = %ServiceName%
+Description    = %ServiceDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\t36wgps64.sys
+
+
+;
+; We want to create a subkey of our services key in order
+;  to save some driver specific registry data. 
+AddReg         = GpsAddReg
+
+; Not used really, we are using WPP Tracing
+[GpsAddReg]
+;HKR,%ParametersSubkey%,%EGVCPDebugLevel%,0x10001,0
+;HKR,%ParametersSubkey%, SendCfun, 0x10001, 1
+;HKR,%ParametersSubkey%, SendCtl, 0x10001, 1
+;HKR,%ParametersSubkey%, CtlDefValue, 0x10001, 1
+;HKR,%ParametersSubkey%, SendPin, 0x10001, 1
+;HKR,%ParametersSubkey%, PinCode, 0x10001, 1763
+
+[Gps.NT.AddReg]
+HKR,,EnableFR, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+HKR,,EnableDevIoAtStartup, 0x10001, 00,00,00,00
+
+;
+; Strings section. Any values in the INF that have %'s
+;  on either end are references to values within this
+;  section. 
+; 
+[Strings]
+
+
+ParametersSubkey = "Parameters"
+EGVCPDebugLevel = "EGVCPDebugLevel"

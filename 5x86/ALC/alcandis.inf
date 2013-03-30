@@ -1,0 +1,226 @@
+; alcandis.inf
+; INF for SpeedTouch WAN Miniport Driver
+;
+; Copyright (c) 1999 Alcatel
+
+[version]
+signature="$CHICAGO$"
+Class=Net
+ClassGuid={4d36e972-e325-11ce-bfc1-08002be10318}
+provider=%Alcatel%
+DriverVer=12/08/2003, 301.0.0.12
+Compatible = 1
+CatalogFile = alcawan.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+;****************************************************************************
+; Destination Directories
+;****************************************************************************
+[DestinationDirs]
+DefaultDestDir           = 11 ; System Directory
+SpdTch.w9x.CopyFiles     = 11 ; System Directory
+SpdTch.nt.CopyFiles      = 12 ; System Directory
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%alcatest_disk%,,,Driver
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+alcan5wn.sys = 1,,
+;alcandis.inf = 1,,
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Alcatel%=Alcatel
+
+;-----------------------------------------------------------------------------
+; The ndis devices
+;-----------------------------------------------------------------------------
+[Alcatel]
+%SpeedTouch.ndis5.DeviceDesc%=SpeedTouch.ndi5,ALCACR\{c93aec0c-808a-11d3-9CE8-0060088D7801}
+
+;*****************************************************************************
+;
+; NDIS services:
+;
+;	You would think that '\' continuation would make the following 
+;	more readable.  It only succeeds in breaking NDIS.  Keep all this
+;	on one line!
+;
+;*****************************************************************************
+;****************************************************************************
+; Adapter Main Install Section
+;****************************************************************************
+[SpeedTouch.ndi5]
+DriverVer=12/08/2003, 301.0.0.12
+Characteristics = 0x4 ;NCF_PHYSICAL
+BusType = 15 ; PNPbus
+AddReg =SpeedTouch.ndi.reg,SpeedTouch.ndi.reg.w9x,SpeedTouch.Gen.Params,SpeedTouch.Line0.Gen.Params
+CopyFiles =SpdTch.w9x.CopyFiles
+
+[SpeedTouch.ndi5.nt]
+Characteristics = 0x4 ;NCF_PHYSICAL
+BusType = 15 ; PNPbus
+AddReg =SpeedTouch.ndi.reg,SpeedTouch.ndi.reg.nt,SpeedTouch.ndi5.reg.nt,SpeedTouch.Gen.Params,SpeedTouch.Line0.Gen.Params
+CopyFiles =SpdTch.nt.CopyFiles
+DriverVer=12/08/2003, 301.0.0.12
+
+;****************************************************************************
+; Base Section
+;****************************************************************************
+[SpeedTouch.ndi.reg]
+; key,subkey,valuname,type,value
+HKR,,EnumPropPages,,"netdi.dll,EnumPropPages"
+HKR,,WanEndpoints,0x00010001,1
+
+; Interfaces
+HKR,Ndi\Interfaces,UpperRange,,"ndiswan"
+HKR,Ndi\Interfaces,LowerRange,,"nolower"
+
+;-----------------------------------------------------------------------------
+;	NDIS devload info for W95/W98
+;-----------------------------------------------------------------------------
+[SpeedTouch.ndi.reg.w9x]
+; Add ISDN class to RNA
+HKLM,SYSTEM\CurrentControlSet\Services\RemoteAccess\Authentication\Class\isdn\PPPMAC,,
+
+; key,subkey,valuname,type,value
+HKR,,DevLoader,,*ndis
+HKR,,DriverDesc,,%SpeedTouch.ndis5.DeviceDesc%
+HKR,Ndi,DeviceID,,%SpeedTouch.ndis5.id%  ; or pnp id
+HKR,,DeviceVxDs,,alcan5wn.sys
+
+; NDIS Info
+HKR,NDIS,LogDriverName,,"SpeedTouch"
+HKR,NDIS,MajorNdisVersion,1,04
+HKR,NDIS,MinorNdisVersion,1,00
+
+; Interfaces
+HKR,Ndi\Interfaces,DefUpper,,"ndiswan"
+HKR,Ndi\Interfaces,DefLower,,"nolower"
+
+; Required Components
+HKR,Ndi\Compatibility,RequireAll,,"NDISWAN"
+
+; Install sections
+HKR,Ndi\Install,ndiswan,,"SpdTch.w9x"
+
+;-----------------------------------------------------------------------------
+;	NDIS devload info for Win2K
+;-----------------------------------------------------------------------------
+[SpeedTouch.ndi.reg.nt]
+; key,subkey,valuname,type,value
+HKR,,DriverDesc,,%SpeedTouch.ndis5.DeviceDesc%
+
+; NDIS Info
+HKR,NDIS,LogDriverName,,"SpeedTouch"
+HKR,NDIS,MajorNdisVersion,1,04
+HKR,NDIS,MinorNdisVersion,1,00
+
+; Interfaces
+HKR,Ndi\Interfaces,DefUpper,,"ndiswan"
+HKR,Ndi\Interfaces,DefLower,,"nolower"
+
+; Required Components
+;HKR,Ndi,RequireAll,,"NDISWAN"
+
+[SpeedTouch.ndi5.reg.nt]
+; key,subkey,valuname,type,value
+HKR,Ndi,DeviceID,,%SpeedTouch.ndis5.id%  ; or pnp id
+HKR,Ndi,Service,,"alcan5wn"
+
+[SpeedTouch.ndi5.NT.Services]
+AddService      = alcan5wn,2,SpeedTouch.ndi5.AddService
+
+[SpeedTouch.ndi5.AddService]
+DisplayName             = %SpeedTouch.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\alcan5wn.sys
+LoadOrderGroup          = NDIS
+
+;****************************************************************************
+; TAPI ISDN Configuration
+;****************************************************************************
+[SpeedTouch.Line0.Gen.Params]
+HKR,,NumberOfLines,,1
+HKR,TAPI,Properties,1,00,00,00,00
+HKR,TAPI,ConfigFlags,1,00,00,00,00
+HKR,TAPI,DeviceCaps,1,14,00,00,00, 00,00,00,00, 00,00,00,00, 01,00,00,00, 01,00,00,00
+
+HKR,TAPI\Line0,Properties,1,00,00,00,00
+HKR,TAPI\Line0,ConfigFlags,1,00,00,00,00
+HKR,TAPI\Line0,LineCaps,1,1c,00,00,00, 00,00,00,00, 03,00,00,00, 00,00,00,00, 03,00,00,00, 01,00,00,00, 00,00,00,00
+HKR,TAPI\Line0\Channel0,ConfigFlags,1,00,00,00,00
+HKR,TAPI\Line0\Channel0,Properties,1,00,00,00,00
+HKR,TAPI\Line0\Channel0,ChannelCaps,1,00,00,00,00
+HKR,TAPI\Line0\Channel0,SPID,,""
+HKR,TAPI\Line0\Channel0,Phone,,""
+
+HKR,TAPI\Line1,Properties,1,00,00,00,00
+HKR,TAPI\Line1,ConfigFlags,1,00,00,00,00
+HKR,TAPI\Line1,LineCaps,1,1c,00,00,00, 00,00,00,00, 03,00,00,00, 00,00,00,00, 03,00,00,00, 01,00,00,00, 00,00,00,00
+HKR,TAPI\Line1\Channel0,ConfigFlags,1,00,00,00,00
+HKR,TAPI\Line1\Channel0,Properties,1,00,00,00,00
+HKR,TAPI\Line1\Channel0,ChannelCaps,1,00,00,00,00
+HKR,TAPI\Line1\Channel0,SPID,,""
+HKR,TAPI\Line1\Channel0,Phone,,""
+
+;****************************************************************************
+; General Params
+;****************************************************************************
+[SpeedTouch.Gen.Params]
+
+; SpeedTouch constant values
+HKR,,BoardType,,"SpeedTouch"
+HKR,,BoardName,,"SpeedTouch"
+HKR,,DeviceName,,%SpeedTouch.Ndis5.Id%
+
+;****************************************************************************
+; SpeedTouch Line Params
+;****************************************************************************
+
+;****************************************************************************
+; CopyFiles/Install Section
+;****************************************************************************
+
+; Install section for NDISWAN upper edge (only for WAN miniports)
+[SpdTch.w9x]
+CopyFiles=SpdTch.w9x.CopyFiles
+
+[SpdTch.w9x.CopyFiles]
+alcan5wn.sys             ; The driver file.
+
+[SpdTch.nt.CopyFiles]
+alcan5wn.sys             ; The driver file.
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+; Manufacturers
+Alcatel="Thomson"
+
+; Device Descriptions 
+SpeedTouch.ndis5.DeviceDesc="SpeedTouch USB ADSL PPP"
+SpeedTouch.Service.Desc="SpeedTouch USB ADSL PPP Networking Driver (NDISWAN)"
+
+alcatest_disk = "SpeedTouch Install Disk"
+
+;**** don't localize these ****
+SpeedTouch.Ndis5.Guid	=	"{c93aec0c-808a-11d3-9CE8-0060088D7801}"
+SpeedTouch.Ndis5.Id     =	"ALCACR\{c93aec0c-808a-11d3-9CE8-0060088D7801}"
+
+;---- end of file ----

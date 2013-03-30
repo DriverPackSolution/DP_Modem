@@ -1,0 +1,96 @@
+; Windows Virtual Serial Port Setup File
+; Copyright (c) 2005 AnyDATA Corporation
+; Manufacturer: AnyDATA Corporation
+;
+; This INF file installs a virtual COM port on Win2K system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %ANYDATA%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+DriverVer  = 05/02/2005,2.0.2.2
+
+[SourceDisksNames]
+1000 = %ADSRCDISK%,"",,
+
+[SourceDisksFiles]
+adusbmdm65.sys = 1000
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%ANYDATA% = AnyDATASerialPort
+
+[AnyDATASerialPort]
+%AnyDATADevice01% = AnyDATAportInstall01, USB\VID_16D5&PID_6501&MI_01
+%AnyDATADevice02% = AnyDATAportInstall02, USB\VID_16D5&PID_6502&MI_01
+%AnyDATADeviceNMEA% = AnyDATAportInstallNMEA, USB\VID_16D5&PID_6502&MI_02
+
+; ###### Installation Section ######
+[AnyDATAportInstall01.NT]
+CopyFiles = FakePortCopyFileSection
+AddReg = All, AddReg.NT
+
+[AnyDATAportInstall02.NT]
+CopyFiles = FakePortCopyFileSection
+AddReg = All, AddReg.NT
+
+[AnyDATAportInstallNMEA.NT]
+CopyFiles = FakePortCopyFileSection
+AddReg = All, AddReg.NT
+
+[AnyDATAportInstall01.NT.Services]
+AddService = adusbser6501,  0x00000002, Qport_Service_Inst01
+
+[AnyDATAportInstall02.NT.Services]
+AddService = adusbser6502,  0x00000002, Qport_Service_Inst02
+
+[AnyDATAportInstallNMEA.NT.Services]
+AddService = adusbnmea6502, 0x00000002, Qport_Service_InstNMEA
+
+[Qport_Service_Inst01]
+DisplayName   = %AnyDATASerialPortName01%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\adusbser65.sys
+
+[Qport_Service_Inst02]
+DisplayName   = %AnyDATASerialPortName02%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\adusbser65.sys
+
+[Qport_Service_InstNMEA]
+DisplayName   = %AnyDATASerialPortNameNMEA%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\adusbser65.sys
+
+[FakePortCopyFileSection]
+adusbser65.sys, adusbmdm65.sys,,0x20
+
+[All]
+HKR,,NTMPDriver,,adusbser65.sys
+
+[AddReg.NT]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[Strings]
+ANYDATA   = "AnyDATA Corporation"
+ADSRCDISK = "AnyDATA CDMA USB Modem Driver Disk"
+AnyDATADevice01 = "AnyDATA CDMA USB Serial Device (PID 6501)"
+AnyDATADevice02 = "AnyDATA CDMA USB Serial Device (PID 6502)"
+AnyDATADeviceNMEA = "AnyDATA CDMA USB NMEA Device (PID 6502)"
+
+AnyDATASerialPortName01 = "AnyDATA CDMA USB Serial Port (PID 6501)"
+AnyDATASerialPortName02 = "AnyDATA CDMA USB Serial Port (PID 6502)"
+AnyDATASerialPortNameNMEA = "AnyDATA CDMA USB NMEA Port (PID 6502)"

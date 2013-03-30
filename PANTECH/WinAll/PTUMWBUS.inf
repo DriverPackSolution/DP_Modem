@@ -1,0 +1,130 @@
+;***********************************************************************************
+;
+; Name       :  PTUMWBus.inf  
+;
+; Function   :  Install PANTECH CO., LTD System USB Composite Device drivers on Windows 2000/XP/VISTA
+;
+; Copyright (c) DEVGURU
+;
+;***********************************************************************************
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%Provider%
+DriverVer=05/17/2012,1.2.8000.0516
+CatalogFile=PTUMWBus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir          = 11                    ; LDID_SYS
+PTUMW.NT.CopyFiles        = 12                    ; system32\drivers
+
+
+;-----------------------------------------------------------------------------
+; Specify the install disks. 
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+1 = %DiskString%,,,\i386
+
+[SourceDisksNames.ia64]
+1 = %DiskString%,,,\ia64
+
+[SourceDisksNames.amd64]
+1 = %DiskString%,,,\amd64
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+PTUMWBus.sys = 1
+
+
+;-----------------------------------------------------------------------------
+; Specify phone manufacturer, devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%PTUMW%=PTUMW, NTx86, NTia64, NTamd64
+
+
+;-----------------------------------------------------------------------------
+; The phone devices
+;-----------------------------------------------------------------------------
+[PTUMW]
+%USB\VID_106C&PID_3716.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716
+%USB\VID_106C&PID_3717.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717
+
+; For XP and later
+[PTUMW.NTx86]
+%USB\VID_106C&PID_3716.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716
+%USB\VID_106C&PID_3717.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717
+
+[PTUMW.NTamd64]
+%USB\VID_106C&PID_3716.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716
+%USB\VID_106C&PID_3717.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717
+
+[PTUMW.NTia64]
+%USB\VID_106C&PID_3716.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716
+%USB\VID_106C&PID_3717.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[PTUMW.Install.NT]
+CopyFiles = PTUMW.NT.CopyFiles
+AddReg    = PTUMW.AddReg, PTUMW.NT.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[PTUMW.Install.NT.Services]
+AddService      = PTUMWBus, 2, PTUMW.AddService
+
+[PTUMW.AddService]
+DisplayName             = %PTUMW.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\PTUMWBus.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[PTUMW.AddReg]
+
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[PTUMW.NT.AddReg]
+
+
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[PTUMW.NT.CopyFiles]
+PTUMWBus.sys
+
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;US English Strings
+Provider = "PANTECH CO., LTD "
+PTUMW = "PANTECH CO., LTD "
+
+DiskString = "PANTECH USB Modem V2 Composite Device Installation disk"
+PTUMW.Service.Desc = "PANTECH USB Modem V2 Composite Device Driver"
+
+USB\VID_106C&PID_3716.DeviceDesc = "PANTECH UMW190 Composite Device"
+USB\VID_106C&PID_3717.DeviceDesc = "PANTECH UM185 Composite Device"

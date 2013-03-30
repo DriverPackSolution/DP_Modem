@@ -1,0 +1,224 @@
+; INF file for LINKSYS USB-NDIS Cable Gateway Miniport Driver for Windows 98/SE/ME & Windows 2000/XP
+;
+
+
+[Version]
+;LayoutFile=layout.inf
+Signature="$Chicago$"
+Compatible=1
+Class=Net
+ClassGUID={4d36e972-e325-11ce-bfc1-08002be10318}
+Provider=%V_LINKSYS%
+CatalogFile = BEFCMU10V4.cat                            ;; for WHQL certified
+DriverVer=06/30/2004,1.12.00.0000
+
+[Manufacturer]
+%V_LINKSYS%=LINKSYS, NT.5.1
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_077B&PID_08BE
+
+[LINKSYS]
+%BEFCMU10V4.DeviceDesc%=BEFCMU10V4.ndi, USB\VID_077B&PID_08BE
+
+[LINKSYS.NT.5.1]
+%BEFCMU10V4.DeviceDesc%=BEFCMU10V4XP.ndi, USB\VID_077B&PID_08BE
+
+
+;*******************************************************************************
+; Win98 main sections
+
+[BEFCMU10V4.ndi]
+AddReg          = BEFCMU10V4.ndi.reg, BEFCMU10V4.Params,USBCM_Uninstall.reg
+CopyFiles       = BEFCMU10V4.Copyfiles,USBCM.Uninstall
+
+
+;*******************************************************************************
+; NT main sections
+
+[BEFCMU10V4.ndi.NT]
+AddReg          = BEFCMU10V4.NT.reg, BEFCMU10V4.Params,USBCM_Uninstall.reg
+CopyFiles       = BEFCMU10V4.NT.CopyFiles,USBCM.Uninstall
+Characteristics = 0x84
+BusType         = 15
+
+[BEFCMU10V4.ndi.NT.Services]
+AddService      = BEFCMU10V4, 2, BEFCMU10V4.Service, BEFCMU10V4.EventLog
+
+;*******************************************************************************
+; XP main sections
+
+[BEFCMU10V4XP.ndi.NT]
+AddReg          = BEFCMU10V4.NT.reg, BEFCMU10V4.Params,USBCM_Uninstall.reg
+CopyFiles       = BEFCMU10V4.XP.CopyFiles,USBCM.Uninstall
+Characteristics = 0x84
+BusType         = 15
+
+[BEFCMU10V4XP.ndi.NT.Services]
+AddService      = BEFCMU10V4XP, 2, BEFCMU10V4XP.Service, BEFCMU10V4.EventLog
+
+
+
+;*******************************************************************************
+; Windows 98 section
+;*******************************************************************************
+
+[BEFCMU10V4.ndi.reg]
+HKR, Ndi, DeviceId, 0,"USB\VID_077B&PID_08BE"
+HKR,,DevLoader,0,"*ndis"
+HKR,,DeviceVxDs,0,"BEFCMU10V4.sys"
+HKR,,EnumPropPages,0,"netdi.dll,EnumPropPages"
+
+HKR,,AdapterName,,BEFCMU10V4
+HKR,Ndi,CardType,,"PNP"
+
+; NDIS info
+HKR,NDIS,LogDriverName,0,"BEFCMU10V4"
+HKR,NDIS,MajorNdisVersion,1,03
+HKR,NDIS,MinorNdisVersion,1,0a
+
+; Interfaces
+HKR,Ndi\Interfaces,DefUpper,0,"ndis3"
+HKR,Ndi\Interfaces,DefLower,0,"ethernet"
+HKR,Ndi\Interfaces,UpperRange,0,"ndis3"
+HKR,Ndi\Interfaces,LowerRange,0,"ethernet"
+
+; Install sections
+HKR,Ndi\Install,ndis3,,"cme.install"
+HKR,Ndi,HelpText,,"Linksys BEFCMU10 ver. 4 Cable Modem"
+
+
+;*******************************************************************************
+; Driver parameters
+;*******************************************************************************
+
+[BEFCMU10V4.Params]
+
+HKR, Ndi\params\NumRxBuffers,ParamDesc,0, "NumRxBuffers"
+HKR, Ndi\params\NumRxBuffers,default,  0, "32"
+HKR, Ndi\params\NumRxBuffers,min,      0, "1"
+HKR, Ndi\params\NumRxBuffers,max,      0, "00001024"
+HKR, Ndi\params\NumRxBuffers,step,     0, "1"
+HKR, Ndi\params\NumRxBuffers,Base,     0, "10"
+HKR, Ndi\params\NumRxBuffers,type,     0, "int"
+
+HKR, Ndi\params\NumTxBuffers,ParamDesc,0, "NumTxBuffers"
+HKR, Ndi\params\NumTxBuffers,default,  0, "32"
+HKR, Ndi\params\NumTxBuffers,min,      0, "1"
+HKR, Ndi\params\NumTxBuffers,max,      0, "00001024"
+HKR, Ndi\params\NumTxBuffers,step,     0, "1"
+HKR, Ndi\params\NumTxBuffers,Base,     0, "10"
+HKR, Ndi\params\NumTxBuffers,type,     0, "int"
+
+;*******************************************************************************
+; Install section for OSR2 and Windows 98
+;*******************************************************************************
+
+;[cme.install]
+;CopyFiles = BEFCMU10V4.CopyFiles
+
+[BEFCMU10V4.CopyFiles]
+BEFCMU10V4.sys,,,2
+
+[USBCM.Uninstall]
+;UNBEFCMU10V4.EXE
+
+
+;*******************************************************************************
+; Install section for Windows NT 5
+;*******************************************************************************
+
+;-------------------------------------------------------------------------------
+; LINKSYS NDIS-USB Cable Gateway Service and Driver
+;
+[BEFCMU10V4.NT.reg]
+HKR, Ndi,               Service,    0, "BEFCMU10V4"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+[BEFCMU10V4.Service]
+DisplayName     = %BEFCMU10V4.DeviceDesc%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\BEFCMU10V4.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+
+;*******************************************************************************
+; Install section for Windows XP
+;*******************************************************************************
+
+[BEFCMU10V4XP.Service]
+DisplayName     = %BEFCMU10V4.DeviceDesc%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\BEFCMU10V4XP.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+
+
+[BEFCMU10V4.EventLog]
+AddReg = BEFCMU10V4.AddEventLog.reg
+
+[BEFCMU10V4.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+
+
+[BEFCMU10V4.NT.CopyFiles]
+BEFCMU10V4.sys,,,2
+
+[BEFCMU10V4.XP.CopyFiles]
+BEFCMU10V4XP.sys,,,2
+
+
+;-------------------------------------------------
+[USBCM_Uninstall.reg]
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%CM_String%",DisplayName,,"%CM_Uninstall%"
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%CM_String%",UninstallString,,"UNBEFCMU10V4.EXE"
+
+;*******************************************************************************
+; Destination directories
+;*******************************************************************************
+[DestinationDirs]
+USBCM.Uninstall= 10
+BEFCMU10V4.CopyFiles = 11
+BEFCMU10V4.NT.CopyFiles = 12
+BEFCMU10V4.XP.CopyFiles = 12
+DefaultDestDir  = 11 ; LDID_SYS
+
+[SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+;50="Driver Diskette",, 0
+1=%DisketteName%,,,
+
+[SourceDisksFiles]
+;<file> = <cabinet number>,<subdir>,<filename>,<size>
+;Note: File is not in a cabinet if cab# is 0
+BEFCMU10V4.sys   = 1
+BEFCMU10V4XP.sys = 1
+;UNBEFCMU10V4.EXE   = 1
+
+; Local Strings
+; Provideer
+[strings]
+V_LINKSYS="Cisco-Linksys, LLC"
+
+;;source Disk name 
+DisketteName= "BEFCMU10 ver. 4 USB Driver"
+
+; Devices
+BEFCMU10V4.DeviceDesc="Linksys BEFCMU10 ver. 4 Cable Modem"
+
+;;Uninstall 
+CM_String="Linksys BEFCMU10V4 Uninstall"
+CM_Uninstall="Linksys BEFCMU10 ver. 4 Cable Modem"

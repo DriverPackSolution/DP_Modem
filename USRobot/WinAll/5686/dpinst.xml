@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<dpInst>
+    <language code="0x0401">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0405">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0409">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0809">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0c09">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x1009">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x040c">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0c0c">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0407">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0408">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x040e">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0413">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0414">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0415">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0416">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0816">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x0419">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x040a">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x080a">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x500a">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x041d">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+    <language code="0x041f">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+
+    <language code="0x0405">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0413">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x040c">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0c0c">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0407">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0408">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x040e">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0410">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0414">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0814">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <language code="0x0415">
+        <dpinstTitle>U.S. Robotics Modem Installation Wizard</dpinstTitle>
+    </language>
+
+    <enableNotListedLanguages/>
+    <legacyMode/>
+    <forceIfDriverIsNotBetter/>
+    <icon>modem.ico</icon>
+    <headerPath>Header.bmp</headerPath>
+</dpInst>

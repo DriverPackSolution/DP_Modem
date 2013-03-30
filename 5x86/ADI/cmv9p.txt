@@ -1,0 +1,7 @@
+; POTS for 930
+CW cntl 0 1
+CW optn 0 80020066
+CW optn 2 23600000
+CW optn 4 0
+CW optn 5 400
+CW cntl 0 2

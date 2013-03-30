@@ -1,0 +1,123 @@
+; Toshiba Windows Smart Card Reader 64 & 32 bit Setup File
+; Copyright (c) 1998-2008 Sony Ericsson 
+; Manufacturer: Sony Ericsson
+
+[Version]
+CatalogFile.NTx86=toshscard.cat
+CatalogFile.NTamd64=toshscard64.cat
+Signature="$Windows NT$"
+Class=SmartCardReader
+ClassGuid={50DD5230-BA8A-11D1-BF5D-0000F805F530}
+Provider=%SCProvider%
+DriverVer=08/07/2008,5.0.0.12
+
+[DestinationDirs]
+DefaultDestDir			= 11
+DrvFilesAmd64=12
+DrvFilesx86=12
+
+[Manufacturer]
+%SCProvider%=SC_Readers, NTamd64, NTx86
+
+[SC_Readers]
+%FullProductName% = SCReader_Instx86, 	Toshiba\USIM
+
+[SC_Readers.NTamd64]
+%FullProductName% = SCReader_Instamd64, Toshiba\USIM
+
+[SC_Readers.NTx86]
+%FullProductName% = SCReader_Instx86,   Toshiba\USIM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SC_Device_Service_Inst_x86]
+DisplayName    = %FullProductName%
+ServiceType    = 1
+StartType      = 3   
+ErrorControl   = 1
+ServiceBinary  = %12%\toshscard.sys
+AddReg		   = Reg.DevName
+
+[SC_Device_Service_Inst_amd64]
+DisplayName    = %FullProductName%
+ServiceType    = 1
+StartType      = 3   
+ErrorControl   = 1
+ServiceBinary  = %12%\toshscard64.sys
+AddReg		   = Reg.DevName
+
+
+[Strings]
+Version = "5.0.0.12"
+Disk1Name			="Toshiba Installation Disk "
+DeviceName			="TOSHIBASC"
+NicDeviceID			="TOSHIBASC"
+SCDeviceID			="TOSHIBASC\SIM_SC"
+SCProvider="TOSHIBA"
+FullProductName="Toshiba F3507g Mobile Broadband USIM Port"
+ShortProductName="WWSC"
+
+[DrvFilesx86]
+toshscard.sys
+
+[DrvFilesAmd64]
+toshscard64.sys
+
+[Reg.DevName]
+HKR,Parameters,DeviceName,,%DeviceName%
+HKR,Parameters,NicDeviceID,,%NicDeviceID%
+HKR,Parameters,SCDeviceID,,%SCDeviceID%
+HKR,Parameters,"MaximumTransferSize",0x10001,4096
+HKR,Parameters,"DebugLevel",0x10001,2
+HKR,Parameters,"BulkUsbEnable",0x10001,1
+
+[SourceDisksNames.x86]
+1=%Disk1Name%,,			;,\x86
+
+[SourceDisksNames.amd64]
+1=%Disk1Name%,,			;,\amd64
+
+[SourceDisksFiles.x86]
+toshscard.sys = 1
+
+[SourceDisksFiles.amd64]
+toshscard64.sys = 1
+
+; Hardware Specific Settings and Configuration
+[SC.Reader.AddReg]
+HKLM,System\CurrentControlSet\Services\SCardSvr,Start,0x00010001,2
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,toshscard.sys
+HKR,,EnableFastResume, 0x10001, 01,00,00,00
+
+
+[SCReader_Instx86.EventLog.AddReg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\toshscard.sys"
+HKR,, TypesSupported,   0x00010001, 7
+
+[SCReader_Instamd64.EventLog.AddReg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\toshscard64.sys"
+HKR,, TypesSupported,   0x00010001, 7
+
+[SCReader_Instx86.NT]
+CopyFiles=DrvFilesx86
+AddReg=SC.Reader.AddReg
+
+[SCReader_Instamd64.NT]
+CopyFiles=DrvFilesAmd64
+AddReg=SC.Reader.AddReg 
+
+[SCReader_Instx86.NT.Services]
+AddService = Sony_EricssonWWSC, 2, SC_Device_Service_Inst_x86, SCReader_Instx86.EventLog
+
+[SCReader_Instamd64.NT.Services]
+AddService = Sony_EricssonWWSC, 2, SC_Device_Service_Inst_amd64, SCReader_Instamd64.EventLog
+
+[SCReader_Instx86.EventLog]
+AddReg = SCReader_Instx86.EventLog.AddReg
+
+[SCReader_Instamd64.EventLog]
+AddReg = SCReader_Instamd64.EventLog.AddReg
+
+

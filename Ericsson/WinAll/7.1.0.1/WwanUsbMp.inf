@@ -1,0 +1,556 @@
+;
+; Copyright Ericsson AB
+;
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %EAB%
+CatalogFile = WwanUsbMp.cat
+DriverVer=04/27/2012,7.2.1.0
+
+[Manufacturer]
+%Ericsson% = Ericsson, NTamd64, NTx86
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Ericsson.NTx86]
+; DisplayName                     Section          DeviceID
+; -----------                     -------          --------
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_8183&Mi_06&wwan      ; Dell
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_8184&Mi_06&wwan      ; Dell
+"Dell Wireless 5541 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818b&Mi_06&wwan      ; Dell
+"Dell Wireless 5542 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818c&Mi_06&wwan      ; Dell
+"Dell Wireless 5550 HSPA+ Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818d&Mi_06&wwan      ; Dell
+"Dell Wireless 5560 HSPA+ Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818e&Mi_06&wwan      ; Dell
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1904&Mi_06&wwan      ; Generic
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1906&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1909&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190A&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1914&Mi_06&wwan      ; Generic
+"F5521gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190D&Mi_06&wwan      ; Generic
+"C3607w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190B&Mi_06&wwan      ; Generic
+"F5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1917&Mi_06&wwan      ; Generic
+"F5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191B&Mi_06&wwan      ; Generic
+"H5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1919&Mi_06&wwan      ; Generic
+"H5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191D&Mi_06&wwan      ; Generic
+"C5621 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191F&Mi_06&wwan      ; Generic
+"C5621 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1921&Mi_06&wwan      ; Generic
+"C3304 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1928&Mi_06&wwan      ; Generic
+"Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1045&Mi_06&wwan      ; Generic
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1905&Mi_06&wwan      ; Lenovo
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1907&Mi_06&wwan      ; Lenovo
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190e&Mi_06&wwan      ; Lenovo
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190f&Mi_06&wwan      ; Lenovo
+"F5521gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1911&Mi_06&wwan      ; Lenovo
+"H5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1926&Mi_06&wwan      ; Lenovo
+"F5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1932&Mi_06&wwan      ; Lenovo
+"F5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1930&Mi_06&wwan      ; Lenovo
+"C5621 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1936&Mi_06&wwan      ; Lenovo
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_130c&Mi_06&wwan      ; Toshiba
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1311&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1315&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1316&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1317&Mi_06&wwan      ; Toshiba
+"Ericsson F5521gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1314&Mi_06&wwan      ; Toshiba
+"Ericsson F5321w for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131F&Mi_06&wwan      ; Toshiba
+"Ericsson F5321gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131B&Mi_06&wwan      ; Toshiba
+"Ericsson H5321w for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131D&Mi_06&wwan      ; Toshiba
+"Ericsson H5321gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1319&Mi_06&wwan      ; Toshiba
+"Ericsson C5621gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1321&Mi_06&wwan      ; Toshiba
+"HP hs2320 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_261D&Mi_06&wwan      ; HP
+"HP hs2330 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_271d&Mi_06&wwan      ; HP
+"HP lc2000 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_301d&Mi_06&wwan      ; HP
+"HP lc2010 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_2f1d&Mi_06&wwan      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_3A1D&Mi_06&wwan      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_451D&Mi_06&wwan      ; HP
+"HP Touchpad Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_0042&Mi_06&wwan      ; HP
+"HP hs2350 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_3D1D&Mi_06&wwan      ; HP
+
+
+[Ericsson.NTamd64]
+; DisplayName                     Section          DeviceID
+; -----------                     -------          --------
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_8183&Mi_06&wwan      ; Dell
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_8184&Mi_06&wwan      ; Dell
+"Dell Wireless 5541 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818b&Mi_06&wwan      ; Dell
+"Dell Wireless 5542 HSPA Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818c&Mi_06&wwan      ; Dell
+"Dell Wireless 5550 HSPA+ Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818d&Mi_06&wwan      ; Dell
+"Dell Wireless 5560 HSPA+ Mini-Card Network Adapter" = ericsson.ndi,  USB\VID_413c&PID_818e&Mi_06&wwan      ; Dell
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1904&Mi_06&wwan      ; Generic
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1906&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1909&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190A&Mi_06&wwan      ; Generic
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1914&Mi_06&wwan      ; Generic
+"F5521gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190D&Mi_06&wwan      ; Generic
+"C3607w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190B&Mi_06&wwan      ; Generic
+"F5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1917&Mi_06&wwan      ; Generic
+"F5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191B&Mi_06&wwan      ; Generic
+"H5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1919&Mi_06&wwan      ; Generic
+"H5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191D&Mi_06&wwan      ; Generic
+"C5621 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_191F&Mi_06&wwan      ; Generic
+"C5621 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1921&Mi_06&wwan      ; Generic
+"C3304 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1928&Mi_06&wwan      ; Generic
+"Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1045&Mi_06&wwan      ; Generic
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1905&Mi_06&wwan      ; Lenovo
+"F3607gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1907&Mi_06&wwan      ; Lenovo
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190e&Mi_06&wwan      ; Lenovo
+"F3307 Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_190f&Mi_06&wwan      ; Lenovo
+"F5521gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1911&Mi_06&wwan      ; Lenovo
+"H5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1926&Mi_06&wwan      ; Lenovo
+"F5321 w Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1932&Mi_06&wwan      ; Lenovo
+"F5321 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1930&Mi_06&wwan      ; Lenovo
+"C5621 gw Mobile Broadband Driver" = ericsson.ndi,  USB\VID_0bdb&PID_1936&Mi_06&wwan      ; Lenovo
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_130c&Mi_06&wwan      ; Toshiba
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1311&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1315&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1316&Mi_06&wwan      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1317&Mi_06&wwan      ; Toshiba
+"Ericsson F5521gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1314&Mi_06&wwan      ; Toshiba
+"Ericsson F5321w for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131F&Mi_06&wwan      ; Toshiba
+"Ericsson F5321gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131B&Mi_06&wwan      ; Toshiba
+"Ericsson H5321w for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_131D&Mi_06&wwan      ; Toshiba
+"Ericsson H5321gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1319&Mi_06&wwan      ; Toshiba
+"Ericsson C5621gw for TOSHIBA Mobile Broadband Network Adapter" = ericsson.ndi,  USB\VID_0930&PID_1321&Mi_06&wwan      ; Toshiba
+"HP hs2320 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_261D&Mi_06&wwan      ; HP
+"HP hs2330 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_271d&Mi_06&wwan      ; HP
+"HP lc2000 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_301d&Mi_06&wwan      ; HP
+"HP lc2010 Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_2f1d&Mi_06&wwan      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_3A1D&Mi_06&wwan      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_451D&Mi_06&wwan      ; HP
+"HP Touchpad Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_0042&Mi_06&wwan      ; HP
+"HP hs2350 HSPA+ Mobile Broadband Module Network Adapter" = ericsson.ndi,  USB\VID_03f0&PID_3D1D&Mi_06&wwan      ; HP
+
+
+;
+;x86
+;
+[ericsson.ndi.NTx86]
+Characteristics    = 0x84
+BusType            = 15
+AddReg             = ericsson.reg
+CopyFiles          = ericsson.CopyFiles
+
+;
+;WWan NDIS >= 6.2 
+;
+*IfType            = 243        ; IF_TYPE_WWANPP GSM
+*MediaType         = 9          ; NdisMediumWirelessWan 
+*PhysicalMediaType = 8          ; NdisPhysicalMediumWirelessWan 
+EnableDhcp         = 0          ; Disable DHCP 
+
+;
+;amd64
+;
+[ericsson.ndi.NTAMD64]
+Characteristics    = 0x84
+BusType            = 15
+AddReg             = ericsson.reg
+CopyFiles          = ericsson64.CopyFiles
+
+;
+;WWan NDIS >= 6.2 
+;
+*IfType            = 243        ; IF_TYPE_WWANPP GSM
+*MediaType         = 9          ; NdisMediumWirelessWan 
+*PhysicalMediaType = 8          ; NdisPhysicalMediumWirelessWan 
+EnableDhcp         = 0          ; Disable DHCP 
+
+;
+;x86
+;
+[ericsson.ndi.NTx86.Services]
+AddService = WwanUsbServ, 2, ericsson.Service, ericsson.EventLog
+
+;
+;amd64
+;
+[ericsson.ndi.NTAMD64.Services]
+AddService = WwanUsbServ, 2, ericsson64.Service, ericsson.EventLog
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0013]
+;
+[ericsson.reg]
+HKR, Ndi,                         Service,    0, "WwanUsbServ"
+
+;
+;NDIS >= 6.2
+;
+HKR, Ndi\Interfaces,              UpperRange, 0, "flpp4, flpp6"
+HKR, Ndi\Interfaces,              LowerRange, 0, "ppip"
+
+;
+;goes into [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0013]
+;HKR, Ndi\Interfaces,              LowerRange, 0, "wlan,ethernet"
+;HKR, Ndi\params,  EmulateNdis62, 0x00010001, 1			;enable WWan NDIS 6.2
+;
+;HKR, Ndi\params,  DefGwMac, 0, "02-80-37-EC-02-81"
+;HKR, Ndi\params,  ModuleMac,0, "02-80-37-EC-02-00"
+;HKR, Ndi\params,  HardwareRadioSwitch, 0, 2			;1 = Can the radio be disabled trough a switch, 2 = set switch on at load
+;HKR, Ndi\params,  SoftwareRadioSwitch, 0, 1			;1 = set switch on at load
+;HKR, Ndi\params,  SoftwareRadioSim, 0, 1			;1 = set switch on at load
+;HKR, Ndi\params,  EmulateNdis62,    0, 1			;enable WWan NDIS 6.2 on a eth frame module
+;HKR, Ndi\params,  GlobalDebugLevel, 0, 7			;the drive log level 1 = low, DBG_ERROR = 7
+;HKR, Ndi\params,  ProviderID, 0, ""				
+;HKR, Ndi\params,  ManualNetworkSelection, 0, 0
+;HKR, Ndi\params,  WwanDataClass, 0x10001, 1
+;HKR, Ndi\params,  IsF3507g, 0x10001, 0
+;HKR, Ndi\params,  ProvisionedAccessString, 0, ""
+;HKR, Ndi\params,  ProvisionedUserName, 0, ""
+;HKR, Ndi\params,  ProvisionedPassword, 0, ""
+;HKR, Ndi\params,  ProvisionedProviderId, 0, ""
+;HKR, Ndi\params,  ContextId, 0x10001, 0
+;HKR, Ndi\params,  ContextType, 0x10001, 0
+;HKR, Ndi\params,  ProvisionedCompression, 0x10001, 0
+;HKR, Ndi\params,  ProvisionedAuthType, 0x10001, 0
+
+
+HKR, Params,  DefGwMac, 0, "02-80-37-EC-02-81"
+HKR, Params,  ModuleMac,0, "02-80-37-EC-02-00"
+HKR, Params,  HardwareRadioSwitch, 0, 2			;1 = Can the radio be disabled trough a switch, 2 = set switch on at load
+HKR, Params,  SoftwareRadioSwitch, 0, 1			;1 = set switch on at load
+HKR, Params,  SoftwareRadioSim, 0, 1			;1 = set switch on at load
+HKR, Params,  EmulateNdis62,    0, 1			;enable WWan NDIS 6.2 on a eth frame module
+HKR, Params,  GlobalDebugLevel, 0, 7			;the drive log level 1 = low, DBG_ERROR = 7
+HKR, Params,  ProviderID, 0, ""				
+HKR, Params,  ManualNetworkSelection, 0, 0
+HKR, Params,  WwanDataClass, 0x10001, 1
+HKR, Params,  IsF3507g, 0x10001, 0
+HKR, Params,  ProvisionedAccessString, 0, ""
+HKR, Params,  ProvisionedUserName, 0, ""
+HKR, Params,  ProvisionedPassword, 0, ""
+HKR, Params,  ProvisionedProviderId, 0, ""
+HKR, Params,  ContextId, 0x10001, 0
+HKR, Params,  ContextType, 0x10001, 0
+HKR, Params,  ProvisionedCompression, 0x10001, 0
+HKR, Params,  ProvisionedAuthType, 0x10001, 0
+HKR, Params,  RadioAccessCFUN, 0x10001, 1
+HKR, Params,  EnableEncmSupport, 0x10001, 1
+HKR, Params,  EthMaxMtuSize, 0x10001, 0x5DC
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0007\Ndi\Params\*ReceiveBuffers]
+;
+HKR, Ndi\params\*ReceiveBuffers,  ParamDesc,  0, "%ReceiveBuffers%"
+HKR, Ndi\params\*ReceiveBuffers,  default,    0, "64"
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0007\Ndi\Params\*TransmitBuffers]
+;
+HKR, Ndi\params\*TransmitBuffers, ParamDesc,  0, "%TransmitBuffers%"
+HKR, Ndi\params\*TransmitBuffers, default,    0, "15"
+
+;
+;	
+;
+[ericsson.Service]
+DisplayName     = %Ericsson.Service.DispName%
+ServiceType     = 1             ;SERVICE_KERNEL_DRIVER
+StartType       = 3             ;SERVICE_DEMAND_START
+ErrorControl    = 1             ;SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\WwanUsbMp.sys
+LoadOrderGroup  = NDIS
+
+[ericsson64.Service]
+DisplayName     = %Ericsson.Service.DispName%
+ServiceType     = 1             ;SERVICE_KERNEL_DRIVER
+StartType       = 3             ;SERVICE_DEMAND_START
+ErrorControl    = 1             ;SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\WwanUsbMp64.sys
+LoadOrderGroup  = NDIS
+
+
+[ericsson.EventLog]
+AddReg = ericsson.AddEventLog.reg
+
+[ericsson.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[ericsson.CopyFiles]
+WwanUsbMp.sys,,,2
+
+[ericsson64.CopyFiles]
+WwanUsbMp64.sys,,,2
+
+[SourceDisksNames.x86]
+1 = %DiskDescription%,WwanUsbMp.sys,,\i386
+
+[SourceDisksNames.amd64]
+1 = %DiskDescription%,WwanUsbMp64.sys,,\amd64
+
+
+[SourceDisksFiles.x86]
+WwanUsbMp.sys = 1,,
+WdfCoInstaller01009.dll = 1
+
+[SourceDisksFiles.amd64]
+WwanUsbMp64.sys = 1,,
+WdfCoInstaller01009.dll = 1
+
+[DestinationDirs]
+ericsson.CopyFiles         = 12
+ericsson64.CopyFiles         = 12
+;DefaultDestDirs            = 11
+
+
+;-------------- WDF Coinstaller installation
+
+[DestinationDirs]
+;CoInstaller_CopyFiles = 11
+
+[ericsson.ndi.NTx86.CoInstallers]
+AddReg    = CoInstaller_AddReg
+CopyFiles = CoInstaller_CopyFiles
+
+[ericsson.ndi.NTAMD64.CoInstallers]
+AddReg    = CoInstaller_AddReg
+CopyFiles = CoInstaller_CopyFiles
+;
+;	wdfcoinstaller01009
+;
+[CoInstaller_CopyFiles]
+wdfcoinstaller01009.dll
+
+[SourceDisksFiles]
+wdfcoinstaller01009.dll=1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+;HKR,,CoInstallers32,0x00010000, "wdfcoinstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[ericsson.ndi.NTx86.Wdf]
+KmdfService = WwanUsbServ, ericsson_wdfsect
+
+[ericsson.ndi.NTAMD64.Wdf]
+KmdfService = WwanUsbServ, ericsson_wdfsect
+
+[ericsson_wdfsect]
+KmdfLibraryVersion = 1.9
+
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+; This is for supporting Devgiri
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;x86
+;
+[ericssondg.ndi.NTx86]
+Characteristics    = 0x84
+BusType            = 15
+AddReg             = ericssondg.reg
+CopyFiles          = ericssondg.CopyFiles
+
+;
+;WWan NDIS >= 6.2 
+;
+*IfType            = 243        ; IF_TYPE_WWANPP GSM
+*MediaType         = 9          ; NdisMediumWirelessWan 
+*PhysicalMediaType = 8          ; NdisPhysicalMediumWirelessWan 
+EnableDhcp         = 0          ; Disable DHCP 
+
+;
+;amd64
+;
+[ericssondg.ndi.NTAMD64]
+Characteristics    = 0x84
+BusType            = 15
+AddReg             = ericssondg.reg
+CopyFiles          = ericssondg64.CopyFiles
+
+;
+;WWan NDIS >= 6.2 
+;
+*IfType            = 243        ; IF_TYPE_WWANPP GSM
+*MediaType         = 9          ; NdisMediumWirelessWan 
+*PhysicalMediaType = 8          ; NdisPhysicalMediumWirelessWan 
+EnableDhcp         = 0          ; Disable DHCP 
+
+;
+;x86
+;
+[ericssondg.ndi.NTx86.Services]
+AddService = WwanUsbServ, 2, ericssondg.Service, ericssondg.EventLog
+
+;
+;amd64
+;
+[ericssondg.ndi.NTAMD64.Services]
+AddService = WwanUsbServ, 2, ericssondg64.Service, ericssondg.EventLog
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0013]
+;
+[ericssondg.reg]
+HKR, Ndi,                         Service,    0, "WwanUsbServ"
+
+;
+;NDIS >= 6.2
+;
+HKR, Ndi\Interfaces,              UpperRange, 0, "flpp4, flpp6"
+HKR, Ndi\Interfaces,              LowerRange, 0, "ppip"
+
+;
+;goes into [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0013]
+;HKR, Ndi\Interfaces,              LowerRange, 0, "wlan,ethernet"
+;HKR, Ndi\params,  EmulateNdis62, 0x00010001, 1			;enable WWan NDIS 6.2
+;
+;HKR, Ndi\params,  DefGwMac, 0, "02-80-37-EC-02-81"
+;HKR, Ndi\params,  ModuleMac,0, "02-80-37-EC-02-00"
+;HKR, Ndi\params,  HardwareRadioSwitch, 0, 2			;1 = Can the radio be disabled trough a switch, 2 = set switch on at load
+;HKR, Ndi\params,  SoftwareRadioSwitch, 0, 1			;1 = set switch on at load
+;HKR, Ndi\params,  SoftwareRadioSim, 0, 1			;1 = set switch on at load
+;HKR, Ndi\params,  EmulateNdis62,    0, 1			;enable WWan NDIS 6.2 on a eth frame module
+;HKR, Ndi\params,  GlobalDebugLevel, 0, 7			;the drive log level 1 = low, DBG_ERROR = 7
+;HKR, Ndi\params,  ProviderID, 0, ""				
+;HKR, Ndi\params,  ManualNetworkSelection, 0, 0
+;HKR, Ndi\params,  WwanDataClass, 0x10001, 1
+;HKR, Ndi\params,  IsF3507g, 0x10001, 1
+;HKR, Ndi\params,  ProvisionedAccessString, 0, ""
+;HKR, Ndi\params,  ProvisionedUserName, 0, ""
+;HKR, Ndi\params,  ProvisionedPassword, 0, ""
+;HKR, Ndi\params,  ProvisionedProviderId, 0, ""
+;HKR, Ndi\params,  ContextId, 0x10001, 0
+;HKR, Ndi\params,  ContextType, 0x10001, 0
+;HKR, Ndi\params,  ProvisionedCompression, 0x10001, 0
+;HKR, Ndi\params,  ProvisionedAuthType, 0x10001, 0
+
+
+HKR, Params,  DefGwMac, 0, "02-80-37-EC-02-81"
+HKR, Params,  ModuleMac,0, "02-80-37-EC-02-00"
+HKR, Params,  HardwareRadioSwitch, 0, 2			;1 = Can the radio be disabled trough a switch, 2 = set switch on at load
+HKR, Params,  SoftwareRadioSwitch, 0, 1			;1 = set switch on at load
+HKR, Params,  SoftwareRadioSim, 0, 1			;1 = set switch on at load
+HKR, Params,  EmulateNdis62,    0, 1			;enable WWan NDIS 6.2 on a eth frame module
+HKR, Params,  GlobalDebugLevel, 0, 7			;the drive log level 1 = low, DBG_ERROR = 7
+HKR, Params,  ProviderID, 0, ""				
+HKR, Params,  ManualNetworkSelection, 0, 0
+HKR, Params,  WwanDataClass, 0x10001, 1
+HKR, Params,  IsF3507g, 0x10001, 1
+HKR, Params,  ProvisionedAccessString, 0, ""
+HKR, Params,  ProvisionedUserName, 0, ""
+HKR, Params,  ProvisionedPassword, 0, ""
+HKR, Params,  ProvisionedProviderId, 0, ""
+HKR, Params,  ContextId, 0x10001, 0
+HKR, Params,  ContextType, 0x10001, 0
+HKR, Params,  ProvisionedCompression, 0x10001, 0
+HKR, Params,  ProvisionedAuthType, 0x10001, 0
+HKR, Params,  RadioAccessCFUN, 0x10001, 1
+HKR, Params,  EnableEncmSupport, 0x10001, 1
+HKR, Params,  EthMaxMtuSize, 0x10001, 0x5DC
+
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0007\Ndi\Params\*ReceiveBuffers]
+;
+HKR, Ndi\params\*ReceiveBuffers,  ParamDesc,  0, "%ReceiveBuffers%"
+HKR, Ndi\params\*ReceiveBuffers,  default,    0, "64"
+
+;
+;[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}\0007\Ndi\Params\*TransmitBuffers]
+;
+HKR, Ndi\params\*TransmitBuffers, ParamDesc,  0, "%TransmitBuffers%"
+HKR, Ndi\params\*TransmitBuffers, default,    0, "15"
+
+;
+;	
+;
+[ericssondg.Service]
+DisplayName = %Ericsson.Service.DispName%
+ServiceType = 1                            ;SERVICE_KERNEL_DRIVER
+StartType = 3                              ;SERVICE_DEMAND_START
+ErrorControl = 1                           ;SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\WwanUsbMp.sys
+LoadOrderGroup = NDIS
+
+[ericssondg64.Service]
+DisplayName = %Ericsson.Service.DispName%
+ServiceType = 1                            ;SERVICE_KERNEL_DRIVER
+StartType = 3                              ;SERVICE_DEMAND_START
+ErrorControl = 1                           ;SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\WwanUsbMp64.sys
+LoadOrderGroup = NDIS
+
+
+[ericssondg.EventLog]
+AddReg = ericssondg.AddEventLog.reg
+
+[ericssondg.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[ericssondg.CopyFiles]
+WwanUsbMp.sys,,,2
+
+[ericssondg64.CopyFiles]
+WwanUsbMp64.sys,,,2
+
+[SourceDisksNames.x86]
+1 = %DiskDescription%,WwanUsbMp.sys,,\i386
+
+[SourceDisksNames.amd64]
+1 = %DiskDescription%,WwanUsbMp64.sys,,\amd64
+
+
+[SourceDisksFiles.x86]
+WwanUsbMp.sys = 1,,
+WdfCoInstaller01009.dll = 1
+
+[SourceDisksFiles.amd64]
+WwanUsbMp64.sys = 1,,
+WdfCoInstaller01009.dll = 1
+
+
+[DestinationDirs]
+ericssondg.CopyFiles = 12
+ericssondg64.CopyFiles = 12
+DefaultDestDirs = 11
+
+;-------------- WDF Coinstaller installation
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[ericssondg.ndi.NTx86.CoInstallers]
+AddReg    = CoInstaller_AddReg
+CopyFiles = CoInstaller_CopyFiles
+
+[ericssondg.ndi.NTAMD64.CoInstallers]
+AddReg    = CoInstaller_AddReg
+CopyFiles = CoInstaller_CopyFiles
+;
+;	wdfcoinstaller01009
+;
+[CoInstaller_CopyFiles]
+wdfcoinstaller01009.dll
+
+[SourceDisksFiles]
+wdfcoinstaller01009.dll=1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "wdfcoinstaller01009.dll,WdfCoInstaller"
+
+[ericssondg.ndi.NTx86.Wdf]
+KmdfService = WwanUsbServ, ericssondg_wdfsect
+
+[ericssondg.ndi.NTAMD64.Wdf]
+KmdfService = WwanUsbServ, ericssondg_wdfsect
+
+[ericssondg_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;End Of Devgiri Section
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+[Strings]
+EAB = "Ericsson"
+Ericsson = "Ericsson AB"
+
+Ericsson.Service.DispName         = "Mobile Broadband Driver" ;don't match with WwanUsbServ Remove USB
+DiskDescription                   = "Mobile Broadband Driver Installation Disk"
+TransmitBuffers                   = "Transmit Buffers"
+ReceiveBuffers                    = "Receive Buffers"
+

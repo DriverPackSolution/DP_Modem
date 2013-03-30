@@ -1,0 +1,23 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Common filter script for SLExtra installation options
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[General]
+SWVersion=SLALLMDM
+ExtraVersion=SLALLMDM
+SLSignature=SLALLMDM
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Add to this line comma-separated list of options you want to include
+;; FallVXD - Fallback for VXD installations
+;; FallSYS - Fallback for SYS installations
+;; SLTools - SmartLink Tools Kit
+;; K56FlVXD - K56Flex for fallback VXD installations
+;; K56FlSYS - K56Flex for fallback SYS installations
+;; K56VXDA - K56Flex flo ADI VXD installations
+;; K56SYSA -   K56Flex flo ADI SYS installations
+;; K56VXDNA - K56Flex flo Non ADI VXD installations
+;; K56SYSNA -   K56Flex flo Non ADI SYS installations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Include=FallVXD,FallSYS,SLTools,FallNoAdiSYS
+Include=FallADI,FallnoADI,SLTools
+Slave=1
+

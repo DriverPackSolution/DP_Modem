@@ -1,0 +1,176 @@
+;*****************************************************************************
+;
+; toshbus.inf   -- Install the Toshiba F3507g Mobile Broadband Device drivers
+;
+; Copyright (c) 1997-2009 by MCCI Corporation 
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=03/17/2009,4.50.7.0
+CatalogFile=toshbus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+TOSHWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshbus.sys",,\i386
+
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshbus.sys",,\amd64
+
+
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+toshbus.sys = 1
+toshwhnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Toshiba%=TOSH, NTamd64
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[TOSH]
+%TOSH.CdcBus.Desc% = TOSHWdm.Install, USB\VID_0930&PID_130b
+
+[TOSH.NTamd64]
+%TOSH.CdcBus.Desc% = TOSHWdm.Install, USB\VID_0930&PID_130b
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[TOSH.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[TOSHWdm.Install.NT]
+CopyFiles       = TOSHWdm.NT.CopyFiles
+AddReg          = TOSHWdm.AddReg, TOSHWdm.NT.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[TOSHWdm.Install.NT.Services]
+AddService      = toshbus, 2, TOSHWdm.AddService, TOSHWdm.Install.EventLog
+
+[TOSHWdm.AddService]
+DisplayName             = %TOSH.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\toshbus.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       Setup event logging, if driver supports it
+;-----------------------------------------------------------------------------
+
+[TOSHWdm.Install.EventLog]
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[TOSHWdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Toshiba F3507g Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "Toshiba\USIM$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "Toshiba\USIM$,Toshiba\USIM\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,Toshiba\USIM\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,Toshiba\USIM\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,Toshiba\USIM\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "Toshiba\USIM$,Toshiba\USIM\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,Toshiba\USIM\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Toshiba F3507g Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "Toshiba\GPS$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "Toshiba\GPS$,Toshiba\GPS\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,Toshiba\GPS\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,Toshiba\GPS\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,Toshiba\GPS\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"Toshiba\GPS$,Toshiba\GPS\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,Toshiba\GPS\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_03,NoDisplayInUI,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_07,NoDisplayInUI,0x10001, 01,00,00,00
+
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[TOSHWdm.NT.AddReg]
+HKR,,EnableCR3840, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+HKR,,AllowRemoteWakeup, 0x10001, 01,00,00,00
+
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[TOSHWdm.NT.CopyFiles]
+toshbus.sys
+toshwh.sys,toshwhnt.sys
+toshwhnt.sys
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Toshiba"
+Toshiba = "Toshiba"
+DiskString = "Toshiba F3507g Mobile Broadband Device Driver Disk"
+
+TOSH.CdcBus.Desc = "Toshiba F3507g Mobile Broadband Device"
+TOSH.Service.Desc = "Toshiba F3507g Mobile Broadband Device driver (WDM)"
+
+CustomerDataPath = "Toshiba F3507g Mobile Broadband Device"
+DriverSet = "Toshiba F3507g Mobile Broadband Device"
+UninstallFile = "TOSHUninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

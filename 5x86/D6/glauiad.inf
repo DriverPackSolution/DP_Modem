@@ -1,0 +1,213 @@
+;--------------------------------------------------------------------------------
+;
+; GLOBESPANVIRATA INC. PROPRIETARY INFORMATION
+;       Copyright 1999-2002 GlobespanVirata Inc. All Rights Reserved.
+;
+; ABSTRACT:
+;       Windows 98 & 2000 INF file for the GlobespanVirata LAN IAD USB Modem
+;
+;       Test INF for GLAUIAD LAN driver version 0.01.0000
+;--------------------------------------------------------------------------------
+
+[version]
+DriverVer   = 03/07/2003, 01.02.00.04
+Signature   = "$Chicago$"
+Compatible  = 1
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %ProviderName%
+CatalogFile = glauiad.cat
+CatalogFile.nt = glauint.cat
+
+[Manufacturer]
+%ManufacturerName%=GlobeSpanSection
+
+;-------------------------------------------------------------------------------
+[ControlFlags]
+; These are the vendor ids that the device will contain.  There are two 
+; possibilities:
+
+; 1. If eeprom is programmed, the vid/pid will be the following (the controller id
+;    plus 1):
+ExcludeFromSelect = USB\VID_07D1&PID_13F1
+
+; 2. The following is used if the eeprom has not been programmed:
+ExcludeFromSelect = USB\VID_0915&PID_8005
+
+;-------------------------------------------------------------------------------
+[GlobeSpanSection]
+;
+; DisplayName           Section                 DeviceID
+; -----------           -------                 --------
+%GLAUIAD.DeviceDesc%  = GLAUIAD.gspn,           USB\VID_07D1&PID_13F1
+%GLAUIAD.DeviceDesc%  = GLAUIAD.gspnDef,        USB\VID_0915&PID_8005
+
+;-------------------------------------------------------------------------------
+; Win 9x only      ***************************************************************
+[GLAUIAD.gspn]
+CopyFiles = GLAUIAD.Copy.98Drv,GSIUSB.cpl,GSIUSB.ndi
+AddReg    = GLAUIAD.gspn.id, GLAUIAD.win9x.reg, Common.reg
+
+[GLAUIAD.gspnDef]
+CopyFiles = GLAUIAD.Copy.98Drv,GSIUSB.cpl,GSIUSB.ndi
+AddReg    = GLAUIAD.gspnDef.id, GLAUIAD.win9x.reg, Common.reg
+
+[GLAUIAD.gspn.id]
+HKR, Ndi, DeviceID, 0, "USB\VID_07D1&PID_13F1"
+
+[GLAUIAD.gspnDef.id]
+HKR, Ndi, DeviceID, 0, "USB\VID_0915&PID_8005"
+
+
+[GLAUIAD.win9x.reg]
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "glaui98.sys"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+HKR, Ndi\Interfaces,DefUpper,           0, "ndis3"
+HKR, Ndi\Interfaces,DefLower,           0, "ethernet"
+HKR, Ndi\Interfaces,UpperRange,         0, "ndis3"
+HKR, Ndi\Interfaces,LowerRange,         0, "ethernet"
+HKR, NDIS,          LogDriverName,      0, "GLAUI98"
+HKR, NDIS,          MajorNdisVersion,   1, 05
+HKR, NDIS,          MinorNdisVersion,   1, 00
+HKR, Ndi\Compatibility,RequireAll,      0, "MSTCP"
+
+; Set TCP Window Size to 64K
+HKLM, System\CurrentControlSet\Services\VxD\MSTCP, DefaultRcvWindow, 0, 65535
+
+; Network Driver Installer
+HKR, Ndi,NdiInstaller,,"GsiNdi.dll,NdiProc"
+
+; Win 2000 only    ***************************************************************
+[GLAUIAD.gspnDef.NT]
+BusType         = 15
+CopyFiles       = GLAUIAD.Copy.2kDrv,GSIUSB.cpl
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+AddReg          = GLAUIAD.win2k.reg, Common.reg
+
+[GLAUIAD.gspn.NT]
+BusType         = 15
+CopyFiles       = GLAUIAD.Copy.2kDrv,GSIUSB.cpl
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+AddReg          = GLAUIAD.win2k.reg, Common.reg
+
+[GLAUIAD.gspnDef.NT.Services]
+ AddService     = glauiad, 2, GLAUIAD.Service, GLAUIAD.AddEventLog
+
+[GLAUIAD.gspn.NT.Services]
+ AddService     = glauiad, 2, GLAUIAD.Service, GLAUIAD.AddEventLog
+
+[GLAUIAD.gspn.NT.CoInstallers]
+ CopyFiles       = GSIUSB.coinst
+ AddReg          = GLAUIAD.AddReg.CoInstaller
+
+[GLAUIAD.gspnDef.NT.CoInstallers]
+ CopyFiles       = GSIUSB.coinst
+ AddReg          = GLAUIAD.AddReg.CoInstaller
+
+[GLAUIAD.AddReg.CoInstaller]
+ HKR,,CoInstallers32,0x00010000,"CoInst.dll,NdiProc"
+
+[GLAUIAD.Service]
+ DisplayName    = %GLAUIAD.DeviceDesc%
+ ServiceType    = 1    ;SERVICE_KERNEL_DRIVER
+ StartType      = 3    ;SERVICE_DEMAND_START
+ ErrorControl   = 1    ;NORMAL
+ ServiceBinary  = %12%\glauiad.sys
+ LoadOrderGroup = NDIS
+
+[GLAUIAD.AddEventLog]
+ AddReg         =  GLAUIAD.AddEventLog.Reg
+
+[GLAUIAD.AddEventLog.Reg]
+ HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+ HKR, , TypesSupported,   0x00010001, 7
+
+[GLAUIAD.win2k.reg]
+HKR,    ,                                  BusNumber,  0,  "0"
+HKR, Ndi,                                  Service,    0,  "glauiad"
+HKR, Ndi\Interfaces,                       LowerRange, 0,  "ethernet"
+HKR, Ndi\Interfaces,                       UpperRange, 0,  "ndis5"
+
+; Set TCP Window Size to 64K
+HKLM, System\CurrentControlSet\Services\Tcpip\Parameters, TcpWindowSize, 0x00010001, 65535
+
+HKR, Ndi\params\TxBufferCount,   ParamDesc,  0, %TxBufferCount%
+HKR, Ndi\params\TxBufferCount,   default,    0, "70"
+HKR, Ndi\params\TxBufferCount,   min,        0, "1"
+HKR, Ndi\params\TxBufferCount,   max,        0, "1024"
+HKR, Ndi\params\TxBufferCount,   step,       0, "1"
+HKR, Ndi\params\TxBufferCount,   Base,       0, "10"
+HKR, Ndi\params\TxBufferCount,   type,       0, "int"
+
+HKR, Ndi\params\RxBufferCount,   ParamDesc,  0, %RxBufferCount%
+HKR, Ndi\params\RxBufferCount,   default,    0, "50"
+HKR, Ndi\params\RxBufferCount,   min,        0, "1"
+HKR, Ndi\params\RxBufferCount,   max,        0, "1024"
+HKR, Ndi\params\RxBufferCount,   step,       0, "1"
+HKR, Ndi\params\RxBufferCount,   Base,       0, "10"
+HKR, Ndi\params\RxBufferCount,   type,       0, "int"
+; ********************************************************************************
+
+; Common registry entries
+[Common.reg]
+HKR,,DebugLevel,0,"00000000"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[DestinationDirs]
+DefaultDestDir     = 11
+GLAUIAD.Copy.2kDrv = 12
+
+[GLAUIAD.Copy.98Drv]
+glaui98.sys
+
+[GLAUIAD.Copy.2kDrv]
+glauiad.sys
+
+[GSIUSB.cpl]
+;gsi.cpl
+;gsicpl.ico
+;gsicpl.ini
+;gsicpl.bmp
+;gsicon.exe
+;dslagent.exe
+
+
+[GSIUSB.ndi]
+GsiNdi.dll
+
+[GSIUSB.coinst]
+CoInst.dll
+
+[SourceDisksNames]
+1=%GLAUIAD.DiskDesc%,,,dsldrv
+
+[SourceDisksFiles]
+glauiad.sys=1
+glaui98.sys=1
+;gsi.cpl=1
+;gsicpl.ico=1
+;gsicpl.ini=1
+;gsicpl.bmp=1
+;dslagent.exe=1
+GsiNdi.dll=1
+;gsicon.exe=1
+coinst.dll=1
+
+[Strings]
+ProviderName = "D-Link"
+ManufacturerName = "D-Link"
+GLAUIAD.DeviceDesc = "D-Link DSL-302G Modem"
+GLAUIAD.DiskDesc = "D-Link DSL-300 Family USB IAD LAN Driver Diskette"
+
+Rfc1483Vpi 	= "Rfc1483 VPI"
+Rfc1483Vci 	= "Rfc1483 VCI"
+Rfc1483Mode	= "Rfc1483 Mode"
+TxBufferCount  	= "Number of TX Buffers"
+RxBufferCount  	= "Number of RX Buffers"
+
+; The following entries are required by the external installation application
+DriverType = LAN     ; LAN,WAN,ATM
+AnnexType = A        ; A,B,C,CAP
+

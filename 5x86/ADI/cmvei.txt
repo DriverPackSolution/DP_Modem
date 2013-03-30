@@ -1,0 +1,23 @@
+; ISDN for EAGLE
+; Number of CMV writes made in this file MUST not exceed 16
+; version DTAG pour 40e4be96
+
+CW cntl 0 1
+CW optn 0 80000066
+CW optn 2 23600000
+CW optn 3 00003028
+CW optn 4 00000001
+CW optn 5 00000500
+CW optn 8 C0000000
+CW optn 15 09090909
+CW optn 18 82602180
+CW optn 20 00020038
+CW optn 21 FFFFFE2F
+CW optn 22 020600c0
+CW info 9 0400000A
+CW info 21 5341
+CW info 22 474D0000
+CW cntl 0 2
+ 
+;For Bridge ONLY CW DIAG 0 23870030 
+;For Bridge ONLY CW FLAG 0 00000820 

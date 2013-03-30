@@ -1,0 +1,2608 @@
+;----------------------------------------------------------------------------
+;
+; Modem installation file
+; Copyright (c) 1999-2004, Intel Corporation
+;
+;----------------------------------------------------------------------------
+
+[Version]
+Signature="$CHICAGO$"
+Class=Modem
+ClassGUID={4D36E96D-E325-11CE-BFC1-08002BE10318}
+Provider=%Oem%
+CatalogFile=IntelC51.cat
+DriverVer=12/03/2004, 2.66.88.1
+
+;----------------------------------------------------------------------------
+; Modifiable strings used by this INF file
+;----------------------------------------------------------------------------
+[Strings]
+Oem             = "Intel Corporation"
+ModemName6 = "Intel(R) 537EP Modem"
+ModemName61 = "Intel(R) 537EP Modem"
+ModemName62 = "Intel(R) 537EP Data Fax Modem"
+ModemName63 = "Intel(R) 537EP Data Fax Modem"
+ModemName64 = "Intel(R) 537EP Modem"
+InstDiskName    = "Modem Installation Disk"
+UninstallPath   = "Software\Microsoft\Windows\CurrentVersion\Uninstall"
+MOHPath   	= "Software\INTEL\IntelMOH"
+CPdrv           = "IntelC52"
+DSPdrv          = "IntelC51"
+AFEdrv          = "IntelC53"
+MOHdrv          = "mohfilt"
+CHIP            = "Intel 537"
+COINST          = "IntelCdi.dll"
+MOHDLL          = "intelmoh.dll"
+
+;----------------------------------------------------------------------------
+
+[Manufacturer]
+%Oem%  = Oem
+
+;----------------------------------------------------------------------------
+; Directory/path information for installed files
+;----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 12
+CopyCoInstaller = 11
+CopyMOHDLL = 11
+
+[SourceDisksNames]
+1=%InstDiskName%,,
+
+[SourceDisksFiles]
+IntelCdi.dll=1
+IntelC51.sys=1
+IntelC52.sys=1
+IntelC56.sys=1
+mohfilt.sys=1
+intelmoh.dll=1
+
+;----------------------------------------------------------------------------
+; List of devices
+;----------------------------------------------------------------------------
+[Oem]
+%ModemName6% = Modem6, PCI\VEN_8086&DEV_1080&SUBSYS_10008086
+%ModemName62% = Modem62, PCI\VEN_8086&DEV_1080&SUBSYS_10078086
+%ModemName63% = Modem63, PCI\VEN_8086&DEV_1080&SUBSYS_10088086
+%ModemName61% = Modem61, PCI\VEN_8086&DEV_1080&SUBSYS_100A8086
+%ModemName64% = Modem64, PCI\VEN_8086&DEV_1080&SUBSYS_100B8086
+
+[ControlFlags]
+ExcludeFromSelect=PCI\VEN_8086&DEV_1080&SUBSYS_10008086
+ExcludeFromSelect=PCI\VEN_8086&DEV_1080&SUBSYS_10078086
+ExcludeFromSelect=PCI\VEN_8086&DEV_1080&SUBSYS_10088086
+ExcludeFromSelect=PCI\VEN_8086&DEV_1080&SUBSYS_100A8086
+ExcludeFromSelect=PCI\VEN_8086&DEV_1080&SUBSYS_100B8086
+
+[Modem6.NT]
+AddReg      = Modem.AddReg, ATI.AddReg, Voice.AddReg, Remove.AddReg, Advanced.AddReg, MOH.AddReg, Homologation.AddReg, CountryList0.AddReg, QC.Addreg, Dialer.AddReg
+CopyFiles   = CopyBasic, CopySM6, CopyMOH, CopyMOHDLL
+
+[Modem61.NT]
+AddReg      = Modem.AddReg, ATI.AddReg, Voice.AddReg, Remove.AddReg, Advanced.AddReg, MOH.AddReg, Homologation.AddReg, CountryList1.AddReg, QC.Addreg, Dialer.AddReg
+CopyFiles   = CopyBasic, CopySM6, CopyMOH, CopyMOHDLL
+
+[Modem62.NT]
+AddReg      = Modem.AddReg, ATI.AddReg, Remove.AddReg, Advanced1.AddReg, MOH.AddReg, Homologation.AddReg, CountryList0.AddReg, QC.Addreg, Dialer.AddReg
+CopyFiles   = CopyBasic, CopySM6, CopyMOH, CopyMOHDLL
+
+[Modem63.NT]
+AddReg      = Modem.AddReg, ATI.AddReg, Remove.AddReg, Advanced1.AddReg, MOH.AddReg, Homologation.AddReg, CountryList1.AddReg, QC.Addreg, Dialer.AddReg
+CopyFiles   = CopyBasic, CopySM6, CopyMOH, CopyMOHDLL
+
+[Modem64.NT]
+AddReg      = Modem.AddReg, ATI.AddReg, Voice.AddReg, Remove.AddReg, Advanced2.AddReg, MOH.AddReg, Homologation.AddReg, CountryList0.AddReg, QC.Addreg, Dialer.AddReg
+CopyFiles   = CopyBasic, CopySM6, CopyMOH, CopyMOHDLL
+
+[CopyBasic]
+IntelC51.sys,,,2        ;this file cannot be skipped during the installation process
+IntelC52.sys,,,2        ;this file cannot be skipped during the installation process
+
+[CopySM6]
+IntelC53.sys, IntelC56.sys, , 2
+
+[CopyMOH]
+mohfilt.sys,,,2
+
+[CopyMOHDLL]
+intelmoh.dll,,,2
+
+;----------------------------------------------------------------------------
+;  install modem coinstaller under coinstaller section
+;----------------------------------------------------------------------------
+[Modem6.NT.CoInstallers]
+AddReg = CoInstaller_AddReg
+CopyFiles = CopyCoInstaller
+
+[Modem61.NT.CoInstallers]
+AddReg = CoInstaller_AddReg
+CopyFiles = CopyCoInstaller
+
+[Modem62.NT.CoInstallers]
+AddReg = CoInstaller_AddReg
+CopyFiles = CopyCoInstaller
+
+[Modem63.NT.CoInstallers]
+AddReg = CoInstaller_AddReg
+CopyFiles = CopyCoInstaller
+
+[Modem64.NT.CoInstallers]
+AddReg = CoInstaller_AddReg
+CopyFiles = CopyCoInstaller
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32, 0x00010000, "%COINST%,iSMCoInstaller"
+
+[CopyCoInstaller]
+%COINST%, , , 2
+
+;----------------------------------------------------------------------------
+;  install modem driver as a service under services section
+;----------------------------------------------------------------------------
+[Modem6.NT.Services]
+AddService  = %CPdrv% ,,CP_Service_Inst
+AddService  = %DSPdrv%,,DSP_Service_Inst
+AddService  = %AFEdrv%,,AFE_Service_Inst
+AddService  = %MOHdrv%,,MOH_Service_Inst
+
+[Modem61.NT.Services]
+AddService  = %CPdrv% ,,CP_Service_Inst
+AddService  = %DSPdrv%,,DSP_Service_Inst
+AddService  = %AFEdrv%,,AFE_Service_Inst
+AddService  = %MOHdrv%,,MOH_Service_Inst
+
+[Modem62.NT.Services]
+AddService  = %CPdrv% ,,CP_Service_Inst
+AddService  = %DSPdrv%,,DSP_Service_Inst
+AddService  = %AFEdrv%,,AFE_Service_Inst
+AddService  = %MOHdrv%,,MOH_Service_Inst
+
+[Modem63.NT.Services]
+AddService  = %CPdrv% ,,CP_Service_Inst
+AddService  = %DSPdrv%,,DSP_Service_Inst
+AddService  = %AFEdrv%,,AFE_Service_Inst
+AddService  = %MOHdrv%,,MOH_Service_Inst
+
+[Modem64.NT.Services]
+AddService  = %CPdrv% ,,CP_Service_Inst
+AddService  = %DSPdrv%,,DSP_Service_Inst
+AddService  = %AFEdrv%,,AFE_Service_Inst
+AddService  = %MOHdrv%,,MOH_Service_Inst
+
+[CP_Service_Inst]
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\%CPdrv%.sys
+LoadOrderGroup= Base
+
+[DSP_Service_Inst]
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\%DSPdrv%.sys
+
+[AFE_Service_Inst]
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\%AFEdrv%.sys
+
+[MOH_Service_Inst]
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\%MOHdrv%.sys
+
+;----------------------------------------------------------------------------
+;  adds the lower filter key using addreg section defined below
+;----------------------------------------------------------------------------
+[Modem6.NT.HW]
+AddReg=LowerFilterAddReg, ModemName6_Addreg
+
+[Modem61.NT.HW]
+AddReg=LowerFilterAddReg, ModemName6_Addreg
+
+[Modem62.NT.HW]
+AddReg=LowerFilterAddReg, ModemName62_Addreg
+
+[Modem63.NT.HW]
+AddReg=LowerFilterAddReg, ModemName62_Addreg
+
+[Modem64.NT.HW]
+AddReg=LowerFilterAddReg, ModemName6_Addreg
+
+[LowerFilterAddReg]
+HKR,,"LowerFilters",0x00010000,%AFEdrv%,%DSPdrv%,%CPdrv%,%MOHdrv%
+
+[ModemName6_Addreg]
+HKLM,%UninstallPath%\%ModemName6%, UninstallString,,"rundll32 %COINST%,iSMUninstallation ""%ModemName6%"""
+HKLM,%UninstallPath%\%ModemName6%, DisplayName,,"%ModemName6%"
+
+[ModemName62_Addreg]
+HKLM,%UninstallPath%\%ModemName62%, UninstallString,,"rundll32 %COINST%,iSMUninstallation ""%ModemName62%"""
+HKLM,%UninstallPath%\%ModemName62%, DisplayName,,"%ModemName62%"
+
+[Modem.AddReg]
+HKR,, FriendlyDriver,,%CPdrv%.sys
+HKR,, DevLoader,,*ntkern
+HKR,, ConfigDialog,,modemui.dll
+HKR,, EnumPropPages,,"modemui.dll,EnumPropPages"
+HKR,, PortSubClass,1,02
+HKR,, DeviceType, 1, 02
+HKR,, ChipID,,%CHIP%
+HKR,Parameters, ChipID,,%CHIP%
+
+; Enable Property Pages - mask to enable property pages
+; 1 : enable dialblock
+; 2 : enable quickconnect
+HKR,, PropertyPageSwitch, 1, 2
+
+;HKR,, CurrentCountry,      0x10001, 1
+HKR,, EnableTAPICountrySelection,      0x10001, 0
+
+;Uncomment the following line if Handset Hook detection is not supported 
+;HKR,, gpio_lpohd, 1, 0
+
+;Control V92 Reporting
+; 0 = quickconnect, pcm upstream, & modem on hold 
+; 1 = pcm upstream only
+HKR,, v92rptopt, 1, 0
+
+;line in use detection 
+; 0 = Disable
+; 1 = Enable 
+HKR,, LineInUseDet, 1, 0
+
+;line not available detection 
+; 0 = Disable
+; 1 = Enable 
+HKR,, LineUnAvailDet, 1, 0
+
+;over current detection 
+; 0 = Disable
+; 1 = Enable 
+HKR,, DlpFaultNotify, 1, 0
+
+;power behavior
+; 0 - default power value
+; 1 - laptop power behavior
+HKR,, laptopPower, 1, 1
+
+;ringback detection
+; 0 = Disable
+; 1 = Enable 
+HKR,, RingbackDetEnable, 1, 1
+
+;v34 auxiliary channel 
+; 0 = Disable
+; 1 = Enable and defaulted on 
+; 2 = Enable and defaulted off
+HKR,, V34AuxChEnable, 1, 0
+
+;QCDefaultOn (the last digit is the value of this entry in the registry)
+; 0 = Disable
+; 1 = Enable 
+HKR,, QCDefaultOn, 1, 0
+
+;MOHDefaultOn (the last digit is the value of this entry in the registry)
+; 0 = Disable
+; 1 = Enable 
+HKR,, MOHDefaultOn, 1, 1
+
+;MOH Setting Override – overrides the AT+PCW and AT+PMH settings when the MOH Application is running. 
+; 0 = Disable
+; 1 = Enable – use this when using the MOH Application
+HKR,, MohSettingOverride, 1, 1
+
+;Preserve black listing data across port close / open
+; 0 = Disable
+; 1 = Enable 
+HKR,, BlkLlstInfoPreserved, 1, 0
+
+;Tells the Intel MOH DLL that this modem supports MOH
+HKR,, IMOH, 0x10001, 1
+
+
+;----------------------------------------------------------------------------
+; Uninstallation Information Registry Sections
+;----------------------------------------------------------------------------
+[Remove.AddReg]
+HKR,Parameters, Files, , "%12%\%AFEdrv%.sys,%12%\%DSPdrv%.sys,%12%\%CPdrv%.sys,%11%\%DIAGDLL%,%11%\%MOHDLL%,%12%\%MOHdrv%.sys"
+HKR,Parameters, Services, , "%AFEdrv%,%DSPdrv%,%CPdrv%,%MOHdrv%"
+HKR,Parameters, CoInstaller, , "%11%\%COINST%"
+HKR,Parameters, Keys, , "%MOHPath%"
+
+;----------------------------------------------------------------------------
+; Advanced Modem Settings Registry Sections
+;----------------------------------------------------------------------------
+[Advanced.AddReg]
+HKR,,Profile,1, 0E,0F,41,01,01,00,00,00
+
+;Feature1 (the last digit is the value of this entry in the registry)
+; 0 = Disable
+; 1 = Enable 
+HKR,, Feature1, 1, 1
+
+[Advanced1.AddReg]
+HKR,,Profile,1, 02,00,41,01,01,00,00,00
+
+;Feature1 (the last digit is the value of this entry in the registry)
+; 0 = Disable
+; 1 = Enable 
+HKR,, Feature1, 1, 0
+
+[Advanced2.AddReg]
+HKR,,Profile,1, 0F,0F,41,01,01,00,00,00
+
+;Feature1 (the last digit is the value of this entry in the registry)
+; 0 = Disable
+; 1 = Enable 
+HKR,, Feature1, 1, 1
+
+;----------------------------------------------------------------------------
+;  Extension for the Quick_CONNECT feature 
+;----------------------------------------------------------------------------
+[QC.Addreg]
+HKR,QCEnable,qcenable,0x10001,0
+
+;----------------------------------------------------------------------------
+;  Extension for the DIAL_BLOCK feature 
+;----------------------------------------------------------------------------
+[Dialer.Addreg]
+HKR,"DialBlock","include_national_prefix",0x10001,1
+HKR,"DialBlock","include_international_prefix",0x10001,1
+HKR,"DialBlock","include_no_prefix",0x10001,1
+HKR,"DialBlock","enabled",0x10001,0
+HKR,"DialBlock","whitelist",0x10001,0
+HKR,"DialBlock\Numbers","number1",,""
+HKR,"DialBlock\Numbers","number2",,""
+HKR,"DialBlock\Numbers","number3",,""
+HKR,"DialBlock\Numbers","number4",,""
+HKR,"DialBlock\Numbers","number5",,""
+HKR,"DialBlock\Numbers","number6",,""
+HKR,"DialBlock\Numbers","number7",,""
+HKR,"DialBlock\Numbers","number8",,""
+HKR,"DialBlock\Numbers","number9",,""
+HKR,"DialBlock\Numbers","number10",,""
+
+;----------------------------------------------------------------------------
+; Modem On Hold Registry Sections
+;----------------------------------------------------------------------------
+[MOH.AddReg]
+HKLM, %MOHPath%, "MOHCountryParam", 1,\
+        01,00,\
+        51,00,\
+        02,00,\
+        36,00,00,00, 3d,00,00,00, 2b,00,00,00, 67,00,00,00, 68,00,00,00, 20,00,00,00, 69,00,00,00,\
+        4f,02,00,00, 37,00,00,00, 6b,00,00,00, 38,00,00,00, 56,00,01,00, 39,00,00,00, fa,01,00,00,\
+        65,01,00,00, a4,01,00,00, 2d,00,00,00, 6e,00,00,00, 14,00,00,00, f7,01,00,00, 51,02,00,00,\
+        74,01,00,00, 66,01,00,00, 21,00,00,00, 52,02,00,00, dc,00,00,00, 31,00,00,00, 5e,01,00,00,\
+        1e,00,00,00, f6,01,00,00, 50,02,00,00, fd,01,00,00, f8,01,00,00, 54,03,00,00, 24,00,00,00,\
+        62,01,00,00, 5b,00,00,00, 3e,00,00,00, 61,01,00,00, cc,03,00,00, 27,00,00,00, 70,00,00,00,\
+        51,00,00,00, 52,00,00,00, a7,01,00,00, 60,01,00,00, 3c,00,00,00, 34,00,00,00, 1f,00,00,00,\
+        40,00,00,00, f9,01,00,00, 2f,00,00,00, 5c,00,00,00, fb,01,00,00, 53,02,00,00, 33,00,00,00,\
+        3f,00,00,00, 30,00,00,00, 5f,01,00,00, 79,00,00,00, 07,00,00,00, c6,03,00,00, 41,00,00,00,\
+        a5,01,00,00, 82,01,00,00, 1b,00,00,00, 22,00,00,00, 55,02,00,00, 2e,00,00,00, 29,00,00,00,\
+        76,03,01,00, 42,00,00,00, 75,00,00,00, 5a,00,00,00, cb,03,00,00, 2c,00,00,00, 56,02,00,00,\
+        01,00,00,00, 3a,00,00,00, 54,00,00,00, 07,01,00,00
+
+
+;----------------------------------------------------------------------------
+; AT Commands Registry Sections
+;----------------------------------------------------------------------------
+[ATI.AddReg]
+HKR,, Properties, 1, 80,01,00,00, FF,00,00,00, 5a,00,00,00, 07,00,00,00, 0F,00,00,00, 37,0B,00,00, 00,C2,01,00, C0,DA,00,00
+HKR,  Answer,    1,, "ATA<cr>"
+HKR,  Hangup,    1,, "ATH<cr>"
+HKR,  Init,      1,, "AT<cr>"
+HKR,  Init,      2,, "AT&F E0 Q0 X4 S0=0 &D2 &C1 &S0 V1 W4<cr>"
+HKR,, InactivityScale, 1, 3C,00,00,00
+HKR,  Monitor,   1,, "ATS0=0<cr>"
+HKR,  Monitor,   2,, "None"
+HKR,, Reset,, "AT&F<cr>"
+
+HKR, Settings, Blind_Off,, "X4"
+HKR, Settings, Blind_On,, "X3"
+HKR, Settings, CallSetupFailTimer,, "S7=<#>"
+HKR, Settings, Compression_On,, "%%C1+DS=3,0;+DS44=3,0;"
+HKR, Settings, Compression_Off,, "%%C0+DS=0,0;+DS44=0,0;"
+HKR, Settings, DialPrefix,, "D"
+HKR, Settings, DialSuffix,, ";"
+HKR, Settings, ErrorControl_On,,     "+ES=3,0,2;"
+HKR, Settings, ErrorControl_Off,,    "+ES=1,0,1;"
+HKR, Settings, ErrorControl_Forced,, "+ES=3,2,4;"
+HKR, Settings, FlowControl_Off,,   "&K0"
+HKR, Settings, FlowControl_Hard,,  "&K3"
+HKR, Settings, FlowControl_Soft,,  "&K4"
+HKR, Settings, InactivityTimeout,, "S30=<#>"
+HKR, Settings, Prefix,, "AT"
+HKR, Settings, Pulse,, "P"
+HKR, Settings, Tone,, "T"
+HKR, Settings, SpeakerMode_Off,,  "M0"
+HKR, Settings, SpeakerMode_Dial,, "M1"
+HKR, Settings, SpeakerMode_On,,   "M2"
+HKR, Settings, SpeakerMode_Setup,,"M3"
+HKR, Settings, SpeakerVolume_Low,, "L0"
+HKR, Settings, SpeakerVolume_Med,, "L2"
+HKR, Settings, SpeakerVolume_High,,"L3"
+HKR, Settings, Terminator,, "<cr>"
+HKR, Settings, Modulation_CCITT_V23,, "+MS=V23C"
+HKR, EnableCallerID,            1,, "at+vcid=1<cr>"
+HKR, EnableDistinctiveRing,     1,, "at+vdr=1,0<cr>"
+HKR,, CallerIDPrivate,,P
+HKR,, CallerIDOutSide,,O
+HKR,, VariableTerminator,,<cr><lf>
+
+;
+; Verbose responses (wrapped with CR/LF pairs)
+;
+;               (Message)                             Type Opt  DCE Rate     DTE Rate
+;               ---------                             ---- --- -----------  -----------
+;
+HKR, Responses, "<cr><lf>OK<cr><lf>",               1, 00, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RINGING<cr><lf>",      1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RINGBACK<cr><lf>",         1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT<cr><lf>",          1, 02, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>ERROR<cr><lf>",            1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+FCERROR<cr><lf>",         1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO CARRIER<cr><lf>",       1, 04, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO DIALTONE<cr><lf>",      1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BUSY<cr><lf>",             1, 06, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DIGITAL LINE DETECTED<cr><lf>",1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>LINE UNAVAILABLE<cr><lf>",     1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>LINE IN USE<cr><lf>",          1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO ANSWER<cr><lf>",        1, 07, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING<cr><lf>",             1, 08, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DIAG ",                    1, 9e, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BLACKLISTED<cr><lf>",          1, 1C, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DELAYED CALL<cr><lf>",         1, 1D, 00, 00,00,00,00, 00,00,00,00
+
+;
+;   02 sections = Connect messages    
+;
+;                     (Message)                    Type Opt  DCE Rate     DTE Rate
+;                     ---------                    ---- --- ------------ -----------
+HKR, Responses, "<cr><lf>CONNECT 56000<cr><lf>", 1, 02, 00, C0,DA,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666<cr><lf>", 1, 02, 00, 8A,D5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333<cr><lf>", 1, 02, 00, 55,D0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000<cr><lf>", 1, 02, 00, 20,CB,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666<cr><lf>", 1, 02, 00, EA,C5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333<cr><lf>", 1, 02, 00, B5,C0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000<cr><lf>", 1, 02, 00, 80,BB,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666<cr><lf>", 1, 02, 00, 4A,B6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333<cr><lf>", 1, 02, 00, 15,B1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000<cr><lf>", 1, 02, 00, E0,AB,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666<cr><lf>", 1, 02, 00, AA,A6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333<cr><lf>", 1, 02, 00, 75,A1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000<cr><lf>", 1, 02, 00, 40,9C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666<cr><lf>", 1, 02, 00, 0A,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333<cr><lf>", 1, 02, 00, D5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000<cr><lf>", 1, 02, 00, A0,8C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666<cr><lf>", 1, 02, 00, 6A,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333<cr><lf>", 1, 02, 00, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000<cr><lf>", 1, 02, 00, 00,7D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666<cr><lf>", 1, 02, 00, CA,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333<cr><lf>", 1, 02, 00, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000<cr><lf>", 1, 02, 00, 60,6D,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 75<cr><lf>",    1, 02, 00, 4B,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300<cr><lf>",   1, 02, 00, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600<cr><lf>",   1, 02, 00, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200<cr><lf>",  1, 02, 00, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400<cr><lf>",  1, 02, 00, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800<cr><lf>",  1, 02, 00, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200<cr><lf>",  1, 02, 00, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600<cr><lf>",  1, 02, 00, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000<cr><lf>", 1, 02, 00, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400<cr><lf>", 1, 02, 00, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800<cr><lf>", 1, 02, 00, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200<cr><lf>", 1, 02, 00, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600<cr><lf>", 1, 02, 00, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000<cr><lf>", 1, 02, 00, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400<cr><lf>", 1, 02, 00, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800<cr><lf>", 1, 02, 00, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200<cr><lf>", 1, 02, 00, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600<cr><lf>", 1, 02, 00, 40,83,00,00, 00,00,00,00
+;
+;   01 sections = Negotiation Progress
+;               
+;               (Message)                         Type Opt  DCE Rate     DTE Rate
+;               ---------                         ---- --- -----------  -----------
+;
+HKR, Responses, "<cr><lf>+DR: NONE<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+DR: V42B RD<cr><lf>", 1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+DR: V42B TD<cr><lf>", 1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+DR: V42B<cr><lf>",    1, 01, 01, 00,00,00,00, 00,00,00,00    
+HKR, Responses, "<cr><lf>+DR: V44 RD<cr><lf>",  1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+DR: V44 TD<cr><lf>",  1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+DR: V44<cr><lf>",     1, 01, 01, 00,00,00,00, 00,00,00,00    
+HKR, Responses, "<cr><lf>+DR: ALT<cr><lf>",     1, 01, 01, 00,00,00,00, 00,00,00,00    
+;
+;
+;               (Message)                         Type Opt  DCE Rate     DTE Rate
+;               ---------                          ---- --- ----------  -----------
+;
+HKR, Responses, "<cr><lf>+ER: NONE<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+ER: LAPM<cr><lf>",    1, 01, 02, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+ER: ALT<cr><lf>",     1, 01, 02, 00,00,00,00, 00,00,00,00
+;
+;                      (Message)                   Type Opt  DCE Rate     DTE Rate
+;                      ---------                   ---- --- -----------  -----------
+;
+HKR, Responses, "<cr><lf>+MCR: BELL103<cr><lf>", 1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: BELL212<cr><lf>", 1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V21<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V21CHAN2<cr><lf>",1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V23C<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V22<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V22B<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V32<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V32B<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V34S<cr><lf>",    1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V34<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V90<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MCR: V92<cr><lf>",     1, 01, 00, 00,00,00,00, 00,00,00,00
+;
+HKR, Responses, "<cr><lf>+MRR: 75<cr><lf>",      1, 01, 00, 4B,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 300<cr><lf>",     1, 01, 00, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 600<cr><lf>",     1, 01, 00, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 1200<cr><lf>",    1, 01, 00, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 2400<cr><lf>",    1, 01, 00, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 4800<cr><lf>",    1, 01, 00, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 7200<cr><lf>",    1, 01, 00, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 9600<cr><lf>",    1, 01, 00, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 12000<cr><lf>",   1, 01, 00, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 14400<cr><lf>",   1, 01, 00, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 16800<cr><lf>",   1, 01, 00, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 19200<cr><lf>",   1, 01, 00, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 21600<cr><lf>",   1, 01, 00, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 24000<cr><lf>",   1, 01, 00, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 26400<cr><lf>",   1, 01, 00, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 28800<cr><lf>",   1, 01, 00, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 31200<cr><lf>",   1, 01, 00, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 33600<cr><lf>",   1, 01, 00, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 48000<cr><lf>",   1, 01, 00, 80,BB,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 46666<cr><lf>",   1, 01, 00, 4A,B6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 45333<cr><lf>",   1, 01, 00, 15,B1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 44000<cr><lf>",   1, 01, 00, E0,AB,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 42666<cr><lf>",   1, 01, 00, AA,A6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 41333<cr><lf>",   1, 01, 00, 75,A1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 40000<cr><lf>",   1, 01, 00, 40,9C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 38666<cr><lf>",   1, 01, 00, 0A,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 37333<cr><lf>",   1, 01, 00, D5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 36000<cr><lf>",   1, 01, 00, A0,8C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 34666<cr><lf>",   1, 01, 00, 6A,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 33333<cr><lf>",   1, 01, 00, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 32000<cr><lf>",   1, 01, 00, 00,7D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 30666<cr><lf>",   1, 01, 00, CA,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 29333<cr><lf>",   1, 01, 00, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 28000<cr><lf>",   1, 01, 00, 60,6D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 26666<cr><lf>",   1, 01, 00, 2A,68,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MRR: 25333<cr><lf>",   1, 01, 00, F5,62,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>+MSCR: 0<cr><lf>",      1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+MSCR: 1<cr><lf>",      1, 01, 00, 00,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>+ILRR: 300<cr><lf>",    1, 01, 00, 00,00,00,00, 2C,01,00,00
+HKR, Responses, "<cr><lf>+ILRR: 600<cr><lf>",    1, 01, 00, 00,00,00,00, 58,02,00,00
+HKR, Responses, "<cr><lf>+ILRR: 1200<cr><lf>",   1, 01, 00, 00,00,00,00, B0,04,00,00
+HKR, Responses, "<cr><lf>+ILRR: 2400<cr><lf>",   1, 01, 00, 00,00,00,00, 60,09,00,00
+HKR, Responses, "<cr><lf>+ILRR: 4800<cr><lf>",   1, 01, 00, 00,00,00,00, C0,12,00,00
+HKR, Responses, "<cr><lf>+ILRR: 9600<cr><lf>",   1, 01, 00, 00,00,00,00, 80,25,00,00
+HKR, Responses, "<cr><lf>+ILRR: 14400<cr><lf>",  1, 01, 00, 00,00,00,00, 40,38,00,00
+HKR, Responses, "<cr><lf>+ILRR: 19200<cr><lf>",  1, 01, 00, 00,00,00,00, 00,4B,00,00
+HKR, Responses, "<cr><lf>+ILRR: 28800<cr><lf>",  1, 01, 00, 00,00,00,00, 80,70,00,00
+HKR, Responses, "<cr><lf>+ILRR: 38400<cr><lf>",  1, 01, 00, 00,00,00,00, 00,96,00,00
+HKR, Responses, "<cr><lf>+ILRR: 57600<cr><lf>",  1, 01, 00, 00,00,00,00, 00,E1,00,00
+HKR, Responses, "<cr><lf>+ILRR: 115200<cr><lf>", 1, 01, 00, 00,00,00,00, 00,C2,01,00
+
+;
+;
+; Numeric Response Codes (sorted in numeric order)
+;
+;               (Message)   Type Opt  DCE Rate     DTE Rate
+;               ---------   ---- --- -----------  -----------
+HKR, Responses, "0<cr>",  1, 00, 00, 00,00,00,00, 00,00,00,00 ; OK
+HKR, Responses, "1<cr>",  1, 02, 00, 00,00,00,00, 00,00,00,00 ; CONNECT
+HKR, Responses, "2<cr>",  1, 08, 00, 00,00,00,00, 00,00,00,00 ; RING
+HKR, Responses, "3<cr>",  1, 04, 00, 00,00,00,00, 00,00,00,00 ; NO CARRIER
+HKR, Responses, "4<cr>",  1, 03, 00, 00,00,00,00, 00,00,00,00 ; ERROR
+HKR, Responses, "5<cr>",  1, 02, 00, B0,04,00,00, 00,00,00,00 ; CONNECT 1200
+HKR, Responses, "6<cr>",  1, 05, 00, 00,00,00,00, 00,00,00,00 ; NO DIALTONE
+HKR, Responses, "7<cr>",  1, 06, 00, 00,00,00,00, 00,00,00,00 ; BUSY
+HKR, Responses, "8<cr>",  1, 07, 00, 00,00,00,00, 00,00,00,00 ; NO ANSWER
+HKR, Responses, "9<cr>",  1, 1D, 00, 00,00,00,00, 00,00,00,00 ; DELAYED CALL
+HKR, Responses, "10<cr>", 1, 1C, 00, 00,00,00,00, 00,00,00,00 ; BLACKLISTED
+HKR, Responses, "11<cr>", 1, 03, 00, 00,00,00,00, 00,00,00,00 ; +FCERROR
+HKR, Responses, "12<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; RINGBACK       
+HKR, Responses, "13<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; CPON
+HKR, Responses, "14<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; CPOF
+HKR, Responses, "15<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; DRON
+HKR, Responses, "16<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; DROF
+HKR, Responses, "17<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; SHIELDED RING
+HKR, Responses, "18<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; COMPLEX PKT START
+HKR, Responses, "19<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; COMPLEX PKT END
+HKR, Responses, "22<cr>", 1, 01, 00, 00,00,00,00, 00,00,00,00 ; +DR: NONE
+HKR, Responses, "23<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V42B RD
+HKR, Responses, "24<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V42B TD
+HKR, Responses, "25<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V42B
+HKR, Responses, "26<cr>", 1, 01, 02, 00,00,00,00, 00,00,00,00 ; +ER: NONE
+HKR, Responses, "27<cr>", 1, 01, 02, 00,00,00,00, 00,00,00,00 ; +ER: LAPM
+HKR, Responses, "28<cr>", 1, 01, 02, 00,00,00,00, 00,00,00,00 ; +ER: ALT
+HKR, Responses, "29<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V44 RD
+HKR, Responses, "30<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V44 TD
+HKR, Responses, "31<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: V44
+HKR, Responses, "32<cr>", 1, 01, 01, 00,00,00,00, 00,00,00,00 ; +DR: ALT
+
+HKR, Responses, "<cr><lf>DRON =",	1, 91, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DROF =",	1, 92, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DATE = ",	1, 93, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>TIME = ",	1, 94, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NMBR = ",	1, 95, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NAME = ",	1, 96, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>MESG = ",	1, 97, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "DATE = ",        	1, 93, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "TIME = ",        	1, 94, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "NMBR = ",        	1, 95, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "NAME = ",        	1, 96, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "MESG = ",        	1, 97, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING1<cr><lf>",1, 18, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING2<cr><lf>",1, 19, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING3<cr><lf>",1, 1a, 00, 00,00,00,00, 00,00,00,00
+
+;----------------------------------------------------------------------------
+; Voice Registry Sections
+;----------------------------------------------------------------------------
+[Voice.AddReg]
+HKR,,Enumerator,,serwave.vxd
+
+; note NT5 voice bit "02" enabled at end of voiceprofile
+;Use this if the voice is not supported: 
+;HKR,, VoiceProfile,    1,00,00,00,02  
+;Use this if the handset and the speakerphone are supported:
+;HKR,, VoiceProfile,    1,27,00,01,02  
+;Use this if only the speakerphone is supported (no handset):
+HKR,, VoiceProfile,    1,25,00,01,02  
+;Use this if neither the handset nor the speakerphone are supported:
+;HKR,, VoiceProfile,    1,21,00,01,02  
+
+; see REG.DOC for details on next NT5 voice section. 
+; ------- start section for NT5 voice support --------------
+HKR, WaveDriver,  BaudRate       ,1, 00, c2, 01, 00
+HKR, WaveDriver,  XformID        ,1, 04, 00   ; 4-bit IMA ADPCM 8000 Hz format
+HKR, WaveDriver,  WaveDevices, 1, 02, 00      ; Plays/ records to line AND handset
+HKR, WaveDriver,  XformModule    ,, "umdmxfrm.dll"
+HKR, WaveDriver,  WaveHardwareID ,, "RockwellADPCMVoiceModemWave"
+; ------- end section for NT5 voice support --------------
+ 
+HKR,, VoiceBaudRate,            1, 00, c2,  01, 00
+HKR,, SpeakerPhoneSpecs,        1, 83,00,00,00,  79,00,00,00,  83,00,00,00,  79,00,00,00
+HKR, SpeakerPhoneEnable,        1,, "at#vsps=1<cr>"
+HKR, SpeakerPhoneEnable,        2,, "at+vsp=1<cr>"
+HKR, SpeakerPhoneDisable,       1,, "at+vsp=0<cr>"
+HKR, SpeakerPhoneDisable,       2,, "at+vls=1<cr>"
+HKR, SpeakerPhoneMute,          1,, "at+vls=9<cr>"
+HKR, SpeakerPhoneUnMute,        1,, "at+vls=13<cr>"
+HKR, SpeakerPhoneSetVolumeGain, 1,, "at+vgs=<Vol><cr>"
+HKR, SpeakerPhoneSetVolumeGain, 2,, "at+vgm=<Gain><cr>"
+HKR,, HandsetCloseDelay,        1, 0A,00,00,00
+HKR, StartPlay,                 1,, "at+vtx<cr>"
+HKR, StopPlay,                  1,, "at+flo=0<cr>"
+HKR, StartRecord,               1,, "at+vrx<cr>"
+HKR, StopRecord,                1,, "None"
+HKR, StopRecord,                2,, "NoResponse"
+HKR,, TerminateRecord,,         "<h10><h1B>"
+HKR,, TerminatePlay,,           "<h10><h03>"
+HKR,, AbortPlay,,               "<h10><h03><h10><h18>"
+;HKR, OpenHandset,               1,, "at+fclass=8<cr>"
+;HKR, OpenHandset,               2,, "at+vls=2<cr>"
+HKR, LineSetPlayFormat,         1,, "at+vsm=2,8000,0,0<cr>"
+HKR, LineSetPlayFormat,         2,, "at+flo=2<cr>"
+HKR, LineSetPlayFormat,         3,, "at+vgt=131<cr>"
+HKR, LineSetRecordFormat,       1,, "at+vsm=2,8000,0,0<cr>"
+HKR, LineSetRecordFormat,       2,, "at+vgr=131<cr>"
+;HKR, HandsetSetRecordFormat,    1,, "at+vsm=2,8000,0,0<cr>"
+;HKR, HandsetSetRecordFormat,    2,, "at+vgr=131<cr>"
+;HKR, HandsetSetPlayFormat,      1,, "at+vsm=2,8000,0,0<cr>"
+;HKR, HandsetSetPlayFormat,      2,, "at+flo=2<cr>"
+;HKR, HandsetSetPlayFormat,      3,, "at+vgt=131<cr>"
+
+HKR,, ForwardDelay,             1,00,20  
+;HKR, CloseHandset,              1,, "at+vls=0<cr>"
+;HKR, CloseHandset,              2,, "at+fclass=0<cr>"
+HKR, VoiceToDataAnswer,         1,, "at+fclass=0<cr>"
+HKR, VoiceToDataAnswer,         2,, "ata<cr>"
+HKR, VoiceAnswer,               1,, "at+fclass=8<cr>"
+HKR, VoiceAnswer,               2,, "at#vsps=1<cr>"
+HKR, VoiceAnswer,               3,, "at+vsp=1<cr>"
+HKR, VoiceAnswer,               4,, "at+vls=13<cr>"
+HKR, VoiceDialNumberSetup,      1,, "at+fclass=8<cr>"
+HKR, VoiceDialNumberSetup,      2,, "at+vra=0<cr>"
+HKR, VoiceDialNumberSetup,      3,, "at+vsp=0<cr>"
+HKR, GenerateDigit,             1,, "at+vts=<Digit><cr>"
+
+;Homologation-AutoGenerated
+;----------------------------------------------------------------------------
+;International Homologation settings
+;Tool Version: 046404 
+;Tool Date: Tue Oct 28 14:58:43 2003
+;Data Date: Wed Nov 19 18:26:31 2003 (Russian Standard Time)
+;----------------------------------------------------------------------------
+
+
+[CountryList0.AddReg]
+HKR, Countries, Country0,  0x10001, 1
+HKR, Countries, Country1,  0x10001, 82
+HKR, Countries, Country2,  0x10001, 593
+HKR, Countries, Country3,  0x10001, 591
+HKR, Countries, Country4,  0x10001, 56
+HKR, Countries, Country5,  0x10001, 57
+HKR, Countries, Country6,  0x10001, 507
+HKR, Countries, Country7,  0x10001, 51
+HKR, Countries, Country8,  0x10001, 966
+HKR, Countries, Country9,  0x10001, 66
+HKR, Countries, Country10,  0x10001, 84
+HKR, Countries, Country11,  0x10001, 46
+HKR, Countries, Country12,  0x10001, 45
+HKR, Countries, Country13,  0x10001, 358
+HKR, Countries, Country14,  0x10001, 47
+HKR, Countries, Country15,  0x10001, 354
+HKR, Countries, Country16,  0x10001, 353
+HKR, Countries, Country17,  0x10001, 972
+HKR, Countries, Country18,  0x10001, 423
+HKR, Countries, Country19,  0x10001, 34
+HKR, Countries, Country20,  0x10001, 90
+HKR, Countries, Country21,  0x10001, 49
+HKR, Countries, Country22,  0x10001, 43
+HKR, Countries, Country23,  0x10001, 41
+HKR, Countries, Country24,  0x10001, 357
+HKR, Countries, Country25,  0x10001, 30
+HKR, Countries, Country26,  0x10001, 39
+HKR, Countries, Country27,  0x10001, 352
+HKR, Countries, Country28,  0x10001, 31
+HKR, Countries, Country29,  0x10001, 44
+HKR, Countries, Country30,  0x10001, 32
+HKR, Countries, Country31,  0x10001, 33
+HKR, Countries, Country32,  0x10001, 351
+HKR, Countries, Country33,  0x10001, 92
+HKR, Countries, Country34,  0x10001, 81
+HKR, Countries, Country35,  0x10001, 7
+HKR, Countries, Country36,  0x10001, 61
+HKR, Countries, Country37,  0x10001, 60
+HKR, Countries, Country38,  0x10001, 86
+HKR, Countries, Country39,  0x10001, 852
+HKR, Countries, Country40,  0x10001, 65
+HKR, Countries, Country41,  0x10001, 64
+HKR, Countries, Country42,  0x10001, 54
+HKR, Countries, Country43,  0x10001, 55
+HKR, Countries, Country44,  0x10001, 52
+HKR, Countries, Country45,  0x10001, 886
+HKR, Countries, Country46,  0x10001, 91
+HKR, Countries, Country47,  0x10001, 63
+HKR, Countries, Country48,  0x10001, 62
+HKR, Countries, Country49,  0x10001, 103
+HKR, Countries, Country50,  0x10001, 104
+HKR, Countries, Country51,  0x10001, 105
+HKR, Countries, Country52,  0x10001, 502
+HKR, Countries, Country53,  0x10001, 509
+HKR, Countries, Country54,  0x10001, 504
+HKR, Countries, Country55,  0x10001, 112
+HKR, Countries, Country56,  0x10001, 505
+HKR, Countries, Country57,  0x10001, 595
+HKR, Countries, Country58,  0x10001, 121
+HKR, Countries, Country59,  0x10001, 597
+HKR, Countries, Country60,  0x10001, 117
+HKR, Countries, Country61,  0x10001, 598
+HKR, Countries, Country62,  0x10001, 58
+HKR, Countries, Country63,  0x10001, 263
+HKR, Countries, Country64,  0x10001, 592
+HKR, Countries, Country65,  0x10001, 372
+HKR, Countries, Country66,  0x10001, 36
+HKR, Countries, Country67,  0x10001, 386
+HKR, Countries, Country68,  0x10001, 971
+HKR, Countries, Country69,  0x10001, 421
+HKR, Countries, Country70,  0x10001, 107
+HKR, Countries, Country71,  0x10001, 506
+HKR, Countries, Country72,  0x10001, 110
+HKR, Countries, Country73,  0x10001, 503
+HKR, Countries, Country74,  0x10001, 220
+HKR, Countries, Country75,  0x10001, 350
+HKR, Countries, Country76,  0x10001, 48
+HKR, Countries, Country77,  0x10001, 20
+HKR, Countries, Country78,  0x10001, 420
+HKR, Countries, Country79,  0x10001, 27
+HKR, Countries, Country80,  0x10001, 594
+HKR, Countries, Country81,  0x10001, 359
+HKR, Countries, Country82,  0x10001, 385
+HKR, Countries, Country83,  0x10001, 371
+HKR, Countries, Country84,  0x10001, 370
+HKR, Countries, Country85,  0x10001, 94
+HKR, Countries, Country86,  0x10001, 102
+HKR, Countries, Country87,  0x10001, 297
+HKR, Countries, Country88,  0x10001, 673
+HKR, Countries, Country89,  0x10001, 689
+HKR, Countries, Country90,  0x10001, 853
+HKR, Countries, Country91,  0x10001, 599
+HKR, Countries, Country92,  0x10001, 106
+HKR, Countries, Country93,  0x10001, 380
+ 
+
+HKR,, CountryLst, 1,\
+              01,00,5E,00,01,00,B5,10,55,53,41,00,52,00,61,22,4B,4F,52,00,51,02,35,1B,\
+              45,43,55,00,4F,02,14,14,42,4F,4C,00,38,00,25,16,43,48,4C,00,39,00,27,17,\
+              43,4F,4C,00,FB,01,85,24,50,41,4E,00,33,00,88,26,50,45,52,00,C6,03,98,28,\
+              53,41,55,00,42,00,A9,2A,54,48,41,00,54,00,BC,2F,56,4E,4D,00,2E,00,A5,39,\
+              53,57,45,00,2D,00,31,31,44,45,4E,00,66,01,3C,32,46,49,4E,00,2F,00,82,38,\
+              4E,4F,52,00,62,01,52,33,49,53,4C,00,61,01,57,34,49,52,4C,00,CC,03,58,35,\
+              49,53,52,00,A7,01,68,36,4C,49,45,00,22,00,A0,44,45,53,50,00,5A,00,AE,45,\
+              54,55,52,00,31,00,04,47,44,45,55,00,2B,00,0A,48,41,55,54,00,29,00,A6,4D,\
+              43,48,45,00,65,01,2D,3C,43,59,50,00,1E,00,46,4A,47,52,43,00,27,00,59,4B,\
+              49,54,41,00,60,01,69,4C,4C,55,58,00,1F,00,7B,37,4E,4C,44,00,2C,00,B4,30,\
+              47,42,52,00,20,00,0F,3B,42,45,4C,00,21,00,3D,3A,46,52,41,00,5F,01,8B,43,\
+              50,52,54,00,5C,00,84,41,50,41,4B,00,51,00,00,5F,4A,50,4E,00,07,00,B8,4E,\
+              52,55,53,00,3D,00,09,60,41,55,53,00,3C,00,6C,62,4D,59,53,00,56,00,26,61,\
+              43,48,4E,00,54,03,50,56,48,4B,47,00,41,00,9C,57,53,47,50,00,40,00,7E,63,\
+              4E,5A,4C,00,36,00,07,5B,41,52,47,00,37,00,16,5D,42,52,41,00,34,00,73,5C,\
+              4D,45,58,00,76,03,FE,65,54,57,4E,00,5B,00,53,59,49,4E,44,00,3F,00,89,5E,\
+              50,48,4C,00,3E,00,54,58,49,44,4E,00,67,00,0B,11,42,48,53,00,68,00,0E,12,\
+              42,52,42,00,69,00,12,13,42,4D,55,00,F6,01,49,1E,47,54,4D,00,FD,01,4E,1F,\
+              48,54,49,00,F8,01,4F,20,48,4E,44,00,70,00,5B,21,4A,41,4D,00,F9,01,7F,23,\
+              4E,49,43,00,53,02,87,25,50,52,59,00,79,00,8C,27,50,52,49,00,55,02,A3,29,\
+              53,55,52,00,75,00,AC,2B,54,54,4F,00,56,02,B7,2D,55,52,59,00,3A,00,BB,2E,\
+              56,45,4E,00,07,01,C4,46,5A,57,45,00,50,02,4D,40,47,55,59,00,74,01,F9,3E,\
+              45,53,54,00,24,00,51,51,48,55,4E,00,82,01,FC,55,53,56,4E,00,CB,03,B3,2C,\
+              41,52,45,00,A5,01,FB,54,53,56,4B,00,6B,00,20,15,43,41,4E,00,FA,01,2B,18,\
+              43,52,49,00,6E,00,33,19,44,4F,4D,00,F7,01,37,1A,53,4C,56,00,DC,00,41,1C,\
+              47,4D,42,00,5E,01,45,1D,47,49,42,00,30,00,8A,42,50,4F,4C,00,14,00,36,3D,\
+              45,47,59,00,A4,01,2E,49,43,5A,45,00,1B,00,9F,64,5A,41,46,00,52,02,E1,3F,\
+              47,55,46,00,67,01,1B,4F,42,55,4C,00,81,01,FA,50,43,52,4F,00,73,01,F8,52,\
+              4C,41,54,00,72,01,F7,53,4C,49,54,00,5E,00,A1,5A,53,52,4C,00,66,00,06,67,\
+              41,41,42,00,29,01,EE,68,41,52,55,00,A1,02,1A,69,42,52,55,00,B1,02,3E,6A,\
+              46,50,4F,00,55,03,6A,6B,4D,41,43,00,57,02,7C,6C,4E,4C,41,00,6A,00,19,6D,\
+              55,56,41,00,7C,01,B2,66,55,4B,52,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00
+ 
+ 
+[CountryList1.AddReg]
+HKR, Countries, Country0,  0x10001, 1
+HKR, Countries, Country1,  0x10001, 82
+HKR, Countries, Country2,  0x10001, 593
+HKR, Countries, Country3,  0x10001, 852
+HKR, Countries, Country4,  0x10001, 56
+HKR, Countries, Country5,  0x10001, 57
+HKR, Countries, Country6,  0x10001, 65
+HKR, Countries, Country7,  0x10001, 51
+HKR, Countries, Country8,  0x10001, 966
+HKR, Countries, Country9,  0x10001, 54
+HKR, Countries, Country10,  0x10001, 84
+HKR, Countries, Country11,  0x10001, 107
+HKR, Countries, Country12,  0x10001, 55
+HKR, Countries, Country13,  0x10001, 52
+HKR, Countries, Country14,  0x10001, 91
+HKR, Countries, Country15,  0x10001, 63
+HKR, Countries, Country16,  0x10001, 62
+HKR, Countries, Country17,  0x10001, 36
+HKR, Countries, Country18,  0x10001, 503
+HKR, Countries, Country19,  0x10001, 971
+ 
+
+HKR,, CountryLst, 1,\
+              01,00,14,00,01,00,B5,10,55,53,41,00,52,00,61,22,4B,4F,52,00,51,02,35,1B,\
+              45,43,55,00,54,03,50,56,48,4B,47,00,38,00,25,16,43,48,4C,00,39,00,27,17,\
+              43,4F,4C,00,41,00,9C,57,53,47,50,00,33,00,88,26,50,45,52,00,C6,03,98,28,\
+              53,41,55,00,36,00,07,5B,41,52,47,00,54,00,BC,2F,56,4E,4D,00,6B,00,20,15,\
+              43,41,4E,00,37,00,16,5D,42,52,41,00,34,00,73,5C,4D,45,58,00,5B,00,53,59,\
+              49,4E,44,00,3F,00,89,5E,50,48,4C,00,3E,00,54,58,49,44,4E,00,24,00,51,51,\
+              48,55,4E,00,F7,01,37,1A,53,4C,56,00,CB,03,B3,2C,41,52,45,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00
+ 
+
+[Homologation.AddReg]
+;C263B9F5
+HKR,, WWH0, 1,\
+              04,00,01,01,01,00,00,00,00,01,01,01,40,1F,88,13,40,1F,0A,0A,01,00,F4,01,\
+              2C,01,CC,0C,3C,FC,CC,0C,3A,C9,06,70,00,40,12,80,00,40,01,C4,08,7B,FF,00,\
+              00,7F,DC,00,AA,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,B0,04,\
+              00,58,02,4C,04,01,64,00,C2,01,00,C8,00,C2,01,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,04,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              DC,00,18,01,00,DC,00,18,01,01,DC,00,18,01,00,DC,00,18,01,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,00,00,\
+              06,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,58,02,00,90,01,58,02,01,\
+              90,01,58,02,00,90,01,58,02,01,90,01,58,02,00,90,01,58,02,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,78,05,60,09,00,D8,0E,\
+              68,10,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,78,05,60,09,00,D8,0E,68,10,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,\
+              00,00,00,00,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,FA,00,90,01,00,A0,\
+              0F,88,13,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,AA,00,4A,01,00,AA,00,4A,01,01,AA,00,4A,01,00,AA,\
+              00,4A,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,09,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,00,00,00,FF,FF,FF,06,02,\
+              02,FF,FF,FF,07,5A,01,FF,FF,FF,08,02,00,FF,FF,FF,0A,0E,01,FF,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,5A,FF,FF,51,41,41,41,FF,FF,52,50,50,50,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0A,09,10,FF,FF,5C,0A,09,10,FF,FF,5D,0A,09,10,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0D,00,48,00,2C,01,FC,\
+              08,00,00,00,00,00,F4,01,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0D,00,48,00,EE,02,FC,08,00,00,00,00,00,F4,01,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,46,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;D7532CC7
+HKR,, WWH1, 1,\
+              04,00,01,01,01,01,01,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,B5,01,\
+              73,00,66,06,1E,FB,66,06,3A,C7,12,72,00,40,22,80,00,40,01,C4,08,7A,FF,00,\
+              00,7F,96,00,78,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,AA,00,40,01,\
+              00,AA,00,40,01,01,1C,02,DA,02,00,EE,02,60,09,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,D0,07,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,2C,01,00,00,02,00,02,00,01,5A,00,3A,02,00,8C,00,02,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              5A,00,3A,02,00,8C,00,02,03,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,2C,01,00,00,02,00,\
+              04,00,01,5A,00,20,03,00,78,00,20,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,5A,00,20,03,00,78,00,20,03,01,\
+              5A,00,20,03,00,78,00,20,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,2C,01,00,00,02,00,02,00,01,84,03,60,09,00,B8,0B,\
+              50,14,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,84,03,60,09,00,B8,0B,50,14,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,FA,\
+              00,F0,00,3C,00,28,00,EE,02,32,00,04,01,04,01,04,01,04,00,04,01,00,00,04,\
+              01,04,01,04,01,04,01,04,01,00,01,04,01,04,01,04,01,04,01,03,2F,10,18,11,\
+              00,00,00,00,00,00,2C,01,FA,00,F0,00,3C,00,28,00,20,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,FA,00,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,34,01,34,01,14,01,34,01,00,00,34,01,34,01,34,01,34,\
+              01,34,01,30,01,34,01,34,01,34,01,34,01,0F,00,0F,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,00,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,00,00,00,00,01,2F,00,0D,00,00,00,00,05,01,01,06,03,\
+              03,05,FF,FF,07,3C,14,96,FF,FF,08,02,02,02,FF,FF,0A,0E,01,63,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,11,FF,FF,51,46,46,46,FF,FF,52,5A,5A,5A,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0B,0A,0F,FF,FF,5C,0B,0A,0F,FF,FF,5D,0B,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,02,00,02,00,02,00,01,0D,00,3C,00,F4,01,CA,\
+              08,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0D,00,48,00,F4,01,CA,08,00,00,00,00,00,40,06,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,48,00,2C,01,\
+              F4,01,00,00,00,00,00,64,00,F0,00,01,0D,00,48,00,2C,01,F4,01,00,00,00,00,\
+              00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,14,00,32,32,0A,00,05,64,04,00
+ 
+;4A33ACDA
+HKR,, WWH2, 1,\
+              04,00,01,01,01,01,01,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,B5,01,\
+              73,00,66,06,1E,FB,66,06,3A,C7,12,72,00,40,22,80,00,40,01,C4,08,7A,FF,00,\
+              00,7F,96,00,78,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,AA,00,E6,00,\
+              00,AA,00,E6,00,01,1C,02,94,02,00,EE,02,60,09,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,D0,07,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,2C,01,00,00,02,00,02,00,01,5A,00,3A,02,00,8C,00,02,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              5A,00,3A,02,00,8C,00,02,03,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,2C,01,00,00,02,00,\
+              04,00,01,5A,00,20,03,00,78,00,20,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,5A,00,20,03,00,78,00,20,03,01,\
+              5A,00,20,03,00,78,00,20,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,2C,01,00,00,02,00,02,00,01,84,03,60,09,00,B8,0B,\
+              50,14,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,84,03,60,09,00,B8,0B,50,14,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,02,01,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,AA,00,\
+              E6,00,00,0E,01,4A,01,01,AA,00,E6,00,00,0E,01,4A,01,01,AA,00,E6,00,00,90,\
+              01,B0,04,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,FA,\
+              00,F0,00,3C,00,28,00,EE,02,32,00,04,01,04,01,04,01,04,00,04,01,00,00,04,\
+              01,04,01,04,01,04,01,04,01,00,01,04,01,04,01,04,01,04,01,03,2F,10,18,11,\
+              00,00,00,00,00,00,2C,01,FA,00,F0,00,42,00,21,00,20,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,FA,00,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,34,01,34,01,14,01,34,01,00,00,34,01,34,01,34,01,34,\
+              01,34,01,30,01,34,01,34,01,34,01,34,01,0F,00,0F,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,00,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,00,00,00,00,01,2F,00,0D,00,00,00,00,05,01,01,06,03,\
+              03,05,FF,FF,07,3C,14,96,FF,FF,08,02,02,02,FF,FF,0A,0E,01,63,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,11,FF,FF,51,46,46,46,FF,FF,52,5A,5A,5A,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0B,0A,0F,FF,FF,5C,0B,0A,0F,FF,FF,5D,0B,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,02,00,02,00,02,00,01,0D,00,3C,00,F4,01,CA,\
+              08,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0D,00,3C,00,F4,01,CA,08,00,00,00,00,00,40,06,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,3C,00,2C,01,\
+              F4,01,00,00,00,00,00,64,00,F0,00,01,0D,00,3C,00,2C,01,F4,01,00,00,00,00,\
+              00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,32,00,0A,00,05,64,04,00
+ 
+;98F1BB86
+HKR,, WWH3, 1,\
+              04,00,01,01,01,01,01,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,B5,01,\
+              73,00,66,06,1E,FB,66,06,3A,C7,12,72,00,40,22,80,00,40,01,C4,08,7A,FF,00,\
+              00,7F,96,00,78,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,AA,00,40,01,\
+              00,AA,00,40,01,01,1C,02,DA,02,00,EE,02,60,09,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,D0,07,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,2C,01,00,00,02,00,02,00,01,5A,00,3A,02,00,8C,00,02,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              5A,00,3A,02,00,8C,00,02,03,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,2C,01,00,00,00,00,\
+              04,00,01,5A,00,20,03,00,78,00,20,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,28,00,58,02,00,28,00,30,02,01,\
+              28,00,30,02,00,28,00,58,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,2C,01,00,00,02,00,02,00,01,84,03,60,09,00,B8,0B,\
+              50,14,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,84,03,60,09,00,B8,0B,50,14,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,FA,\
+              00,F0,00,3C,00,28,00,EE,02,32,00,04,01,04,01,04,01,04,00,04,01,00,00,04,\
+              01,04,01,04,01,04,01,04,01,00,01,04,01,04,01,04,01,04,01,03,2F,10,18,11,\
+              00,00,00,00,00,00,2C,01,FA,00,F0,00,3C,00,28,00,20,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,FA,00,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,34,01,34,01,14,01,34,01,00,00,34,01,34,01,34,01,34,\
+              01,34,01,30,01,34,01,34,01,34,01,34,01,0F,00,0F,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,00,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,00,00,00,00,01,2F,00,0D,00,00,00,00,05,01,01,06,03,\
+              03,05,FF,FF,07,3C,14,96,FF,FF,08,02,02,02,FF,FF,0A,0E,01,63,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,11,FF,FF,51,46,46,46,FF,FF,52,5A,5A,5A,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0B,0A,0F,FF,FF,5C,0B,0A,0F,FF,FF,5D,0B,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,02,00,02,00,02,00,01,0D,00,3C,00,F4,01,CA,\
+              08,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0D,00,3C,00,F4,01,CA,08,00,00,00,00,00,40,06,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,48,00,2C,01,\
+              F4,01,00,00,00,00,00,64,00,F0,00,01,0D,00,48,00,2C,01,F4,01,00,00,00,00,\
+              00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;F73BE832
+HKR,, WWH4, 1,\
+              04,00,01,01,01,00,01,00,00,01,00,01,88,13,88,13,40,1F,13,13,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,94,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,03,02,01,00,\
+              33,00,37,00,2C,01,00,00,02,00,02,00,01,90,01,B6,03,00,90,01,B6,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              90,01,B6,03,00,90,01,B6,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,05,02,01,00,33,00,37,00,2C,01,00,00,02,00,\
+              02,00,01,84,03,1A,04,00,08,07,02,08,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,84,03,1A,04,00,08,07,02,08,01,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              01,02,01,00,33,00,37,00,2C,01,00,00,02,00,02,00,01,5A,00,A0,00,00,5A,00,\
+              A0,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,5A,00,A0,00,00,5A,00,A0,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,F4,\
+              01,F0,00,43,00,21,00,EE,02,32,00,04,01,04,01,04,01,04,00,04,01,00,00,04,\
+              01,04,01,04,01,04,01,04,01,00,01,04,01,04,01,04,01,04,01,03,07,10,00,11,\
+              00,00,00,00,00,00,2C,01,F4,01,F0,00,42,00,21,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,F4,01,F0,00,43,00,21,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,03,00,01,00,01,00,01,00,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,B4,00,00,0B,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              04,0A,FF,FF,07,32,23,3C,FF,FF,08,02,02,07,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,5F,5F,5F,FF,FF,52,6E,6E,6E,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0F,08,0F,FF,FF,5C,0F,08,0F,FF,FF,5D,0F,08,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0D,00,3C,00,2C,01,FC,\
+              08,00,00,00,00,00,F4,01,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0D,00,48,00,EE,02,FC,08,00,00,00,00,00,F4,01,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;4CE0ABF2
+HKR,, WWH5, 1,\
+              04,00,01,01,01,01,01,00,00,01,00,08,40,1F,88,13,40,1F,13,13,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,24,00,30,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,94,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,24,00,30,00,6C,07,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              24,00,30,00,2C,01,00,00,02,00,02,00,01,60,09,28,0A,00,90,01,58,02,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              60,09,28,0A,00,90,01,58,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,24,00,30,00,2C,01,00,00,02,00,\
+              04,00,01,64,00,08,02,00,64,00,08,02,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,64,00,08,02,00,64,00,08,02,01,\
+              64,00,08,02,00,64,00,08,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,24,00,30,00,2C,01,00,00,02,00,02,00,01,10,0E,94,11,00,A4,06,\
+              98,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,10,0E,94,11,00,A4,06,98,08,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,64,\
+              00,F0,00,43,00,21,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,69,10,00,11,\
+              00,00,00,00,00,00,2C,01,64,00,F0,00,43,00,21,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,01,34,01,04,01,34,01,00,00,34,01,24,01,34,01,24,\
+              01,34,01,20,01,34,01,24,01,34,01,24,01,0F,00,01,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,00,\
+              00,06,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,01,2F,00,0D,00,00,00,00,06,FF,FF,06,03,\
+              02,04,FF,FF,07,3C,01,3C,FF,FF,08,02,00,FF,FF,FF,0A,0E,01,FF,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,12,FF,FF,51,5F,5F,5F,FF,FF,52,6E,6E,6E,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0B,0A,0F,FF,FF,5C,0B,0A,0F,FF,FF,5D,0B,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,00,00,04,00,00,0A,00,3C,00,68,01,B8,\
+              01,00,00,00,00,00,A0,00,F0,00,01,0A,00,3C,00,68,01,B8,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,0A,00,48,00,68,01,26,02,00,00,00,00,00,64,00,22,\
+              01,01,0A,00,48,00,2C,01,26,02,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;CD1A21D1
+HKR,, WWH6, 1,\
+              04,00,01,01,01,00,01,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,00,00,B8,01,\
+              00,14,00,3C,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,A0,0F,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,03,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,2C,01,84,03,00,2C,01,84,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              FA,00,84,03,00,FA,00,84,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,05,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,78,05,60,09,00,3C,0F,68,10,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,BC,02,14,05,00,B8,0B,94,11,01,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,00,BC,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,04,00,00,00,1E,00,1E,00,1E,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,05,00,05,00,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,2C,01,00,1E,00,0D,00,00,00,00,05,FF,FF,06,03,\
+              03,08,FF,FF,07,37,01,FF,FF,FF,08,02,00,FF,FF,FF,0A,0E,01,FF,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,12,FF,FF,51,50,50,50,FF,FF,52,5F,5F,5F,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0A,06,0F,FF,FF,5C,0A,06,0F,FF,FF,5D,0A,06,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0A,00,48,00,EE,02,FC,\
+              08,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,48,00,EE,02,FC,08,00,00,00,00,00,40,06,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,20,03,3C,00,\
+              F4,01,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,32,32,0A,00,05,64,04,00
+ 
+;77244C00
+HKR,, WWH7, 1,\
+              04,00,01,01,00,00,01,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,A9,01,\
+              C8,00,66,06,B0,F7,66,06,6C,C4,61,75,00,40,5F,80,00,40,13,C3,00,7A,FF,00,\
+              00,7F,C8,00,96,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,2B,00,2F,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,2B,00,2F,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              2B,00,2F,00,2C,01,00,00,02,00,02,00,01,C2,01,26,02,00,DC,00,18,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              C2,01,26,02,00,DC,00,18,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,2B,00,2F,00,2C,01,00,00,02,00,\
+              02,00,01,C8,00,26,02,00,C8,00,26,02,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,C8,00,26,02,00,C8,00,26,02,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,2B,00,2F,00,2C,01,00,00,02,00,02,00,01,68,01,B8,01,00,08,07,\
+              98,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,68,01,B8,01,00,08,07,98,08,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,F4,\
+              01,F0,00,43,00,21,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,2C,01,F4,01,F0,00,42,00,21,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,F4,01,F0,00,43,00,21,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,02,00,00,00,20,01,20,01,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,2F,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              02,08,FF,FF,07,3A,01,3A,FF,FF,08,02,02,07,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,5A,FF,FF,51,4B,4B,4B,FF,FF,52,5F,5F,5F,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0A,0A,0F,FF,FF,5C,0A,0A,0F,FF,FF,5D,0A,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,04,00,04,00,00,0A,00,3C,00,68,01,B8,\
+              01,00,00,00,00,00,A0,00,F0,00,01,0A,00,3C,00,68,01,B8,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,64,00,F0,\
+              00,01,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;77636340
+HKR,, WWH8, 1,\
+              04,00,01,01,01,00,00,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,2A,00,2E,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,96,00,20,03,\
+              00,96,00,84,03,01,44,02,20,03,00,44,02,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,2A,00,2E,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              2A,00,2E,00,2C,01,00,00,02,00,02,00,01,78,00,FA,00,00,78,00,FA,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              78,00,FA,00,00,78,00,FA,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,2A,00,2E,00,C8,00,00,00,00,00,\
+              04,00,01,8C,00,58,02,00,8C,00,58,02,01,8C,00,58,02,00,8C,00,58,02,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,8C,00,58,02,00,8C,00,58,02,01,\
+              8C,00,58,02,00,8C,00,58,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,2A,00,2E,00,2C,01,00,00,02,00,02,00,01,78,05,60,09,00,3C,0F,\
+              68,10,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,78,05,60,09,00,D8,0E,68,10,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,03,02,01,00,2A,00,2F,00,C8,00,\
+              00,00,04,00,04,00,01,C8,00,2C,01,00,C8,00,2C,01,01,C8,00,2C,01,00,C8,00,\
+              2C,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,C8,00,2C,01,00,C8,\
+              00,2C,01,01,C8,00,2C,01,00,C8,00,2C,01,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,2C,01,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,2C,01,F4,01,F0,00,3C,00,28,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,2C,01,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,34,01,34,01,14,01,34,01,00,00,34,01,34,01,34,01,34,\
+              01,34,01,30,01,34,01,34,01,34,01,34,01,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,00,00,00,04,FF,FF,06,04,\
+              03,06,FF,FF,07,3A,32,3A,FF,FF,08,04,03,06,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,12,00,5A,FF,FF,51,41,41,41,FF,FF,52,46,46,46,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0B,0A,0F,FF,FF,5C,0B,0A,0F,FF,FF,5D,0B,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,04,00,02,00,01,0A,00,3C,00,68,01,B8,\
+              01,00,00,00,00,00,A0,00,F0,00,00,0A,00,3C,00,68,01,B8,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,3C,00,EE,02,FC,08,00,00,00,00,00,D0,07,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;573EFF9E
+HKR,, WWH9, 1,\
+              04,00,01,01,01,01,00,00,00,01,00,01,40,1F,88,13,40,1F,13,13,01,00,B5,01,\
+              73,00,66,06,1E,FB,66,06,3A,C7,12,72,00,40,22,80,00,40,01,C4,08,7A,FF,00,\
+              00,7F,C8,00,96,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,06,00,01,02,01,00,33,00,37,00,\
+              2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,AA,00,E6,00,\
+              00,AA,00,E6,00,01,1C,02,94,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,D0,07,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,2C,01,00,00,02,00,02,00,01,5A,00,3A,02,00,8C,00,02,03,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              5A,00,3A,02,00,8C,00,02,03,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,2C,01,00,00,02,00,\
+              04,00,01,46,00,58,02,00,46,00,6C,02,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,5A,00,52,03,00,78,00,34,03,01,\
+              5A,00,52,03,00,78,00,52,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,2C,01,00,00,02,00,02,00,01,78,05,60,09,00,3C,0F,\
+              68,10,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,78,05,60,09,00,3C,0F,68,10,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,2C,01,\
+              00,00,00,00,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,84,03,00,90,\
+              01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,42,00,21,00,58,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,0F,00,0F,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,00,\
+              00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,00,06,\
+              00,06,00,06,00,06,00,00,00,00,00,01,2F,00,0D,00,00,00,00,05,01,01,06,04,\
+              04,12,FF,FF,07,3A,05,3C,FF,FF,08,02,02,06,FF,FF,0A,0E,01,63,FF,FF,0B,5A,\
+              5A,5A,FF,FF,1E,00,00,12,FF,FF,51,41,41,41,FF,FF,52,50,50,50,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0A,06,0F,FF,FF,5C,0A,06,0F,FF,FF,5D,0A,06,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,02,00,04,00,02,00,01,0A,00,3C,00,2C,01,F4,\
+              01,00,00,00,00,00,64,00,2C,01,00,0A,00,3C,00,2C,01,F4,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,3C,00,EE,02,FC,08,00,00,00,00,00,8C,0A,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,00,48,00,00,00,\
+              00,00,00,0F,00,3C,00,64,00,2C,01,00,00,00,00,00,2C,01,F4,01,01,0F,00,48,\
+              00,40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;2C8804B0
+HKR,, WWH10, 1,\
+              04,00,01,01,00,00,01,00,00,01,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,84,03,00,90,01,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,0B,10,00,11,\
+              00,00,00,00,00,00,64,00,58,02,F0,00,43,00,21,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,10,00,00,00,30,00,30,00,30,00,30,\
+              00,30,00,30,00,30,00,30,00,30,00,30,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,2F,00,0D,00,00,02,00,05,FF,FF,06,04,\
+              02,06,FF,FF,07,32,05,3C,FF,FF,08,02,01,06,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,46,46,46,FF,FF,52,50,50,50,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0E,0A,0F,FF,FF,5C,0E,0A,0F,FF,FF,5D,0E,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,04,00,04,00,00,0A,00,48,00,68,01,F4,\
+              01,00,00,00,00,00,64,00,F0,00,01,0A,00,48,00,68,01,B8,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,64,00,F0,\
+              00,01,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;B7EA16A7
+HKR,, WWH11, 1,\
+              04,00,01,01,01,00,00,00,00,00,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,84,03,00,90,01,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,0B,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,42,00,21,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              04,07,FF,FF,07,37,01,3C,FF,FF,08,02,02,08,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,12,00,5A,FF,FF,51,5F,5F,5F,FF,FF,52,6E,6E,6E,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0C,02,0E,FF,FF,5C,0C,02,0E,FF,FF,5D,0C,02,0E,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,04,00,04,00,00,0A,00,48,00,68,01,F4,\
+              01,00,00,00,00,00,64,00,F0,00,01,0A,00,48,00,68,01,F4,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,64,00,F0,\
+              00,01,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;0410DF64
+HKR,, WWH12, 1,\
+              04,00,01,01,01,00,01,00,00,01,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              FA,00,00,40,DC,8F,00,40,8D,C1,A4,7A,FF,3F,44,81,00,40,D2,C1,E5,78,FF,00,\
+              00,7F,D0,07,DC,05,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,84,03,00,90,01,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,0B,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,44,00,20,00,52,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,0A,00,00,00,3C,00,3C,00,3C,00,3C,\
+              00,3C,00,3C,00,3C,00,3C,00,3C,00,3C,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,05,00,00,2F,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              04,08,FF,FF,07,37,01,37,FF,FF,08,02,02,08,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,5F,5F,5F,FF,FF,52,6E,6E,6E,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0C,07,0D,FF,FF,5C,0C,07,0D,FF,FF,5D,0C,07,0D,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,04,00,04,00,00,0A,00,48,00,2C,01,F4,\
+              01,00,00,00,00,00,64,00,2C,01,01,0A,00,48,00,2C,01,F4,01,00,00,00,00,00,\
+              40,06,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,0A,00,4B,00,2C,01,F4,01,00,00,00,00,00,64,00,2C,\
+              01,01,0A,00,4B,00,2C,01,F4,01,00,00,00,00,00,40,06,7C,15,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;B0E6F0A2
+HKR,, WWH13, 1,\
+              04,00,01,01,01,00,00,00,00,01,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              90,01,CC,0C,3C,FC,CC,0C,3A,C9,06,70,00,40,12,80,00,40,01,C4,08,7B,FF,00,\
+              00,7F,C8,00,96,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,E6,00,84,03,00,E6,00,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,E6,00,84,03,00,E6,00,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,42,00,21,00,52,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              02,0A,FF,FF,07,3A,05,3C,FF,FF,08,02,02,08,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,41,41,41,FF,FF,52,50,50,50,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0C,0A,0F,FF,FF,5C,0C,0A,0F,FF,FF,5D,0C,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0A,00,48,00,2C,01,FC,\
+              08,00,00,00,00,00,F4,01,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,48,00,EE,02,FC,08,00,00,00,00,00,F4,01,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;22B4C665
+HKR,, WWH14, 1,\
+              04,00,01,01,00,00,00,00,00,01,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              FA,00,66,06,39,F3,66,06,29,C3,AE,79,FF,3F,5E,E6,FF,3F,5B,C5,29,71,FF,00,\
+              00,7F,90,01,2C,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,96,00,4C,04,\
+              00,19,00,2C,01,01,1C,02,BC,02,00,F4,01,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,5E,01,84,03,00,96,00,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,00,EE,02,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              04,08,FF,FF,07,3A,01,3C,FF,FF,08,02,02,08,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,5A,5A,5A,FF,FF,52,64,64,64,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0A,06,0F,FF,FF,5C,0A,06,0F,FF,FF,5D,0A,06,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0A,00,48,00,2C,01,FC,\
+              08,00,00,00,00,00,F4,01,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,48,00,EE,02,FC,08,00,00,00,00,00,F4,01,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;31262ECC
+HKR,, WWH15, 1,\
+              04,00,01,01,01,00,01,00,00,01,00,01,40,1F,88,13,40,1F,0A,0A,01,00,A4,01,\
+              90,01,CC,0C,3C,FC,CC,0C,3A,C9,06,70,00,40,12,80,00,40,01,C4,08,7B,FF,00,\
+              00,7F,C8,00,96,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,00,01,02,01,00,33,00,37,00,\
+              C8,00,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,B4,00,DC,00,\
+              00,B4,00,DC,00,01,1C,02,80,02,00,84,03,4C,04,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,01,01,01,00,33,00,37,00,E8,03,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,0F,02,01,00,\
+              33,00,37,00,C8,00,00,00,02,00,02,00,01,96,00,5E,01,00,96,00,5E,01,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,\
+              96,00,5E,01,00,96,00,5E,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,03,02,01,00,33,00,37,00,C8,00,00,00,02,00,\
+              02,00,01,90,01,84,03,00,90,01,84,03,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,01,90,01,84,03,00,90,01,84,03,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              05,02,01,00,33,00,37,00,C8,00,00,00,02,00,02,00,01,D8,0E,68,10,00,78,05,\
+              60,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,01,D8,0E,68,10,00,78,05,60,09,01,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,03,00,01,00,00,00,00,00,00,00,00,00,00,64,00,F4,\
+              01,F0,00,3C,00,28,00,EE,02,32,00,24,00,24,00,24,00,04,00,24,00,00,00,24,\
+              00,24,00,24,00,24,00,24,00,20,00,24,00,24,00,24,00,24,00,03,07,10,00,11,\
+              00,00,00,00,00,00,64,00,F4,01,F0,00,42,00,21,00,52,03,32,00,04,00,04,00,\
+              04,00,04,00,04,00,00,00,04,00,04,00,04,00,04,00,04,00,00,00,04,00,04,00,\
+              04,00,04,00,02,00,00,00,00,00,00,00,00,00,00,64,00,F4,01,F0,00,3C,00,28,\
+              00,EE,02,32,00,34,01,24,00,34,01,04,00,34,01,00,00,34,01,24,00,34,01,24,\
+              00,34,01,20,00,34,01,24,00,34,01,24,00,02,00,02,00,3C,00,3C,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,06,00,06,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,B4,00,02,2E,00,0D,00,00,00,00,05,FF,FF,06,04,\
+              02,0A,FF,FF,07,3A,05,3C,FF,FF,08,02,02,08,FF,FF,0A,0E,01,FF,FF,FF,0B,50,\
+              50,50,FF,FF,1E,00,00,12,FF,FF,51,41,41,41,FF,FF,52,50,50,50,FF,FF,53,0A,\
+              0A,0A,FF,FF,5B,0C,0A,0F,FF,FF,5C,0C,0A,0F,FF,FF,5D,0C,0A,0F,FF,FF,FF,FF,\
+              FF,FF,FF,FF,FF,FF,FF,FF,FF,FF,01,00,02,00,02,00,01,0A,00,48,00,2C,01,FC,\
+              08,00,00,00,00,00,F4,01,7C,15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,01,0A,00,48,00,EE,02,FC,08,00,00,00,00,00,F4,01,7C,\
+              15,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2C,01,58,02,3C,00,\
+              D0,07,52,08,BE,0A,1E,00,C8,00,D0,07,32,00,00,00,00,00,05,64,04,00
+ 
+;29EDC90F
+HKR,, WWH16, 1,\
+              84,00,78,00,00,00,00,0A,2C,01,58,02,46,00,D0,07,00,00,00,0B,52,08,BE,0A,\
+              1E,00,C8,00,D0,07,00,00,08,01,01,00,0A,05,05,06,00,01,0F,05,05,01,02,0F,\
+              05,05,90,01,03,0F,05,05,58,02,02,10,05,05,90,01,03,10,05,05,58,02,00,09,\
+              04,05,02,00,00,0A,04,05,02,00,02,0B,04,05,2C,01,03,0B,04,05,FC,00,02,0C,\
+              04,05,C8,00,03,0C,04,05,2C,01,05,03,02,09,28,0A,05,0A,02,09,28,0A,00,00,\
+              04,0C,00,00,00
+ 
+;45B81911
+HKR,, WWH17, 1,\
+              84,00,3C,00,00,09,04,05,00,00,02,14,04,05,C8,00,00,00,04,0C,00,00,02,12,\
+              04,05,C8,00,03,12,04,05,2C,01,02,13,04,05,96,00,03,13,04,05,FA,00,03,14,\
+              04,05,2C,01,02,15,04,05,96,00,03,15,04,05,FA,00,00
+ 
+;7561F4C1
+HKR,, WWH18, 1,\
+              84,00,06,00,00,00,04,0C,00,00,00
+ 
+;6DC95E0A
+HKR,, WWH19, 1,\
+              84,00,17,00,00,00,08,01,01,00,00,00,0A,7C,01,08,02,46,00,D0,07,00,00,04,\
+              0C,00,00,00
+ 
+;7561F4C1
+HKR,, WWH20, 1,\
+              84,00,00,00,00
+ 
+;6EFD19A7
+HKR,, WWH21, 1,\
+              84,00,18,00,00,09,04,05,02,00,00,0A,04,05,04,00,05,03,02,09,28,0A,05,0A,\
+              02,09,28,0A,00
+ 
+;CCB72233
+HKR,, WWH22, 1,\
+              84,00,39,00,00,00,01,0A,20,03,00,00,02,0A,78,05,02,12,04,05,96,00,02,13,\
+              04,05,96,00,02,14,04,05,96,00,02,15,04,05,96,00,00,09,04,05,00,00,00,02,\
+              0A,08,55,00,03,0A,08,55,00,04,0A,08,55,00
+ 
+;313B7E89
+HKR,, WWH23, 1,\
+              84,00,70,00,00,0A,05,05,04,00,02,12,05,05,C8,00,03,12,05,05,2C,01,02,13,\
+              05,05,C8,00,03,13,05,05,2C,01,02,14,05,05,C8,00,03,14,05,05,2C,01,02,15,\
+              05,05,C8,00,03,15,05,05,2C,01,02,0B,05,05,00,00,03,0B,05,05,00,00,02,0C,\
+              05,05,00,00,03,0C,05,05,00,00,01,0B,05,05,00,01,16,05,05,00,02,16,05,05,\
+              00,00,03,16,05,05,00,00,02,17,05,05,00,00,03,17,05,05,00,00,00
+ 
+;8A957E3E
+HKR,, WWH24, 1,\
+              84,00,48,00,03,12,05,05,90,01,02,12,05,05,C8,00,03,13,05,05,90,01,02,13,\
+              05,05,C8,00,02,14,05,05,C8,00,03,14,05,05,90,01,02,15,05,05,C8,00,03,15,\
+              05,05,90,01,02,16,05,05,C8,00,03,16,05,05,90,01,02,17,05,05,C8,00,03,17,\
+              05,05,90,01,00
+ 
+;0CF2438E
+HKR,, WWH25, 1,\
+              84,00,5A,00,02,12,05,05,BC,02,03,12,05,05,84,03,02,13,05,05,BC,02,03,13,\
+              05,05,84,03,02,14,05,05,BC,02,03,14,05,05,84,03,02,15,05,05,BC,02,03,15,\
+              05,05,84,03,02,13,07,05,2C,01,03,13,07,05,F4,01,02,12,07,05,2C,01,03,12,\
+              07,05,F4,01,00,00,01,05,06,00,00,0A,05,05,02,00,00,09,05,05,02,00,00
+ 
+;8A957E3E
+HKR,, WWH26, 1,\
+              84,00,48,00,02,12,05,05,C8,00,03,12,05,05,90,01,02,13,05,05,C8,00,03,13,\
+              05,05,90,01,02,14,05,05,C8,00,03,14,05,05,90,01,02,15,05,05,C8,00,03,15,\
+              05,05,90,01,02,16,05,05,C8,00,03,16,05,05,90,01,02,17,05,05,C8,00,03,17,\
+              05,05,90,01,00
+ 
+;C7E07001
+HKR,, WWH27, 1,\
+              84,00,48,00,02,12,05,05,FA,00,03,12,05,05,90,01,03,13,05,05,90,01,02,13,\
+              05,05,FA,00,03,14,05,05,90,01,02,14,05,05,FA,00,03,15,05,05,90,01,02,15,\
+              05,05,FA,00,02,16,05,05,FA,00,03,16,05,05,90,01,02,17,05,05,FA,00,03,17,\
+              05,05,90,01,00
+ 
+;7561F4C1
+HKR,, WWH28, 1,\
+              84,00,00,00,00
+ 
+;476B7303
+HKR,, WWH29, 1,\
+              84,00,7E,00,02,12,05,05,2C,01,03,12,05,05,C2,01,02,13,05,05,2C,01,03,13,\
+              05,05,C2,01,02,14,05,05,2C,01,03,14,05,05,C2,01,02,15,05,05,2C,01,03,15,\
+              05,05,C2,01,02,16,05,05,2C,01,03,16,05,05,C2,01,02,17,05,05,2C,01,03,17,\
+              05,05,C2,01,00,09,04,05,00,00,02,12,04,05,B4,00,03,12,04,05,58,02,02,13,\
+              04,05,B4,00,03,13,04,05,58,02,02,14,04,05,B4,00,03,14,04,05,58,02,02,15,\
+              04,05,B4,00,03,15,04,05,58,02,00
+ 
+;7561F4C1
+HKR,, WWH30, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH31, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH32, 1,\
+              84,00,00,00,00
+ 
+;5217DCF4
+HKR,, WWH33, 1,\
+              84,00,3C,00,03,12,05,05,52,03,02,12,05,05,90,01,02,13,05,05,90,01,03,13,\
+              05,05,52,03,02,14,05,05,90,01,03,14,05,05,52,03,02,15,05,05,90,01,03,15,\
+              05,05,52,03,00,09,05,05,02,00,00,0A,05,05,02,00,00
+ 
+;C5885F7E
+HKR,, WWH34, 1,\
+              84,00,30,00,02,12,04,05,96,00,03,12,04,05,5E,01,02,13,04,05,96,00,03,13,\
+              04,05,5E,01,02,14,04,05,96,00,03,14,04,05,5E,01,02,15,04,05,96,00,03,15,\
+              04,05,5E,01,00
+ 
+;7561F4C1
+HKR,, WWH35, 1,\
+              84,00,00,00,00
+ 
+;1451A1F3
+HKR,, WWH36, 1,\
+              84,00,1E,00,02,12,05,05,FA,00,03,12,05,05,90,01,02,13,05,05,FA,00,03,13,\
+              05,05,90,01,00,0A,05,05,02,00,00
+ 
+;F3CD3C4A
+HKR,, WWH37, 1,\
+              84,00,42,00,00,00,01,0A,52,03,00,00,02,0A,DC,05,00,0A,05,05,04,00,02,12,\
+              05,05,90,01,03,12,05,05,58,02,02,13,05,05,90,01,03,13,05,05,58,02,02,14,\
+              05,05,90,01,03,14,05,05,58,02,02,15,05,05,90,01,03,15,05,05,58,02,00
+ 
+;2C32CBAB
+HKR,, WWH38, 1,\
+              84,00,3C,00,00,09,06,05,00,00,02,12,06,05,64,00,03,12,06,05,C8,00,02,13,\
+              06,05,FA,00,03,13,06,05,5E,01,00,01,02,09,00,00,04,0A,02,09,20,03,05,0A,\
+              02,09,A4,06,04,0B,02,09,F0,0A,05,0B,02,09,80,0C,00
+ 
+;7561F4C1
+HKR,, WWH39, 1,\
+              84,00,00,00,00
+ 
+;3DF7FFE5
+HKR,, WWH40, 1,\
+              84,00,17,00,02,0B,04,05,00,00,03,0B,04,05,00,00,00,00,0A,01,01,00,09,04,\
+              05,00,00,00
+ 
+;A1EF33FE
+HKR,, WWH41, 1,\
+              84,00,A6,00,00,00,04,0C,00,00,01,0B,05,05,00,03,0B,05,05,00,00,02,0B,05,\
+              05,00,00,02,0C,05,05,00,00,03,0C,05,05,00,00,02,12,05,05,C8,00,03,12,05,\
+              05,2C,01,00,0A,05,05,04,00,02,13,05,05,C8,00,03,13,05,05,2C,01,02,14,05,\
+              05,C8,00,03,14,05,05,2C,01,02,15,05,05,C8,00,03,15,05,05,2C,01,01,16,05,\
+              05,00,02,16,05,05,00,00,03,16,05,05,00,00,02,17,05,05,00,00,03,17,05,05,\
+              00,00,02,0B,06,05,20,03,03,0B,06,05,B0,04,02,0C,06,05,20,03,03,0C,06,05,\
+              B0,04,02,12,06,05,20,03,03,12,06,05,B0,04,02,13,06,05,20,03,03,13,06,05,\
+              B0,04,00
+ 
+;7D126ACA
+HKR,, WWH42, 1,\
+              84,00,48,00,03,12,05,05,58,02,02,12,05,05,FA,00,02,13,05,05,FA,00,03,13,\
+              05,05,58,02,03,14,05,05,58,02,02,14,05,05,FA,00,02,15,05,05,FA,00,03,15,\
+              05,05,58,02,02,0B,05,05,FA,00,02,0C,05,05,FA,00,00,0A,05,05,02,00,00,09,\
+              05,05,02,00,00
+ 
+;7561F4C1
+HKR,, WWH43, 1,\
+              84,00,00,00,00
+ 
+;D57DEBB3
+HKR,, WWH44, 1,\
+              84,00,90,00,03,12,05,05,C2,01,02,12,05,05,2C,01,02,13,05,05,2C,01,03,13,\
+              05,05,C2,01,02,14,05,05,2C,01,03,14,05,05,C2,01,03,15,05,05,C2,01,02,15,\
+              05,05,2C,01,02,16,05,05,2C,01,03,16,05,05,C2,01,02,17,05,05,2C,01,03,17,\
+              05,05,C2,01,02,0B,04,05,B4,00,03,0B,04,05,30,02,02,0C,04,05,B4,00,03,0C,\
+              04,05,30,02,02,12,04,05,B4,00,03,12,04,05,30,02,02,13,04,05,B4,00,03,13,\
+              04,05,30,02,02,14,04,05,B4,00,03,14,04,05,30,02,02,15,04,05,B4,00,03,15,\
+              04,05,30,02,00
+ 
+;7561F4C1
+HKR,, WWH45, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH46, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH47, 1,\
+              84,00,00,00,00
+ 
+;9802980E
+HKR,, WWH48, 1,\
+              84,01,36,01,02,14,05,05,40,01,03,14,05,05,A9,01,02,15,05,05,40,01,03,15,\
+              05,05,A9,01,01,16,05,05,01,02,16,05,05,C8,00,03,16,05,05,26,02,02,17,05,\
+              05,C8,00,03,17,05,05,26,02,00,09,05,05,00,00,02,0B,04,05,96,00,02,0C,04,\
+              05,96,00,03,0C,04,05,3A,02,02,12,04,05,5E,01,02,13,04,05,2C,01,03,13,04,\
+              05,90,01,02,12,05,05,40,01,03,12,05,05,A9,01,02,13,05,05,40,01,03,13,05,\
+              05,A9,01,00,09,04,05,00,00,00,0A,04,05,04,00,03,12,04,05,C2,01,02,14,04,\
+              05,B4,00,03,14,04,05,18,01,02,15,04,05,E0,01,03,15,04,05,44,02,02,0B,06,\
+              05,5E,01,03,0B,06,05,C2,01,02,0C,06,05,96,00,03,0C,06,05,FA,00,02,12,06,\
+              05,5E,01,03,12,06,05,C2,01,02,13,06,05,96,00,03,13,06,05,FA,00,02,14,06,\
+              05,5E,01,03,14,06,05,C2,01,02,15,06,05,08,07,03,15,06,05,98,08,00,09,06,\
+              05,00,00,00,0A,06,05,04,00,00,00,01,0C,32,00,00,00,01,09,03,00,00,00,0A,\
+              01,0A,00,05,03,06,64,00,00,01,04,09,0A,00,02,03,04,09,0D,00,03,03,04,09,\
+              3C,00,04,03,04,09,46,00,05,03,04,09,68,01,04,04,04,09,90,01,05,04,04,09,\
+              20,03,00
+ 
+;BA73BA58
+HKR,, WWH49, 1,\
+              84,01,65,00,00,0A,05,05,04,00,02,12,05,05,C8,00,03,12,05,05,2C,01,02,13,\
+              05,05,C8,00,03,13,05,05,2C,01,02,14,05,05,C8,00,03,14,05,05,2C,01,02,15,\
+              05,05,C8,00,03,15,05,05,2C,01,02,16,05,05,C8,00,03,16,05,05,2C,01,02,17,\
+              05,05,C8,00,03,17,05,05,2C,01,01,16,05,05,01,00,07,03,06,43,00,00,08,03,\
+              06,21,00,00,05,03,06,5A,00,00
+ 
+;BB1192F1
+HKR,, WWH50, 1,\
+              84,01,94,00,00,0A,05,05,06,00,02,12,05,05,96,00,03,12,05,05,90,01,02,13,\
+              05,05,96,00,03,13,05,05,90,01,02,14,05,05,96,00,03,14,05,05,90,01,02,15,\
+              05,05,96,00,03,15,05,05,90,01,02,16,05,05,96,00,03,16,05,05,90,01,02,17,\
+              05,05,96,00,03,17,05,05,90,01,01,16,05,05,01,00,09,05,05,00,00,02,0B,04,\
+              05,96,00,03,0B,04,05,FA,00,02,0C,04,05,96,00,03,0C,04,05,FA,00,02,12,04,\
+              05,96,00,03,12,04,05,FA,00,02,13,04,05,96,00,03,13,04,05,FA,00,00,05,03,\
+              06,5A,00,00,00,0A,01,23,00
+ 
+;441623BA
+HKR,, WWH51, 1,\
+              84,01,0B,00,00,05,03,06,5A,00,00,00,0A,01,01,00
+ 
+;4BE4C982
+HKR,, WWH52, 1,\
+              84,01,B3,00,00,09,05,05,00,00,02,12,05,05,C2,01,03,12,05,05,26,02,02,13,\
+              05,05,C2,01,03,13,05,05,26,02,02,14,05,05,C2,01,03,14,05,05,26,02,02,15,\
+              05,05,C2,01,03,15,05,05,26,02,00,09,06,05,00,00,00,0A,06,05,04,00,02,12,\
+              06,05,5E,01,03,12,06,05,C2,01,02,13,06,05,A0,00,03,13,06,05,FA,00,02,14,\
+              06,05,5E,01,03,14,06,05,C2,01,02,15,06,05,08,07,03,15,06,05,60,09,00,0A,\
+              04,05,00,00,00,09,04,05,00,00,00,00,0A,01,08,00,00,01,09,03,00,00,01,04,\
+              09,0A,00,02,03,04,09,0D,00,03,03,04,09,48,00,04,03,04,09,46,00,05,03,04,\
+              09,68,01,04,04,04,09,90,01,05,04,04,09,20,03,00
+ 
+;D524FDDA
+HKR,, WWH53, 1,\
+              84,01,00,00,00
+ 
+;D524FDDA
+HKR,, WWH54, 1,\
+              84,01,00,00,00
+ 
+;0A9B0061
+HKR,, WWH55, 1,\
+              84,01,CE,00,02,12,05,05,C8,00,03,12,05,05,58,02,02,13,05,05,C8,00,03,13,\
+              05,05,58,02,02,14,05,05,C8,00,03,14,05,05,58,02,02,15,05,05,C8,00,03,15,\
+              05,05,58,02,01,16,05,05,01,02,16,05,05,C8,00,03,16,05,05,58,02,02,17,05,\
+              05,C8,00,03,17,05,05,58,02,00,09,05,05,00,00,00,0A,05,05,06,00,00,00,02,\
+              0C,00,00,00,03,0C,00,00,00,04,0C,00,00,00,00,0A,01,22,00,00,07,05,01,02,\
+              01,00,33,00,37,00,2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,01,90,01,58,02,00,0A,00,64,00,01,90,01,58,02,00,0A,00,64,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,05,06,00,00
+ 
+;222DFECA
+HKR,, WWH56, 1,\
+              84,01,53,00,02,12,05,05,5A,00,03,12,05,05,58,02,02,13,05,05,A0,00,03,13,\
+              05,05,58,02,02,14,05,05,A0,00,03,14,05,05,58,02,02,15,05,05,A0,00,03,15,\
+              05,05,58,02,01,16,05,05,01,02,16,05,05,A0,00,03,16,05,05,58,02,02,17,05,\
+              05,A0,00,03,17,05,05,58,02,00,05,03,06,69,00,00
+ 
+;A42EE9E1
+HKR,, WWH57, 1,\
+              84,01,B2,00,00,0A,05,05,06,00,02,12,05,05,C8,00,02,13,05,05,C8,00,02,14,\
+              05,05,C8,00,02,15,05,05,C8,00,01,16,05,05,01,02,16,05,05,C8,00,03,16,05,\
+              05,20,03,02,17,05,05,C8,00,03,17,05,05,20,03,00,09,05,05,00,00,00,00,04,\
+              0C,14,00,00,00,01,0C,0A,00,00,00,0A,01,22,00,00,07,05,01,02,01,00,33,00,\
+              37,00,2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,F0,00,\
+              90,01,00,0A,00,28,00,01,F0,00,90,01,00,0A,00,28,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,01,05,06,00,00
+ 
+;C43039E2
+HKR,, WWH58, 1,\
+              84,02,4B,00,00,00,01,0C,1C,00,00,00,02,0C,32,00,00,03,0C,32,00,00,04,0C,\
+              14,00,00,00,0A,01,08,00,00,01,09,03,00,00,01,04,09,0A,00,02,03,04,09,0D,\
+              00,03,03,04,09,3C,00,04,03,04,09,46,00,05,03,04,09,68,01,04,04,04,09,90,\
+              01,05,04,04,09,20,03,00
+ 
+;AF7A7DD0
+HKR,, WWH59, 1,\
+              84,02,7D,00,00,00,01,0A,14,05,00,00,02,0A,DC,05,00,00,02,0C,32,00,00,04,\
+              0C,0A,00,00,05,03,06,7D,00,00,00,07,05,01,02,01,00,33,00,37,00,2C,01,00,\
+              00,00,00,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,20,03,B0,04,00,64,00,\
+              90,01,01,20,03,B0,04,00,64,00,90,01,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,01,05,06,00,00
+ 
+;941EA972
+HKR,, WWH60, 1,\
+              84,02,4D,00,00,05,03,06,64,00,00,09,06,05,00,00,00,0A,06,05,04,00,02,12,\
+              06,05,5E,01,03,12,06,05,C2,01,02,13,06,05,96,00,03,13,06,05,FA,00,02,14,\
+              06,05,5E,01,03,14,06,05,C2,01,02,15,06,05,08,07,03,15,06,05,98,08,00,00,\
+              02,0C,00,00,00,04,0C,00,00,00
+ 
+;D8A84A2C
+HKR,, WWH61, 1,\
+              84,02,5F,00,00,09,05,05,00,00,00,0A,05,05,02,00,02,12,05,05,84,03,03,12,\
+              05,05,4C,04,02,13,05,05,3C,0F,03,13,05,05,04,10,02,0B,06,05,6C,07,03,0B,\
+              06,05,34,08,02,0C,06,05,84,03,03,0C,06,05,4C,04,02,12,06,05,6C,07,03,12,\
+              06,05,34,08,02,13,06,05,84,03,03,13,06,05,4C,04,00,00,02,0C,00,00,00,04,\
+              0C,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH62, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH63, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;D89BA597
+HKR,, WWH64, 1,\
+              84,02,3B,00,02,12,02,05,B0,04,03,12,02,05,78,05,02,13,02,05,C8,00,03,13,\
+              02,05,90,01,02,14,02,05,96,00,03,14,02,05,2C,01,02,15,02,05,90,01,03,15,\
+              02,05,58,02,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;2CD09EA2
+HKR,, WWH65, 1,\
+              84,02,53,00,00,0A,05,05,02,00,02,0B,05,05,58,02,03,0B,05,05,84,03,02,0C,\
+              05,05,58,02,03,0C,05,05,84,03,02,12,05,05,58,02,03,12,05,05,84,03,02,13,\
+              05,05,58,02,03,13,05,05,84,03,02,0D,08,05,64,00,03,0D,08,05,C8,00,03,0E,\
+              08,05,FA,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH66, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;1D1ACA9F
+HKR,, WWH67, 1,\
+              84,02,6B,00,00,00,02,0C,00,00,00,04,0C,00,00,00,00,01,05,06,00,00,00,07,\
+              05,01,02,01,00,33,00,37,00,2C,01,00,00,00,00,04,00,00,00,00,00,00,00,00,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+              00,00,00,00,01,20,03,B0,04,00,64,00,2C,01,01,20,03,B0,04,00,64,00,2C,01,\
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH68, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH69, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;2AD8A89B
+HKR,, WWH70, 1,\
+              84,02,0B,00,00,00,02,0C,00,00,00,04,0C,00,00,00
+ 
+;DFC25F07
+HKR,, WWH71, 1,\
+              84,03,00,01,00,00,01,0C,14,00,00,00,02,0C,32,00,00,03,0C,32,00,00,04,0C,\
+              0A,00,00,01,04,09,0A,00,00,03,04,09,00,0D,00,3C,00,46,00,68,01,00,04,04,\
+              09,00,00,00,00,00,90,01,20,03,00,00,0A,01,08,03,0B,06,05,B0,04,02,0C,06,\
+              05,C0,12,03,0C,06,05,1C,25,03,12,06,05,B0,04,02,13,06,05,C0,12,03,13,06,\
+              05,1C,25,04,0A,03,09,FA,00,05,0B,03,09,C2,01,04,0C,03,09,FA,00,01,0A,03,\
+              09,01,00,00,01,09,03,00,00,0A,07,05,06,00,02,12,07,05,AA,00,03,12,07,05,\
+              E6,00,02,13,07,05,AA,00,03,13,07,05,4A,01,02,14,07,05,AA,00,03,14,07,05,\
+              E6,00,02,15,07,05,AA,00,03,15,07,05,4A,01,03,16,07,05,E6,00,02,17,07,05,\
+              90,01,03,17,07,05,14,05,00,00,01,05,06,00,00,01,07,05,01,00,02,07,05,02,\
+              00,03,07,05,01,00,05,07,05,33,00,00,06,07,05,37,00,00,07,07,05,2C,01,01,\
+              12,07,05,01,01,14,07,05,01,01,16,07,05,01,02,16,07,05,AA,00,00
+ 
+;386EC71D
+HKR,, WWH72, 1,\
+              84,03,06,00,00,05,03,06,64,00,00
+ 
+;E8CCE695
+HKR,, WWH73, 1,\
+              84,03,DC,00,00,05,03,06,64,00,03,12,02,05,90,01,02,12,02,05,FA,00,02,13,\
+              02,05,FA,00,03,13,02,05,90,01,02,0B,05,05,00,00,03,0B,05,05,00,00,01,0B,\
+              05,05,00,02,0C,05,05,00,00,03,0C,05,05,00,00,02,14,02,05,10,02,03,14,02,\
+              05,18,03,02,15,02,05,10,02,03,15,02,05,18,03,02,12,05,05,FA,00,03,12,05,\
+              05,90,01,02,13,05,05,FA,00,03,13,05,05,90,01,02,14,05,05,FA,00,03,14,05,\
+              05,90,01,02,15,05,05,FA,00,03,15,05,05,90,01,00,09,04,05,00,00,01,0B,04,\
+              05,00,02,0B,04,05,00,00,03,0B,04,05,00,00,02,0C,04,05,00,00,03,0C,04,05,\
+              00,00,00,0A,04,05,04,00,02,12,04,05,64,00,03,12,04,05,FA,00,02,13,04,05,\
+              64,00,03,13,04,05,FA,00,02,14,04,05,64,00,03,14,04,05,FA,00,02,15,04,05,\
+              64,00,03,15,04,05,FA,00,00
+ 
+;5E92733F
+HKR,, WWH74, 1,\
+              84,03,30,00,02,12,02,05,A0,00,03,12,02,05,F0,00,02,13,02,05,F0,00,03,13,\
+              02,05,68,01,02,14,02,05,30,02,03,14,02,05,48,03,02,15,02,05,80,02,03,15,\
+              02,05,C0,03,00
+ 
+;BA2E8AE8
+HKR,, WWH75, 1,\
+              84,03,06,00,00,05,03,06,5A,00,00
+ 
+;2B1C5488
+HKR,, WWH76, 1,\
+              84,03,00,00,00
+ 
+;FB43CE44
+HKR,, WWH77, 1,\
+              84,03,50,00,00,00,01,05,07,00,00,01,08,05,01,00,02,08,05,02,00,03,08,05,\
+              01,00,0A,08,05,02,00,01,12,08,05,01,02,12,08,05,20,03,03,12,08,05,14,05,\
+              02,13,08,05,20,03,03,13,08,05,14,05,00,05,08,05,33,00,00,06,08,05,37,00,\
+              00,07,08,05,2C,01,00,05,03,06,5A,00,00
+ 
+;9EDC1378
+HKR,, WWH78, 1,\
+              84,08,46,00,00,0A,05,05,06,00,01,16,05,05,01,02,16,05,05,8C,00,03,16,05,\
+              05,58,02,02,17,05,05,8C,00,03,17,05,05,58,02,00,02,04,08,28,00,02,07,08,\
+              50,00,03,07,08,50,00,04,07,08,50,00,02,09,08,28,00,03,09,08,28,00,04,09,\
+              08,28,00
+ 
+;E1A054F4
+HKR,, WWH79, 1,\
+              84,08,9A,00,00,00,05,01,01,00,00,23,07,00,00,00,00,25,07,2F,00,00,01,07,\
+              05,00,00,00,03,07,1E,00,00,00,04,07,1E,00,00,00,05,07,1E,00,00,00,06,07,\
+              1E,00,02,0B,06,05,84,03,02,0C,06,05,C4,09,03,0C,06,05,1C,25,02,12,06,05,\
+              84,03,02,13,06,05,C4,09,03,13,06,05,1C,25,00,05,03,06,5A,00,00,01,02,09,\
+              00,00,04,0B,02,09,80,0C,05,0B,02,09,1C,25,05,0A,02,09,A4,06,02,12,02,05,\
+              C8,00,03,12,02,05,2C,01,02,13,02,05,96,00,03,13,02,05,20,03,02,14,02,05,\
+              C8,00,02,15,02,05,EE,02,03,0A,02,09,4B,00,00
+ 
+;6B9ADCFB
+HKR,, WWH80, 1,\
+              84,08,00,00,00
+ 
+;96DAAF45
+HKR,, WWH81, 1,\
+              84,08,6F,00,00,00,05,01,01,00,00,23,07,00,00,00,00,25,07,2F,00,00,01,07,\
+              05,00,00,00,03,07,1E,00,00,00,04,07,1E,00,00,00,05,07,1E,00,00,00,06,07,\
+              1E,00,00,00,07,07,1E,00,00,05,03,06,5A,00,00,00,0A,01,08,00,00,01,09,02,\
+              00,00,01,03,09,0A,00,02,03,03,09,0A,00,03,03,03,09,3C,00,04,03,03,09,46,\
+              00,05,03,03,09,68,01,04,04,03,09,90,01,05,04,03,09,20,03,00
+ 
+;A23023AF
+HKR,, WWH82, 1,\
+              84,08,30,00,02,0B,06,05,BC,02,03,0B,06,05,84,03,02,0C,06,05,54,0B,03,0C,\
+              06,05,10,0E,02,12,06,05,BC,02,03,12,06,05,84,03,02,13,06,05,54,0B,03,13,\
+              06,05,10,0E,00
+ 
+;6B9ADCFB
+HKR,, WWH83, 1,\
+              84,08,00,00,00
+ 
+;6B9ADCFB
+HKR,, WWH84, 1,\
+              84,08,00,00,00
+ 
+;00FF313E
+HKR,, WWH85, 1,\
+              84,08,1E,00,02,12,02,05,58,02,02,13,02,05,BC,02,02,14,02,05,96,00,03,14,\
+              02,05,2C,01,02,15,02,05,FA,00,00
+ 
+;BEDF46E5
+HKR,, WWH86, 1,\
+              84,09,F5,00,00,09,05,05,02,00,02,0B,05,05,90,01,02,0C,05,05,90,01,03,0C,\
+              05,05,58,02,02,12,05,05,90,01,03,12,05,05,58,02,02,13,05,05,90,01,03,13,\
+              05,05,58,02,00,00,01,05,05,00,00,0A,05,05,02,00,02,0B,04,05,C8,00,03,0B,\
+              04,05,2C,01,02,0C,04,05,C8,00,03,0C,04,05,2C,01,02,12,04,05,C8,00,03,12,\
+              04,05,2C,01,02,13,04,05,C8,00,03,13,04,05,2C,01,00,00,05,01,01,00,00,01,\
+              07,0A,00,00,00,03,07,3C,00,00,00,04,07,3C,00,00,00,05,07,3C,00,00,00,06,\
+              07,3C,00,00,00,07,07,3C,00,00,00,08,07,3C,00,00,00,09,07,3C,00,00,00,0A,\
+              07,3C,00,00,00,0B,07,3C,00,00,00,0C,07,3C,00,00,09,06,05,00,00,00,0A,06,\
+              05,04,00,02,12,06,05,5E,01,03,12,06,05,C2,01,02,13,06,05,96,00,03,13,06,\
+              05,FA,00,02,14,06,05,5E,01,03,14,06,05,C2,01,02,15,06,05,F0,0A,03,15,06,\
+              05,80,0C,00,00,01,0C,32,00,00
+ 
+;982341B9
+HKR,, WWH87, 1,\
+              84,09,E0,00,02,0B,04,05,C8,00,03,0B,04,05,2C,01,02,0C,04,05,C8,00,03,0C,\
+              04,05,2C,01,02,12,04,05,C8,00,03,12,04,05,2C,01,02,13,04,05,C8,00,03,13,\
+              04,05,2C,01,00,0A,05,05,02,00,02,0B,05,05,BC,02,03,0B,05,05,20,03,02,0C,\
+              05,05,BC,02,03,0C,05,05,20,03,02,12,05,05,BC,02,03,12,05,05,34,03,02,13,\
+              05,05,BC,02,00,09,05,05,02,00,00,00,05,01,01,00,00,23,07,00,00,00,00,01,\
+              07,0A,00,00,00,03,07,3C,00,00,00,04,07,3C,00,00,00,05,07,3C,00,00,00,06,\
+              07,3C,00,00,00,07,07,3C,00,00,00,08,07,3C,00,00,00,09,07,3C,00,00,00,0A,\
+              07,3C,00,00,00,0B,07,3C,00,00,00,0C,07,3C,00,00,00,0D,07,00,00,00,00,0E,\
+              07,00,00,00,00,0F,07,00,00,00,00,10,07,00,00,00,00,11,07,00,00,00,02,03,\
+              08,03,00,03,03,08,02,00,04,03,08,05,00
+ 
+;FEB2DC0C
+HKR,, WWH88, 1,\
+              84,09,06,00,00,00,01,0C,32,00,00
+ 
+;3E0B3922
+HKR,, WWH89, 1,\
+              84,0B,C9,00,00,00,01,0A,2C,01,00,00,02,0A,F4,01,00,00,03,0A,3C,00,00,00,\
+              04,0A,E8,03,00,00,01,0B,52,08,00,00,02,0B,BE,0A,00,00,03,0B,1E,00,00,00,\
+              04,0B,C8,00,00,00,05,0B,D0,07,00,00,01,09,02,00,00,02,03,09,04,00,01,0A,\
+              03,09,01,02,0A,03,09,0A,00,03,0A,03,09,4B,00,04,0A,03,09,C8,00,05,0A,03,\
+              09,58,02,04,0B,03,09,64,00,05,0B,03,09,2C,01,00,01,02,09,00,00,00,02,02,\
+              09,02,00,01,0A,02,09,01,02,0A,02,09,0D,00,03,0A,02,09,4B,00,04,0A,02,09,\
+              20,03,05,0A,02,09,B0,04,04,0B,02,09,08,07,05,0B,02,09,7C,15,04,0D,03,09,\
+              08,07,05,0D,03,09,98,08,01,0C,03,09,01,02,0C,03,09,0A,00,03,0C,03,09,4B,\
+              00,05,0C,03,09,58,02,04,0C,03,09,C8,00,00
+ 
+;AC585A5B
+HKR,, WWH90, 1,\
+              84,0B,66,00,00,00,01,0A,5E,01,00,00,02,0A,F4,01,00,00,03,0A,3C,00,00,00,\
+              04,0A,E8,03,00,00,01,0B,00,00,00,00,02,0B,BE,0A,00,00,03,0B,1E,00,00,00,\
+              04,0B,C8,00,00,00,05,0B,D0,07,02,0B,06,05,5E,01,03,0B,06,05,C2,01,02,0C,\
+              06,05,96,00,03,0C,06,05,FA,00,02,12,06,05,5E,01,03,12,06,05,C2,01,02,13,\
+              06,05,96,00,03,13,06,05,FA,00,00
+ 
+;0BB97347
+HKR,, WWH91, 1,\
+              84,0D,0F,00,00,02,0A,08,55,00,03,0A,08,55,00,04,0A,08,55,00
+ 
+;A12FA957
+HKR,, WWH92, 1,\
+              84,0D,00,00,00
+ 
+;A0344A1B
+HKR,, WWH93, 1,\
+              84,0E,08,00,02,02,03,06,87,10,00,11,00
+ 
+;4C59F625
+HKR,, WWH94, 1,\
+              84,0E,30,00,02,0B,06,05,84,03,03,0B,06,05,B0,04,02,0C,06,05,3C,0F,03,0C,\
+              06,05,04,29,02,12,06,05,84,03,03,12,06,05,B0,04,02,13,06,05,3C,0F,03,13,\
+              06,05,04,29,00
+ 
+;71550D9E
+HKR,, WWH95, 1,\
+              84,04,53,00,00,00,0A,01,01,02,12,02,05,C8,00,03,12,02,05,2C,01,02,13,02,\
+              05,C8,00,03,13,02,05,2C,01,02,14,02,05,C8,00,03,14,02,05,2C,01,02,15,02,\
+              05,C8,00,03,15,02,05,2C,01,00,02,03,08,04,00,03,03,08,04,00,04,03,08,0A,\
+              00,02,04,08,32,00,03,04,08,23,00,04,04,08,3C,00
+ 
+;1C6A3E63
+HKR,, WWH96, 1,\
+              84,05,3F,00,00,00,0A,01,08,00,02,03,08,04,00,02,02,08,02,00,00,01,09,02,\
+              00,00,01,03,09,0A,00,02,03,03,09,0A,00,03,03,03,09,3C,00,04,03,03,09,46,\
+              00,05,03,03,09,68,01,04,04,03,09,90,01,05,04,03,09,20,03,00
+ 
+;73C72891
+HKR,, WWH97, 1,\
+              84,06,00,00,00
+ 
+;D63C25E4
+HKR,, WWH98, 1,\
+              84,07,C2,00,00,00,0A,01,01,00,01,02,09,00,00,01,0A,02,09,01,04,0A,02,09,\
+              20,03,05,0A,02,09,B0,04,04,0B,02,09,F0,0A,05,0B,02,09,80,0C,04,0C,02,09,\
+              20,03,05,0C,02,09,B0,04,04,0D,02,09,C0,12,05,0D,02,09,50,14,00,02,03,09,\
+              04,00,01,0A,03,09,01,02,0A,03,09,0A,00,03,0A,03,09,4B,00,04,0A,03,09,C8,\
+              00,05,0A,03,09,58,02,04,0B,03,09,64,00,05,0B,03,09,2C,01,01,0C,03,09,01,\
+              02,0C,03,09,0A,00,03,0C,03,09,4B,00,04,0C,03,09,C8,00,05,0C,03,09,58,02,\
+              04,0D,03,09,08,07,05,0D,03,09,98,08,00,00,01,09,02,00,00,02,09,08,4B,00,\
+              03,09,08,4B,00,04,09,08,4B,00,02,0A,08,5F,00,03,0A,08,5F,00,04,0A,08,5F,\
+              00,09,03,06,20,03,00
+ 
+;81EB8518
+HKR,, WWH99, 1,\
+              84,0A,19,00,00,02,09,08,46,00,03,09,08,46,00,04,09,08,46,00,02,04,08,32,\
+              00,02,02,08,02,00
+ 
+;A0AC1AB8
+HKR,, WWH100, 1,\
+              84,0C,00,00,00
+ 
+;9175492A
+HKR,, WWH101, 1,\
+              84,0F,05,00,00,00,0A,01,01,00
+ 
+;6B9ADCFB
+HKR,, WWH102, 1,\
+              84,08,00,00,00
+ 
+;7561F4C1
+HKR,, WWH103, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH104, 1,\
+              84,00,00,00,00
+ 
+;7561F4C1
+HKR,, WWH105, 1,\
+              84,00,00,00,00
+ 
+;4CABDFFD
+HKR,, WWH106, 1,\
+              84,02,00,00,00
+ 
+;7561F4C1
+HKR,, WWH107, 1,\
+              84,00,00,00,00
+ 
+;D524FDDA
+HKR,, WWH108, 1,\
+              84,01,00,00,00
+ 
+;7561F4C1
+HKR,, WWH109, 1,\
+              84,00,00,00,00
+ 

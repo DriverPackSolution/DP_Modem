@@ -1,0 +1,235 @@
+; alcastw.inf   -- This file installs the lower (WDM) driver
+;		   for the Alcatel SpeedTouch USB modem
+; Copyright (c) 1999 Alcatel
+; $Id: alcastw.inf,v 1.15 2000/02/21 08:08:38 greg Exp $
+
+[Version]
+signature="$CHICAGO$"
+Class=SpeedTouchUSBModem
+ClassGuid={C5400281-A674-11d3-83BC-0040339A353A}
+;Class=AlcatelSpeedTouchUSBModem
+;ClassGuid={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%AvensMfg%
+DriverVer=12/08/2003, 301.0.0.12
+CatalogFile = alcstusb.cat
+
+; BEGIN Class Installer section
+;-----------------------------------------------------------------------------
+;class installer for windows 9x
+;-----------------------------------------------------------------------------
+[ClassInstall]
+CopyFiles=STClassInstall.W98.CopyFiles
+AddReg=STClassInstall.AddReg
+
+[STClassInstall.W98.CopyFiles]
+stci.dll
+
+;-----------------------------------------------------------------------------
+;class installer for windows 2000
+;-----------------------------------------------------------------------------
+[ClassInstall32]
+CopyFiles=STClassInstall.NT.CopyFiles
+AddReg=STClassInstall.AddReg
+
+[STClassInstall.NT.CopyFiles]
+stci.dll,\Driver\stci.dll
+
+;-----------------------------------------------------------------------------
+;class installer generic
+;-----------------------------------------------------------------------------
+
+[STClassInstall.AddReg]
+HKR,,,,%ClassDescription%
+HKR,,Icon,,"-20"
+HKR,,Installer32,,"STCI.dll,STClassInstaller"
+
+; END Class Installer section
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 11     ; LDID_SYS
+alcaudsl.98sys.CopyList = 11      ; LDID_SYS
+alcaudsl.NTsys.CopyList = 12
+alcaudsl.app.CopyList = 24,%PROGRAMF%\%alcaudsl_appdir%
+alcaudsl.98inf.CopyList = 17,other
+alcaudsl.mof.CopyList   = 11
+PropPages.CopyFiles             = 11                    ; system
+
+
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%alcaudsl_disk%,,,Driver
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+alcaw16.dll = 1,,
+alcaw32.dll = 1,,
+stci.dll = 1,,
+alcaudsl.sys = 1,,
+alcacr95.sys = 1,,
+alcacrnt.sys = 1,,
+;alcandwn.mof = 1,,
+alcawh95.sys = 1,,
+alcawhnt.sys = 1,,
+valcacr.vxd = 1,,
+
+; Table of Contents
+[Manufacturer]
+%AvensMfg%=Alcatel
+
+
+[Alcatel]
+%Avens.ADSL%=alcaudsl.Install,USB\VID_06b9&PID_4061&REV_0000 ;Alcatel ADSL adapter
+%Avens.ADSL.ISDN%=alcaudsl.Install,USB\VID_06b9&PID_4061&REV_0001 ;Alcatel ADSL adapter (ISDN)
+%Avens.ADSL.330%=alcaudsl.Install,USB\VID_06b9&PID_4061&REV_0200 ;Alcatel ADSL adapter 330
+%Avens.ADSL.330%=alcaudsl.Install,USB\VID_06b9&PID_4061&REV_0400 ;Alcatel ADSL adapter 330 (SACHU3)
+%Avens.ADSL.COMBO%=alcaudsl.Install,USB\VID_06b9&PID_4061&REV_0300 ;Alcatel ADSL adapter COMBO
+
+;[ControlFlags]
+;ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[ALCA.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on W95/W98
+;-----------------------------------------------------------------------------
+[alcaudsl.Install]
+DriverVer=12/08/2003, 301.0.0.12
+CopyFiles       = alcaudsl.98sys.CopyList,alcaudsl.app.CopyList,alcaudsl.98inf.CopyList,alcaudsl.mof.CopyList
+AddReg          = alcaudsl.AddReg.98,alcaudsl.AddReg
+;Ini2Reg         = alcaudsl.Ini2Reg
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[alcaudsl.Install.NT]
+CopyFiles       = alcaudsl.NTsys.CopyList,alcaudsl.app.CopyList,alcaudsl.mof.CopyList
+AddReg          = alcaudsl.AddReg.NT,alcaudsl.AddReg
+DriverVer=12/08/2003, 301.0.0.12
+;Ini2Reg         = alcaudsl.Ini2Reg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[alcaudsl.Install.NT.Services]
+AddService = alcaudsl, 0x00000002, alcaudsl.Install.AddService
+
+[alcaudsl.Install.AddService]
+DisplayName     = %alcaudsl_SvcDesc%
+ServiceType     = 1                     ;SERVICE_KERNEL_DRIVER
+StartType       = 3                     ;SERVICE_DEMAND_START
+ErrorControl    = 1                     ;SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\alcaudsl.sys
+LoadOrderGroup  = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[alcaudsl.AddReg]
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,CREnum,,ALCACR
+HKR,,EnableRxBulkStream,1, 1,0,0,0
+HKR,,nRxBulkStreamObjects,1,1,0,0,0
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (W95/98) (including how to start the driver)
+;-----------------------------------------------------------------------------
+[alcaudsl.AddReg.98]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,alcaudsl.sys
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[alcaudsl.AddReg.NT]
+HKR,,DriverDesc,,%Avens.ADSL%
+
+; Turn off driver signing policy
+HKLM,Software\Microsoft\Driver Signing,Policy,1,00,00,00,00
+;-----------------------------------------------------------------------------
+;       The WDM copy list for Win95/98 -- different because things go in
+;       different places.  Also, we probably need to rename drivers 
+;       during the install.
+;-----------------------------------------------------------------------------
+[alcaudsl.98sys.CopyList]
+alcaudsl.sys
+alcacr.sys,alcacr95.sys
+alcawh.sys,alcawh95.sys
+valcacr.vxd
+
+[alcaudsl.98inf.CopyList]
+; << nothing >>
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places (system32\drivers instead of system).
+;-----------------------------------------------------------------------------
+[alcaudsl.NTsys.CopyList]
+alcaudsl.sys
+alcacr.sys,alcacrnt.sys
+alcawh.sys,alcawhnt.sys
+
+[alcaudsl.app.CopyList]
+; reserved for future
+
+[alcaudsl.mof.CopyList]
+;alcandwn.mof
+
+[alcaudsl.Ini2Reg]
+;
+; Flags
+;  Bit  Meaning
+;
+;   0   Remove INI file entry from INI file when adding to registry if
+;       bit set
+;   1   Replace regkey if bit set
+;
+;Filename       INI Section                             INI Key Regkey  Regpath                                         Flags
+
+fonebook.ini,  Maximum simultaneous connections,       ,       HKR,    Maximum simultaneous connections                ,2
+fonebook.ini,  0000,                           ,       ,       HKR,    Phonebook\0000                                  ,2
+fonebook.ini,  0001,                           ,       ,       HKR,    Phonebook\0001                                  ,2
+fonebook.ini,  0002,                           ,       ,       HKR,    Phonebook\0002                                  ,2
+fonebook.ini,  0003,                           ,       ,       HKR,    Phonebook\0003                                  ,2
+fonebook.ini,  0004,                           ,       ,       HKR,    Phonebook\0004                                  ,2
+fonebook.ini,  0005,                           ,       ,       HKR,    Phonebook\0005                                  ,2
+fonebook.ini,  0006,                           ,       ,       HKR,    Phonebook\0006                                  ,2
+fonebook.ini,  0007,                           ,       ,       HKR,    Phonebook\0007                                  ,2
+fonebook.ini,  0008,                           ,       ,       HKR,    Phonebook\0008                                  ,2
+fonebook.ini,  0009,                           ,       ,       HKR,    Phonebook\0009                                  ,2
+
+
+[Strings]
+PROGRAMF        = "PROGRA~1"
+alcaudsl_appdir = "AlcaUdsl"
+
+ClassDescription        = "SpeedTouch USB Modem"
+
+AvensMfg="Thomson"
+Avens.ADSL="SpeedTouch ADSL Modem"
+Avens.ADSL.ISDN="SpeedTouch ADSL Modem (ISDN)"
+Avens.ADSL.330="SpeedTouch 330 ADSL Modem"
+Avens.ADSL.COMBO="SpeedTouch 500 Series"
+
+InstWBEM_InstFailed     = "Installation of Web-Based Enterpreise Management components failed. Please see the documentation for this device for instructions on manually installing the required software."
+
+alcaudsl_disk   = "SpeedTouch Installation Disk"
+alcaudsl_SvcDesc= "SpeedTouch ADSL Modem ATM Transport"
+UpperDescription = "SpeedTouch Networking Support"
+
+;*** end of file ***

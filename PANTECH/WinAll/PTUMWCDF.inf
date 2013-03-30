@@ -1,0 +1,131 @@
+;***********************************************************************************************
+;
+; Name		: PTUMWCDF.inf
+;
+; Function	: Install PANTECH CO., LTD CD Free Driver on Windows 2000/XP/VISTA
+;
+; Copyright (c) DevGuru 2002 ~ 2008
+;
+;***********************************************************************************************
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%Provider%
+DriverVer=05/17/2012,1.2.8000.0516
+CatalogFile=PTUMWCDF.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[SourceDisksNames.x86]
+1 = %DiskString%,,,\i386
+
+[SourceDisksNames.ia64]
+1 = %DiskString%,,,\ia64
+
+[SourceDisksNames.amd64]
+1 = %DiskString%,,,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+PTUMWCDF.sys = 1
+
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12                    ; system32\drivers
+
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%PTUMW%=PTUMW, NTx86, NTia64, NTamd64
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[PTUMW]
+%USB\VID_106C&PID_3B05.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B05
+%USB\VID_106C&PID_3B06.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B06
+
+[PTUMW.NTx86]
+%USB\VID_106C&PID_3B05.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B05
+%USB\VID_106C&PID_3B06.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B06
+
+[PTUMW.NTia64]
+%USB\VID_106C&PID_3B05.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B05
+%USB\VID_106C&PID_3B06.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B06
+
+[PTUMW.NTamd64]
+%USB\VID_106C&PID_3B05.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B05
+%USB\VID_106C&PID_3B06.DeviceDesc%	=	PTUMW.Install,	USB\VID_106C&PID_3B06
+
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[PTUMW.Install.nt]
+AddReg		= PTUMW.AddReg
+CopyFiles	= CopyFiles, CopyFiles.Win2K
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[PTUMW.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,PTUMWCDF.sys
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.Win2K]
+PTUMWCDF.sys
+
+
+;-----------------------------------------------------------------------------
+;  NT Services installation
+;-----------------------------------------------------------------------------
+
+[PTUMW.Install.NT.Services]
+AddService = PTUMWCDF, 0x00000002, PTUMW.Install.AddService
+
+
+[PTUMW.Install.AddService]
+DisplayName	= %PTUMW.Service.Name%
+Description	= %PTUMW.Service.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\PTUMWCDF.sys
+
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+;US English Strings
+Provider = "PANTECH CO., LTD "
+PTUMW = "PANTECH CO., LTD "
+
+DiskString = "PANTECH USB Modem V2 Installation CD Device Driver installation disk"
+
+PTUMW.Service.Name	= "PANTECH USB Modem V2 Installation CD"
+PTUMW.Service.Desc = "PANTECH USB Modem V2 Installation CD Device Driver"
+
+USB\VID_106C&PID_3B05.DeviceDesc = "PANTECH UMW190 CD-ROM"
+USB\VID_106C&PID_3B06.DeviceDesc = "PANTECH UMW185 CD-ROM"

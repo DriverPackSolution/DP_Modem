@@ -1,0 +1,212 @@
+
+;****************************************************************************
+; VVBETH.INF
+;
+;  VVB Ethernet network driver
+;
+; Copyright (c) 1999, DLINK Ltd
+;****************************************************************************
+
+[Version]
+Signature         = "$Chicago$"
+Compatible        = 1  ; Support Win98 and Win2000 for Net class installs
+Class             = Net
+ClassGUID         = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider          = %DLINK%
+
+; Driver Code Signing support (.cat files produced by Microsoft WHQL)
+CatalogFile       = vvbeth.cat
+CatalogFile.nt    = vvbethnt.cat
+
+; Versioning support (date in mm/dd/yyyy format)
+DriverVer=08/07/2002, 08.02.00.18
+
+[Manufacturer]
+%DLINK%     = DLINK
+
+[DLINK]
+; DisplayName                 Section           DeviceID
+; -----------                 -------           --------
+
+%VvbEthDeviceDesc%        =  VvbEth.ndi,      VVBUS\ETHERNET
+%VvbR1483DeviceDesc%      =  VvbR1483.ndi,    VVBUS\RFC1483
+%VvbPCGatewayDeviceDesc%  =  VvbGateway.ndi,  VVBUS\GATEWAY
+
+[ControlFlags]
+ExcludeFromSelect = VVBUS\ETHERNET
+ExcludeFromSelect = VVBUS\RFC1483
+ExcludeFromSelect = VVBUS\GATEWAY
+
+;*****************************************************************************
+; VVB family ETHERNET driver (Windows 98)
+;*****************************************************************************
+
+[VvbEth.ndi]
+AddReg    = VvbEth.ndi.AddReg, VvbEthCommon.ndi.AddReg, VvbEth.ndi.Params
+CopyFiles = VvbEth.ndi.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbEth.ndi.AddReg]
+HKR, Ndi,               DeviceID,         0, "VVBUS\ETHERNET"
+
+
+[VvbR1483.ndi]
+AddReg    = VvbR1483.ndi.AddReg, VvbEthCommon.ndi.AddReg, VvbEth.ndi.Params
+CopyFiles = VvbEth.ndi.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbR1483.ndi.AddReg]
+HKR, Ndi,               DeviceID,         0, "VVBUS\RFC1483"
+
+
+[VvbGateway.ndi]
+AddReg    = VvbGateway.ndi.AddReg, VvbEthCommon.ndi.AddReg, VvbEth.ndi.Params
+CopyFiles = VvbEth.ndi.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbGateway.ndi.AddReg]
+HKR, Ndi,               DeviceID,         0, "VVBUS\GATEWAY"
+
+
+
+[VvbEthCommon.ndi.AddReg]
+HKR, ,                  DeviceVxDs,       0, "VvbEth.sys"
+HKR, ,                  NTMPDriver,       0, "VvbEth.sys"
+HKR, ,                  DevLoader,        0, "*NDIS"
+HKR, NDIS,              LogDriverName,    0, "VVBETHERNET"
+HKR, NDIS,              MajorNdisVersion, 1, 03
+HKR, NDIS,              MinorNdisVersion, 1, 0A
+HKR, Ndi\Interfaces,    DefUpper,         0, "ndis5, ndis3"
+HKR, Ndi\Interfaces,    UpperRange,       0, "ndis5, ndis3"
+HKR, Ndi\Interfaces,    DefLower,         0, "ethernet"
+HKR, Ndi\Interfaces,    LowerRange,       0, "ethernet"
+
+[VvbEth.ndi.CopyFiles]
+vvbeth.sys
+
+
+;*****************************************************************************
+; VVB family ETHERNET driver (Windows 2000)
+;*****************************************************************************
+
+[VvbEth.ndi.NT]
+Characteristics = 0x81 ; NCF_VIRTUAL  | NCF_PHYSICAL, NCF_HAS_UI
+AddReg          = VvbEth.ndi.NT.AddReg, VvbEth.ndi.Params
+CopyFiles       = VvbEth.ndi.NT.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbEth.ndi.NT.Services]
+AddService = VVBETHERNET, 2, VvbEth.NT.Service, VvbEth.NT.EventLog
+
+
+[VvbR1483.ndi.NT]
+Characteristics = 0x81 ; NCF_VIRTUAL | NCF_PHYSICAL, NCF_HAS_UI
+AddReg          = VvbEth.ndi.NT.AddReg, VvbEth.ndi.Params
+CopyFiles       = VvbEth.ndi.NT.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbR1483.ndi.NT.Services]
+AddService = VVBETHERNET, 2, VvbEth.NT.Service, VvbEth.NT.EventLog
+
+
+[VvbGateway.ndi.NT]
+Characteristics = 0x81 ; NCF_VIRTUAL | NCF_PHYSICAL, NCF_HAS_UI
+AddReg          = VvbEth.ndi.NT.AddReg, VvbEth.ndi.Params
+CopyFiles       = VvbEth.ndi.NT.CopyFiles
+DriverVer=08/07/2002, 08.02.00.18
+
+[VvbGateway.ndi.NT.Services]
+AddService = VVBETHERNET, 2, VvbEth.NT.Service, VvbEth.NT.EventLog
+
+
+[VvbEth.ndi.NT.AddReg]
+HKR, Ndi,            Service,    0, "VVBETHERNET"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5, ndis3"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+
+[VvbEth.ndi.NT.CopyFiles]
+vvbeth.sys
+
+
+[VvbEth.NT.Service]
+DisplayName    = %VvbEth.ServiceDesc%
+ServiceType    = 1  ; SERVICE_KERNEL_DRIVER
+StartType      = 3  ; SERVICE_DEMAND_START
+ErrorControl   = 1  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vvbEth.sys
+LoadOrderGroup = NDIS
+
+[VvbEth.NT.EventLog]
+AddReg = VvbEth.NT.EventLog.AddReg
+
+[VvbEth.NT.EventLog.AddReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;*****************************************************************************
+; VvbEthernet family ETHERNET driver registry parameters
+;*****************************************************************************
+
+[VvbEth.ndi.Params]
+HKR, Ndi\params\RcvBufferPoolSize,    ParamDesc,  0, %BufferPoolSize%
+HKR, Ndi\params\RcvBufferPoolSize,    default,    0, "32"
+HKR, Ndi\params\RcvBufferPoolSize,    min,        0, "32"
+HKR, Ndi\params\RcvBufferPoolSize,    max,        0, "000000256"
+HKR, Ndi\params\RcvBufferPoolSize,    step,       0, "1"
+HKR, Ndi\params\RcvBufferPoolSize,    Base,       0, "10"
+HKR, Ndi\params\RcvBufferPoolSize,    type,       0, "int"
+
+HKR, Ndi\params\RcvPacketPoolSize,    ParamDesc,  0, %PacketPoolSize%
+HKR, Ndi\params\RcvPacketPoolSize,    default,    0, "24"
+HKR, Ndi\params\RcvPacketPoolSize,    min,        0, "24"
+HKR, Ndi\params\RcvPacketPoolSize,    max,        0, "000000128"
+HKR, Ndi\params\RcvPacketPoolSize,    step,       0, "1"
+HKR, Ndi\params\RcvPacketPoolSize,    Base,       0, "10"
+HKR, Ndi\params\RcvPacketPoolSize,    type,       0, "int"
+
+HKR, Ndi\params\CheckForHangPeriod,   ParamDesc,  0, %CheckForHangPeriod%
+HKR, Ndi\params\CheckForHangPeriod,   default,    0, "32"
+HKR, Ndi\params\CheckForHangPeriod,   min,        0, "32"
+HKR, Ndi\params\CheckForHangPeriod,   max,        0, "00000064"
+HKR, Ndi\params\CheckForHangPeriod,   step,       0, "2"
+HKR, Ndi\params\CheckForHangPeriod,   Base,       0, "10"
+HKR, Ndi\params\CheckForHangPeriod,   type,       0, "int"
+
+;*****************************************************************************
+; Files and Directories
+;*****************************************************************************
+
+[DestinationDirs]
+DefaultDestDir             = 10, system32\drivers    ; Default Destination Directory
+VvbEth.ndi.CopyFiles       = 10, system32\drivers    ; Destination Directory for win9x
+VvbEth.ndi.NT.CopyFiles    = 10, system32\drivers    ; Desination Directory for win2000 on x86
+
+[SourceDisksNames]
+1=%Disk1%,,,
+
+[SourceDisksFiles]
+vvbeth.sys=1
+
+;*****************************************************************************
+; Localised strings
+;*****************************************************************************
+
+[Strings]
+DLINK   = "DLINK"
+Disk1    = "DLINK drivers disk"
+
+VvbEthDeviceDesc       = "DLINK VVB Ethernet port"
+VvbR1483DeviceDesc     = "DLINK VVB RFC1483 encapsulated ATM port"
+VvbPCGatewayDeviceDesc = "D-LINK DSL-302G ADSL Modem"
+
+VvbEth.ServiceDesc = "DLINK Virtual Bus Ethernet driver"
+
+BufferPoolSize = "Buffer Pool Size"
+PacketPoolSize = "Packet Pool Size"
+CheckForHangPeriod = "Time period (secs) that NDIS checks for a hung adapter"
+
+;*****************************************************************************
+; End
+;*****************************************************************************

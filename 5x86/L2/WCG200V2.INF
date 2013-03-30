@@ -1,0 +1,224 @@
+; INF file for LINKSYS USB-NDIS Cable Gateway Miniport Driver for Windows 98/SE/ME & Windows 2000/XP
+;
+
+
+[Version]
+;LayoutFile=layout.inf
+Signature="$Chicago$"
+Compatible=1
+Class=Net
+ClassGUID={4d36e972-e325-11ce-bfc1-08002be10318}
+Provider=%V_LINKSYS%
+CatalogFile = WCG200V2.cat                            ;; for WHQL certified
+DriverVer=06/30/2004,1.12.00.0000
+
+[Manufacturer]
+%V_LINKSYS%=LINKSYS, NT.5.1
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_077B&PID_08C1
+
+[LINKSYS]
+%WCG200V2.DeviceDesc%=WCG200V2.ndi, USB\VID_077B&PID_08C1
+
+[LINKSYS.NT.5.1]
+%WCG200V2.DeviceDesc%=WCG200V2XP.ndi, USB\VID_077B&PID_08C1
+
+
+;*******************************************************************************
+; Win98 main sections
+
+[WCG200V2.ndi]
+AddReg          = WCG200V2.ndi.reg, WCG200V2.Params,USBCM_Uninstall.reg
+CopyFiles       = WCG200V2.Copyfiles,USBCM.Uninstall
+
+
+;*******************************************************************************
+; NT main sections
+
+[WCG200V2.ndi.NT]
+AddReg          = WCG200V2.NT.reg, WCG200V2.Params,USBCM_Uninstall.reg
+CopyFiles       = WCG200V2.NT.CopyFiles,USBCM.Uninstall
+Characteristics = 0x84
+BusType         = 15
+
+[WCG200V2.ndi.NT.Services]
+AddService      = WCG200V2, 2, WCG200V2.Service, WCG200V2.EventLog
+
+;*******************************************************************************
+; XP main sections
+
+[WCG200V2XP.ndi.NT]
+AddReg          = WCG200V2.NT.reg, WCG200V2.Params,USBCM_Uninstall.reg
+CopyFiles       = WCG200V2.XP.CopyFiles,USBCM.Uninstall
+Characteristics = 0x84
+BusType         = 15
+
+[WCG200V2XP.ndi.NT.Services]
+AddService      = WCG200V2XP, 2, WCG200V2XP.Service, WCG200V2.EventLog
+
+
+
+;*******************************************************************************
+; Windows 98 section
+;*******************************************************************************
+
+[WCG200V2.ndi.reg]
+HKR, Ndi, DeviceId, 0,"USB\VID_077B&PID_08C1"
+HKR,,DevLoader,0,"*ndis"
+HKR,,DeviceVxDs,0,"WCG200V2.sys"
+HKR,,EnumPropPages,0,"netdi.dll,EnumPropPages"
+
+HKR,,AdapterName,,WCG200V2
+HKR,Ndi,CardType,,"PNP"
+
+; NDIS info
+HKR,NDIS,LogDriverName,0,"WCG200V2"
+HKR,NDIS,MajorNdisVersion,1,03
+HKR,NDIS,MinorNdisVersion,1,0a
+
+; Interfaces
+HKR,Ndi\Interfaces,DefUpper,0,"ndis3"
+HKR,Ndi\Interfaces,DefLower,0,"ethernet"
+HKR,Ndi\Interfaces,UpperRange,0,"ndis3"
+HKR,Ndi\Interfaces,LowerRange,0,"ethernet"
+
+; Install sections
+HKR,Ndi\Install,ndis3,,"cme.install"
+HKR,Ndi,HelpText,,"Linksys WCG200 ver. 2 Wireless-G Cable Gateway"
+
+
+;*******************************************************************************
+; Driver parameters
+;*******************************************************************************
+
+[WCG200V2.Params]
+
+HKR, Ndi\params\NumRxBuffers,ParamDesc,0, "NumRxBuffers"
+HKR, Ndi\params\NumRxBuffers,default,  0, "32"
+HKR, Ndi\params\NumRxBuffers,min,      0, "1"
+HKR, Ndi\params\NumRxBuffers,max,      0, "00001024"
+HKR, Ndi\params\NumRxBuffers,step,     0, "1"
+HKR, Ndi\params\NumRxBuffers,Base,     0, "10"
+HKR, Ndi\params\NumRxBuffers,type,     0, "int"
+
+HKR, Ndi\params\NumTxBuffers,ParamDesc,0, "NumTxBuffers"
+HKR, Ndi\params\NumTxBuffers,default,  0, "32"
+HKR, Ndi\params\NumTxBuffers,min,      0, "1"
+HKR, Ndi\params\NumTxBuffers,max,      0, "00001024"
+HKR, Ndi\params\NumTxBuffers,step,     0, "1"
+HKR, Ndi\params\NumTxBuffers,Base,     0, "10"
+HKR, Ndi\params\NumTxBuffers,type,     0, "int"
+
+;*******************************************************************************
+; Install section for OSR2 and Windows 98
+;*******************************************************************************
+
+;[cme.install]
+;CopyFiles = WCG200V2.CopyFiles
+
+[WCG200V2.CopyFiles]
+WCG200V2.sys,,,2
+
+[USBCM.Uninstall]
+;UNWCG200V2.EXE
+
+
+;*******************************************************************************
+; Install section for Windows NT 5
+;*******************************************************************************
+
+;-------------------------------------------------------------------------------
+; LINKSYS NDIS-USB Cable Gateway Service and Driver
+;
+[WCG200V2.NT.reg]
+HKR, Ndi,               Service,    0, "WCG200V2"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+[WCG200V2.Service]
+DisplayName     = %WCG200V2.DeviceDesc%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\WCG200V2.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+
+;*******************************************************************************
+; Install section for Windows XP
+;*******************************************************************************
+
+[WCG200V2XP.Service]
+DisplayName     = %WCG200V2.DeviceDesc%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\WCG200V2XP.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+
+
+[WCG200V2.EventLog]
+AddReg = WCG200V2.AddEventLog.reg
+
+[WCG200V2.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+
+
+[WCG200V2.NT.CopyFiles]
+WCG200V2.sys,,,2
+
+[WCG200V2.XP.CopyFiles]
+WCG200V2XP.sys,,,2
+
+
+;-------------------------------------------------
+[USBCM_Uninstall.reg]
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%CM_String%",DisplayName,,"%CM_Uninstall%"
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%CM_String%",UninstallString,,"UNWCG200V2.EXE"
+
+;*******************************************************************************
+; Destination directories
+;*******************************************************************************
+[DestinationDirs]
+USBCM.Uninstall= 10
+WCG200V2.CopyFiles = 11
+WCG200V2.NT.CopyFiles = 12
+WCG200V2.XP.CopyFiles = 12
+DefaultDestDir  = 11 ; LDID_SYS
+
+[SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+;50="Driver Diskette",, 0
+1=%DisketteName%,,,
+
+[SourceDisksFiles]
+;<file> = <cabinet number>,<subdir>,<filename>,<size>
+;Note: File is not in a cabinet if cab# is 0
+WCG200V2.sys   = 1
+WCG200V2XP.sys = 1
+;UNWCG200V2.EXE   = 1
+
+; Local Strings
+; Provideer
+[strings]
+V_LINKSYS="Cisco-Linksys, LLC"
+
+;;source Disk name 
+DisketteName= "WCG200 ver. 2 USB Driver"
+
+; Devices
+WCG200V2.DeviceDesc="Linksys WCG200 ver. 2 Wireless-G Cable Gateway"
+
+;;Uninstall 
+CM_String="Linksys WCG200 Uninstall"
+CM_Uninstall="Linksys WCG200 ver. 2 Wireless-G Cable Gateway"

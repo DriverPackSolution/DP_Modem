@@ -1,0 +1,79 @@
+;**************************************************************
+;  Copyright (c) ZyXEL Communications Corp. 2002
+;  Zyport.inf -- ZyXEL Omni 56K DUO/NEO Modem Ports INF(2K)
+;  version 1.00 -- Last revised date: 03/20/2002
+;**************************************************************
+
+[Version]
+signature="$CHICAGO$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+provider=%Prov%
+LayoutFile=LAYOUT.INF
+DriverVer=03/20/2002,1.00
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%MfgName%=ZyXEL
+
+[ZyXEL]
+%ZYUSBPORT.DeviceDesc%=USBPort, ZYXELPORT\OMNIV90USB
+
+[DestinationDirs]
+USBPort.NT.CopyList = 10, system32\drivers
+
+
+[SourceDisksNames]
+1=%DriverDisk%,,1
+
+[USBPort.NT]
+CopyFiles=USBPort.NT.CopyList
+AddReg=USBPort.AddReg, USBPort.NT.AddReg
+SyssetupPnPFlags = 1
+
+[USBPort.NT.HW]
+AddReg=USBPort.NT.HW.AddReg
+
+[USBPort.AddReg]
+HKR,,PortSubClass,1,01
+
+[USBPort.NT.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[USBPort.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"ZYUSENUM"
+
+[USBPort.NT.Services]
+Addservice = ZYUSENUM, 2, USBSerenum.NT.AddService
+Addservice = ZYUSBSER, 2, USBPort.NT.AddService
+
+[USBPort.NT.AddService]
+DisplayName    = %USBPort.SvcDesc%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\ZYUSBSER.SYS
+LoadOrderGroup=Extended base
+
+[USBSerenum.NT.AddService]
+DisplayName    = %USBSerenum.SvcDesc%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\ZYUSENUM.SYS
+LoadOrderGroup=Extended base
+
+
+[USBPort.NT.CopyList]
+;ZYUSBSER.SYS
+;ZYUSENUM.SYS
+
+[Strings]
+Prov="ZyXEL Communications Corporation"
+MfgName="ZyXEL Communications Corporation"
+DriverDisk="ZyXEL omni V90 USB Modem"
+ZYUSBPORT.DeviceDesc = "USB COM Port"
+USBPort.SvcDesc = "USB COM Port DUO"
+USBSerenum.SvcDesc = "USB COM Port Enumerator DUO"

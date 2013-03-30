@@ -1,0 +1,8 @@
+Title: Communications: Conexant D110,HDA,MDC,v.92,modem Driver
+Version    : A05
+OEM name   : Conexant
+OEM Version: Drv7.38.0xp
+Computers  : DXC061, MXC051, MXG061, MXP061, MXC062; Inspiron: MXC061, 1501, MP061, MM061, ME051, B120; Latitude: 120L , D820, D520, D620, 131L, D420; Precision: M65, M90
+OSes       : Windows XP Home Edition,Windows XP Media Center Edition,Windows XP Professional
+Languages  : Brazilian Portuguese, Chinese-S, Chinese-T, English, French, German, Italian, Japanese, Korean, Polish, Russian, Swedish, Spanish
+Created    : Thursday, November 02, 2006

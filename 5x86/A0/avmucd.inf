@@ -1,0 +1,66 @@
+[Version]
+Signature="$Windows 95$"
+Class=AVMUCD
+Provider=%V_AVM%
+ClassGuid={8BB03D9A-A2FF-4acc-8357-CAB72C2E55AE}
+DriverVer=02/01/2005, 1.0
+
+[Strings]
+AVMUNETCDROM        = "AVM FRITZ!Box CD-ROM"           
+SourceDisk          = "AVM FRITZ!Box Installation Disc"
+V_AVM               = "AVM GmbH"
+
+[ClassInstall]
+AddReg=Class98
+
+[Class98]
+HKR,,Icon,,"0"
+HKR,,NoDisplayClass,,"1"
+HKR,,NoSetupUI,,"1"
+HKR,,Class,,AVMUCD
+
+[Manufacturer]
+%V_AVM%         = AVMDevices
+
+[AVMDevices]
+%AVMUNETCDROM%      = AVMUCD, USB\VID_057C&PID_3AFF
+
+[AVMUCD.NT]
+;Nichts
+
+[AVMUCD]
+AddReg              = AVMUCD_AddReg_98
+BusType             = 15
+Characteristics     = 0x4
+LogConfig           = AVMUCD_LogConfig   
+CopyFiles           = AVMUCD_CopyFile_98,AVMUCD_CopyInf_98
+
+
+[AVMUCD_AddReg_98]
+HKR,,DevLoader,,*ntkern 
+HKR,,NTMPDriver,,avmucd9x.sys
+
+[AVMUCD_LogConfig]
+ConfigPriority=DESIRED
+
+[AVMUCD_CopyFile_98]
+avmucd9x.sys,,,16
+avmunet9.sys,,,16
+
+[AVMUCD_CopyInf_98]
+avmunetx.inf,avmunetx.in_,,16
+
+[DestinationDirs]
+; Kopieren
+AVMUCD_CopyFile_98 = 11
+AVMUCD_CopyInf_98  = 17
+
+[SourceDisksFiles]
+avmunet9.sys    =   1
+avmucd9x.sys       =   1
+avmunetx.in_    =   1 
+
+[SourceDisksNames]
+1 = %SourceDisk%, "",
+
+

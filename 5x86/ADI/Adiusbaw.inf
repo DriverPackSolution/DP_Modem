@@ -1,0 +1,710 @@
+;-------------------------------------------------------------------------------
+;
+; ANALOG DEVICES PROPERTIES               
+;                                
+;       Copyright © 1999 ADI Corporation. All Rights Reserved.
+;
+;
+;
+; ABSTRACT:
+;       Windows 98/NT5 INF file for the USB ADSL Modem
+;
+;-------------------------------------------------------------------------------
+[version]
+Signature   = "$Chicago$"
+;add this param to make this inf file compatible with 98 and 2000, peter
+Compatible  = 1
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %ADI%
+DriverVer   = 03/02/2004, 2.2.10.20
+CatalogFile = adiusbaw.cat
+
+[Manufacturer]
+%ADI%     = ADI
+
+[ControlFlags]
+ExcludeFromSelect =USB\VID_1110&PID_9031
+ExcludeFromSelect =USB\VID_1110&PID_900F
+ExcludeFromSelect =USB\VID_1110&PID_9021
+ExcludeFromSelect =USB\VID_1110&PID_9023
+
+[ADI]
+;
+; DisplayName           Section       DeviceID
+; -----------           -------       --------
+%adiusbaw.DeviceDesc%  = usbawEL.ndi,  USB\VID_1110&PID_900F   
+%adiusbaw.DeviceDesc%  = usbawE2.ndi,  USB\VID_1110&PID_9021
+%adiusbaw.DeviceDesc%  = usbawE2C.ndi,  USB\VID_1110&PID_9023   
+%adiusbaw.DeviceDesc%  = usbawE3.ndi,  USB\VID_1110&PID_9031
+
+[usbawE3.ndi.NT]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = adiusbaw.nt.reg,Common.reg,adiusbaw.tapi.reg
+Copyfiles =adiusbaw.nt.CopyFiles,adiusbaw.nt.sys.CopyFiles,adiusbaw.nt.fpga.CopyFiles
+UpdateInis=adiusb.E3.INISection
+
+[usbawE3.ndi.NT.Services]
+AddService = adiusbaw, 2, adiusbaw.Service, common.EventLog
+
+[usbawE3.ndi.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=adi.CopyFiles.CoInstaller
+
+[usbawEL.ndi.NT]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = adiusbaw.nt.reg,Common.reg,adiusbaw.tapi.reg
+Copyfiles =adiusbaw.nt.CopyFiles,adiusbaw.nt.sys.CopyFiles,adiusbaw.nt.fpga.CopyFiles
+UpdateInis=adiusb.EL.INISection
+
+[usbawEL.ndi.NT.Services]
+AddService = adiusbaw, 2, adiusbaw.Service, common.EventLog
+
+[usbawEL.ndi.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=adi.CopyFiles.CoInstaller
+
+[usbawE2.ndi.NT]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = adiusbaw.nt.reg,Common.reg,adiusbaw.tapi.reg
+Copyfiles =adiusbaw.nt.CopyFiles,adiusbaw.nt.sys.CopyFiles,adiusbaw.nt.fpga.CopyFiles
+UpdateInis=adiusb.E2.INISection
+
+[usbawE2.ndi.NT.Services]
+AddService = adiusbaw, 2, adiusbaw.Service, common.EventLog
+
+[usbawE2.ndi.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=adi.CopyFiles.CoInstaller
+
+[usbawE2C.ndi.NT]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = adiusbaw.nt.reg,Common.reg,adiusbaw.tapi.reg
+Copyfiles =adiusbaw.nt.CopyFiles,adiusbaw.nt.sys.CopyFiles,adiusbaw.nt.fpga.CopyFiles
+UpdateInis=adiusb.E2C.INISection
+
+[usbawE2C.ndi.NT.Services]
+AddService = adiusbaw, 2, adiusbaw.Service, common.EventLog
+
+[usbawE2C.ndi.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=adi.CopyFiles.CoInstaller
+
+
+;
+; adiusbaw NT specific
+;
+[adiusbaw.nt.reg]
+HKR, Ndi,                       Service,    0, "adiusbaw"
+HKR, Ndi\Interfaces,            DefUpper,   0, "ndiswan"
+HKR, Ndi\Interfaces,            DefLower,   0, "isdn"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndiswan"
+HKR, Ndi\Interfaces,            LowerRange, 0, "isdn"
+
+
+
+[adiusbaw.Service]
+DisplayName     = %adiusbaw.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\adiusbaw.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+
+; Set TCP Window Size to 64K
+HKLM, System\CurrentControlSet\Services\Tcpip\Parameters, TcpWindowSize, 0x00010001, 65535
+
+
+
+[adi.CopyFiles.CoInstaller]
+AdADIx2K.dll
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"AdADIx2K.dll,ADIxCoInstaller"
+
+
+
+;
+; Windows 9X specific entry
+;
+[usbawE3.ndi]
+AddReg    = usbawE3.id.reg, Common.reg, adiusbaw.win.reg, adiusbaw.tapi.reg
+;JA-WHQL DeviceID  = "USB\VID_1110&PID_9031"
+;JA-WHQL LogConfig = DefaultConfig
+CopyFiles = adiusbaw.win.sys.CopyFiles,adiusbaw.win.CopyFiles, adiusbaw.fpga.CopyFiles
+;DelFiles = adiusbaw.del
+UpdateInis=adiusb.E3.INISection
+
+[usbawEL.ndi]
+AddReg    = usbawEL.id.reg, Common.reg, adiusbaw.win.reg, adiusbaw.tapi.reg
+;JA-WHQL DeviceID  = "USB\VID_1110&PID_900F"
+;JA-WHQL LogConfig = DefaultConfig
+CopyFiles = adiusbaw.win.sys.CopyFiles,adiusbaw.win.CopyFiles, adiusbaw.fpga.CopyFiles
+;DelFiles = adiusbaw.del
+UpdateInis=adiusb.EL.INISection
+
+[usbawE2.ndi]
+AddReg    = usbawE2.id.reg, Common.reg, adiusbaw.win.reg, adiusbaw.tapi.reg
+;JA-WHQL DeviceID  = "USB\VID_1110&PID_9021"
+;JA-WHQL LogConfig = DefaultConfig
+CopyFiles = adiusbaw.win.sys.CopyFiles,adiusbaw.win.CopyFiles, adiusbaw.fpga.CopyFiles
+;DelFiles = adiusbaw.del
+UpdateInis=adiusb.E2.INISection
+
+[usbawE2C.ndi]
+AddReg    = usbawE2C.id.reg, Common.reg, adiusbaw.win.reg, adiusbaw.tapi.reg
+;JA-WHQL DeviceID  = "USB\VID_1110&PID_9023"
+;JA-WHQL LogConfig = DefaultConfig
+CopyFiles = adiusbaw.win.sys.CopyFiles,adiusbaw.win.CopyFiles, adiusbaw.fpga.CopyFiles
+;DelFiles = adiusbaw.del
+UpdateInis=adiusb.E2C.INISection
+
+
+;
+
+;
+; Win9x id registry sections
+; These are not needed by NT
+
+
+[usbawE3.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_1110&PID_9031"
+
+[usbawEL.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_1110&PID_900F"
+
+[usbawE2.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_1110&PID_9021"
+
+[usbawE2C.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_1110&PID_9023"
+
+
+; adiusbaw Win9x specific
+;
+[adiusbaw.win.reg]
+
+HKR,Ndi\Remove,,,"adiusbaw.Remove"
+HKR,Ndi,NdiInstaller,,"AdADIx16.DLL,ADIxNdiProc"
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "adiusbaw.sys"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+
+; memphis appears to not support the ndis5 upper range, so use ndis3
+HKR, Ndi\Interfaces,DefUpper,           0, "ndiswan"
+HKR, Ndi\Interfaces,DefLower,           0, "isdn"
+HKR, Ndi\Interfaces,UpperRange,         0, "ndiswan"
+HKR, Ndi\Interfaces,LowerRange,         0, "isdn"
+
+HKR, NDIS,          LogDriverName,      0, "adiusbaw"
+HKR, NDIS,          MajorNdisVersion,   1, 03
+HKR, NDIS,          MinorNdisVersion,   1, 0A
+
+
+; Set TCP Window Size to 64K
+HKLM, System\CurrentControlSet\Services\VxD\MSTCP, DefaultRcvWindow, 0, 65535
+
+
+;Required Components
+HKR,Ndi\Compatibility,RequireAll,0,"*PNP8387,NDISWAN"
+
+; Prevent Area Code dialog on clean installation
+HKU, .Default\RemoteAccess,AreaCode,02,"111"
+HKU, .Default\RemoteAccess,wizard,01,80,00,00,00
+HKCU, RemoteAccess,AreaCode,02,"111"
+HKCU, RemoteAccess,wizard,01,80,00,00,00
+HKU, Administrator\RemoteAccess,AreaCode,02,"111"
+HKU, Administrator\RemoteAccess,wizard,01,80,00,00,00
+
+
+;
+; Common registry entries
+;
+
+
+
+[Common.reg]
+HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Run, adiras, 0, "adiras.exe"
+
+HKR, ,   AdvConfig,0,"0"
+
+HKR, ,   Rfc2364Vpi,  0, "0"
+;HKR, Ndi\params\Rfc2364Vpi,   ParamDesc,  0, %Rfc2364Vpi%
+;HKR, Ndi\params\Rfc2364Vpi,   default,    0, "0"
+;HKR, Ndi\params\Rfc2364Vpi,   min,        0, "0"
+;HKR, Ndi\params\Rfc2364Vpi,   max,        0, "255"
+;HKR, Ndi\params\Rfc2364Vpi,   step,       0, "1"
+;HKR, Ndi\params\Rfc2364Vpi,   base,       0, "10"
+;HKR, Ndi\params\Rfc2364Vpi,   type,       0, "int"
+
+HKR, ,   Rfc2364Vci,  0, "32"
+;HKR, Ndi\params\Rfc2364Vci,   ParamDesc,  0, %Rfc2364Vci%
+;HKR, Ndi\params\Rfc2364Vci,   default,    0, "32"
+;HKR, Ndi\params\Rfc2364Vci,   min,        0, "0"
+;HKR, Ndi\params\Rfc2364Vci,   max,        0, "00065535"
+;HKR, Ndi\params\Rfc2364Vci,   step,       0, "1"
+;HKR, Ndi\params\Rfc2364Vci,   Base,       0, "10"
+;HKR, Ndi\params\Rfc2364Vci,   type,       0, "int"
+
+HKR, Ndi\params\OPTN0,   ParamDesc,  0, %OPTION0%
+HKR, Ndi\params\OPTN0,   default,    0, "8002C444"
+HKR, Ndi\params\OPTN0,   min,        0, "0"
+HKR, Ndi\params\OPTN0,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN0,   step,       0, "1"
+HKR, Ndi\params\OPTN0,   Base,       0, "16"
+HKR, Ndi\params\OPTN0,   type,       0, "dword"
+
+HKR, Ndi\params\OPTN2,   ParamDesc,  0, %OPTION2%
+HKR, Ndi\params\OPTN2,   default,    0, "0"
+HKR, Ndi\params\OPTN2,   min,        0, "0"
+HKR, Ndi\params\OPTN2,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN2,   step,       0, "1"
+HKR, Ndi\params\OPTN2,   Base,       0, "16"
+HKR, Ndi\params\OPTN2,   type,       0, "dword"
+
+;for ISDN
+HKR, Ndi\params\OPTN3,   ParamDesc,  0, %OPTION3%
+HKR, Ndi\params\OPTN3,   default,    0, "00000000"
+HKR, Ndi\params\OPTN3,   min,        0, "0"
+HKR, Ndi\params\OPTN3,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN3,   step,       0, "1"
+HKR, Ndi\params\OPTN3,   Base,       0, "16"
+HKR, Ndi\params\OPTN3,   type,       0, "dword"
+
+HKR, Ndi\params\OPTN4,   ParamDesc,  0, %OPTION4%
+HKR, Ndi\params\OPTN4,   default,    0, "0"
+HKR, Ndi\params\OPTN4,   min,        0, "0"
+HKR, Ndi\params\OPTN4,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN4,   step,       0, "1"
+HKR, Ndi\params\OPTN4,   Base,       0, "16"
+HKR, Ndi\params\OPTN4,   type,       0, "dword"
+
+
+HKR, Ndi\params\OPTN5,   ParamDesc,  0, %OPTION5%
+HKR, Ndi\params\OPTN5,   default,    0, "0"
+HKR, Ndi\params\OPTN5,   min,        0, "0"
+HKR, Ndi\params\OPTN5,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN5,   step,       0, "1"
+HKR, Ndi\params\OPTN5,   Base,       0, "16"
+HKR, Ndi\params\OPTN5,   type,       0, "dword"
+
+HKR, Ndi\params\OPTN6,   ParamDesc,  0, "%OPTION6%"
+HKR, Ndi\params\OPTN6,   default,    0, "00000000"
+HKR, Ndi\params\OPTN6,   min,        0, "0"
+HKR, Ndi\params\OPTN6,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN6,   step,       0, "1"
+HKR, Ndi\params\OPTN6,   Base,       0, "16"
+HKR, Ndi\params\OPTN6,   type,       0, "dword"
+
+
+HKR, Ndi\params\OPTN7,   ParamDesc,  0, %OPTION7%
+HKR, Ndi\params\OPTN7,   default,    0, "0"
+HKR, Ndi\params\OPTN7,   min,        0, "0"
+HKR, Ndi\params\OPTN7,   max,        0, "ffffffff"
+HKR, Ndi\params\OPTN7,   step,       0, "1"
+HKR, Ndi\params\OPTN7,   Base,       0, "16"
+HKR, Ndi\params\OPTN7,   type,       0, "dword"
+
+HKR, Ndi\params\PFCL1,   ParamDesc,  0, %PFCL1%
+HKR, Ndi\params\PFCL1,   default,    0, "0"
+HKR, Ndi\params\PFCL1,   min,        0, "1"
+HKR, Ndi\params\PFCL1,   max,        0, "ffffffff"
+HKR, Ndi\params\PFCL1,   step,       0, "1"
+HKR, Ndi\params\PFCL1,   Base,       0, "16"
+HKR, Ndi\params\PFCL1,   type,       0, "dword"
+
+
+HKR, ,   Rfc2364Mode,  0, "1"
+;HKR, Ndi\params\Rfc2364Mode,   ParamDesc,  0, %Rfc2364Mode%
+;HKR, Ndi\params\Rfc2364Mode,   default,    0, "1"
+;HKR, Ndi\params\Rfc2364Mode,   min,        0, "0"
+;HKR, Ndi\params\Rfc2364Mode,   max,        0, "8"
+;HKR, Ndi\params\Rfc2364Mode,   step,       0, "1"
+;HKR, Ndi\params\Rfc2364Mode,   Base,       0, "10"
+;HKR, Ndi\params\Rfc2364Mode,   type,       0, "int"
+
+HKR, Ndi\params\DMTTime,   ParamDesc,  0, %DMTTime%
+HKR, Ndi\params\DMTTime,   default,    0, "100"
+HKR, Ndi\params\DMTTime,   min,        0, "10"
+HKR, Ndi\params\DMTTime,   max,        0, "300"
+HKR, Ndi\params\DMTTime,   step,       0, "1"
+HKR, Ndi\params\DMTTime,   Base,       0, "10"
+HKR, Ndi\params\DMTTime,   type,       0, "int"
+
+HKR, Ndi\params\TxBufferCount,   ParamDesc,  0, %TxBufferCount%
+HKR, Ndi\params\TxBufferCount,   default,    0, "64"
+HKR, Ndi\params\TxBufferCount,   min,        0, "1"
+HKR, Ndi\params\TxBufferCount,   max,        0, "1024"
+HKR, Ndi\params\TxBufferCount,   step,       0, "1"
+HKR, Ndi\params\TxBufferCount,   Base,       0, "10"
+HKR, Ndi\params\TxBufferCount,   type,       0, "int"
+
+HKR, Ndi\params\RxBufferCount,   ParamDesc,  0, %RxBufferCount%
+HKR, Ndi\params\RxBufferCount,   default,    0, "128"
+HKR, Ndi\params\RxBufferCount,   min,        0, "1"
+HKR, Ndi\params\RxBufferCount,   max,        0, "1024"
+HKR, Ndi\params\RxBufferCount,   step,       0, "1"
+HKR, Ndi\params\RxBufferCount,   Base,       0, "10"
+HKR, Ndi\params\RxBufferCount,   type,       0, "int"
+HKR, , LineType,  0, "10"
+;HKR, Ndi\params\LineType,   ParamDesc,  0, %LineType%
+;HKR, Ndi\params\LineType,   default,    0, "2"
+;HKR, Ndi\params\LineType,   min,        0, "0"
+;HKR, Ndi\params\LineType,   max,        0, "10"
+;HKR, Ndi\params\LineType,   step,       0, "1"
+;HKR, Ndi\params\LineType,   Base,       0, "10"
+;HKR, Ndi\params\LineType,   type,       0, "int"
+
+
+HKR, Ndi\params\OutChannel,   ParamDesc,  0, %OutChannel%
+HKR, Ndi\params\OutChannel,   default,    0, "1"
+HKR, Ndi\params\OutChannel,   min,        0, "0"
+HKR, Ndi\params\OutChannel,   max,        0, "1"
+HKR, Ndi\params\OutChannel,   step,       0, "1"
+HKR, Ndi\params\OutChannel,   Base,       0, "10"
+HKR, Ndi\params\OutChannel,   type,       0, "int"
+HKR, , IDMABoot,  0, "1"
+;HKR, Ndi\params\IDMABoot,   ParamDesc,  0, %IDMABoot%
+;HKR, Ndi\params\IDMABoot,   default,    0, "0"
+;HKR, Ndi\params\IDMABoot,   min,        0, "0"
+;HKR, Ndi\params\IDMABoot,   max,        0, "1"
+;HKR, Ndi\params\IDMABoot,   step,       0, "1"
+;HKR, Ndi\params\IDMABoot,   Base,       0, "10"
+
+HKR, Ndi\params\DebugLevel,   ParamDesc,  0, %DebugLevel%
+HKR, Ndi\params\DebugLevel,   default,    0, "10"
+HKR, Ndi\params\DebugLevel,   min,        0, "0"
+HKR, Ndi\params\DebugLevel,   max,        0, "FFFFFFFF"
+HKR, Ndi\params\DebugLevel,   step,       0, "1"
+HKR, Ndi\params\DebugLevel,   Base,       0, "16"
+HKR, Ndi\params\DebugLevel,   type,       0, "dword"
+
+HKR, Ndi\params\DebugModule,   ParamDesc,  0, %DebugModule%
+HKR, Ndi\params\DebugModule,   default,    0, "FFFFFFFF"
+HKR, Ndi\params\DebugModule,   min,        0, "0"
+HKR, Ndi\params\DebugModule,   max,        0, "FFFFFFFF"
+HKR, Ndi\params\DebugModule,   step,       0, "1"
+HKR, Ndi\params\DebugModule,   Base,       0, "16"
+HKR, Ndi\params\DebugModule,   type,       0, "dword"
+
+HKR, Ndi\params\RXFF03,   ParamDesc,  0, %RXFF03%
+HKR, Ndi\params\RXFF03,   default,    0, "0"
+HKR, Ndi\params\RXFF03,   min,        0, "0"
+HKR, Ndi\params\RXFF03,   max,        0, "2"
+HKR, Ndi\params\RXFF03,   step,       0, "1"
+HKR, Ndi\params\RXFF03,   Base,       0, "10"
+HKR, Ndi\params\RXFF03,   type,       0, "int"
+
+HKR, Ndi\params\TXFF03,   ParamDesc,  0, %TXFF03%
+HKR, Ndi\params\TXFF03,   default,    0, "1"
+HKR, Ndi\params\TXFF03,   min,        0, "0"
+HKR, Ndi\params\TXFF03,   max,        0, "2"
+HKR, Ndi\params\TXFF03,   step,       0, "1"
+HKR, Ndi\params\TXFF03,   Base,       0, "10"
+HKR, Ndi\params\TXFF03,   type,       0, "int"
+;
+
+HKR, Ndi\params\ADPT2,   ParamDesc,  0, %ADPT2%
+HKR, Ndi\params\ADPT2,   default,    0, "0"
+HKR, Ndi\params\ADPT2,   min,        0, "0"
+HKR, Ndi\params\ADPT2,   max,        0, "ffffffff"
+HKR, Ndi\params\ADPT2,   step,       0, "1"
+HKR, Ndi\params\ADPT2,   Base,       0, "16"
+HKR, Ndi\params\ADPT2,   type,       0, "dword"
+
+HKR, Ndi\params\MASK8,   ParamDesc,  0, %MASK8%
+HKR, Ndi\params\MASK8,   default,    0, "0"
+HKR, Ndi\params\MASK8,   min,        0, "0"
+HKR, Ndi\params\MASK8,   max,        0, "ffffffff"
+HKR, Ndi\params\MASK8,   step,       0, "1"
+HKR, Ndi\params\MASK8,   Base,       0, "16"
+HKR, Ndi\params\MASK8,   type,       0, "dword"
+
+HKR, Ndi\params\INFO9,   ParamDesc,  0, %INFO9%
+HKR, Ndi\params\INFO9,   default,    0, "0"
+HKR, Ndi\params\INFO9,   min,        0, "0"
+HKR, Ndi\params\INFO9,   max,        0, "ffffffff"
+HKR, Ndi\params\INFO9,   step,       0, "1"
+HKR, Ndi\params\INFO9,   Base,       0, "16"
+HKR, Ndi\params\INFO9,   type,       0, "dword"
+
+;ADD 080101
+HKR, Ndi\params\MASK9,   ParamDesc,  0, %MASK9%
+HKR, Ndi\params\MASK9,   default,    0, "0"
+HKR, Ndi\params\MASK9,   min,        0, "0"
+HKR, Ndi\params\MASK9,   max,        0, "ffffffff"
+HKR, Ndi\params\MASK9,   step,       0, "1"
+HKR, Ndi\params\MASK9,   Base,       0, "16"
+HKR, Ndi\params\MASK9,   type,       0, "dword"
+
+HKR, Ndi\params\INFO8,   ParamDesc,  0, %INFO8%
+HKR, Ndi\params\INFO8,   default,    0, "0"
+HKR, Ndi\params\INFO8,   min,        0, "0"
+HKR, Ndi\params\INFO8,   max,        0, "ffffffff"
+HKR, Ndi\params\INFO8,   step,       0, "1"
+HKR, Ndi\params\INFO8,   Base,       0, "16"
+HKR, Ndi\params\INFO8,   type,       0, "dword"
+
+HKR, Ndi\params\PSDM0,   ParamDesc,  0, %PSDM0%
+HKR, Ndi\params\PSDM0,   default,    0, "0"
+HKR, Ndi\params\PSDM0,   min,        0, "0"
+HKR, Ndi\params\PSDM0,   max,        0, "ffffffff"
+HKR, Ndi\params\PSDM0,   step,       0, "1"
+HKR, Ndi\params\PSDM0,   Base,       0, "16"
+HKR, Ndi\params\PSDM0,   type,       0, "dword"
+
+;080101
+
+
+
+HKR, Ndi\params\ISDN,   ParamDesc,  0, %ISDN%
+HKR, Ndi\params\ISDN,   default,    0, "0"
+HKR, Ndi\params\ISDN,   min,        0, "0"
+HKR, Ndi\params\ISDN,   max,        0, "1"
+HKR, Ndi\params\ISDN,   step,       0, "1"
+HKR, Ndi\params\ISDN,   Base,       0, "10"
+HKR, Ndi\params\ISDN,   type,       0, "int"
+;added 010830
+HKR, Ndi\params\PowerSupport,   ParamDesc,  0, %PowerSupport%
+HKR, Ndi\params\PowerSupport,   default,    0, "2"
+HKR, Ndi\params\PowerSupport,   min,        0, "0"
+HKR, Ndi\params\PowerSupport,   max,        0, "4"
+HKR, Ndi\params\PowerSupport,   step,       0, "1"
+HKR, Ndi\params\PowerSupport,   Base,       0, "16"
+HKR, Ndi\params\PowerSupport,   type,       0, "dword"
+
+;HKR, Ndi\params\InChannel,   ParamDesc,  0, %InChannel%
+;HKR, Ndi\params\InChannel,   default,    0, "2"
+;HKR, Ndi\params\InChannel,   min,        0, "0"
+;HKR, Ndi\params\InChannel,   max,        0, "4"
+;HKR, Ndi\params\InChannel,   step,       0, "1"
+;HKR, Ndi\params\InChannel,   Base,       0, "16"
+;HKR, Ndi\params\InChannel,   type,       0, "dword"
+
+;HKR, Ndi\params\MaxDataRate,   ParamDesc,  0, %MaxDataRate%
+;HKR, Ndi\params\MaxDataRate,   default,    0, "8000"
+;HKR, Ndi\params\MaxDataRate,   min,        0, "0"
+;HKR, Ndi\params\MaxDataRate,   max,        0, "FFFFFFFF"
+;HKR, Ndi\params\MaxDataRate,   step,       0, "1"
+;HKR, Ndi\params\MaxDataRate,   Base,       0, "16"
+;HKR, Ndi\params\MaxDataRate,   type,       0, "dword"
+
+HKR, , MTUSize,  0, "1480"
+
+;020215
+HKR, Ndi\params\1888999ADSL,   ParamDesc,  0, %1888999ADSL%
+HKR, Ndi\params\1888999ADSL,   default,    0, "1888999ADSL"
+HKR, Ndi\params\1888999ADSL,   type,       0, "string"
+
+;
+
+;----------------------------------------------------------------------------
+
+[adiusbaw.tapi.reg]
+;Add ISDN Class to RNA
+;JA-WHQL HKLM,SYSTEM\CurrentControlSet\Services\RemoteAccess\Authentication\Class\isdn\PPPMAC,,,
+
+;************************************************************************
+;
+;SHELL EXT Configuration
+;
+;************************************************************************
+HKR,TAPI\Shell,Connection,,"{12121212-3434-5656-3333-444411112222}"
+HKR,TAPI\Shell,Wizard,,"{12121212-3434-5656-3333-444411112224}"
+HKCR,CLSID\{12121212-3434-5656-3333-444411112222},,,"ISDN Vendor Connection Page"
+HKCR,CLSID\{12121212-3434-5656-3333-444411112222}\InProcServer32,,,"vendor.dll"
+HKCR,CLSID\{12121212-3434-5656-3333-444411112224},,,"ISDN Vendor Wizard Page"
+HKCR,CLSID\{12121212-3434-5656-3333-444411112224}\InProcServer32,,,"vendor.dll"
+
+
+;************************************************************************
+;
+;TAPI ISDN Configuration
+;
+;************************************************************************
+
+HKR,TAPI,Properties,1,  00,00,00,00
+HKR,TAPI,DeviceCaps,1,  14,00,00,00,   00,00,00,00,   00,00,00,00,   01,00,00,00,   00,00,00,00
+
+HKR,TAPI\Line0,Properties,1,   00,00,00,00
+HKR,TAPI\Line0,LineCaps,  1,   1c,00,00,00,   01,00,00,00,   03,00,00,00,   ff,00,00,00,   07,00,00,00,   02,00,00,00,   00,00,00,00
+HKR,TAPI\Line0,SwitchType,1,   00,00,00,00
+HKR,TAPI\Line0\Channel0,Properties,1,	00,00,00,00
+HKR,TAPI\Line0\Channel0,ChannelCaps,1,	03,00,00,00
+HKR,TAPI\Line0\Channel0,SPID,,""
+HKR,TAPI\Line0\Channel0,Phone,,""
+HKR,TAPI\Line0\Channel1,Properties,1,	00,00,00,00
+HKR,TAPI\Line0\Channel1,ChannelCaps,1,	03,00,00,00
+HKR,TAPI\Line0\Channel1,SPID,,""
+HKR,TAPI\Line0\Channel1,Phone,,""
+
+;JA-WHQL [adiusbaw.install]
+;CopyFiles = adiusbaw.win.CopyFiles, adiusbaw.fpga.CopyFiles
+
+
+
+[SourceDisksNames]
+1= %ADIUSBAE.DiskDesc%,,, 
+
+
+[SourceDisksFiles]
+
+;
+;Binary Files
+;
+
+adiusbaw.sys =1
+adildr.sys =1
+;
+;DLL
+;
+AdADIx2K.dll=1
+AdADIx32.dll=1
+AdADIx16.DLL=1
+
+;
+;BNM and CMV files
+;
+
+cmv.txt=1
+fpga.bin=1
+rtbld0.bnm=1
+rtbld1.bnm=1
+rtbld2.bnm=1
+rtbld3.bnm=1
+rtbld4.bnm=1
+
+
+[adiusb.E3.INISection]
+adidsl.ini,"SetupInfo", "LoaderID=*","LoaderID=USB\VID_1110&PID_9032"
+adidsl.ini,"SetupInfo", "DeviceID=*","DeviceID=USB\VID_1110&PID_9031"
+[adiusb.EL.INISection]
+adidsl.ini,"SetupInfo", "LoaderID=*","LoaderID=USB\VID_1110&PID_9010"
+adidsl.ini,"SetupInfo", "DeviceID=*","DeviceID=USB\VID_1110&PID_900F"
+[adiusb.E2.INISection]
+adidsl.ini,"SetupInfo", "LoaderID=*","LoaderID=USB\VID_1110&PID_9022"
+adidsl.ini,"SetupInfo", "DeviceID=*","DeviceID=USB\VID_1110&PID_9021"
+[adiusb.E2C.INISection]
+adidsl.ini,"SetupInfo", "LoaderID=*","LoaderID=USB\VID_1110&PID_9024"
+adidsl.ini,"SetupInfo", "DeviceID=*","DeviceID=USB\VID_1110&PID_9023"
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[adiusbaw.nt.sys.CopyFiles]
+adiusbaw.sys,,,2
+
+[adiusbaw.win.sys.CopyFiles]
+adiusbaw.sys,,,2
+
+[adiusbaw.nt.CopyFiles]
+AdADIx2K.dll,,,2
+AdADIx32.dll,,,2
+
+[adiusbaw.win.CopyFiles]
+AdADIx16.DLL,,,2
+AdADIx32.dll,,,2
+
+[adiusbaw.fpga.CopyFiles]
+cmv.txt,,,2
+fpga.bin,,,2
+rtbld0.bnm,,,2
+rtbld1.bnm,,,2
+rtbld2.bnm,,,2
+rtbld3.bnm,,,2
+rtbld4.bnm,,,2
+
+[adiusbaw.nt.fpga.CopyFiles]
+cmv.txt,,,2
+fpga.bin,,,2
+rtbld0.bnm,,,2
+rtbld1.bnm,,,2
+rtbld2.bnm,,,2
+rtbld3.bnm,,,2
+rtbld4.bnm,,,2
+
+[DestinationDirs]
+adiusbaw.nt.sys.CopyFiles= 12
+adiusbaw.win.sys.CopyFiles=11
+adiusbaw.nt.CopyFiles    = 11
+adiusbaw.win.CopyFiles   = 11
+adiusbaw.fpga.CopyFiles  = 11
+adiusbaw.nt.fpga.CopyFiles= 12
+
+;JA-WHQL adiusbaw.inf.DelFiles  = 17
+;JA-WHQL adiusbaw.DelFiles      = 11
+
+;JA-WHQL [adiusbaw.Remove]
+;JA-WHQL DelFiles=adiusbaw.DelFiles, adiusbaw.inf.DelFiles
+
+;JA-WHQL [adiusbaw.DelFiles]
+;JA-WHQL adiusbaw.sys,,,0x00000001
+
+;JA-WHQL [adiusbaw.inf.DelFiles]
+;JA-WHQL adiusbaw.inf,,,0x00000001
+;JA-WHQL adiload.inf,,,0x00000001
+
+[Strings]
+
+ADI   = "ADI"
+
+Rfc2364Vpi      = "Rfc2364 VPI"
+Rfc2364Vci      = "Rfc2364 VCI"
+TxBufferCount   = "Number of TX Buffers"
+RxBufferCount   = "Number of RX Buffers"
+OPTION0         = "CMV OPTN 0" 
+OPTION2         = "CMV OPTN 2" 
+OPTION3         = "CMV OPTN 3"
+OPTION4         = "CMV OPTN 4" 
+OPTION7         = "CMV OPTN 7"
+OPTION5         = "CMV OPTN 5"
+ADPT2           = "ADPT 2"
+MASK8           = "MASK 8"
+INFO9           = "INFO 9"
+
+MASK9           = "MASK 9"
+INFO8           = "INFO 8"
+PSDM0           = "PSDM 0"
+
+
+PFCL1           = "CMV PFCL" 
+DMTTime         = "DMT state timer(ms)"
+;Rfc1483Mode     = "Rfc1483Mode"
+Rfc2364Mode     = "Rfc2364Mode"
+LineType        = "LineType"
+Debuglevel	= "Debug Level"
+DebugModule	= "Debug Module"
+OutChannel	= "OutChannel"
+RXFF03		= "RXFF03"
+TXFF03		= "TXFF03"
+IDMABoot	= "IDMABoot"
+ISDN            = "ISDN"
+
+InChannel       = "InChannel"
+PowerSupport    = "PowerSupport"
+MaxDataRate     = "MaxDataRate"
+
+1888999ADSL	= "1888999ADSL"
+
+adiusbaw.DeviceDesc    = "USB ADSL WAN Adapter"
+
+adiusbaw.Service.DispName = "USB ADSL WAN Adapter"
+
+ADIUSBAE.DiskDesc      = "USB ADSL Installation CD-ROM"
+
+

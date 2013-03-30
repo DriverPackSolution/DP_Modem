@@ -1,0 +1,221 @@
+[CVA File Information]
+CVA Version=1
+
+[Software Title]
+US=LSI (Agere) Systems Soft Modem Driver
+
+[US.Software Description]
+This package contains the driver for the LSI (Agere) Systems Soft Modem in the supported desktop models and operating systems.
+
+[General]
+PN=SP41174
+Version=2.1.88
+Revision=H
+Pass=7
+Category=Driver - Modem
+
+[SupportedLanguages]
+Languages=Global
+Countries=GBL
+
+[DetailFileInformation]
+AGRSM.sys=<WINSYSDIR>\Drivers,0x0002,0x0001,0x0058,0x0000
+
+[Softpaq]
+SoftpaqNumber=SP41174
+SupersededSoftpaqNumber=SP38360
+
+[Operating Systems]
+WIN2000=OEM
+WePOS=OEM
+WINXP32C=OEM
+WINXP32P=OEM
+
+[Devices]
+
+
+[System Information]
+SysID1=0x2A72
+SysName1=HP Compaq dx2450 Microtower PC
+SysID2=0x2A73
+SysName2=HP Compaq dx2400 Microtower PC
+SysID3=0x2A84
+SysName3=HP Compaq dx7500 Microtower PC
+SysID4=0x2A84
+SysName4=HP Compaq dx7500 Small Form Factor PC
+SysID5=0x2A78
+SysName5=HP Compaq dx2390 Microtower PC
+SysID6=0x2820
+SysName6=HP Compaq dc5800 Microtower PC
+SysID7=0x2820
+SysName7=HP Compaq dc5800 Small Form Factor PC
+SysID8=0x2821
+SysName8=HP rp3000 Point of Sale
+SysID9=0x3029
+SysName9=HP Compaq dc5850 Microtower PC
+SysID10=0x3029
+SysName10=HP Compaq dc5850 Small Form Factor PC
+SysID11=0x0b00
+SysName11=HP Compaq dx2355 Microtower PC
+SysID12=0x0AFC
+SysName12=HP Compaq dx2710 Microtower PC
+SysID13=0x0AFC
+SysName13=HP Compaq dx2710 Small Form Factor PC
+SysID14=0x0B08
+SysName14=HP Compaq dx2480 Microtower PC
+SysID15=0x0B10
+SysName15=HP Compaq dx2310 Microtower PC
+SysID16=0x3031
+SysName16=HP Compaq dc7900 Small Form Factor
+SysID17=0x3033
+SysName17=HP Compaq dc7900 Ultra slim Desktop
+SysID18=0x3032
+SysName18=HP Compaq dc7900 Convertible Minitower PC
+SysID19=0x0AAC
+SysName19=HP Compaq dc7800 Convertible Minitower PC
+SysID20=0x0AA4
+SysName20=HP Compaq dc7800 Ultra-Slim Desktop PC
+SysID21=0x0AA8
+SysName21=HP Compaq dc7800 Small Form Factor PC
+SysID22=0x0AD8
+SysName22=HP Compaq dx2080 Microtower
+SysID23=0x0A80
+SysName23=HP rp5700 Business Desktop
+SysID24=0x0A80
+SysName24=HP rp5700 Point of Sale System
+SysID25=0x0AB4
+SysName25=HP Compaq dx7380 Microtower PC
+SysID26=0x0AD0
+SysName26=HP Compaq dx2130 Microtower
+SysID27=0x0AD4
+SysName27=HP Compaq dx2138 Microtower
+SysID28=0x0AB8
+SysName28=HP Compaq dx7400 Microtower PC
+SysID29=0x0AB8
+SysName29=HP Compaq dx7400 Small Form Factor
+SysID30=0x0AB8
+SysName30=HP Compaq dx7408 Microtower PC
+SysID31=0x0A88
+SysName31=HP Compaq dx2258 Microtower PC
+SysID32=0x0A90
+SysName32=HP Compaq dx2300 Microtower PC
+SysID33=0x0AB0
+SysName33=HP Compaq dx2308 Microtower PC
+SysID34=0x0A64
+SysName34=HP Compaq dc5750 Microtower PC
+SysID35=0x0A64
+SysName35=HP Compaq dc5750 Small Form FactorPC
+SysID36=0x0A74
+SysName36=HP Compaq dx2280 MT
+SysID37=0x0A60
+SysName37=HP Compaq dc5700 Microtower PC
+SysID38=0x0A60
+SysName38=HP Compaq dc5700 Small Form Factor PC
+SysID39=0x0A78
+SysName39=HP Compaq dx2700 MT
+SysID40=0x0A78
+SysName40=HP Compaq dx2708 MT
+SysID41=0x0A78
+SysName41=HP Compaq dx2700 SFF
+SysID42=0x0A48
+SysName42=HP Compaq dx2200 Microtower PC
+SysID43=0x0A44
+SysName43=HP Compaq dx2030 Microtower
+SysID44=0x0A44
+SysName44=HP Compaq dx2038 Microtower
+SysID45=0x0A7C
+SysName45=HP Compaq dx2250 Microtower PC
+SysID46=0x0A5C
+SysName46=HP Compaq dc7700 Ultra-Slim Desktop PC
+SysID47=0x0A54
+SysName47=HP Compaq dc7700 Small Form Factor PC
+SysID48=0x0A58
+SysName48=HP Compaq dc7700 Convertible Minitower PC
+SysID49=0x0A54
+SysName49=HP Compaq dx7300 Slim Tower PC
+SysID50=0x0A50
+SysName50=HP Compaq dx7300 Microtower PC
+SysID51=0x09FC
+SysName51=HP Compaq dc7600 Ultra-slim Desktop PC
+SysID52=0x09F0
+SysName52=HP Compaq dc7600 Convertible Minitower PC
+SysID53=0x09F0
+SysName53=HP Compaq dc7608 convertible minitower
+SysID54=0x09F8
+SysName54=HP Compaq dc7600 Small Form Factor PC
+SysID55=0x09F8
+SysName55=HP Compaq dc7608 small form factor
+SysID56=0x09F4
+SysName56=HP Compaq dx7208 Microtower PC
+SysID57=0x0A2C
+SysName57=HP Compaq dx2180 Microtower PC
+SysID58=0x0A2C
+SysName58=HP Compaq dx2188 Microtower PC
+SysID59=0x09E8
+SysName59=HP Compaq dx2100 Slim Tower  PC
+SysID60=0x0A28
+SysName60=HP Compaq dx2060 Microtower PC
+SysID61=0x0A28
+SysName61=HP Compaq dx2068 Microtower PC
+SysID62=0x09AC
+SysName62=HP dx5150 Small Form Factor PC
+SysID63=0x09AC
+SysName63=HP dx5150 Microtower PC
+SysID64=0x0A34
+SysName64=HP Compaq d290 Microtower
+SysID65=0x087C
+SysName65=HP rp5000
+SysID66=0x09E0
+SysName66=HP Compaq dc5100 microtower
+SysID67=0x09E8
+SysName67=HP Compaq dc5100 small form factor
+SysID68=0x0A20
+SysName68=HP Compaq dx2100 Microtower PC
+SysID69=0x090C
+SysName69=HP Compaq dc5000 microtower
+SysID70=0x090C
+SysName70=HP Compaq dc5000 small form factor
+SysID71=0x090C
+SysName71=HP Compaq dx2000 slim tower
+SysID72=0x0968
+SysName72=HP Compaq dc7100 convertible minitower
+SysID73=0x097C
+SysName73=HP Compaq dc7100 small form factor
+SysID74=0x09CC
+SysName74=HP Compaq dx6120 microtower
+SysID75=0x09CC
+SysName75=HP Compaq dx6128 microtower
+SysID76=0x09D0
+SysName76=HP Compaq dx6120 slim tower
+SysID77=0x097C
+SysName77=HP Compaq dx6100 slim tower
+SysID78=0x0984
+SysName78=HP Compaq dx6100 microtower
+SysID79=0x0864
+SysName79=HP Compaq d530 ultra-slim desktop
+SysID80=0x085C
+SysName80=HP Compaq d530 convertible minitower
+SysID81=0x085C
+SysName81=HP Compaq d530 small form factor
+SysID82=0x085C
+SysName82=HP Compaq d330 desktop
+SysID83=0x085C
+SysName83=HP Compaq d330 microtower
+SysID84=0x085C
+SysName84=HP Compaq d330 slim tower
+SysID85=0x085C
+SysName85=HP Compaq d338 microtower
+
+[US.Enhancements]
+- Adds support for the modem in the HP rp3000 Point of Service System, which attaches to the system board. 
+- Provides support for both the PCI and PCIe versions of the modem.
+
+[Install Execution]
+SilentInstall="SETUP.EXE" -s
+
+
+[Private]
+Private_SSMCompliant=1
+
+[CVAGenerationToolDocumentStamp]
+Generated by Hewlett-Packard Information Repository System Tool on 9/25/2008

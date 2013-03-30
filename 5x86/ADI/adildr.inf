@@ -1,0 +1,104 @@
+;-------------------------------------------------------------------------------
+;
+; ANALOG DEVICES PROPERTIES               
+;                                
+;       Copyright © 1999 ADI Corporation. All Rights Reserved.
+;
+;
+;
+; ABSTRACT:
+;       Windows 98/NT5 INF file for the USB ADSL Modem
+;
+;-------------------------------------------------------------------------------
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID= {36FC9E60-C465-11CF-8056-444553540000}
+provider=%ADI%
+DriverVer=03/02/2004, 1.8
+CatalogFile = adildr.cat
+
+[Manufacturer]
+%ADI%=ADI
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_1110&PID_9032
+ExcludeFromSelect = USB\VID_1110&PID_9010
+ExcludeFromSelect = USB\VID_1110&PID_9022
+ExcludeFromSelect = USB\VID_1110&PID_9024
+
+[ADI]
+;
+; This is the VID/PID for the EZ-USB development board.  This device
+; is bound to a version of the general purpose driver that will
+; automatically download the Keil 8051 monitor to external RAM.
+; Do not use this VID/PID for your own device or the monitor will
+; wipe out your firmware.
+;
+ 
+%ADILOADER.DeviceDesc%  = ADILOADER.Dev, USB\VID_1110&PID_9032   
+%ADILOADER.DeviceDesc%  = ADILOADER.Dev, USB\VID_1110&PID_9010  
+%ADILOADER.DeviceDesc%  = ADILOADER.Dev, USB\VID_1110&PID_9022
+%ADILOADER.DeviceDesc%  = ADILOADER.Dev, USB\VID_1110&PID_9024
+
+;
+; This VID/PID is used by several of the EZ-USB development kit
+; samples.  This device is bound to the general purpose driver.
+;
+
+;JA-WHQL [PreCopySection]
+;JA-WHQL HKR,,NoSetupUI,,1
+
+[ADILOADER.Dev]
+CopyFiles=ADILOADER.Files.Ext 
+AddReg=ADILOADER.AddReg
+
+[ADILOADER.Dev.NT]
+; copyfiles commented out for Win2K to avoid user intervention during install
+CopyFiles=ADILOADER.Files.NT.Ext 
+AddReg=ADILOADER.AddReg
+
+[ADILOADER.Dev.NT.Services]
+Addservice = ADILOADER, 0x00000002, ADILOADER.AddService
+
+[ADILOADER.AddService]
+DisplayName    = %ADILOADER.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 2                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\adildr.sys
+LoadOrderGroup = Base
+
+[ADILOADER.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,adildr.sys
+
+[ADILOADER.Files.Ext]
+adildr.sys
+
+[ADILOADER.Files.NT.Ext]
+adildr.sys
+
+[SourceDisksNames]
+1= %ADIUSBAE.DiskDesc%,,, 
+
+[SourceDisksFiles]
+adildr.inf = 1
+adildr.sys = 1
+
+[DestinationDirs]
+ADILOADER.Files.Ext = 11
+ADILOADER.Files.NT.Ext = 12 
+ 
+
+
+;---------------------------------------------------------------;
+
+[Strings]
+ADI="Analog Devices"
+ADILOADER.DeviceDesc="USB ADSL Loader"
+
+ADILOADER.SvcDesc="General Purpose USB Driver (adildr.sys)"
+ADIUSBAE.DiskDesc      = "ADI USB ADSL Installation CD ROM"
+

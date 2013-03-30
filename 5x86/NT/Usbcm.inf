@@ -1,0 +1,113 @@
+; Windows 98/ME/2000/XP INF file for USB Cable Modem 
+;
+;   Date        Revision
+; ---------------------------------
+;  03/05/2002   1.10.35.1000
+;
+
+[Version]
+Signature  = "$Chicago$"    ; Single INF file for Windows 98 and Windows 2000
+Compatible = 1              ; Single INF file for Windows 98 and Windows 2000
+Class      = Net
+ClassGUID  = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider   = %Provider%
+DriverVer  = 03/05/2002,1.10.35.1000    ; Recognized by Windows 2000 only
+CatalogFile = usbcm.cat              ; Provided by WHQL
+
+[Manufacturer]
+%Provider% = brand
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_0BB2&PID_6098
+
+[brand]
+%brand.DeviceDesc% = brandUsbCm, USB\VID_0BB2&PID_6098
+
+[brandUsbCm.NT]
+AddReg          = brandUsbCm2k.Reg, Params.Reg
+BusType         = 15
+Characteristics = 0x84
+CopyFiles       = Brcm2k.CopyFiles
+
+[brandUsbCm.NT.Services]
+AddService = usbcm, 2, brandUsbCm.Service, brandUsbCm.EventLog
+
+[brandUsbCm]
+AddReg      = brandUsbCm9x.Reg, Params.Reg
+CopyFiles   = Brcm9x.CopyFiles
+DriverVer = 03/05/2002,1.10.35.1000    ; Recognized by Windows 98 here
+
+[brandUsbCm2k.Reg]
+HKR, Ndi,            Service,     0, "usbcm"
+HKR, Ndi\Interfaces, UpperRange,  0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange,  0, "ethernet"
+
+[brandUsbCm9x.Reg]
+HKR, Ndi,            DeviceID,         ,  USB\VID_0BB2&PID_6098
+HKR, Ndi,            CardType,         ,  "PNP"
+HKR, ,               AdapterName,      ,  "usbcm"
+HKR, ,               DevLoader,        0, *ndis,*ntkern,*ndis
+HKR, ,               DeviceVxDs,       0, usbcm.sys
+HKR, ,               EnumPropPages,    0, "netdi.dll, EnumPropPages"
+HKR, NDIS,           LogDriverName,    0, usbcm
+HKR, NDIS,           MajorNdisVersion, 1, 05
+HKR, NDIS,           MinorNdisVersion, 1, 00
+HKR, Ndi\Interfaces, DefUpper,         0, "ndis3"
+HKR, Ndi\Interfaces, DefLower,         0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange,       0, "ndis3"
+HKR, Ndi\Interfaces, LowerRange,       0, "ethernet"
+
+[Params.Reg]
+HKR, Ndi\params\NumRxBuffers, ParamDesc, 0, "NumRxBuffers"
+HKR, Ndi\params\NumRxBuffers, default,   0, "1"
+HKR, Ndi\params\NumRxBuffers, min,       0, "1"
+HKR, Ndi\params\NumRxBuffers, max,       0, "00001024"
+HKR, Ndi\params\NumRxBuffers, step,      0, "1"
+HKR, Ndi\params\NumRxBuffers, Base,      0, "10"
+HKR, Ndi\params\NumRxBuffers, type,      0, "int"
+
+HKR, Ndi\params\NumTxBuffers, ParamDesc, 0, "NumTxBuffers"
+HKR, Ndi\params\NumTxBuffers, default,   0, "32"
+HKR, Ndi\params\NumTxBuffers, min,       0, "1"
+HKR, Ndi\params\NumTxBuffers, max,       0, "00001024"
+HKR, Ndi\params\NumTxBuffers, step,      0, "1"
+HKR, Ndi\params\NumTxBuffers, Base,      0, "10"
+HKR, Ndi\params\NumTxBuffers, type,      0, "int"
+
+[brandUsbCm.Service]
+DisplayName    = %DispName%
+ServiceType    = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType      = 3 ;%SERVICE_DEMAND_START%
+ErrorControl   = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\usbcm.sys
+LoadOrderGroup = NDIS,NTKERN,NDIS
+
+[brandUsbCm.EventLog]
+AddReg = brandUsbCm.AddEventLog.Reg
+
+[brandUsbCm.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+Brcm9x.CopyFiles = 11
+Brcm2k.CopyFiles = 12
+
+[Brcm2k.CopyFiles]
+usbcm.sys,,,2
+
+[Brcm9x.CopyFiles]
+usbcm.sys
+
+
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[SourceDisksFiles]
+usbcm.sys = 1,,48000
+
+[Strings]
+Provider   = "brand"
+brand.DeviceDesc = "USB Cable Modem 351000"
+DispName   = "USB Cable Modem 351000 NDIS Driver"
+DiskDesc = "USB Cable Modem 351000 Driver Disk"

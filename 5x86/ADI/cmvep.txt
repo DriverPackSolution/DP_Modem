@@ -1,0 +1,25 @@
+; Max commands = 16
+; POTS for EAGLE (43e2ead4)
+cw optn 0 0x80008066
+cw optn 1 0x00000994
+cw optn 2 0x63600000
+cw optn 3 0x00000028
+cw optn 4 0x00600000
+cw optn 7 0x02fb0000
+cw optn 18 0x820200ff
+cw optn 19 0x80000000
+cw optn 20 0x11900002
+cw optn 70 0x218280aa
+cw optn 72 0x006f06eb
+cw optn 73 0x00010060
+cw mask 8 0x3fffffc0
+cw diag 0 0x26870030
+cw flag 0 0x00000820
+
+;Non TR-48
+;cw optn 0 0x80020066
+;cw optn 18 0x00000000
+;cw optn 19 0x00000000
+
+
+CW cntl 0 2

@@ -1,0 +1,282 @@
+; Windows WDM Modem Setup File
+; Copyright 2003 Agere
+;
+; Manufacturer:  Agere Systems
+;
+;----------------------------------------------------------------------------
+[Version]
+Signature	= $CHICAGO$
+Class		= WDM_MODEM
+ClassGuid	= {C8EBDFB0-B510-11D0-80E5-00A0C92542E3}
+Provider	= %Mfg%
+DriverVer = 07/01/2003,8.30.0.0
+
+[ClassInstall]
+Addreg=WDMClassInstall
+
+[WDMClassInstall]
+HKR,,Installer,,"modem.cpl, WdmEnum_ClassInstall"
+HKR,,,,%Enumerator%
+HKR,,Icon,,-25
+
+[ControlFlags]
+ExcludeFromSelect= *HSM0140
+ExcludeFromSelect= *HSM0141
+ExcludeFromSelect= *HSM0143
+ExcludeFromSelect= *HSM0340
+ExcludeFromSelect= *HSM0B10
+ExcludeFromSelect= *HSM0B11
+ExcludeFromSelect= *HSM0F19
+ExcludeFromSelect= *HSM0F1A
+ExcludeFromSelect= *HSM0A19
+ExcludeFromSelect= *HSM1A19
+ExcludeFromSelect= *HSM0A1A
+ExcludeFromSelect= *HSM0A1B
+ExcludeFromSelect= *HSM0A1C
+ExcludeFromSelect= *HSM0E19
+ExcludeFromSelect= *TOS700C
+ExcludeFromSelect= *TOS7011
+ExcludeFromSelect= *CPQAE36
+ExcludeFromSelect= *CPQAE38
+ExcludeFromSelect= *CPQB010
+ExcludeFromSelect= *CPQB013
+ExcludeFromSelect= *CPQB014
+ExcludeFromSelect= *CPQB015
+ExcludeFromSelect= *CPQB016
+ExcludeFromSelect= *CPQB018
+ExcludeFromSelect= *CPQB019
+ExcludeFromSelect= *CPQB021
+ExcludeFromSelect= *CPQB022
+ExcludeFromSelect= *CPQB024
+ExcludeFromSelect= *CPQB025
+ExcludeFromSelect= *CPQB029
+ExcludeFromSelect= *CPQB038
+ExcludeFromSelect= *CPQB039
+ExcludeFromSelect= *CPQB05B
+ExcludeFromSelect= *CPQB0A1
+ExcludeFromSelect= *CPQB0A2
+ExcludeFromSelect= *CPQB0A3
+ExcludeFromSelect= *CPQB0CC
+ExcludeFromSelect= *CPQB0CD
+ExcludeFromSelect= *CPQB0D2
+ExcludeFromSelect= *CPQB0D3
+ExcludeFromSelect= *CPQB122
+ExcludeFromSelect= *TWH0004
+ExcludeFromSelect= *TWH0006
+ExcludeFromSelect= *AEI2B10
+ExcludeFromSelect= *ACR0A19
+ExcludeFromSelect= *ACR1A19
+ExcludeFromSelect= *ACRD119
+ExcludeFromSelect= *ACRD219
+ExcludeFromSelect= *ACRD319
+ExcludeFromSelect= *ACRDB19
+ExcludeFromSelect= PCMCIA\LT_WIN_MODEM-A3C4
+ExcludeFromSelect= PCMCIA\LT_WIN_MODEM_GLOBAL-5B8F
+ExcludeFromSelect= PCMCIA\LT_WIN_MODEM-PC_CARD-6B47
+ExcludeFromSelect= PCMCIA\LT_WIN_MODEM_GLOBAL-PC_CARD-7F76
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0440&SUBSYS_044011C1
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0440
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0440&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0441
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0441&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0442
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0442&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0443
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0443&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0444
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0444&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0445
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0445&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0446
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0446&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0447
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0447&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0448
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0448&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0449
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0449&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044A
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044A&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044B
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044B&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044C
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044C&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044D
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044D&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044E
+ExcludeFromSelect= PCI\VEN_11C1&DEV_044E&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0450
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0450&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0451
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0451&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0452
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0452&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0453
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0453&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0454
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0454&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0455
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0455&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0456
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0456&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0457
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0457&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0458
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0458&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0459
+ExcludeFromSelect= PCI\VEN_11C1&DEV_0459&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045A
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045A&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045B
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045B&CC_0780
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045C
+ExcludeFromSelect= PCI\VEN_11C1&DEV_045C&CC_0780
+
+[DestinationDirs]
+DefaultDestDir=10
+WDM.Drvrs=10,SYSTEM32\DRIVERS
+WDM.INFs=17
+
+[Manufacturer]
+%Mfg%=Models
+
+[Models]
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0440
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0440&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0441
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0441&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0442
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0442&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0443
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0443&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0444
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0444&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0445
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0445&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0446
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0446&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0447
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0447&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0448
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0448&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0449
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0449&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044A
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044A&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044B
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044B&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044C
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044C&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044D
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044D&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044E
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_044E&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0450
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0450&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0451
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0451&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0452
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0452&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0453
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0453&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0454
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0454&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0455
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0455&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0456
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0456&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0457
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0457&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0458
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0458&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0459
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_0459&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045A
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045A&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045B
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045B&CC_0780
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045C
+%Modem1% = LucentWDM, PCI\VEN_11C1&DEV_045C&CC_0780
+%Modem1%  = LucentWDM, *HSM0140
+%Modem1%  = LucentWDM, *HSM0141
+%Modem1%  = LucentWDM, *HSM0143
+%Modem1%  = LucentWDM, *HSM0340
+%Modem1%  = LucentWDM, *HSM0B10
+%Modem1%  = LucentWDM, *HSM0B11
+%Modem1%  = LucentWDM, *HSM0F19
+%Modem1%  = LucentWDM, *HSM0F1A
+%Modem1%  = LucentWDM, *HSM0A19
+%Modem1%  = LucentWDM, *HSM1A19
+%Modem1%  = LucentWDM, *HSM0A1A
+%Modem1%  = LucentWDM, *HSM0A1B
+%Modem1%  = LucentWDM, *HSM0A1C
+%Modem1%  = LucentWDM, *HSM0E19
+%Modem1%  = LucentWDM, *TOS700C
+%Modem1%  = LucentWDM, *TOS7011
+%Modem1%  = LucentWDM, *CPQAE36
+%Modem1%  = LucentWDM, *CPQAE38
+%Modem1%  = LucentWDM, *CPQB010
+%Modem1%  = LucentWDM, *CPQB013
+%Modem1%  = LucentWDM, *CPQB014
+%Modem1%  = LucentWDM, *CPQB015
+%Modem1%  = LucentWDM, *CPQB016
+%Modem1%  = LucentWDM, *CPQB018
+%Modem1%  = LucentWDM, *CPQB019
+%Modem1%  = LucentWDM, *CPQB021
+%Modem1%  = LucentWDM, *CPQB022
+%Modem1%  = LucentWDM, *CPQB024
+%Modem1%  = LucentWDM, *CPQB025
+%Modem1%  = LucentWDM, *CPQB029
+%Modem1%  = LucentWDM, *CPQB038
+%Modem1%  = LucentWDM, *CPQB039
+%Modem1%  = LucentWDM, *CPQB05B
+%Modem1%  = LucentWDM, *CPQB0A1
+%Modem1%  = LucentWDM, *CPQB0A2
+%Modem1%  = LucentWDM, *CPQB0A3
+%Modem1%  = LucentWDM, *CPQB0CC
+%Modem1%  = LucentWDM, *CPQB0CD
+%Modem1%  = LucentWDM, *CPQB0D2
+%Modem1%  = LucentWDM, *CPQB0D3
+%Modem1%  = LucentWDM, *CPQB122
+%Modem1%  = LucentWDM, *TWH0004
+%Modem1%  = LucentWDM, *TWH0006
+%Modem1%  = LucentWDM, *AEI2B10
+%Modem1%  = LucentWDM, *ACR0A19
+%Modem1%  = LucentWDM, *ACR1A19
+%Modem1%  = LucentWDM, *ACRD119
+%Modem1%  = LucentWDM, *ACRD219
+%Modem1%  = LucentWDM, *ACRD319
+%Modem1%  = LucentWDM, *ACRDB19
+
+[LucentWDM]
+CopyFiles=WDM.Drvrs,WDM.INFs
+AddReg=LucentWDM.AddReg
+
+[WDM.Drvrs]
+ltmdmnt.sys
+
+[WDM.INFs]
+ltmwmedf.inf
+
+[SourceDisksNames]
+1 = %LT.disk%,,,"" 
+
+[SourceDisksFiles]
+ltmdmnt.sys=1
+ltmwmedf.inf=1
+
+[LucentWDM.AddReg]
+HKR,,DevLoader,0,*ntkern
+HKR,,NTMPDriver,,"ltmdmnt.sys,ccport.sys"
+
+[LucentWDM.HW]
+AddReg=LucentWDMAddReg.HW
+
+[LucentWDMAddReg.HW]
+HKR,,ChildID,2,"WDM_MODEM\LUCENTWDM_DF"
+
+[Strings]
+Mfg="Agere"
+Modem1 = "Agere WDM Modem Enumerator"
+LT.disk = "Agere Installation Disk"
+Enumerator = "WDM Modem Enumerator"

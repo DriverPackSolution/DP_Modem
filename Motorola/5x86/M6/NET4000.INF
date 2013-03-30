@@ -1,0 +1,137 @@
+;/*************************************************************************\
+; ** Copyright (C) 2000-2001Motorola Inc.  All rights reserved           **
+; ** http://www.motorola.com                                             **
+; ** This file is the installation file for the Motorola SB4000 PCI      **
+; ** Cable Modem Adapter                                                 **
+;\*************************************************************************/
+
+[version]
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MOT%
+;Layoutfile parameter is reserved for internal Microsoft use only
+;LayoutFile = layout.inf
+DriverVer=02/05/2001,1.01.0.1258
+DriverDate = 02/05/2001
+Compatible  = 1                    ; works with Win2K and Win9x
+CatalogFile = net4000.cat
+
+[Manufacturer]
+%MOT% = MOTOROLA
+
+; pnp cards should be excluded from select
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1057&DEV_6800
+
+[MOTOROLA]
+;
+; Display Name          Section           DeviceID
+;_________________________________________________________________ 
+%pcicm.DeviceDesc% =    pcicm.ndi,        PCI\VEN_1057&DEV_6800
+
+; Windows 9x specific entry
+[pcicm.ndi]
+AddReg = pcicm.id.reg, common.reg, pcicm.9x.reg
+DeviceID = "PCI\VEN_1057&DEV_6800"
+
+; Windows 2000 specific entry
+[pcicm.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = common.reg, pcicm.nt.reg
+CopyFiles       = pcicm.nt.CopyFiles
+
+[pcicm.ndi.NT.Services]
+AddService = pcicm, 2, pcicm.Service, common.EventLog
+
+;---------------------------------------------------------------------
+; Win9x id registry sections
+[pcicm.id.reg]
+HKR, Ndi, DeviceID, 0, "PCI\VEN_1057&DEV_6800"
+
+;---------------------------------------------------------------------
+; Win9x specific
+;
+[pcicm.9x.reg]
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "net4000.SYS"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+
+HKR, Ndi\Interfaces,DefUpper,   	0, "ndis3"
+HKR, Ndi\Interfaces,DefLower,   	0, "ethernet"
+HKR, Ndi\Interfaces,UpperRange, 	0, "ndis3"
+HKR, Ndi\Interfaces,LowerRange, 	0, "ethernet"
+
+HKR, NDIS,          LogDriverName,      0, "net4000"
+HKR, NDIS,          MajorNdisVersion,   1, 03
+HKR, NDIS,          MinorNdisVersion,   1, 0A
+
+HKR, Ndi\Install,   ndis3,              0, "pcicm.install"
+
+[pcicm.install]
+CopyFiles = pcicm.9x.CopyFiles
+
+;---------------------------------------------------------------------
+; common parameters
+;
+[common.reg]
+
+;---------------------------------------------------------------------
+; Windows 2000 (NT) specific
+;
+[pcicm.nt.reg]
+HKR, Ndi,                       Service,    0, "pcicm"
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+[pcicm.Service]
+DisplayName     = %pcicm.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\net4000.sys
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;---------------------------------------------------------------------
+; DestinationDirs
+;
+[pcicm.nt.CopyFiles]
+net4000.sys,,,2
+
+[pcicm.9x.CopyFiles]
+net4000.sys,,,2
+
+[SourceDisksNames]
+;
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;
+1 = "Motorola PCICM Driver Disk",net4000.sys,,
+
+[SourceDisksFiles]
+;
+; filename_on_source = diskID[, [subdir][, size]]
+;
+net4000.sys = 1,,
+
+[DestinationDirs]
+pcicm.nt.CopyFiles = 12 ; Drivers directory 
+pcicm.9x.CopyFiles = 11
+
+;---------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MOT                     = "Motorola"
+; String that gets displayed while installing the device
+pcicm.DeviceDesc        = "Motorola PCI Cable Modem SURFboard SB4000"
+; NT Service name
+pcicm.Service.DispName  = "Motorola PCI Cable Modem SB4000 Windows 2000 Driver"

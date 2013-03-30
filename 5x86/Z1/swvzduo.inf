@@ -1,0 +1,82 @@
+;**************************************************************
+;  Copyright (c) ZyXEL Communications Corp. 2002
+;  Swvzneo.inf  -- ZyXEL Omni56K DUO VOICE INF
+;  Version 1.01 -- Last revised date: 03/12/2003
+;**************************************************************
+
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+provider=%Mfg%
+LayoutFile=layout.inf
+
+[ClassInstall]
+Addreg=Class.AddReg
+
+[Class.AddReg]
+HKR,,,,%MediaClassName%
+HKR,,Icon,,"-1"
+HKR,,Installer,,mmci.dll
+
+[Manufacturer]
+%Mfg% = ZyXEL
+
+[Strings]
+Mfg="ZyXEL Communications Corp."
+OM90.DeviceDesc     = "ZyXEL Omni 56K DUO Modem Serial Wave Device"
+OM90.DeviceDesc.PnP = "ZyXEL Omni 56K DUO Modem Serial Wave Device, Plug&Play"
+MediaClassName="Sound, video and game controllers"
+
+
+[ZyXEL]
+%OM90.DeviceDesc%     = OM90, MODEMWAVE\ZYXEL_56K_MODEM
+%OM90.DeviceDesc%     = OM90, MODEMWAVE\ZyXEL_Omni56K_DUO
+%OM90.DeviceDesc%     = OM90, MODEMWAVE\ZyXEL_Omni56K_DUO(COM)
+%OM90.DeviceDesc.PnP% = OM90, MODEMWAVE\ZyXEL_Omni56K_DUO(COM),_Plug&Play
+
+
+; --------------- begin Windows98 & Windows 2000 voice ---------------------
+; this section adds Memphis support...provides ID string link to
+; modem INF key named WaveHardwareID elsewhere in the corresponding modem INF
+; Also see additional Memphis entries elsewhere in this INF
+
+%OM90.DeviceDesc.PnP% = OM90.Mem, MODEMWAVE\RockwellADPCMVoiceModemWave
+
+; --------------- end Windows98 & Windows 2000 voice -----------------------
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+MSSERWAVE.CopyList = 11 ; LDID_SYS
+
+[OM90]
+AddReg=MSSERWAVE.AddReg, OM90.AddReg
+
+[MSSERWAVE.CopyList]
+serwave.vxd,,
+serwvdrv.drv,,
+vmodctl.dll,,
+
+[OM90.AddReg]
+HKR,Drivers\wave\serwvdrv.drv,Description,,%OM90.DeviceDesc%
+HKR,Config,XformModule,  , "umdmxfrm.dll"
+HKR,Config,XformID,     1, 04, 00, 00, 00
+HKR,Config,WaveDevices,  1, 02, 00
+
+; --------------- begin Windows98 & Windows 2000 voice ----------------------
+[OM90.Mem]
+AddReg=MSSERWAVE.AddReg, OM90.Mem.AddReg
+
+[OM90.Mem.AddReg]
+HKR,Drivers\wave\serwvdrv.drv,Description,,%OM90.DeviceDesc.PnP%
+; --------------- end Windows98 & Windows 2000 voice ------------------------
+
+
+[MSSERWAVE.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\wave,,,
+HKR,,Driver,,serwave.vxd
+HKR,Drivers\wave\serwvdrv.drv,Driver,,serwvdrv.drv
+HKR,Drivers,SubClasses,,"wave"

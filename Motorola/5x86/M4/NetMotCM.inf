@@ -1,0 +1,450 @@
+;/********************************************************************************\
+; ** Copyright(C) 1997-2004 Motorola.  All rights reserved. 			**
+; ** http://www.motorola.com 							**
+; ** Installation file for the Motorola USB Driver                             	**
+; ** Products: SURFboard			    	         		**
+; **                                                                     	**
+; ** INF file version: 2.4.5.1                                                 	**
+; ** Changes/additions:								**
+; ** This version added support SB5101                          	        **
+; **                                                                     	**
+;\********************************************************************************/
+
+[version]
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MOT%
+Compatible  = 1                    ; works with Win2K and Win9x
+CatalogFile = netmotcm.cat
+DriverVer=02/09/2004, 2.4.5.1
+    
+[Manufacturer]
+%MOT% = MOTOROLA
+    
+[ControlFlags]
+; Provides limited control on UI displays and events during installation.
+; Must for any device on an enumerable BUS like USB
+; Each PNP device should be included in this list
+ExcludeFromSelect = 	\                                   ; blank for win95
+			USB\VID_07B2&PID_4100,   \
+			USB\VID_07B2&PID_4200,   \
+			USB\VID_07B2&PID_5100,   \
+                        USB\VID_07B2&PID_5101,   \
+                        USB\VID_07B2&PID_0900,   \
+                        USB\VID_07B2&PID_0950,   \
+			USB\VID_07B2&PID_1000,   \
+			USB\VID_07B2&PID_0100,   \
+			USB\VID_07B2&PID_4500,   \
+			USB\VID_07B2&PID_450b,   \
+			USB\VID_07B2&PID_450e
+
+
+[MOTOROLA]
+; Models section - has an entry for each device installed by this file
+; Display Name          		Section           DeviceID
+;_________________________________________________________________ 
+%USB\VID_07B2&PID_4100.DeviceDesc% = 	ndisSB410.ndi,    USB\VID_07B2&PID_4100
+%USB\VID_07B2&PID_4200.DeviceDesc% =	ndisSB420.ndi,    USB\VID_07B2&PID_4200
+%USB\VID_07B2&PID_5101.DeviceDesc% =	ndisSB5101.ndi,   USB\VID_07B2&PID_5101
+%USB\VID_07B2&PID_5100.DeviceDesc% =	ndisSB510.ndi,    USB\VID_07B2&PID_5100
+%USB\VID_07B2&PID_0900.DeviceDesc% =	ndisSB900.ndi,    USB\VID_07B2&PID_0900
+%USB\VID_07B2&PID_0950.DeviceDesc% =	ndisSB950.ndi,    USB\VID_07B2&PID_0950
+%USB\VID_07B2&PID_1000.DeviceDesc% =	ndisSBG10.ndi,    USB\VID_07B2&PID_1000
+%USB\VID_07B2&PID_0100.DeviceDesc% =	ndisSBV42.ndi,    USB\VID_07B2&PID_0100
+%USB\VID_07B2&PID_4500.DeviceDesc% = 	ndisCG450.ndi,    USB\VID_07B2&PID_4500
+%USB\VID_07B2&PID_450B.DeviceDesc% =	ndisCG45b.ndi,    USB\VID_07B2&PID_450b
+%USB\VID_07B2&PID_450E.DeviceDesc% =	ndisCG45e.ndi,    USB\VID_07B2&PID_450e
+
+
+;----------------------------------------------------------------------------
+; Motorola SB4100 USB Cable Modem
+;
+[ndisSB410.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_4100"
+    
+[ndisSB410.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB410.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_4100"
+CopyFiles = ndiscm.9x.CopyFiles
+   
+[ndisSB410.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSB410.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+
+;----------------------------------------------------------------------------
+; Motorola SB4200 USB Cable Modem
+;
+[ndisSB420.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_4200"
+    
+[ndisSB420.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB420.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_4200"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+    
+[ndisSB420.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+
+[ndisSB420.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+
+
+;----------------------------------------------------------------------------
+; Motorola SB5100 USB Cable Modem
+;
+[ndisSB510.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_5100"
+
+[ndisSB510.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB510.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_5100"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+
+[ndisSB510.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSB510.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+;----------------------------------------------------------------------------
+; Motorola SB5101 USB Cable Modem
+;
+[ndisSB5101.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_5101"
+
+[ndisSB5101.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB5101.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_5101"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+
+[ndisSB5101.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSB5101.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+;----------------------------------------------------------------------------
+; Motorola SBG900 USB Cable Modem (Wireless Gateway)
+;
+[ndisSB900.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_0900"
+    
+[ndisSB900.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB900.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_0900"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+    
+[ndisSB900.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSB900.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+    
+;----------------------------------------------------------------------------
+; Motorola SBG950 USB Cable Modem (Wireless Gateway)
+;
+[ndisSB950.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_0950"
+    
+[ndisSB950.ndi]
+; Windows 98 specific entry
+AddReg = ndisSB950.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_0950"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+    
+[ndisSB950.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSB950.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+    
+;----------------------------------------------------------------------------
+; Motorola SBG1000 USB Cable Modem
+;
+[ndisSBG10.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_1000"
+    
+[ndisSBG10.ndi]
+; Windows 98 specific entry
+AddReg = ndisSBG10.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_1000"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+    
+[ndisSBG10.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSBG10.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+    
+;----------------------------------------------------------------------------
+; Motorola SBV4200 USB Cable Modem
+;
+[ndisSBV42.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_0100"
+    
+[ndisSBV42.ndi]
+; Windows 98 specific entry
+AddReg = ndisSBV42.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_0100"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+    
+[ndisSBV42.ndi.NT]
+; Windows 2000  specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+    
+[ndisSBV42.ndi.nt.Services]
+; Windows 2000  specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+    
+    
+;----------------------------------------------------------------------------
+; Motorola CG4500 USB Cable Modem
+;
+[ndisCG450.ndi]
+; Windows 9x specific entry
+AddReg = ndisCG450.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_4500"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+
+[ndisCG450.ndi.NT]
+; Windows NT specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+
+[ndisCG450.ndi.nt.Services]
+; Windows NT specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+
+[ndisCG450.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_4500"
+
+;----------------------------------------------------------------------------
+; Motorola CG4501 USB Cable Modem
+;
+[ndisCG45b.ndi]
+; Windows 9x specific entry
+AddReg = ndisCG45b.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_450b"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+
+[ndisCG45b.ndi.NT]
+; Windows NT specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+
+[ndisCG45b.ndi.nt.Services]
+; Windows NT specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+
+[ndisCG45b.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_450b"
+
+;----------------------------------------------------------------------------
+; Motorola CG4500E USB Cable Modem
+;
+[ndisCG45e.ndi]
+; Windows 9x specific entry
+AddReg = ndisCG45e.id.reg, common.reg, ndiscm.flag.reg, ndiscm.9x.reg
+DeviceID = "USB\VID_07B2&PID_450e"
+CopyFiles = ndiscm.9x.CopyFiles
+;LogConfig = DefaultConfig
+
+[ndisCG45e.ndi.NT]
+; Windows NT specific entry
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 15                         ; USB, or any other PNP bus
+AddReg          = common.reg, ndiscm.nt.reg  ;
+CopyFiles       = ndiscm.nt.CopyFiles        ;
+
+[ndisCG45e.ndi.nt.Services]
+; Windows NT specific entry
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+
+[ndisCG45e.id.reg]
+; Win9x id registry sections
+; These are not needed by NT
+HKR, Ndi, DeviceID, 0, "USB\VID_07B2&PID_450e"
+
+;-----------------------------------------------------------------------------
+; common registry entries
+;
+[common.reg]
+HKR,  Ndi\params\ByteSwapFlag,      ParamDesc, 0,  "Byte Swap Flag"
+HKR,  Ndi\params\ByteSwapFlag,      default,   0,  "ByteSwapFlag=0"
+HKR,  Ndi\params\ByteSwapFlag,      type,      0,  "edit"
+HKR,  Ndi\params\ByteSwapFlag,      LimitText, 0,  "128"
+HKR,  Ndi\params\ByteSwapFlag,      UpperCase, 0,  "0"
+    
+;----------------------------------------------------------------------------
+; Win9x specific
+;
+[ndiscm.flag.reg]
+; flag is not needed by NT
+HKR,  Ndi\params\ByteSwapFlag,      flag,      1,  20,00,00,00
+    
+[ndiscm.9x.reg]
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "NetMotCM.sys"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+; memphis appears to not support the ndis5 upper range, so use ndis3
+HKR, Ndi\Interfaces,DefUpper,   	0, "ndis3"
+HKR, Ndi\Interfaces,DefLower,   	0, "ethernet"
+HKR, Ndi\Interfaces,UpperRange, 	0, "ndis3"
+HKR, Ndi\Interfaces,LowerRange, 	0, "ethernet"
+HKR, NDIS,          LogDriverName,      0, "NetMotCM"
+HKR, NDIS,          MajorNdisVersion,   1, 03
+HKR, NDIS,          MinorNdisVersion,   1, 0A
+    
+;-----------------------------------------------------------------------------
+; WIN2K (NT) specific
+;
+[ndiscm.nt.reg]
+HKR, Ndi,                       Service,    0, "ndiscm"
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi\Interfaces,            DefUpper,   0, "ndis5"
+HKR, Ndi\Interfaces,            DefLower,   0, "ethernet"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+    
+[ndiscm.Service]
+DisplayName     = %ndiscm.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\NetMotCM.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+    
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+    
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, %%SystemRoot%%\System32\netevent.dll
+HKR, , TypesSupported,   0x00010001, 7
+    
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+    
+    
+;-----------------------------------------------------------------------------
+; Files and Destination Directories
+;
+[ndiscm.nt.CopyFiles]
+NetMotCM.sys,,,2
+    
+[ndiscm.9x.CopyFiles]
+NetMotCM.sys,,,2
+    
+[DestinationDirs]
+DefaultDestDir = 10,System32\Drivers
+ndiscm.nt.CopyFiles = 12
+ndiscm.9x.CopyFiles = 11
+    
+[SourceDisksNames]
+1 = %USBCM%,,,
+    
+[SourceDisksFiles]
+NetMotCM.sys = 1
+    
+[Strings]
+MOT             = "Motorola"
+USBCM		= "USBCM"
+; String that gets displayed while installing the device
+; ndiscm.DeviceDesc       = "Motorola SURFboard USB Cable Modem"
+USB\VID_07B2&PID_4100.DeviceDesc = "Motorola SURFboard 4100 USB Cable Modem"
+USB\VID_07B2&PID_4200.DeviceDesc = "Motorola SURFboard 4200 USB Cable Modem"
+USB\VID_07B2&PID_5100.DeviceDesc = "Motorola SURFboard SB5100 USB Cable Modem"
+USB\VID_07B2&PID_5101.DeviceDesc = "Motorola SURFboard SB5101 USB Cable Modem"
+USB\VID_07B2&PID_0900.DeviceDesc = "Motorola SURFboard USB Gateway"
+USB\VID_07B2&PID_0950.DeviceDesc = "Motorola SURFboard SBG950 USB Gateway"
+USB\VID_07B2&PID_1000.DeviceDesc = "Motorola SURFboard SBG1000 USB Gateway"
+USB\VID_07B2&PID_0100.DeviceDesc = "Motorola SURFboard Voice over IP Cable Modem"
+USB\VID_07B2&PID_4500.DeviceDesc = "Motorola CG4500 Communications Gateway"
+USB\VID_07B2&PID_450B.DeviceDesc = "Motorola CG4501 Communications Gateway"
+USB\VID_07B2&PID_450E.DeviceDesc = "Motorola CG4500E Communications Gateway"
+    
+; NT Service name
+ndiscm.Service.DispName = "Motorola SURFboard USB Cable Modem Windows Driver"

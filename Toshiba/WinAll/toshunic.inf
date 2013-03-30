@@ -1,0 +1,174 @@
+
+;*****************************************************************************
+;
+; toshunic.inf   -- Install the Toshiba F3507g Mobile Broadband Network Adapter (WDM)
+;
+; Copyright (c) 1997-2009 MCCI Corporation
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=03/17/2009,4.50.7.0
+CatalogFile=toshunic.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+TOSHWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshunic.sys",,\i386
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshunic.sys",,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+toshunic.sys = 1
+toshcrnt.sys = 1
+toshwhnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%TOSH%=TOSH, NTamd64
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[TOSH]
+%TOSH.Ndis.Desc% = TOSHWdm.Install, USB\VID_0930&PID_130b&Class_02&SubClass_0A&Prot_00
+
+[TOSH.NTamd64]
+%TOSH.Ndis.Desc% = TOSHWdm.Install, USB\VID_0930&PID_130b&Class_02&SubClass_0A&Prot_00
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[TOSH.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on W95/W98
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[TOSHWdm.Install.NT]
+DriverVer=03/17/2009,4.50.7.0
+AddReg          = TOSHWdm.AddReg, TOSHWdm.NT.AddReg
+CopyFiles       = TOSHWdm.NT.CopyFiles
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[TOSHWdm.Install.NT.Services]
+AddService      = toshunic, 2, TOSHWdm.AddService
+
+[TOSHWdm.AddService]
+DisplayName             = %TOSH.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\toshunic.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[TOSHWdm.AddReg]
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,CREnum,,TOSHCR
+; configuration variables for CDC Ethernet Control Model.
+; These have no effect for MDLM devices.
+HKR,,UseTxCrc, 0x10001, 00,00,00,00
+HKR,,CdcEthernetSetAddressMethod, 0x10001, 00,00,00,00
+HKR,,EnableRxBulkStream, 0x10001, 01,00,00,00
+HKR,,nRxBulkStreamObjects, 0x10001,08,00,00,00
+HKR,,EnableNdisEncmBlockProcessing,0x10001,  00,00,00,00
+HKR,,DataAltSetting,1,  02,00,00,00
+HKR,,EnableInternalNdisIoctl,01,01,00,00,00
+;HKR,,EnableCR3329, 0x10001, 01,00,00,00
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[TOSHWdm.NT.AddReg]
+HKR,,EnableCR3840, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspendHeuristics, 0x10001, 01,00,00,00
+HKR,,AllowRemoteWakeup, 0x10001, 01,00,00,00
+
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[TOSHWdm.NT.CopyFiles]
+toshunic.sys
+toshwh.sys,toshwhnt.sys
+toshcr.sys,toshcrnt.sys
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Toshiba"
+TOSH = "Toshiba"
+DiskString = "Toshiba F3507g Mobile Broadband Device Driver Disk"
+
+TOSH.Ndis.Desc = "Toshiba F3507g Mobile Broadband Network Adapter"
+TOSH.Service.Desc = "Toshiba F3507g Mobile Broadband Network Adapter (WDM)"
+
+UpperDescription = "Toshiba F3507g Mobile Broadband Network Adapter (for Networking Device)"
+
+CustomerDataPath = "Toshiba F3507g Mobile Broadband Device"
+DriverSet = "Toshiba F3507g Mobile Broadband Device"
+UninstallFile = "TOSHUninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

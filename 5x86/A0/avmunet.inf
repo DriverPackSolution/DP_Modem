@@ -1,0 +1,144 @@
+;
+; Win98/Win98SE/ME/Win2K/WinXP/WinServer2003 inf for AVM FRITZ!Box
+;
+; (C) Copyright AVM GmbH, Berlin 2006
+;
+
+[Version]
+Signature           = "$CHICAGO$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider            = %v_avm%
+Compatible          = 1
+DriverVer           =10/06/2006, 1.1.17
+CatalogFile.NT      = avmunet.cat
+
+[Strings]
+AVMUNETFONWLANANNEXA    = "AVM FRITZ!Box Fon WLAN (Annex A)"
+AVMUNETWLANANNEXA       = "AVM FRITZ!Box WLAN (Annex A)"
+AVMUNETFONATA           = "AVM FRITZ!Box Fon ata"
+AVMUNETWLAN             = "AVM FRITZ!Box WLAN"
+AVMUNETFONWLAN          = "AVM FRITZ!Box Fon WLAN"
+AVMUNETFONANNEXA        = "AVM FRITZ!Box Fon (Annex A)"
+AVMUNETANNEXA           = "AVM FRITZ!Box (Annex A)"
+AVMUNETFON              = "AVM FRITZ!Box Fon"
+AVMUNETSL               = "AVM FRITZ!Box SL"
+AVMUNET                 = "AVM FRITZ!Box"
+SourceDisk              = "AVM FRITZ!Box Installation Disc"
+v_avm                   = "AVM GmbH"
+PreClass                = "USB"
+AVMDriverDate           ="10/06/2006"
+
+[Manufacturer]
+%v_avm%                 = AVMDevices
+
+[AVMDevices]
+%AVMUNETFONWLANANNEXA%  = AVMUNET, USB\VID_057C&PID_4201
+%AVMUNETWLANANNEXA%     = AVMUNET, USB\VID_057C&PID_4101
+%AVMUNETFONATA%         = AVMUNET, USB\VID_057C&PID_4701
+%AVMUNETWLAN%           = AVMUNET, USB\VID_057C&PID_3C00
+%AVMUNETFONWLAN%        = AVMUNET, USB\VID_057C&PID_3D00
+%AVMUNETANNEXA%         = AVMUNET, USB\VID_057C&PID_3E01
+%AVMUNETFON%            = AVMUNET, USB\VID_057C&PID_3A00
+%AVMUNETSL%             = AVMUNET, USB\VID_057C&PID_3701
+%AVMUNET%               = AVMUNET, USB\VID_057C&PID_3702
+%AVMUNETFONANNEXA%      = AVMUNET, USB\VID_057C&PID_4001
+
+[ControlFlags]
+ExcludeFromSelect   = *
+
+;------------------------------------------------------------------
+; Windows 98, 98 SE and ME specific sections
+;------------------------------------------------------------------
+
+[AVMUNET]
+AddReg              = AVMUNET_AddReg_98
+BusType             = 15
+Characteristics     = 0x4
+DeviceID            = avmunet
+MaxInstance         = 10
+CopyFiles           = AVMUCD_CopySys98,AVMUCD_CopyInf98
+
+[AVMUNET_AddReg_98]
+HKR, ,               DevLoader,        0, *ndis
+HKR, ,               DeviceVxDs,       0, avmunet9.sys
+HKR, NDIS,           LogDriverName,    0, "avmunet9"
+HKR, NDIS,           MajorNdisVersion, 1, 5
+HKR, NDIS,           MinorNdisVersion, 1, 0
+HKR, Ndi\Interfaces, DefUpper,         0, "ndis3,ndis4,ndis5"
+HKR, Ndi\Interfaces, DefLower,         0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange,       0, "ndis3,ndis4,ndis5"
+HKR, Ndi\Interfaces, LowerRange,       0, "ethernet"
+HKR, Ndi\Install,    ndis3,            0, "AVMUNET_Install_98"
+HKR, Ndi\Install,    ndis4,            0, "AVMUNET_Install_98"
+HKR, Ndi\Install,    ndis5,            0, "AVMUNET_Install_98"
+HKR, Ndi,            DeviceId,         0, "USB\VID_057C"
+
+[AVMUNET_Install_98]
+CopyFiles           = AVMUNET_CopyFile_98
+
+[AVMUNET_CopyFile_98]
+avmunet9.sys
+
+[AVMUCD_CopySys98]
+avmucd9x.sys
+
+[AVMUCD_CopyInf98]
+avmucd.inf
+avmunetx.inf,avmunetx.in_
+
+
+;------------------------------------------------------------------
+; Windows 2000 and XP specific sections
+;------------------------------------------------------------------
+
+[AVMUNET.NT]
+AddReg              = AVMUNET_AddReg_NT
+BusType             = 15
+Characteristics     = 0x4
+CopyFiles           = AVMUNET_CopyFile_NT
+
+[AVMUNET_AddReg_NT]
+HKR, Ndi,               Service,        0, "AVMUNET"
+HKR, Ndi\Interfaces,    UpperRange,     0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange,     0, "ethernet"
+
+[AVMUNET_CopyFile_NT]
+avmunet.sys
+
+[AVMUNET.NT.Services]
+AddService          = AVMUNET, 2, AVMUNET_ServiceInst_NT, AVMUNET_EventLog
+
+[AVMUNET_ServiceInst_NT]
+DisplayName         = %AVMUNET%
+ServiceType         = 1
+StartType           = 3
+ErrorControl        = 1
+ServiceBinary       = %12%\avmunet.sys
+LoadOrderGroup      = NDIS
+
+[AVMUNET_EventLog]
+AddReg              = AVMUNET_EventLog_AddReg
+
+[AVMUNET_EventLog_AddReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\avmunet.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;------------------------------------------------------------------
+; Common Sections
+;------------------------------------------------------------------
+[SourceDisksNames]
+1 = %SourceDisk%, "",
+
+[SourceDisksFiles]
+avmunet.sys         = 1
+avmunet9.sys        = 1
+avmucd9x.sys        = 1
+avmucd.inf          = 1
+avmunetx.in_        = 1
+
+[DestinationDirs]
+AVMUNET_CopyFile_98 = 11
+AVMUCD_CopySys98    = 11
+AVMUCD_CopyInf98    = 17
+AVMUNET_CopyFile_NT = 12

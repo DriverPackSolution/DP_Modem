@@ -1,0 +1,8 @@
+Title      : Communications: Conexant D330,HDA,MDC,v.92,modem Driver
+Version    : A00
+OEM Name   : Conexant
+OEM Ver    : drv_xp_2k_7.59.00.50
+Computers  : Latitude: ATG D630, D430, D531, D630, D631, D830; Precision: M4300; Vostro Notebook: 1000
+OS         : Windows 2000,Windows XP
+Languages  : Brazilian Portuguese, Chinese-S, Chinese-T, English, French, German, Italian, Japanese, Korean, Polish, Russian, Swedish, Spanish
+Created    : Wednesday, July 11, 2007

@@ -1,0 +1,169 @@
+; Windows 2000/XP Virtual Serial Port Setup File
+; Copyright (c) 2002-2006 AnyDATA Corporated
+; Manufacturer: AnyDATA Corporated
+;
+; This INF file installs a virtual COM port on a 64-bit Windows system.
+
+[Version]
+signature  = "$WINDOWS NT$"
+Class      = Ports
+Provider   = %ANYDATA%
+ClassGuid  = {4D36E978-E325-11CE-BFC1-08002BE10318}
+CatalogFile.ntia64=adser_ia64.cat
+CatalogFile.ntamd64=adser_amd64.cat
+DriverVer  = 12/21/2006,2.0.3.7
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+1=%DISKNAME%,,1
+
+[SourceDisksFiles]
+adusbser.sys=1
+
+[Manufacturer]
+%ANYDATA% = AnyDataSerialPort, NTia64, NTamd64
+
+[AnyDataSerialPort]
+
+[AnyDataSerialPort.NTia64]
+%AnyDATADevice011% = AnyDATAportInstall00, USB\VID_16D5&PID_6001&MI_01
+%AnyDATADevice021% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_01
+%AnyDATADevice022% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_02
+%AnyDATADevice031% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_01
+%AnyDATADevice032% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_02
+
+%AnyDATADevice011_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6501&MI_01
+%AnyDATADevice021_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_01
+%AnyDATADevice022_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_02
+%AnyDATADevice031_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_01
+%AnyDATADevice032_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_02
+%AnyDATADevice041_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_01
+%AnyDATADevice042_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_02
+%AnyDATADevice043_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_03
+
+%AnyDATADevice011_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6801&MI_01
+%AnyDATADevice021_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_01
+%AnyDATADevice022_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_02
+%AnyDATADevice031_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_01
+%AnyDATADevice032_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_02
+%AnyDATADevice041_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_01
+%AnyDATADevice042_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_02
+%AnyDATADevice043_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_03
+
+%AnyDATADevice011_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6201&MI_01
+%AnyDATADevice021_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_01
+%AnyDATADevice022_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_02
+%AnyDATADevice031_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_01
+%AnyDATADevice032_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_02
+%AnyDATADevice041_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_01
+%AnyDATADevice042_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_02
+%AnyDATADevice043_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_03
+
+[AnyDataSerialPort.NTamd64]
+%AnyDATADevice011% = AnyDATAportInstall00, USB\VID_16D5&PID_6001&MI_01
+%AnyDATADevice021% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_01
+%AnyDATADevice022% = AnyDATAportInstall00, USB\VID_16D5&PID_6002&MI_02
+%AnyDATADevice031% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_01
+%AnyDATADevice032% = AnyDATAportInstall00, USB\VID_16D5&PID_6003&MI_02
+
+%AnyDATADevice011_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6501&MI_01
+%AnyDATADevice021_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_01
+%AnyDATADevice022_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6502&MI_02
+%AnyDATADevice031_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_01
+%AnyDATADevice032_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6503&MI_02
+%AnyDATADevice041_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_01
+%AnyDATADevice042_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_02
+%AnyDATADevice043_65% = AnyDATAportInstall00, USB\VID_16D5&PID_6504&MI_03
+
+%AnyDATADevice011_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6801&MI_01
+%AnyDATADevice021_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_01
+%AnyDATADevice022_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6802&MI_02
+%AnyDATADevice031_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_01
+%AnyDATADevice032_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6803&MI_02
+%AnyDATADevice041_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_01
+%AnyDATADevice042_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_02
+%AnyDATADevice043_68% = AnyDATAportInstall00, USB\VID_16D5&PID_6804&MI_03
+
+%AnyDATADevice011_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6201&MI_01
+%AnyDATADevice021_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_01
+%AnyDATADevice022_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6202&MI_02
+%AnyDATADevice031_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_01
+%AnyDATADevice032_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6203&MI_02
+%AnyDATADevice041_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_01
+%AnyDATADevice042_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_02
+%AnyDATADevice043_62% = AnyDATAportInstall00, USB\VID_16D5&PID_6204&MI_03
+
+[AnyDATAportInstall00.NTia64]
+CopyFiles=ADUsbDriverFiles
+AddReg = All00, AddReg
+
+[AnyDATAportInstall00.NTamd64]
+CopyFiles=ADUsbDriverFiles
+AddReg = All00, AddReg
+
+[ADUsbDriverFiles]
+adusbser.sys
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[AnyDATAportInstall00.NTia64.Services]
+AddService=adusbser,  0x00000002, AD_USBSerialService
+
+[AnyDATAportInstall00.NTamd64.Services]
+AddService=adusbser,  0x00000002, AD_USBSerialService
+
+[AD_USBSerialService]
+DisplayName   = %ADUSBSER%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\adusbser.sys
+
+[All00]
+HKR,,NTMPDriver,,adusbser.sys
+
+[AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKLM,SYSTEM\CurrentControlSet\Services\adusbser,QCDriverSelectiveSuspendIdleTime,0x10001,30
+
+[Strings]
+ANYDATA   = "AnyDATA Corporation"
+AnyDATADevice011 = "AnyDATA CDMA USB Serial Device (PID 6001)"
+AnyDATADevice021 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6002)"
+AnyDATADevice022 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6002)"
+AnyDATADevice031 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6003)"
+AnyDATADevice032 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6003)"
+
+AnyDATADevice011_65 = "AnyDATA CDMA USB Serial Device (PID 6501)"
+AnyDATADevice021_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6502)"
+AnyDATADevice022_65 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6502)"
+AnyDATADevice031_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6503)"
+AnyDATADevice032_65 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6503)"
+AnyDATADevice041_65 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6504)"
+AnyDATADevice042_65 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6504)"
+AnyDATADevice043_65 = "AnyDATA CDMA USB Serial 3 (AUX) Device (PID 6504)"
+
+AnyDATADevice011_68 = "AnyDATA CDMA USB Serial Device (PID 6801)"
+AnyDATADevice021_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6802)"
+AnyDATADevice022_68 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6802)"
+AnyDATADevice031_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6803)"
+AnyDATADevice032_68 = "AnyDATA CDMA USB Serial 2 (AUX) Device (PID 6803)"
+AnyDATADevice041_68 = "AnyDATA CDMA USB Serial 1 (DIAG) Device (PID 6804)"
+AnyDATADevice042_68 = "AnyDATA CDMA USB Serial 2 (NMEA) Device (PID 6804)"
+AnyDATADevice043_68 = "AnyDATA CDMA USB Serial 3 (AUX) Device (PID 6804)"
+
+AnyDATADevice011_62 = "AnyDATA WCDMA USB Serial Device (PID 6201)"
+AnyDATADevice021_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6202)"
+AnyDATADevice022_62 = "AnyDATA WCDMA USB Serial 2 (NMEA) Device (PID 6202)"
+AnyDATADevice031_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6203)"
+AnyDATADevice032_62 = "AnyDATA WCDMA USB Serial 2 (AUX) Device (PID 6203)"
+AnyDATADevice041_62 = "AnyDATA WCDMA USB Serial 1 (DIAG) Device (PID 6204)"
+AnyDATADevice042_62 = "AnyDATA WCDMA USB Serial 2 (NMEA) Device (PID 6204)"
+AnyDATADevice043_62 = "AnyDATA WCDMA USB Serial 3 (AUX) Device (PID 6204)"
+
+ADUSBSER = "AnyDATA USB Device for Legacy Serial Communication"
+DISKNAME = "AnyDATA USB Modem Driver installation"

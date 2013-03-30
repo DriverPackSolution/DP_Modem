@@ -1,0 +1,180 @@
+;*****************************************************************************
+;
+; brgwunic.inf   -- Install the DCM-201 DOCSIS Cable Modem WDM drivers
+;
+; Copyright (c) 1997-2003 MCCI
+;
+; $Id: lower.inf,v 1.16 2002/09/20 20:02:12 greg Exp $
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc..
+;
+;*****************************************************************************
+
+[version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=01/31/2003, 3.42.0.2700
+CatalogFile=brgwunic.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+D-LinkWdm.W95.CopyFiles       = 11                    ; LDID_SYS
+D-LinkWdm.W95.CopyFiles.sys   = 11                    ; LDID_SYS
+D-LinkWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"brgwunic.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+brgwunic.sys = 1
+brgwcr95.sys = 1
+brgwcrnt.sys = 1
+brgwvcr.vxd = 1
+brgwwh95.sys = 1
+brgwwhnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%D-Link%=D-Link
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[D-Link]
+%D-Link.Ndis.Desc% = D-LinkWdm.Install, USB\VID_0E9D&PID_3520
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[D-Link.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on W95/W98
+;-----------------------------------------------------------------------------
+[D-LinkWdm.Install]
+DriverVer=01/31/2003, 3.42.0.2700
+AddReg          = D-LinkWdm.AddReg, D-LinkWdm.W95.AddReg
+CopyFiles       = D-LinkWdm.W95.CopyFiles, D-LinkWdm.W95.CopyFiles.sys, D-Link.CopyFiles, PropPages.CopyFiles
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[D-LinkWdm.Install.NT]
+DriverVer=01/31/2003, 3.42.0.2700
+AddReg          = D-LinkWdm.AddReg, D-LinkWdm.NT.AddReg
+CopyFiles       = D-LinkWdm.NT.CopyFiles
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[D-LinkWdm.Install.NT.Services]
+AddService      = brgwunic, 2, D-LinkWdm.AddService
+
+[D-LinkWdm.AddService]
+DisplayName             = %D-Link.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\brgwunic.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[D-LinkWdm.AddReg]
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,CREnum,,BRGWCR
+HKR,,EnableRxBulkStream, 0x10001, 01,00,00,00
+HKR,,nRxBulkStreamObjects, 0x10001, 08,00,00,00
+HKR,,DataAltSetting, 0x10001, 01,00,00,00
+HKR,,DevicePhysicalMedium, 0x10001, 02,00,00,00
+HKR,,EnableDriverCdcCmdProcessing, 0x10001, 01,00,00,00
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (W95/98) (including how to start the driver)
+;-----------------------------------------------------------------------------
+[D-LinkWdm.W95.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,brgwunic.sys
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[D-LinkWdm.NT.AddReg]
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for Win95 -- different because things go in
+;       different places.  Also, we probably need to rename drivers 
+;       during the install.
+;-----------------------------------------------------------------------------
+[D-LinkWdm.W95.CopyFiles]
+brgwvcr.vxd
+
+[D-LinkWdm.W95.CopyFiles.sys]
+brgwunic.sys
+brgwcr.sys,brgwcr95.sys
+brgwwh.sys,brgwwh95.sys
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[D-LinkWdm.NT.CopyFiles]
+brgwunic.sys
+brgwwh.sys,brgwwhnt.sys
+brgwcr.sys,brgwcrnt.sys
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "D-Link Corporation"
+D-Link = "D-Link Corporation"
+DiskString = "DCM-201 DOCSIS Cable Modem installation disk"
+
+D-Link.Ndis.Desc = "DCM-201 DOCSIS Cable Modem (WDM)"
+D-Link.Service.Desc = "DCM-201 DOCSIS Cable Modem (WDM)"
+
+UpperDescription = "D-Link DCM-201 DOCSIS Cable Modem networking device"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

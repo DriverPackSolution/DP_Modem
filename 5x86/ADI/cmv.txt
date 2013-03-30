@@ -1,0 +1,7 @@
+; POTS for EAGLE
+CW cntl 0 1
+CW optn 0 80020066
+CW optn 1 991
+; enable optn 16 for WT-062 testing only
+; CW optn 16 80818040
+CW cntl 0 2

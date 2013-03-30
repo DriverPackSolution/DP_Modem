@@ -1,0 +1,534 @@
+LTMOH App release notes for version 1.7.9.0
+-------------------------------------------
+Modified version numbering scheme to a 4 number scheme
+Embedded a manifest into ltmoh.exe for the OEM Ready program 
+
+LTMOH App release notes for version 1.77
+----------------------------------------
+Fixed MR53733 where the LTMOH application was not functioning under Vista unless it was "Run as Administrator".
+
+LTMOH App release notes for version 1.76A
+----------------------------------------
+Fixed MR 40877 where the application was crashing after 10 calls. This was an issue reported by system test and
+Toshiba Japan
+
+LTMOH App release notes for version 1.76
+----------------------------------------
+Some modifications to the User Interface so that the Dialog Box buttons "OK" and "Cancel" will 
+be displayed in different languages.
+Added support for SV92PP( Pinball) and U2.
+
+LTMOH App release notes for version 1.75
+----------------------------------------
+Fixed MRI 18082 where there were junk characters being displayed in the task bar menu 
+options for non-English language menus.
+Added support for Soft modems on 64-bit systems ( AMD64 and X86 64).
+Fixed MRI 20085: Added support for HDA modems
+Fixed MRI 18682: The reconnect of the data call was not working after a "Place Outgoing Call"
+in Ireland ( and probably all other countries that require a HookFlash+Digit to switch calls).
+This has been fixed.
+
+
+LTMOH App release notes for version 1.73
+----------------------------------------
+Fixed MRI 9210 where there was a truncated string in Japanese MoH settings window.
+Fixed MRI 9358: Portuguese MoH call history windows Cancel button is blank.
+
+LTMOH App release notes for version 1.72
+----------------------------------------
+Fixed MR 7316 where installation of the MOH Application was causing two instances of 
+agrsm.vxd to be loaded in Win95/Win98. This was causing intermittent crashes and port 
+open failures. This fix is for SoftModem only
+
+Fixed a bug where the MOH progress dialog box was being incorrectly displayed if an 
+application moved the toolbar or its own application bar to the top of the screen. 
+The progress dialog box would get displayed in a higher position of the screen and 
+would creep up with successive displays and finally go off the screen. This was 
+noticed while using NetZero
+
+LTMOH App release notes for version 1.71
+----------------------------------------
+Bug Fixes/Enhancements
+
+Additional options in ltmoh.ini
+
+StealthMode=Y
+
+This setting is for softmodem only. This will cause the MOH application to run 
+in silent mode ( will not be seen in the system tray) when the Modem is not in 
+a connected state. It will be seen in the system tray when the Modem is 
+connected. The MOH application will also be seen in the system tray if
+it is executed again and will go back to silent mode on the next disconnect.
+
+AudibleAlert=Y
+
+This setting will cause a default system sound (ding.wav) to be played when 
+there is an incoming call
+
+
+Debug=Y 
+
+This setting will cause the application to output debug messages. These
+messages can be viewed by using a debugger or a debug message viewer
+
+
+[DIAL_STRINGS]
+Ireland=2,1
+Italy=2
+France=2
+
+Added a new section for default "Dial digit after hookflash strings". This is
+to be used to set the default digits based on the TAPI country setting. This 
+is applicable in some European countries like Ireland,France and Italy where 
+the setting is universal. The default setting is set only if there is no
+previous setting and will not change if the country is changed. This feature 
+is designed for our soft PCI users in Europe.
+
+Added support so that the MOH application will function if the "Switch User"
+option in WinXP is used. This support is for Mars/Soft only.
+
+Fixed some softmodem hookflash timing issues in MOHAPI.DLL for Ireland/France 
+and Italy.
+
+
+
+LTMOH App release notes for version 1.70
+----------------------------------------
+Bug Fixes/Enhancements
+
+Added support for new sub-languages
+
+Chinese - HongKong, same as Chinese - Taiwan
+Chinese - Singapore, same as Chinese - PRC
+French - Canada, same as French - France
+Portuguese - Brazil, same as Portuguese - Portugal
+
+Fixed a bug in mohapi.dll where the dll would crash if the dial after hookflash digit 
+string was more than 12 characters.
+
+Added code in mohapi.dll for softmodem so that the softmodem driver is notified 
+when the application exits, MR 5940
+
+LTMOH App release notes for version 1.69
+----------------------------------------
+Bug Fix/Enhancements:
+
+Added a new option ProgramEntryPath in LTMOH.INI
+ProgramEntryPath- will allow the creation of a user specified entry under start->programs. Only one level of nesting is supported. This flag will be used only if the CreateProgramEntry flag is defined. For example, ProgramEntryPath=Agere Modem will create the MOH program entry under the start->programs->Agere Modem.
+Fixes MR5045
+
+Added a new option CheckDisabledFlag=Y in LTMOH.INI
+
+CheckDisabledFlag=Y Setting for softmodem only. This will cause the MOH application to run in silent mode ( will not be seen in the taskbar) if the current modem country does not support MOH (determined by the S599 settings for that country ). This option
+requires the version 2.1.22 and above version of the softmodem driver.
+Fixes MR 5485
+
+Fixed a bug where the resume from Place Call did not work in some scenarios. This fixes MR 5690.
+
+LTMOH App release notes for version 1.68
+----------------------------------------
+Bug Fix:
+Fixed a bug in Win98 where the application was causing a fatal exception in the 
+softmodem code when the QuickConnect UI was enabled
+
+LTMOH App release notes for version 1.67
+----------------------------------------
+Enhancements:
+Added a new ModemType=4 in ltmoh.ini. This type is for Mars or Soft. The application will first try to 
+check for a Mars modem and then try to check for a softmodem. This can be used by OEMs 
+who support both Mars and Soft and want just one version of the MOH application.
+
+Added FastConnect help for all languages.
+
+Changed the application ICON from the Lucent ring to Agere.
+
+LTMOH App release notes for version 1.66
+----------------------------------------
+Enhancements:
+Added an option in the ltmoh.ini file to control QuickConnect in MARS/SoftModem
+QuickConnect=Y		;will display the QC User interface in the MOH property page
+QuickConnect=N		;will not display the QC User interface in the MOH property page
+The default QC setting for MARS is QC disabled
+The default QC setting for Soft is QC enabled
+
+Added an option in ltmoh.ini to create an entry in the StartMenu for the application
+CreateProgramEntry=Y 	; will create an entry in the StartMenu for the application.
+
+Added support for Venus PCI and fixed some device resource related issues with Venus PCMCIA.
+
+Fixed a bug where the MOH popup window was being hidden by some "Always on Top" programs. 
+The MOH popup will always be on top.
+
+Incorporated Resource string modifications and help file modifications based on OEM
+feedback.
+
+LTMOH App release notes for version 1.65
+----------------------------------------
+Bug Fixes:
+Fixed a bug where if an outgoing call resulted in a MOH denied then the call was 
+displayed as an incoming call.MR 4272.
+Fixed a bug where the MOH application could be run again if it was already running 
+automatically at startup.MR 4477.
+
+LTMOH App release notes for version 1.64
+----------------------------------------
+Bug Fixes:
+Fixed bug with Japan CallerID display for MARS. MR 2830
+Fixed bug with Japan CallerID history display for all modems. MR 4244
+Fixed bug where a failure to "Place an outgoing call" was resulting in subsequent 
+incoming calls were incorrectly labeled as outgoing calls.
+
+New Features:
+Added an option in the ltmoh.ini to control QuickConnect in MARS
+QuickConnect=Y		;will enable QC
+QuickConnect=N		;will disable QC
+
+
+LTMOH App release notes for version 1.63
+----------------------------------------
+Bug Fixes:
+Fixed bug with Japan CallerID display for SoftModem
+Fixed bug with CallerID display in Texas/North Carolina for all modems
+Fixed bugs reported by Actiontec for Venus
+Modified the Venus filter driver (for NT4/W2K/WXP) to attach to the WDM driver stack.
+The driver now uses Read IRPS to access CallerID data and does not access the UART
+directly. This fixed issues where CID information was not getting displayed in Venus.
+
+
+LTMOH App release notes for version 1.62
+----------------------------------------
+New features:
+Support for a logging feature. This feature can be turned on by a flag in the ltmoh.ini file
+Logging=Y will turn on logging. This creates a log file called ltmoh.log in the directory from which 
+ltmoh.exe is executed. The log file contains configuration details and activity details. The log file 
+will be reset whenever the application is run. The log file is turned off by default.
+
+LTMOH App release notes for version 1.61
+----------------------------------------
+
+New features:
+
+Support for PCMCIA Mars and Venus.
+
+The application provides the user with an option to disconnect the data call and answer 
+the incoming voice call if the modem is connected to a V90 server or if the V92 server 
+denies a MOH request.
+
+Online help is provided to the user. The help is multi-language and is in HTML format. The
+help file is MOHHELP.CHM. This is a compiled HTML file and needs to be in the same 
+directory as the ltmoh.exe file. This file is automatically copied over when the application
+is installed by setup.
+
+Additional language support:
+Czech
+Danish
+Dutch (Netherlands)
+Finnish
+Greek
+Norwegian (Bokmal)
+Polish
+Portuguese (Portugal)
+Russian
+Swedish
+Turkish
+
+
+LTMOH App release notes for version 1.60
+----------------------------------------
+Unified Application for Mars/Venus and SoftModem.
+
+New feature:
+Enhancement to Universal MOH. The user can now specify different digits for the call to 
+be switched from the data to voice and back if required. This feature is used for lines 
+that requires different DTMF digits to be dialed after the Hookflash to facillitate 
+switching the call from voice to data and back. The dial strings can be specified as one
+string delimited by a comma. 
+
+If the user needs to use a sequence of HookFlash + 1 to switch from data to voice and
+HookFlash+2 to switch from voice to data, then the dial string will be entered as "1,2".  
+
+LTMoh App release notes for version 1.59
+----------------------------------------
+Added support for additional languages
+German
+Korean
+
+
+LTMoh App release notes for version 1.58
+----------------------------------------
+Note: This version of the application should be used with Mars driver version 8.13 and above. 
+
+New features:
+
+Place Voice Call feature. This feature will allow the user to place an outgoing 
+voice call, while on a V92 connection. This requires the user to have a line with
+the three-way calling service. The user selects the "Place Voice Call" option while
+connected, there is an option to Place a voice call or to go back to the data call. 
+On selection of the option to place the voice call, the data call is placed on hold
+and the user is prompted to pick up the local phone and to dial the voice call. The 
+user then switches back to the data call when done with the voice call.
+
+Multi-language support
+
+Languages supported
+
+English
+Spanish ( Castillian, Mexican, Modern )
+French
+Japanese
+Chinese ( Simplified, Traditional)
+
+
+
+LTMoh App release notes for version 1.57
+----------------------------------------
+
+Bug Fixes:
+   Fixed an issue where the Application was passing a Null buffer to the driver. This could
+potentially cause a crash in W2k and NT4
+
+LTMoh App release notes for version 1.55
+----------------------------------------
+
+Application:
+-----------
+New Features:
+
+1. Modifications to the User Interface
+   
+   Implementation of Universal MOH. This will allow the user to specify digits to be dialed
+   to enable the call to be switched from the data call to the incoming voice call. These 
+   digits will also be used to switch the call back from voice to data. This feature is
+   used for lines that requires DTMF digits to be dialed after the Hookflash to 
+   facillitate switching the call from voice to data and back. 
+
+Bug Fixes:
+   Fixed an issue where the "Start Automatically" option was not working as documented.
+   
+   
+LTMoh App release notes for version 1.5
+----------------------------------------
+
+Application:
+-----------
+New Features:
+
+1. Modifications to the User Interface
+   The configuration dialog is one property page. 
+   
+   The configuration fields are:
+	Enable Call Waiting - Check box
+		If selected - Call Waiting is enabled
+        	If not selected - Call waiting is disabled and incoming calls are ignored.   
+	
+	Disconnect Call, switch to Voice - Radio button
+		If enabled - Incoming call is answered and data call is disconnected.
+
+	Enable Modem on Hold - Radio Button
+		If enabled - User is given an option to place the data call on hold and
+			     answer the incoming voice call.
+	
+	Caller ID - Check box
+		If selected - Caller ID information for the incoming call is displayed.
+	
+	Warn before Timeout - Check box
+		If selected - A warning message is diaplayed before the Modem on Hold
+			      times out
+
+	Warning value - Time in seconds, when the warning message is displayed
+
+
+
+    The Status dialog has been modified
+	
+    On an incoming call the following information is displayed
+
+	The Caller ID information for the call is displayed.
+	A timer counts down and displays the time the user has to 
+	select his next option.
+	
+	Options
+	=======		  
+	Answer - The data call is put on hold and the call is switched to the
+                 incoming voice call.
+	Ignore - The call is ignored and the modem returns to data mode.
+
+
+	On selection of Answer
+	
+	    A timer counts down and displays the time the user has on the voice call. 
+
+	    Options
+	    =======
+	    Resume Data Call - The modem returns to data mode.
+
+
+2. Configurable detection options
+
+   The application can be configured to detect and configure the modem for MOH without 
+   any user interaction. This is done by using an INI file called LTMOH.INI. These are
+   the options defined in the INI file
+
+   SilentEnumeration=Y
+
+   SilentEnumeration if selected will cause the app to try and detect the modem and
+   configure it without any user interaction. The modem detection is done based on 
+   the modem type or modem name.
+
+   ModemType=2
+
+   ModemType describes the modem that is to be configured. The app will detect and 
+   configure the type of modem as described in the ModemType 
+   1 = Venus; 2 = Mars
+
+   ModemName=MicroLink 56K Fun II
+
+   ModemName describes the name of the modem that is to be detected and configured. 
+   The app will detect and configure a modem that has the same friendly name as 
+   described in the ModemName field. This field should be used to detect and configure 
+   a modem that does not have our generic modem friendly name,  
+ 
+   The application will pop up an modem selection and coniguration box if the INI file
+   does not exist or if SilentEnumeration=N.
+
+3. Additional Information
+   
+   Required files for MARS
+   	LTMOH.EXE 	- Executable file
+        MOHAPI.DLL      - MOH DLL
+        LTMOH.INI       - Configuration file
+
+   Required files for VENUS
+   	LTMOH.EXE 	- Executable file
+        MOHAPI.DLL      - MOH DLL
+        LTMOH.INI       - Configuration file
+	LTHOOK.VXD      - VxD for Win9x/WinME - copy to \windows\system directory
+        LTSERMON.SYS	- SYS file for NT4/W2K - copy to \windows\system32 directory
+
+
+
+    
+LTMoh App release notes for version 1.4
+----------------------------------------
+Application:
+------------
+New Features:
+1. 	The application has been split up into a User Interface piece (LTMOH.EXE) and an API
+	DLL (MOHAPI.DLL).
+2. 	The Modem Status window pops up only when some user interaction is required.
+3.	Uses the Modem's Friendly name to select and detect Venus modems.
+
+
+LtMoh App release notes for Version 1.3
+----------------------------------------
+Application:
+------------
+New Features:
+1. Support for both Mars and Venus modems for Win NT, Win 2000, and Win Me;
+2. Support for MultiTech external modem.
+
+Known issues:
+1. The desktop shortcut link is hard coded in this release as follows:
+	Win 9x -- c:\windows\system\ltmoh.lnk
+	Win NT -- c:\winnt\system32\ltmoh.lnk
+	Win 2000 -- c:\winnt\system32\ltmoh.lnk
+	Win Me -- c:\windows\system\ltmoh.lnk
+If the path of windows system directory is different from the above, the desktop shortcut 
+needs to be manually created for this release.
+2. Uninstall is not equipped for Win NT in this release.
+
+Venus LtHook.VxD and LtSerMon.SYS:
+----------------------------------
+Modifications:
+1.	Wait for +PMHR:n only after we make the +PMHR request, which bypass
+	possible garbage containing +PMHRN:n in DUN/CISCO case.
+2.  Under NT4/W2K, after call waiting happens, wait longer before flash hook.
+
+Known issues:
+1.  LtSerMon.sys won't exit before Hyperterm quit. User won't see the 
+	difference though.
+
+
+LtMoh App release notes for Version 1.2
+----------------------------------------
+Application:
+------------
+New Features:
+1. Call history log showing last ten incoming calls with date, time, number, and caller ID;
+2. Enable/Disable call waiting;
+3. Enumerate and display all installed Lucent modems for user to select;
+4. Option for automatic launch when machine reboots.
+
+Modifications:
+1. Adaptation to the new V.250 AT commands.
+
+Venus LtHook.VxD:
+-----------------
+Modifications:
+VxD was modified to go with new Venus control code, which supports latest TIA TR-30.2 spec.
+NOTE: The spec. proposed MOH +P commands to be included in V.250
+
+
+LtMoh App release notes for Version 1.1
+----------------------------------------
+Application:
+------------
+New Features:
+1. Save MOH settings to registry on exit and restore settings when app is launched again.  
+   The registry key added is "HKEY_LOCAL_MACHINE\SOFTWARE\Lucent\MOH";
+2. Single app supports both Venus and Mars.
+3. App saves window positioning
+4. OS detection for MARS is implemented
+5. Mars & Venus is supported on Win 95,98 and Millenium.
+
+Modifications:
+1. Timer drop list expanding.
+
+Known issues:
+1. Application will not detect modem properly if both mars and venus are installed in the same system
+
+Venus LtHook.VxD:
+-----------------
+Fixed problems:
+1. ltven.inf
+	Modified ltven.inf to include uninstall, which removes .lnk, exe and vxd when user removes 
+	"Lucent MOH application".  To restore "Lucent MOH Application", user needs to remove modem and 
+	reinstall through ltven.inf again;  
+2. Improved callerID detection and moh notifications with different applications such as procomm, HT etc.,
+
+LtMoh App release notes for Version 1.0
+----------------------------------------
+1. Additional files copied
+LtHook.vxd ->Trapper vxd copied to windows\system directory
+LtMoh.exe  ->Modem on Hold application copied to windows\system directory
+LtMoh.lnk  -> shortcut that is copied to desktop during INF installation.
+LtMoh.inf  -> Modified generic Lucent inf to copy these additional files and some registry keys.
+
+The shorcut assumes Windows is installed in c:\windows directory.
+
+2. Registry Keys added 
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Run,"LTMOH",,"LTMOH.EXE" 
+This key is added to run the LtMoh application automatically on reboot.
+
+3. Known issues
+a. The additional files copied and registry key are not removed automatically when the
+modem is removed through device manager. Will be supported in the next release via
+Add/Remove programs
+b. Enables call waiting by default for MoH feature to work. No user interface to disable this.
+c. Looks for Zoom or Lucent in ati3 string to detect Lucent modem.
+d. Need to run the application manually after the modem installation. It can be run by double clicking the icon
+on the desktop or executing from \windows\system\ltmoh.exe.
+e. Supports only VxD platforms.
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+

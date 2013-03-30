@@ -1,0 +1,99 @@
+;--------------------------------------------------------------------------
+;**************************** Comment Area ********************************
+;--------------------------------------------------------------------------
+;  Copyright (c) Conexant Systems, Inc. 1997,1998,1999,2000,2001
+;--------------------------------------------------------------------------
+;SCDswvs.inf            SC56D V.90 K56Flex serial
+;version 3.0                    24-OCT-00
+[Version]
+Signature="$CHICAGO$"
+Class=MEDIA
+provider=%MSFT%
+LayoutFile=layout.inf
+CatalogFile = SCDswvs.cat
+;********************************************************************
+; Date               by            Change Description
+;--------       --------------  -------------------------------------
+;06/27/97       Gary Sanderson  Changed filename from wavrss.inf to rsswavk56.inf
+;                               Inserted new friendly name from rssmdmk56.inf
+;                               Deleted unused items in [Strings]
+;07/07/97       Gary Sanderson  Move Internal forward in string
+;08/14/97       Gary Sanderson  Add WaveDevices rather than using default
+;                               Microsoft LOGO with AK56-D120
+;06/05/98       Stanton Renna   changed wav support to 8-bit-pcm 8000Hz
+;                               made serial baud rate 115200                            
+;07/10/98       Stanton Renna   Added support for NT5 and Win98
+;11/06/98       Stanton Renna   Changed friendly name to avoid repeat detection
+;01/15/99       Stanton Renna   Changed Rockwell -> Conexant
+;08/02/00       Guy Rahamim     Changed RC56D2 -> SmartSCM
+;08/03/00       Susanna Poon    Added [Version] CatalogFile = SCMswvs.cat
+;08/07/00       Guy Rahamim     Added CopyRight
+;08/07/00       Guy Rahamim     Added [SourceDiskName]
+;08/07/00       Guy Rahamim     Added [Strings] WinDiskName
+;10/24/00       Guy Rahamim     Mades SmartSCM to SmartACF changes
+;01/02/01       Guy Rahamim     Made SmartACF to SC56D changes
+;07/17/01       Eric Lin        SmartACF and SC56D V.92 V.90 driver
+;********************************************************************
+
+[ClassInstall]
+Addreg=Class.AddReg
+
+[Class.AddReg]
+HKR,,,,%MediaClassName%
+HKR,,Icon,,"-1"
+HKR,,Installer,,mmci.dll
+
+[Manufacturer]
+%Mfgname%= Device
+
+[Device]
+%Conexant.DeviceDesc%  = CONEXANT,MODEMWAVE\Conexant_External_PnP,_V.92,V.90,Voice,Speakerphone
+;%Conexant.DeviceDesc%  = CONEXANT,MODEMWAVE\Conexant_SC56D_External_PnP,_V.90,Voice,Speakerphone
+;%Conexant.DeviceDesc%  = CONEXANT,MODEMWAVE\Conexant_SmartACF_External_PnP,_V.92,V.90,Voice,Speakerphone
+%Conexant98.DeviceDesc%  = CONEXANT.Mem, MODEMWAVE\ConexantVoiceModemWave
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[SourceDiskNames]
+1 = %WinDiskName%
+
+[DestinationDirs]
+MSSERWAVE.CopyList = 11 ; LDID_SYS
+
+[CONEXANT]
+AddReg=MSSERWAVE.AddReg, CONEXANT.AddReg
+
+[CONEXANT.Mem] ; Memphis-NT5 voice code
+AddReg=MSSERWAVE.AddReg, CONEXANTMem.AddReg
+
+[MSSERWAVE.CopyList]
+serwave.vxd,,
+serwvdrv.drv,,
+vmodctl.dll,,
+
+[CONEXANT.AddReg]
+HKR,Drivers\wave\serwvdrv.drv,Description,,%Conexant.DeviceDesc%
+HKR,Config,XformModule,  , "umdmxfrm.dll"
+HKR,Config,XformID,     1, 08, 00, 00, 00       ; 8-bit PCM 8000Hz
+HKR,Config,WaveDevices, 1, 02, 00               ;2 wave devices, Line & Handset
+HKR,Config,BaudRate,    1, 00, c2, 01, 00
+
+[CONEXANTMem.AddReg]  ; Memphis-NT5 voice code
+HKR,Drivers\wave\serwvdrv.drv,Description,,%Conexant.DeviceDesc%
+
+
+[MSSERWAVE.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\wave,,,
+HKR,,Driver,,serwave.vxd
+HKR,Drivers\wave\serwvdrv.drv,Driver,,serwvdrv.drv
+HKR,Drivers,SubClasses,,"wave"
+
+[Strings]
+MSFT="CXT"
+MfgName="Conexant"
+Conexant.DeviceDesc="External Conexant Voice Modem Serial Wave Device"
+Conexant98.DeviceDesc="External Conexant Voice Modem Serial Wave Device"
+WinDiskName="Modem Install Disk"

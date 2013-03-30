@@ -1,0 +1,794 @@
+;Windows WDM Modem Setup File
+;Copyright Motorola, Inc. 2004-2008
+;Manufacturer: Motorola Inc
+
+[Version]
+Signature      = "$Windows NT$"
+Class          = Modem
+ClassGUID      = {4D36E96D-E325-11CE-BFC1-08002BE10318}
+Provider       = %Mfg%
+DriverVer=02/21/2008,6.12.14.03
+CatalogFile.NTx86   = sm56nt32.cat
+CatalogFile.NTamd64 = sm56nt64.cat 
+
+[ControlFlags]
+
+[Manufacturer]
+%Mfg% = Motorola,NTx86,NTamd64
+
+[SourceDisksNames]
+1=%SM56_DISK_LABEL%,,,\x86
+
+[SourceDisksNames.x86]
+1=%SM56_DISK_LABEL%,,,\x86
+
+[SourceDisksNames.amd64]
+1=%SM56_DISK_LABEL%,,,\amd64
+
+[SourceDisksFiles]
+smserial.sys = 1
+sm56.reg     = 1
+sm56.dll =1
+sm56co81.dll   = 1
+sm56hlpr.exe = 1
+sm56brz.dll =1
+sm56chs.dll =1
+sm56cht.dll =1
+sm56eng.dll =1
+sm56fra.dll =1
+sm56ger.dll =1
+sm56ita.dll =1
+sm56jpn.dll =1
+sm56esp.dll =1
+sm56dnk.dll =1
+sm56kor.dll =1
+sm56ara.dll =1
+sm56cro.dll =1
+sm56pol.dll =1
+sm56rus.dll =1
+sm56nor.dll =1
+sm56cze.dll =1
+sm56dan.dll =1
+sm56fin.dll =1
+sm56gre.dll =1
+sm56swe.dll =1
+sm56tur.dll =1
+Readme.htm =1
+License.htm =1
+
+[Motorola]
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055&SUBSYS_11790001 ; Toshiba
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055 ; MDC 1.0 Si3054G
+
+[Motorola.NTx86]
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055&SUBSYS_11790001 ; Toshiba
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055 ; MDC 1.0 Si3054G
+
+[Motorola.NTamd64]
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055&SUBSYS_11790001 ; Toshiba
+%SM56_HDAUDIO_MODEM_INSTALL% = SM56_HDAUDIO_MODEM_INSTALL, HDAUDIO\FUNC_02&VEN_1057&DEV_3055 ; MDC 1.0 Si3054G
+
+[Strings]
+Mfg                        = "Motorola Inc"
+SM56_HDAUDIO_MODEM_INSTALL = "TOSHIBA SM56 Data Fax Modem"
+SM56_DISK_LABEL            = "SM56 Install Disk"
+ProductName                = "SMSERIAL"
+
+[DestinationDirs]
+DefaultDestDirs = 16422,Motorola\%ProductName%
+MotSys = 12                            ;winnt\system32\drivers
+MotInstall = 16422,Motorola\%ProductName%      ;program files\motorola\smserial
+CoInstaller_CopyFiles = 11             ;winnt\system32\
+OldMotInstall = 10                             ;old installation
+OldDefaultDestDirs = 10,Motorola\%ProductName% ;folders
+
+[OldMotInstall]
+sm56itl.dll
+sm56spn.dll
+
+[OldDefaultDestDirs]
+domestic.chm
+brazil.chm
+french.chm
+german.chm
+italian.chm
+spanish.chm
+Chinese.chm
+japanese.chm
+korean.chm
+dutch.chm
+sm56Unst.exe
+readme.doc
+
+[DefaultDestDirs]
+sm56.reg
+Readme.htm
+License.htm
+
+[MotInstall]
+sm56hlpr.exe
+sm56.dll
+sm56brz.dll
+sm56chs.dll
+sm56cht.dll
+sm56eng.dll
+sm56fra.dll
+sm56ger.dll
+sm56ita.dll
+sm56jpn.dll
+sm56esp.dll
+sm56dnk.dll
+sm56kor.dll
+sm56ara.dll
+sm56cro.dll
+sm56pol.dll
+sm56rus.dll
+sm56nor.dll
+sm56cze.dll
+sm56dan.dll
+sm56fin.dll
+sm56gre.dll
+sm56swe.dll
+sm56tur.dll
+ 
+[MotSys]
+smserial.sys
+
+[SM56_HDAUDIO_MODEM_INSTALL.NT]
+CopyFiles = MotInstall, MotSys, DefaultDestDirs
+AddReg=All, MfgAddReg, Modem1.AddReg, INTERNAL, Modem1KeyNT, Non_PCI_One, Uninstaller_AddReg
+DelReg=Modem_Voice
+
+; install drivers as services under
+; CCR\services\smxxx
+; refers to lower section for details of the service key entry
+[SM56_HDAUDIO_MODEM_INSTALL.NT.Services]
+AddService=smserial, 0x00000000, smserial_Service_Inst
+
+; adds the lower filter key using addreg section defined below
+[SM56_HDAUDIO_MODEM_INSTALL.NT.HW]
+AddReg=LowerFilterAddReg
+
+;-------------- Coinstaller installation
+[SM56_HDAUDIO_MODEM_INSTALL.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+sm56co81.dll
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"sm56co81.dll,SM56CoInstaller"
+
+;  add the driver as a lower filter driver under the device key
+;  \enum\busenum\devXXXX_venXXXX\<inst id>\lowerfilters REG_MULTIZ
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[LowerFilterAddReg]
+HKR,,"LowerFilters",0x00010000,"smserial"
+HKR,,"WakeOnRing",0x00010001,1
+
+;  type=kernel driver  start=manual, pnp will start
+[smserial_Service_Inst]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\smserial.sys
+
+[Uninstaller_AddReg]
+HKLM,Software\Microsoft\Windows\CurrentVersion\Uninstall\SMSERIAL,DisplayIcon,,%16422%\Motorola\%ProductName%\sm56hlpr.exe
+HKLM,Software\Microsoft\Windows\CurrentVersion\Uninstall\SMSERIAL,DisplayName,,%SM56_HDAUDIO_MODEM_INSTALL%
+HKLM,Software\Microsoft\Windows\CurrentVersion\Uninstall\SMSERIAL,UninstallString,,"rundll32.exe sm56co81.dll,SM56UnInstaller"
+
+[Modem1KeyNT]
+HKLM,Software\Microsoft\Windows\CurrentVersion\Run,%ProductName%,,%16422%\Motorola\%ProductName%\sm56hlpr.exe
+
+HKLM,Software\Motorola\SMSERIAL\Helper, SetupFlag,,01
+HKLM,Software\Motorola\SMSERIAL\Helper, DriverType,0x00010001,2
+HKLM,Software\Motorola\SMSERIAL,QuickConnect1,0x00000001, 00, 00, 00
+
+; The ATI8 command is user definable and is done by updating the string.  There is a
+; limit of 50 characters or less.  Add you're string between the "".
+HKLM,Software\Motorola\SMSERIAL, ATI8,,""
+HKLM,Software\Motorola\SMSERIAL, CallerIDDisabled,0x00010001,0
+HKLM,Software\Motorola\SMSERIAL\Helper, MOHEnableCID&State,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL\Helper, WarnBeforeTimeOut,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL\Helper, AllowAutorun,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL\Helper, PrevCWMOHState,0x00010001,65536
+[Non_PCI_One]
+HKLM,Software\Motorola\SMSERIAL\Helper\CallProgress, Options,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL\Helper\SpeakerPhone, Options,0x00010001,0
+HKLM,Software\Motorola\SMSERIAL\Helper\ModemOnHold, Enabled,0x00010001,0
+HKLM,Software\Motorola\SMSERIAL\Helper\ModemOnHold, State,0x00010001,2
+HKLM,Software\Motorola\SMSERIAL\Helper, Options,0x00010001,49664
+HKLM,Software\Motorola\SMSERIAL, CountryCB,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL, CCBID,0x00010001,1
+HKLM,Software\Motorola\SMSERIAL, EnhancedHWSettings,0x00000001, FF, 7F, 40, 00, FF, 00, 01, 00
+;HKLM,Software\Motorola\SMSERIAL\Tester, SafeMode,0x00010001,0
+;HKLM,Software\Motorola\SMSERIAL\Tester, TestingInProgress,0x00010001,0
+
+[Modem1.AddReg]
+HKR,, Properties, 1, 80,01,00,00, FF,00,00,00, FF,00,00,00, 07,00,00,00, 0F,00,00,00, 77,03,00,00, 00,C2,01,00, C0,DA,00,00
+
+[All]
+HKR,,VUARTPort,,Yes
+HKR,,ConfigDialog,,modemui.dll
+;HKR,,PortConfigDialog,,modemui.dll
+HKR,,FriendlyDriver,,Unimodem.vxd
+HKR,,DevLoader,,*vcomm
+HKR,,PortSubClass,            1,02
+HKR,,EnumPropPages,,"modemui.dll,EnumPropPages"
+HKR, Init,                    1,, "AT<cr>"
+HKR, Init,                    2,, "AT&F&D2&C1V1S0=0E0<cr>"
+HKR,,WORSettings,0x00010001,0
+
+[Modem_Voice]
+HKR,,Enumerator
+HKR,, VoiceProfile
+HKR, WaveDriver
+HKR,, SpeakerPhoneSpecs
+HKR, SpeakerPhoneSetVolumeGain
+HKR, SpeakerPhoneEnable
+HKR, SpeakerPhoneDisable
+HKR, SpeakerPhoneMute
+HKR, SpeakerPhoneUnMute
+HKR, GenerateDigit
+HKR, VoiceToDataAnswer
+HKR, StartPlay
+HKR, StopPlay
+HKR, StopPlay
+HKR, StartRecord
+HKR, StopRecord
+HKR,, TerminateRecord
+HKR,, TerminatePlay
+HKR,, AbortPlay
+HKR, LineSetPlayFormat
+HKR, LineSetRecordFormat
+HKR, VoiceAnswer
+HKR, VoiceDialNumberSetup
+HKR, EnableCallerID
+HKR,, CallerIDPrivate
+HKR,, CallerIDOutSide
+HKR, EnableDistinctiveRing
+HKR,, VariableTerminator
+
+
+[INTERNAL]
+HKR,, DeviceType,             1, 02
+
+[MfgAddReg]
+HKR,, InactivityScale,        1, 3c,00,00,00
+HKR, Monitor,                 1,, "ATS0=0<cr>"
+HKR, Monitor,                 2,, "None"
+HKR, Hangup,                  1,, "ATH<cr>"
+HKR, Answer,                  1,, "ATA<cr>"
+HKR,, Reset,,                 "AT&F<cr>"
+HKR, Settings, Prefix,,       "AT"
+HKR, Settings, Terminator,,   "<cr>"
+HKR, Settings, DialPrefix,,   "D"
+HKR, Settings, DialSuffix,,   ";"
+HKR, Settings, SpeakerVolume_Low,,   "L0"
+HKR, Settings, SpeakerVolume_Med,,   "L2"
+HKR, Settings, SpeakerVolume_High,,  "L3"
+HKR, Settings, SpeakerMode_Off,,     "M0"
+HKR, Settings, SpeakerMode_Dial,,    "M1"
+HKR, Settings, SpeakerMode_On,,      "M2"
+HKR, Settings, SpeakerMode_Setup,,   "M3"
+HKR, Settings, FlowControl_Off,,     "\Q0"
+HKR, Settings, FlowControl_Hard,,    "\Q3"
+HKR, Settings, FlowControl_Soft,,    "\Q1"
+HKR, Settings, ErrorControl_On,,     "\N7"
+HKR, Settings, ErrorControl_Off,,    "\N0"
+HKR, Settings, ErrorControl_Forced,, "\N6"
+HKR, Settings, Compression_On,,      "%%C1"
+HKR, Settings, Compression_Off,,     "%%C0"
+HKR, Settings, Pulse,,        "P"
+HKR, Settings, Tone,,         "T"
+HKR, Settings, Blind_Off,,    "X4"
+HKR, Settings, Blind_On,,     "X3"
+HKR, Settings, CallSetupFailTimer,,  "S7=<#>"
+HKR, Settings, InactivityTimeout,,   "\T<#>"
+HKR, Settings, Modulation_CCITT,,    "*LS1"
+HKR, Settings, Modulation_Bell,,     "*LS0"
+
+HKR, Fax, HardwareFlowControl,, "1"
+HKR, Fax, SetupCommand,, "ATS7=60/Q3"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 1,,"AT"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 2,,"AT&FS0=0E0V1&D2"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 3,,"ATL1M1/Q3"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 4,,"ATX4"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 5,,"AT+FCLASS=1"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 6,,"AT+FAA=1"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand, 7,,"ATA"
+HKR, Fax\Class1\AdaptiveAnswer, ModemResponseFaxDetect,, "FAX"
+HKR, Fax\Class1\AdaptiveAnswer, ModemResponseDataConnect,, "CONNECT"
+HKR, Fax\Class1\AdaptiveAnswer, ModemResponseDataDetect,, "DATA"
+HKR, Fax\Class1\AdaptiveAnswer, ModemResponseFaxConnect,, "CONNECT"
+
+HKR, Responses, "0<cr>",       1, 00, 00, 00,00,00,00, 00,00,00,00 ; OK
+HKR, Responses, "1<cr>",       1, 02, 00, 00,00,00,00, 00,00,00,00 ;
+HKR, Responses, "2<cr>",       1, 08, 00, 00,00,00,00, 00,00,00,00 ; RING
+HKR, Responses, "3<cr>",       1, 04, 00, 00,00,00,00, 00,00,00,00 ; NO CARRIER
+HKR, Responses, "4<cr>",       1, 03, 00, 00,00,00,00, 00,00,00,00 ; ERROR
+HKR, Responses, "5<cr>",       1, 02, 00, 00,00,00,00, 00,00,00,00 ;
+HKR, Responses, "6<cr>",       1, 05, 00, 00,00,00,00, 00,00,00,00 ; NO DIALTONE
+HKR, Responses, "7<cr>",       1, 06, 00, 00,00,00,00, 00,00,00,00 ; BUSY
+HKR, Responses, "8<cr>",       1, 07, 00, 00,00,00,00, 00,00,00,00 ; NO ANSWER
+
+HKR, Responses, "<cr><lf>OK<cr><lf>",                      1, 00, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING<cr><lf>",                    1, 08, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO CARRIER<cr><lf>",              1, 04, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>ERROR<cr><lf>",                   1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO DIALTONE<cr><lf>",             1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BUSY<cr><lf>",                    1, 06, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO ANSWER<cr><lf>",               1, 07, 00, 00,00,00,00, 00,00,00,00
+;HKR, Responses, "<cr><lf>FAX<cr><lf>",                     1, 03, 00, 00,00,00,00, 00,00,00,00
+;HKR, Responses, "<cr><lf>DATA<cr><lf>",                    1, 03, 00, 00,00,00,00, 00,00,00,00
+;HKR, Responses, "<cr><lf>VOICE<cr><lf>",                   1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>DELAYED<cr><lf>",                 1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BLACKLISTED<cr><lf>",             1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>+FCERROR<cr><lf>",                1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>ERRM=ICLID_202<cr><lf>",          1, 01, 00, 00,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT<cr><lf>",                 1, 02, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT <cr><lf>",                1, 02, 00, 00,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 75<cr><lf>",             1, 02, 00, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/LAPM<cr><lf>",         1, 02, 02, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/MNP<cr><lf>",         1, 02, 02, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/LAPM/V42BIS<cr><lf>",  1, 02, 03, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/LAPM/V44<cr><lf>",  1, 02, 03, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/LAPM/MNP5<cr><lf>",  1, 02, 03, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/MNP/MNP5<cr><lf>",    1, 02, 03, 4b,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 75/MNP/V42BIS<cr><lf>",  1, 02, 03, 4b,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 300<cr><lf>",             1, 02, 00, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/LAPM<cr><lf>",         1, 02, 02, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/MNP<cr><lf>",         1, 02, 02, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/LAPM/V42BIS<cr><lf>",  1, 02, 03, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/LAPM/V44<cr><lf>",  1, 02, 03, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/LAPM/MNP5<cr><lf>",  1, 02, 03, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/MNP/MNP5<cr><lf>",    1, 02, 03, 2C,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 300/MNP/V42BIS<cr><lf>",    1, 02, 03, 2C,01,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 600<cr><lf>",             1, 02, 00, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/LAPM<cr><lf>",         1, 02, 02, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/MNP<cr><lf>",         1, 02, 02, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/LAPM/V42BIS<cr><lf>",  1, 02, 03, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/LAPM/V44<cr><lf>",  1, 02, 03, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/LAPM/MNP5<cr><lf>",  1, 02, 03, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/MNP/MNP5<cr><lf>",    1, 02, 03, 58,02,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 600/MNP/V42BIS<cr><lf>",    1, 02, 03, 58,02,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 1200<cr><lf>",            1, 02, 00, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/LAPM<cr><lf>",        1, 02, 02, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/MNP<cr><lf>",        1, 02, 02, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/LAPM/V42BIS<cr><lf>",  1, 02, 03, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/LAPM/V44<cr><lf>",  1, 02, 03, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/LAPM/MNP5<cr><lf>",  1, 02, 03, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/MNP/MNP5<cr><lf>",    1, 02, 03, B0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 1200/MNP/V42BIS<cr><lf>",    1, 02, 03, B0,04,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 2400<cr><lf>",            1, 02, 00, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/LAPM<cr><lf>",        1, 02, 02, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/MNP<cr><lf>",        1, 02, 02, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/LAPM/V42BIS<cr><lf>",  1, 02, 03, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/LAPM/V44<cr><lf>",  1, 02, 03, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/LAPM/MNP5<cr><lf>",  1, 02, 03, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/MNP/MNP5<cr><lf>",    1, 02, 03, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 2400/MNP/V42BIS<cr><lf>",    1, 02, 03, 60,09,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 4800<cr><lf>",            1, 02, 00, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/LAPM<cr><lf>",        1, 02, 02, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/MNP<cr><lf>",        1, 02, 02, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/LAPM/V42BIS<cr><lf>",  1, 02, 03, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/LAPM/V44<cr><lf>",  1, 02, 03, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/LAPM/MNP5<cr><lf>",  1, 02, 03, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/MNP/MNP5<cr><lf>",    1, 02, 03, C0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 4800/MNP/V42BIS<cr><lf>",    1, 02, 03, C0,12,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 7200<cr><lf>",            1, 02, 00, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/LAPM<cr><lf>",        1, 02, 02, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/MNP<cr><lf>",        1, 02, 02, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/LAPM/V42BIS<cr><lf>",  1, 02, 03, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/LAPM/V44<cr><lf>",  1, 02, 03, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/LAPM/MNP5<cr><lf>",  1, 02, 03, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/MNP/MNP5<cr><lf>",    1, 02, 03, 20,1C,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 7200/MNP/V42BIS<cr><lf>",    1, 02, 03, 20,1C,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 9600<cr><lf>",            1, 02, 00, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/LAPM<cr><lf>",        1, 02, 02, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/MNP<cr><lf>",        1, 02, 02, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/LAPM/V42BIS<cr><lf>",  1, 02, 03, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/LAPM/V44<cr><lf>",  1, 02, 03, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/LAPM/MNP5<cr><lf>",  1, 02, 03, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/MNP/MNP5<cr><lf>",    1, 02, 03, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 9600/MNP/V42BIS<cr><lf>",    1, 02, 03, 80,25,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 12000<cr><lf>",           1, 02, 00, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/LAPM<cr><lf>",       1, 02, 02, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/MNP<cr><lf>",       1, 02, 02, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/LAPM/V42BIS<cr><lf>",  1, 02, 03, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/LAPM/V44<cr><lf>",  1, 02, 03, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/LAPM/MNP5<cr><lf>",  1, 02, 03, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/MNP/MNP5<cr><lf>",    1, 02, 03, E0,2E,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 12000/MNP/V42BIS<cr><lf>",    1, 02, 03, E0,2E,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 14400<cr><lf>",           1, 02, 00, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/LAPM<cr><lf>",       1, 02, 02, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/MNP<cr><lf>",       1, 02, 02, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/LAPM/V42BIS<cr><lf>",  1, 02, 03, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/LAPM/V44<cr><lf>",  1, 02, 03, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/LAPM/MNP5<cr><lf>",  1, 02, 03, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/MNP/MNP5<cr><lf>",    1, 02, 03, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 14400/MNP/V42BIS<cr><lf>",    1, 02, 03, 40,38,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 16800<cr><lf>",           1, 02, 00, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/LAPM<cr><lf>",       1, 02, 02, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/MNP<cr><lf>",       1, 02, 02, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/LAPM/V42BIS<cr><lf>",  1, 02, 03, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/LAPM/V44<cr><lf>",  1, 02, 03, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/LAPM/MNP5<cr><lf>",  1, 02, 03, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/MNP/MNP5<cr><lf>",    1, 02, 03, A0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 16800/MNP/V42BIS<cr><lf>",    1, 02, 03, A0,41,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 19200<cr><lf>",           1, 02, 00, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/LAPM<cr><lf>",       1, 02, 02, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/MNP<cr><lf>",       1, 02, 02, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/LAPM/V42BIS<cr><lf>",  1, 02, 03, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/LAPM/V44<cr><lf>",  1, 02, 03, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/LAPM/MNP5<cr><lf>",  1, 02, 03, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/MNP/MNP5<cr><lf>",    1, 02, 03, 00,4B,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 19200/MNP/V42BIS<cr><lf>",    1, 02, 03, 00,4B,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 21600<cr><lf>",           1, 02, 00, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/LAPM<cr><lf>",       1, 02, 02, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/MNP<cr><lf>",       1, 02, 02, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/LAPM/V42BIS<cr><lf>",  1, 02, 03, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/LAPM/V44<cr><lf>",  1, 02, 03, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/LAPM/MNP5<cr><lf>",  1, 02, 03, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/MNP/MNP5<cr><lf>",    1, 02, 03, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 21600/MNP/V42BIS<cr><lf>",    1, 02, 03, 60,54,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 24000<cr><lf>",           1, 02, 00, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/LAPM<cr><lf>",       1, 02, 02, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/MNP<cr><lf>",       1, 02, 02, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/LAPM/V42BIS<cr><lf>",  1, 02, 03, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/LAPM/V44<cr><lf>",  1, 02, 03, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/LAPM/MNP5<cr><lf>",  1, 02, 03, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/MNP/MNP5<cr><lf>",    1, 02, 03, C0,5D,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 24000/MNP/V42BIS<cr><lf>",    1, 02, 03, C0,5D,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 26400<cr><lf>",           1, 02, 00, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/LAPM<cr><lf>",       1, 02, 02, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/MNP<cr><lf>",       1, 02, 02, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/LAPM/V42BIS<cr><lf>",  1, 02, 03, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/LAPM/V44<cr><lf>",  1, 02, 03, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/LAPM/MNP5<cr><lf>",  1, 02, 03, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/MNP/MNP5<cr><lf>",    1, 02, 03, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 26400/MNP/V42BIS<cr><lf>",    1, 02, 03, 20,67,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 28800<cr><lf>",           1, 02, 00, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/LAPM<cr><lf>",       1, 02, 02, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/MNP<cr><lf>",       1, 02, 02, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/LAPM/V42BIS<cr><lf>",  1, 02, 03, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/LAPM/V44<cr><lf>",  1, 02, 03, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/LAPM/MNP5<cr><lf>",  1, 02, 03, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/MNP/MNP5<cr><lf>",    1, 02, 03, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28800/MNP/V42BIS<cr><lf>",    1, 02, 03, 80,70,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 31200<cr><lf>",           1, 02, 00, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/LAPM<cr><lf>",       1, 02, 02, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/MNP<cr><lf>",       1, 02, 02, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/LAPM/V42BIS<cr><lf>",  1, 02, 03, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/LAPM/V44<cr><lf>",  1, 02, 03, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/LAPM/MNP5<cr><lf>",  1, 02, 03, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/MNP/MNP5<cr><lf>",    1, 02, 03, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 31200/MNP/V42BIS<cr><lf>",    1, 02, 03, E0,79,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 33600<cr><lf>",           1, 02, 00, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/LAPM<cr><lf>",       1, 02, 02, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/MNP<cr><lf>",       1, 02, 02, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/LAPM/V42BIS<cr><lf>",  1, 02, 03, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/LAPM/V44<cr><lf>",  1, 02, 03, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/LAPM/MNP5<cr><lf>",  1, 02, 03, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/MNP/MNP5<cr><lf>",    1, 02, 03, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33600/MNP/V42BIS<cr><lf>",    1, 02, 03, 40,83,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 38400<cr><lf>",           1, 02, 00, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/LAPM<cr><lf>",       1, 02, 02, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/MNP<cr><lf>",       1, 02, 02, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/LAPM/V42BIS<cr><lf>",  1, 02, 03, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/LAPM/V44<cr><lf>",  1, 02, 03, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/LAPM/MNP5<cr><lf>",  1, 02, 03, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/MNP/MNP5<cr><lf>",    1, 02, 03, 00,96,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38400/MNP/V42BIS<cr><lf>",    1, 02, 03, 00,96,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 57600<cr><lf>",           1, 02, 00, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/LAPM<cr><lf>",       1, 02, 02, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/MNP<cr><lf>",       1, 02, 02, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/LAPM/V42BIS<cr><lf>",  1, 02, 03, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/LAPM/V44<cr><lf>",  1, 02, 03, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/LAPM/MNP5<cr><lf>",  1, 02, 03, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/MNP/MNP5<cr><lf>",    1, 02, 03, 00,E1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 57600/MNP/V42BIS<cr><lf>",    1, 02, 03, 00,E1,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 115200<cr><lf>",          1, 02, 00, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/LAPM<cr><lf>",      1, 02, 02, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/MNP<cr><lf>",      1, 02, 02, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/LAPM/V42BIS<cr><lf>",  1, 02, 03, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/LAPM/V44<cr><lf>",  1, 02, 03, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/LAPM/MNP5<cr><lf>",  1, 02, 03, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/MNP/MNP5<cr><lf>",    1, 02, 03, 00,C2,01,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 115200/MNP/V42BIS<cr><lf>",    1, 02, 03, 00,C2,01,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 32000<cr><lf>",          1, 02, 00, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/LAPM<cr><lf>",      1, 02, 02, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/MNP<cr><lf>",      1, 02, 02, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/LAPM/V44<cr><lf>",  1, 02, 03, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/LAPM/MNP5<cr><lf>",  1, 02, 03, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/MNP/MNP5<cr><lf>",    1, 02, 03, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 32000/MNP/V42BIS<cr><lf>",    1, 02, 03, 00,7d,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 34000<cr><lf>",          1, 02, 00, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/LAPM<cr><lf>",      1, 02, 02, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/MNP<cr><lf>",      1, 02, 02, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/LAPM/V42BIS<cr><lf>",  1, 02, 03, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/LAPM/V44<cr><lf>",  1, 02, 03, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/LAPM/MNP5<cr><lf>",  1, 02, 03, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/MNP/MNP5<cr><lf>",    1, 02, 03, d0,84,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34000/MNP/V42BIS<cr><lf>",    1, 02, 03, d0,84,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 36000<cr><lf>",          1, 02, 00, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/LAPM<cr><lf>",      1, 02, 02, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/MNP<cr><lf>",      1, 02, 02, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/LAPM/V42BIS<cr><lf>",  1, 02, 03, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/LAPM/V44<cr><lf>",  1, 02, 03, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/LAPM/MNP5<cr><lf>",  1, 02, 03, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/MNP/MNP5<cr><lf>",    1, 02, 03, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 36000/MNP/V42BIS<cr><lf>",    1, 02, 03, a0,8c,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 38000<cr><lf>",          1, 02, 00, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/LAPM<cr><lf>",      1, 02, 02, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/MNP<cr><lf>",      1, 02, 02, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/LAPM/V44<cr><lf>",  1, 02, 03, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/LAPM/MNP5<cr><lf>",  1, 02, 03, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/MNP/MNP5<cr><lf>",    1, 02, 03, 70,94,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38000/MNP/V42BIS<cr><lf>",    1, 02, 03, 70,94,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 40000<cr><lf>",          1, 02, 00, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/LAPM<cr><lf>",      1, 02, 02, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/MNP<cr><lf>",      1, 02, 02, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/LAPM/V44<cr><lf>",  1, 02, 03, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/LAPM/MNP5<cr><lf>",  1, 02, 03, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/MNP/MNP5<cr><lf>",    1, 02, 03, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 40000/MNP/V42BIS<cr><lf>",    1, 02, 03, 40,9c,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 42000<cr><lf>",          1, 02, 00, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/LAPM<cr><lf>",      1, 02, 02, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/MNP<cr><lf>",      1, 02, 02, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/LAPM/V44<cr><lf>",  1, 02, 03, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/LAPM/MNP5<cr><lf>",  1, 02, 03, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/MNP/MNP5<cr><lf>",    1, 02, 03, 10,a4,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42000/MNP/V42BIS<cr><lf>",    1, 02, 03, 10,a4,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 44000<cr><lf>",          1, 02, 00, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/LAPM<cr><lf>",      1, 02, 02, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/MNP<cr><lf>",      1, 02, 02, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/LAPM/V42BIS<cr><lf>",  1, 02, 03, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/LAPM/V44<cr><lf>",  1, 02, 03, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/LAPM/MNP5<cr><lf>",  1, 02, 03, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/MNP/MNP5<cr><lf>",    1, 02, 03, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 44000/MNP/V42BIS<cr><lf>",    1, 02, 03, e0,ab,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 46000<cr><lf>",          1, 02, 00, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/LAPM<cr><lf>",      1, 02, 02, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/MNP<cr><lf>",      1, 02, 02, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/LAPM/V42BIS<cr><lf>",  1, 02, 03, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/LAPM/V44<cr><lf>",  1, 02, 03, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/LAPM/MNP5<cr><lf>",  1, 02, 03, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/MNP/MNP5<cr><lf>",    1, 02, 03, b0,b3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46000/MNP/V42BIS<cr><lf>",    1, 02, 03, b0,b3,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 48000<cr><lf>",          1, 02, 00, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/LAPM<cr><lf>",      1, 02, 02, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/MNP<cr><lf>",      1, 02, 02, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/LAPM/V44<cr><lf>",  1, 02, 03, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/LAPM/MNP5<cr><lf>",  1, 02, 03, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/MNP/MNP5<cr><lf>",    1, 02, 03, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 48000/MNP/V42BIS<cr><lf>",    1, 02, 03, 80,bb,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 50000<cr><lf>",          1, 02, 00, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/LAPM<cr><lf>",      1, 02, 02, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/MNP<cr><lf>",      1, 02, 02, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/LAPM/V44<cr><lf>",  1, 02, 03, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/LAPM/MNP5<cr><lf>",  1, 02, 03, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/MNP/MNP5<cr><lf>",    1, 02, 03, 50,c3,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50000/MNP/V42BIS<cr><lf>",    1, 02, 03, 50,c3,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 52000<cr><lf>",          1, 02, 00, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/LAPM<cr><lf>",      1, 02, 02, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/MNP<cr><lf>",      1, 02, 02, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/LAPM/V44<cr><lf>",  1, 02, 03, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/LAPM/MNP5<cr><lf>",  1, 02, 03, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/MNP/MNP5<cr><lf>",    1, 02, 03, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 52000/MNP/V42BIS<cr><lf>",    1, 02, 03, 20,cb,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 54000<cr><lf>",          1, 02, 00, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/LAPM<cr><lf>",      1, 02, 02, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/MNP<cr><lf>",      1, 02, 02, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/LAPM/V42BIS<cr><lf>",  1, 02, 03, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/LAPM/V44<cr><lf>",  1, 02, 03, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/LAPM/MNP5<cr><lf>",  1, 02, 03, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/MNP/MNP5<cr><lf>",    1, 02, 03, f0,d2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54000/MNP/V42BIS<cr><lf>",    1, 02, 03, f0,d2,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 56000<cr><lf>",          1, 02, 00, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/LAPM<cr><lf>",      1, 02, 02, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/MNP<cr><lf>",      1, 02, 02, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/LAPM/V42BIS<cr><lf>",  1, 02, 03, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/LAPM/V44<cr><lf>",  1, 02, 03, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/LAPM/MNP5<cr><lf>",  1, 02, 03, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/MNP/MNP5<cr><lf>",    1, 02, 03, c0,da,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 56000/MNP/V42BIS<cr><lf>",    1, 02, 03, c0,da,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 58000<cr><lf>",          1, 02, 00, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/LAPM<cr><lf>",      1, 02, 02, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/MNP<cr><lf>",      1, 02, 02, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/LAPM/V44<cr><lf>",  1, 02, 03, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/LAPM/MNP5<cr><lf>",  1, 02, 03, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/MNP/MNP5<cr><lf>",    1, 02, 03, 90,e2,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 58000/MNP/V42BIS<cr><lf>",    1, 02, 03, 90,e2,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 60000<cr><lf>",          1, 02, 00, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/LAPM<cr><lf>",      1, 02, 02, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/MNP<cr><lf>",      1, 02, 02, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/LAPM/V42BIS<cr><lf>",  1, 02, 03, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/LAPM/V44<cr><lf>",  1, 02, 03, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/LAPM/MNP5<cr><lf>",  1, 02, 03, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/MNP/MNP5<cr><lf>",    1, 02, 03, 60,ea,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 60000/MNP/V42BIS<cr><lf>",    1, 02, 03, 60,ea,00,00, 00,00,00,00
+
+; Add the following rates to support V.90
+HKR, Responses, "<cr><lf>CONNECT 28000<cr><lf>",          1, 02, 00, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/LAPM<cr><lf>",      1, 02, 02, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/MNP<cr><lf>",      1, 02, 02, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/LAPM/V42BIS<cr><lf>", 1, 02, 03, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/LAPM/V44<cr><lf>", 1, 02, 03, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/LAPM/MNP5<cr><lf>", 1, 02, 03, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/MNP/MNP5<cr><lf>",    1, 02, 03, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 28000/MNP/V42BIS<cr><lf>",    1, 02, 03, 60,6d,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 29333<cr><lf>",          1, 02, 00,95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/LAPM<cr><lf>",      1, 02, 02,95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/MNP<cr><lf>",      1, 02, 02, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/LAPM/V42BIS<cr><lf>",  1, 02, 03, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/LAPM/V44<cr><lf>",  1, 02, 03, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/LAPM/MNP5<cr><lf>",  1, 02, 03, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/MNP/MNP5<cr><lf>",    1, 02, 03, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 29333/MNP/V42BIS<cr><lf>",    1, 02, 03, 95,72,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 30666<cr><lf>",          1, 02, 00, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/LAPM<cr><lf>",      1, 02, 02, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/MNP<cr><lf>",      1, 02, 02, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/LAPM/V42BIS<cr><lf>",  1, 02, 03, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/LAPM/V44<cr><lf>",  1, 02, 03, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/LAPM/MNP5<cr><lf>",  1, 02, 03, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/MNP/MNP5<cr><lf>",    1, 02, 03, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 30666/MNP/V42BIS<cr><lf>",    1, 02, 03, ca,77,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 33333<cr><lf>",          1, 02, 00, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/LAPM<cr><lf>",      1, 02, 02, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/MNP<cr><lf>",      1, 02, 02, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/LAPM/V42BIS<cr><lf>",  1, 02, 03, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/LAPM/V44<cr><lf>",  1, 02, 03, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/LAPM/MNP5<cr><lf>",  1, 02, 03, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/MNP/MNP5<cr><lf>",    1, 02, 03, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 33333/MNP/V42BIS<cr><lf>",    1, 02, 03, 35,82,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 34666<cr><lf>",          1, 02, 00, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/LAPM<cr><lf>",      1, 02, 02, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/MNP<cr><lf>",      1, 02, 02, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/LAPM/V42BIS<cr><lf>",  1, 02, 03, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/LAPM/V44<cr><lf>",  1, 02, 03, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/LAPM/MNP5<cr><lf>",  1, 02, 03, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/MNP/MNP5<cr><lf>",    1, 02, 03, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 34666/MNP/V42BIS<cr><lf>",    1, 02, 03, 6a,87,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 37333<cr><lf>",          1, 02, 00, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/LAPM<cr><lf>",      1, 02, 02, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/MNP<cr><lf>",      1, 02, 02, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/LAPM/V42BIS<cr><lf>",  1, 02, 03, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/LAPM/V44<cr><lf>",  1, 02, 03, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/LAPM/MNP5<cr><lf>",  1, 02, 03, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/MNP/MNP5<cr><lf>",    1, 02, 03, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 37333/MNP/V42BIS<cr><lf>",    1, 02, 03, d5,91,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 38666<cr><lf>",          1, 02, 00, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/LAPM<cr><lf>",      1, 02, 02, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/MNP<cr><lf>",      1, 02, 02, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/LAPM/V42BIS<cr><lf>",  1, 02, 03, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/LAPM/V44<cr><lf>",  1, 02, 03, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/LAPM/MNP5<cr><lf>",  1, 02, 03, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/MNP/MNP5<cr><lf>",    1, 02, 03, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 38666/MNP/V42BIS<cr><lf>",    1, 02, 03, 0a,97,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 41333<cr><lf>",          1, 02, 00, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/LAPM<cr><lf>",      1, 02, 02, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/MNP<cr><lf>",      1, 02, 02, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/LAPM/V42BIS<cr><lf>",  1, 02, 03, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/LAPM/V44<cr><lf>",  1, 02, 03, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/LAPM/MNP5<cr><lf>",  1, 02, 03, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/MNP/MNP5<cr><lf>",    1, 02, 03, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 41333/MNP/V42BIS<cr><lf>",    1, 02, 03, 75,a1,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 42666<cr><lf>",          1, 02, 00, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/LAPM<cr><lf>",      1, 02, 02, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/MNP<cr><lf>",      1, 02, 02, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/LAPM/V42BIS<cr><lf>",  1, 02, 03, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/LAPM/V44<cr><lf>",  1, 02, 03, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/LAPM/MNP5<cr><lf>",  1, 02, 03, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/MNP/MNP5<cr><lf>",    1, 02, 03, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 42666/MNP/V42BIS<cr><lf>",    1, 02, 03, aa,a6,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 45333<cr><lf>",          1, 02, 00, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/LAPM<cr><lf>",      1, 02, 02, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/MNP<cr><lf>",      1, 02, 02, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/LAPM/V42BIS<cr><lf>",  1, 02, 03, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/LAPM/V44<cr><lf>",  1, 02, 03, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/LAPM/MNP5<cr><lf>",  1, 02, 03, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/MNP/MNP5<cr><lf>",    1, 02, 03, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 45333/MNP/V42BIS<cr><lf>",    1, 02, 03, 15,b1,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 46666<cr><lf>",          1, 02, 00, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/LAPM<cr><lf>",      1, 02, 02, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/MNP<cr><lf>",      1, 02, 02, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/LAPM/V42BIS<cr><lf>",  1, 02, 03, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/LAPM/V44<cr><lf>",  1, 02, 03, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/LAPM/MNP5<cr><lf>",  1, 02, 03, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/MNP/MNP5<cr><lf>",    1, 02, 03, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 46666/MNP/V42BIS<cr><lf>",    1, 02, 03, 4a,b6,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 49333<cr><lf>",          1, 02, 00, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/LAPM<cr><lf>",      1, 02, 02, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/MNP<cr><lf>",      1, 02, 02, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/LAPM/V42BIS<cr><lf>",  1, 02, 03, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/LAPM/V44<cr><lf>",  1, 02, 03, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/LAPM/MNP5<cr><lf>",  1, 02, 03, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/MNP/MNP5<cr><lf>",    1, 02, 03, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 49333/MNP/V42BIS<cr><lf>",    1, 02, 03, b5,c0,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 50666<cr><lf>",          1, 02, 00, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/LAPM<cr><lf>",      1, 02, 02, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/MNP<cr><lf>",      1, 02, 02, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/LAPM/V42BIS<cr><lf>",  1, 02, 03, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/LAPM/V44<cr><lf>",  1, 02, 03, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/LAPM/MNP5<cr><lf>",  1, 02, 03, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/MNP/MNP5<cr><lf>",    1, 02, 03, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 50666/MNP/V42BIS<cr><lf>",    1, 02, 03, ea,c5,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 53333<cr><lf>",          1, 02, 00, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/LAPM<cr><lf>",      1, 02, 02, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/MNP<cr><lf>",      1, 02, 02, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/LAPM/V42BIS<cr><lf>",  1, 02, 03, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/LAPM/V44<cr><lf>",  1, 02, 03, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/LAPM/MNP5<cr><lf>",  1, 02, 03, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/MNP/MNP5<cr><lf>",    1, 02, 03, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 53333/MNP/V42BIS<cr><lf>",    1, 02, 03, 55,d0,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>CONNECT 54666<cr><lf>",          1, 02, 00, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/LAPM<cr><lf>",      1, 02, 02, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/MNP<cr><lf>",      1, 02, 02, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/LAPM/V42BIS<cr><lf>",  1, 02, 03, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/LAPM/V44<cr><lf>",  1, 02, 03, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/LAPM/MNP5<cr><lf>",  1, 02, 03, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/MNP/MNP5<cr><lf>",    1, 02, 03, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT 54666/MNP/V42BIS<cr><lf>",    1, 02, 03, 8a,d5,00,00, 00,00,00,00
+

@@ -1,0 +1,165 @@
+; /****************************************************************************
+; ** COPYRIGHT (C) 1994-1999 INTEL CORPORATION                               **
+; ** HTTP://WWW.INTEL.COM/                                                   **
+; ** THIS FILE IS PART OF THE INTEL USB CABLE MODEM REFERENCE DESIGN         **
+; ****************************************************************************/
+
+[version]
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %OEM%
+;LayoutFile  = layout.inf          ; Only for drivers distributed with windows
+CatalogFile = netrcacm.cat         ; File holds digital signature.
+DriverVer=11/19/2002,30.2.23.0
+Compatible  = 1                    ; works with Win2K and Win9x
+
+[Manufacturer]
+%V_MANUFACTURER% = Rca
+
+[Rca]
+;
+; Display Name          Section           DeviceID
+;_________________________________________________________________
+%netrcacm.DeviceDesc% =   netrcacm.ndi,           USB\VID_069B&PID_0704
+
+[SourceDisksNames]
+1=%INSTALLDISK%,,
+;1=%INSTALLDISK%,"2_17_0",0
+
+[SourceDisksFiles]
+netrcacm.sys=1
+
+[ControlFlags]
+;
+; Provides limited control on UI displays and events during installation.
+; Must for any device on an enumerable BUS like USB
+;
+ExcludeFromSelect = USB\VID_069B&PID_0704
+
+
+;-----------------------------------------------------------------------------
+; common registry entries
+;
+[common.reg]
+HKR,  NDI\params\ByteSwapFlag,      ParamDesc, 0,  "Byte Swap Flag"
+HKR,  NDI\params\ByteSwapFlag,      default,   0,  "ByteSwapFlag=0"
+HKR,  NDI\params\ByteSwapFlag,      type,      0,  "edit"
+HKR,  NDI\params\ByteSwapFlag,      LimitText, 0,  "128"
+HKR,  NDI\params\ByteSwapFlag,      UpperCase, 0,  "0"
+HKR,  NDI\params\ByteSwapFlag,      flag,      1,  "20","00","00","00"
+
+;
+; Windows 98 specific entry
+;
+[netrcacm.ndi]
+CopyFiles = netrcacm.9x.CopyFiles
+AddReg = netrcacm.id.reg, netrcacm.9x.reg, common.reg
+DeviceID = "USB\VID_069B&PID_0704"
+DriverVer=11/19/2002,30.2.23.0
+
+;
+; Windows 2000  specific entry
+;
+[netrcacm.ndi.NT]
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI ??
+BusType         = 15                         ; (was PCI == 5), PnpBus == 15
+AddReg          = common.reg, netrcacm.nt.reg  ;
+CopyFiles       = netrcacm.nt.CopyFiles        ;
+DriverVer=11/19/2002,30.2.23.0
+
+
+[netrcacm.ndi.nt.Services]
+AddService = netrcacm, 2, netrcacm.Service, common.EventLog
+
+;-----------------------------------------------------------------------------
+; WIN2K (NT) specific
+;
+[netrcacm.nt.reg]
+HKR, Ndi,                       Service,    0, "netrcacm"
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+
+[netrcacm.Service]
+DisplayName     = %netrcacm.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\netrcacm.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, "7"
+
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, "0x0001"
+
+
+;----------------------------------------------------------------------------
+; Win9x specific
+; These are not needed by NT
+;
+
+;----------------------------------------------------------------------------
+; Win9x id registry sections
+;
+[netrcacm.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_069B&PID_0704"
+
+[netrcacm.9x.reg]
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "netrcacm.sys"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+; memphis appears to not support the ndis5 upper range, so use ndis3
+HKR, Ndi\Interfaces,DefUpper,    0, "ndis3"
+HKR, Ndi\Interfaces,DefLower,    0, "ethernet"
+HKR, Ndi\Interfaces,UpperRange,  0, "ndis3"
+HKR, Ndi\Interfaces,LowerRange,  0, "ethernet"
+
+HKR, NDIS,          LogDriverName,      0, "netrcacm"
+HKR, NDIS,          MajorNdisVersion,   1, "03"
+HKR, NDIS,          MinorNdisVersion,   1, "0A"
+
+HKR, Ndi\Install,   ndis3,              0, "netrcacm.install"
+
+[netrcacm.install]
+;CopyFiles = netrcacm.9x.CopyFiles
+
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+DefaultDestDir = 10,system32\drivers     ; manditory dest for all wdm drivers?
+netrcacm.nt.CopyFiles = 12
+netrcacm.9x.CopyFiles = 11
+
+[netrcacm.nt.CopyFiles]
+netrcacm.sys,,,2
+
+[netrcacm.9x.CopyFiles]
+netrcacm.sys,,,2
+
+
+[Strings]
+OEM     = "RCA"
+V_MANUFACTURER = "Thomson multimedia Inc"
+
+;
+; String that gets displayed while installing the device
+;
+netrcacm.DeviceDesc = "RCA USB Cable Modem"
+INSTALLDISK = "Install Disk"
+
+;
+; NT Service name
+;
+netrcacm.Service.DispName = "RCA USB Digital Cable Modem Driver"

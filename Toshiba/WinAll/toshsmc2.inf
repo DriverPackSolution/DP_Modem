@@ -1,0 +1,161 @@
+;*****************************************************************************
+;
+; Name:  toshsmc2.inf
+;
+; Function:
+;	Install Toshiba F3507g Mobile Broadband Device Management Drivers on Win2000/XP/Vista
+;
+; Copyright (c) 1997-2009 MCCI Corporation 
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation
+;
+;*****************************************************************************
+
+[Version]
+signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider%
+DriverVer=03/17/2009,4.50.7.0
+CatalogFile=toshcard.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshcard.sys",,\i386
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"toshcard.sys",,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+toshcard.sys = 1
+toshcmnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12                    ; system32\drivers
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%Toshiba%=TOSH, NTamd64
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[TOSH]
+%TOSH.Comm.Desc% = TOSH.Install, USB\VID_0930&PID_130b&MI_05&OS_NT
+
+[TOSH.NTamd64]
+%TOSH.Comm.Desc% = TOSH.Install, USB\VID_0930&PID_130b&MI_05&OS_NT
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[TOSH.Install.nt]
+AddReg		= TOSH.AddReg,TOSH.NT.AddReg
+CopyFiles	= CopyFiles, CopyFiles.Win2K
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[TOSH.AddReg]
+HKR,,NTMPDriver,,toshcard.sys
+HKR,,OverrideDefaultPortSettings, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200 initial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+HKR,,EnableSetClearFeatureIdle, 0x10001, 01,00,00,00
+
+; only for NT...
+[TOSH.NT.AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKR,,EnableCR3840, 0x10001, 01,00,00,00
+HKR,,AllowRemoteWakeup, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspendHeuristics, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01, 00, 00, 00
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.Win2K]
+toshcard.sys
+toshcm.sys,toshcmnt.sys
+toshcmnt.sys
+
+
+
+;-----------------------------------------------------------------------------
+;  NT Services installation
+;-----------------------------------------------------------------------------
+
+
+
+[TOSH.Install.NT.Services]
+AddService = toshcard, 0x00000002, TOSH.Install.AddService
+
+
+
+
+[TOSH.Install.AddService]
+DisplayName	= %TOSH.Service.Name%
+Description	= %TOSH.Service.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\toshcard.sys
+
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;<<localize the following>>
+
+;BEGIN ENG - US English Strings
+
+Provider = "Toshiba"
+Toshiba = "Toshiba"
+DiskString = "Toshiba F3507g Mobile Broadband Device Driver Disk"
+
+TOSH.Comm.Desc = "Toshiba F3507g Mobile Broadband Device Management"
+TOSH.Service.Name = "Toshiba F3507g Mobile Broadband Device Management"
+TOSH.Service.Desc = "Toshiba F3507g Mobile Broadband Device Management"
+
+
+CustomerDataPath = "Toshiba F3507g Mobile Broadband Device"
+DriverSet = "Toshiba F3507g Mobile Broadband Device"
+UninstallFile = "TOSHUninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***

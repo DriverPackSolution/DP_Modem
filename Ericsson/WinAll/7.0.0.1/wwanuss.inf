@@ -1,0 +1,283 @@
+;/*++
+;
+;Module Name:
+;
+;    ecnssndis.INF
+;
+;Abstract:
+;    INF for installing selective suspend enabler
+;
+; Copyright Ericsson AB
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%MfgName%
+CatalogFile = WwanUsbSs.cat
+DriverVer=11/04/2011,7.0.1.0
+
+
+; ================= Device section =====================
+
+[Manufacturer]
+%MfgName%=EricssonSsndis,NTamd64, NTx86
+
+; For XP and later
+;[EricssonSsndis.NT$ARCH$]
+
+[EricssonSsndis.NTx86]
+; DisplayName                     Section          DeviceID
+; -----------                     -------          --------
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8183&Mi_06      ; Dell
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8184&Mi_06      ; Dell
+"Dell Wireless 5541 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818b&Mi_06      ; Dell
+"Dell Wireless 5542 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818c&Mi_06      ; Dell
+"Dell Wireless 5550 HSPA+ Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818d&Mi_06      ; Dell
+"Dell Wireless 5560 HSPA+ Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818e&Mi_06      ; Dell
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1904&Mi_06      ; Generic
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1906&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1909&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190A&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1914&Mi_06      ; Generic
+"F5521gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190D&Mi_06      ; Generic
+"C3607w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190B&Mi_06      ; Generic
+"F5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1917&Mi_06      ; Generic
+"F5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191B&Mi_06      ; Generic
+"H5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1919&Mi_06      ; Generic
+"H5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191D&Mi_06      ; Generic
+"C5621 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191F&Mi_06      ; Generic
+"C5621 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1921&Mi_06      ; Generic
+"C3304 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1928&Mi_06      ; Generic
+"Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1045&Mi_06      ; Generic
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1905&Mi_06      ; Lenovo
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1907&Mi_06      ; Lenovo
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190e&Mi_06      ; Lenovo
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190f&Mi_06      ; Lenovo
+"F5521gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1911&Mi_06      ; Lenovo
+"H5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1926&Mi_06      ; Lenovo
+"F5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1932&Mi_06      ; Lenovo
+"F5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1930&Mi_06      ; Lenovo
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_130c&Mi_06      ; Toshiba
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1311&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1315&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1316&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1317&Mi_06      ; Toshiba
+"Ericsson F5521gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1314&Mi_06      ; Toshiba
+"Ericsson F5321w for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131F&Mi_06      ; Toshiba
+"Ericsson F5321gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131B&Mi_06      ; Toshiba
+"Ericsson H5321w for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131D&Mi_06      ; Toshiba
+"Ericsson H5321gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1319&Mi_06      ; Toshiba
+"HP hs2320 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_261D&Mi_06      ; HP
+"HP hs2330 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_271d&Mi_06      ; HP
+"HP lc2000 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_301d&Mi_06      ; HP
+"HP lc2010 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_2f1d&Mi_06      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_3A1D&Mi_06      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_451D&Mi_06      ; HP
+"HP Touchpad Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_0042&Mi_06      ; HP
+"HP hs2350 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_3D1D&Mi_06      ; HP
+
+"Dell Wireless 5530 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8147&Mi_07      ; Dell Devgiri
+"F3507g Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1902&Mi_07      ; Generic Devgiri
+"F3507g Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1900&Mi_07      ; Lenovo Devgiri
+"TOSHIBA F3507g Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_130b&Mi_07      ; Toshiba Devgiri
+
+[EricssonSsndis.NTamd64]
+; DisplayName                     Section          DeviceID
+; -----------                     -------          --------
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8183&Mi_06      ; Dell
+"Dell Wireless 5540 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8184&Mi_06      ; Dell
+"Dell Wireless 5541 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818b&Mi_06      ; Dell
+"Dell Wireless 5542 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818c&Mi_06      ; Dell
+"Dell Wireless 5550 HSPA+ Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818d&Mi_06      ; Dell
+"Dell Wireless 5560 HSPA+ Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_818e&Mi_06      ; Dell
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1904&Mi_06      ; Generic
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1906&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1909&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190A&Mi_06      ; Generic
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1914&Mi_06      ; Generic
+"F5521gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190D&Mi_06      ; Generic
+"C3607w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190B&Mi_06      ; Generic
+"F5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1917&Mi_06      ; Generic
+"F5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191B&Mi_06      ; Generic
+"H5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1919&Mi_06      ; Generic
+"H5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191D&Mi_06      ; Generic
+"C5621 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_191F&Mi_06      ; Generic
+"C5621 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1921&Mi_06      ; Generic
+"C3304 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1928&Mi_06      ; Generic
+"Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1045&Mi_06      ; Generic
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1905&Mi_06      ; Lenovo
+"F3607gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1907&Mi_06      ; Lenovo
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190e&Mi_06      ; Lenovo
+"F3307 Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_190f&Mi_06      ; Lenovo
+"F5521gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1911&Mi_06      ; Lenovo
+"H5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1926&Mi_06      ; Lenovo
+"F5321 w Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1932&Mi_06      ; Lenovo
+"F5321 gw Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1930&Mi_06      ; Lenovo
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_130c&Mi_06      ; Toshiba
+"Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1311&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1315&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1316&Mi_06      ; Toshiba
+"Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1317&Mi_06      ; Toshiba
+"Ericsson F5521gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1314&Mi_06      ; Toshiba
+"Ericsson F5321w for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131F&Mi_06      ; Toshiba
+"Ericsson F5321gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131B&Mi_06      ; Toshiba
+"Ericsson H5321w for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_131D&Mi_06      ; Toshiba
+"Ericsson H5321gw for TOSHIBA Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_1319&Mi_06      ; Toshiba
+"HP hs2320 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_261D&Mi_06      ; HP
+"HP hs2330 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_271d&Mi_06      ; HP
+"HP lc2000 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_301d&Mi_06      ; HP
+"HP lc2010 Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_2f1d&Mi_06      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_3A1D&Mi_06      ; HP
+"HP hs2340 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_451D&Mi_06      ; HP
+"HP Touchpad Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_0042&Mi_06      ; HP
+"HP hs2350 HSPA+ Mobile Broadband Module Network Adapter" = ssndis.Dev,  USB\VID_03f0&PID_3D1D&Mi_06      ; HP
+
+"Dell Wireless 5530 HSPA Mini-Card Network Adapter" = ssndis.Dev,  USB\VID_413c&PID_8147&Mi_07      ; Dell Devgiri
+"F3507g Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1902&Mi_07      ; Generic Devgiri
+"F3507g Mobile Broadband Driver" = ssndis.Dev,  USB\VID_0bdb&PID_1900&Mi_07      ; Lenovo Devgiri
+"TOSHIBA F3507g Mobile Broadband Network Adapter" = ssndis.Dev,  USB\VID_0930&PID_130b&Mi_07      ; Toshiba Devgiri
+
+; ============== Sections for SSNDIS Device ===========
+
+[ssndis.Dev.NTx86]
+CopyFiles=ssndis.CopyFiles
+
+[ssndis.Dev.NTx86.HW]
+AddReg = Enum_UpperFilter_Reg
+
+[ssndis.Dev.NTAMD64]
+CopyFiles=ssndis64.CopyFiles
+
+[ssndis.Dev.NTAMD64.HW]
+AddReg = Enum_UpperFilter_Reg
+
+[Enum_UpperFilter_Reg]
+HKR, ,  UpperFilters,  0x00010000, "ecnssndisfltr"
+;Controller of selective suspend. specify time in seconds. zero to disable
+HKR, ,  SelectiveSuspendTimeout,  0x10001, 10
+
+; Add wdf default values
+HKR, "WDF", "WdfDefaultIdleInWorkingState", 0x10001, 01, 00, 00, 00
+HKR, "WDF", "WdfDefaultWakeFromSleepState", 0x10001, 00, 00, 00, 00
+
+[ssndis.Dev.NT.Services]
+Addservice = ecnssndis, %SPSVCINST_ASSOCSERVICE%, ecnssndis.AddService
+Addservice = ecnssndisfltr,, ecnssndisfltr.AddService
+
+[ssndis.Dev.NTx86.Services]
+Addservice = ecnssndis, %SPSVCINST_ASSOCSERVICE%, ecnssndis.AddService
+Addservice = ecnssndisfltr,, ecnssndisfltr.AddService
+
+[ssndis.Dev.NTAMD64.Services]
+Addservice = ecnssndis, %SPSVCINST_ASSOCSERVICE%, ecnssndis64.AddService
+Addservice = ecnssndisfltr,, ecnssndisfltr64.AddService
+
+
+[ecnssndis.AddService]
+DisplayName    = %Ericsson.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\wwanuss.sys
+LoadOrderGroup = Base
+
+[ecnssndisfltr.AddService]
+DisplayName    = %Ericsson.FltSvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\wwanussf.sys
+LoadOrderGroup = Extended Base
+
+[ecnssndis64.AddService]
+DisplayName    = %Ericsson.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\wwuss64.sys
+LoadOrderGroup = Base
+
+[ecnssndisfltr64.AddService]
+DisplayName    = %Ericsson.FltSvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\wwussf64.sys
+LoadOrderGroup = Extended Base
+
+
+[ssndis.CopyFiles]
+wwanuss.sys,,,2
+wwanussf.sys,,,2
+
+[ssndis64.CopyFiles]
+wwuss64.sys,,,2
+wwussf64.sys,,,2
+
+[SourceDisksNames.x86]
+1 = %Disk_Description%,wwanuss.sys,,\i386
+1 = %Disk_Description%,wwanussf.sys,,\i386
+;1 = %Disk_Description%,WdfCoInstaller01009.dll,,.\i386
+
+
+[SourceDisksNames.amd64]
+1 = %Disk_Description%,wwuss64.sys,,\amd64
+1 = %Disk_Description%,wwussf64.sys,,\amd64
+;1 = %Disk_Description%,WdfCoInstaller01009.dll,,\amd64
+[SourceDisksFiles.x86]
+wwanuss.sys = 1
+wwanussf.sys = 1
+[SourceDisksFiles.amd64]
+wwuss64.sys = 1
+wwussf64.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+;-------------- WDF Coinstaller installation
+
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[ssndis.Dev.NTx86.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[ssndis.Dev.NTAMD64.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll=1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[ssndis.Dev.NTx86.Wdf]
+KmdfService = ecnssndis, ecnssndis_wdfsect
+KmdfService = ecnssndisfltr, ecnssndis_wdfsect
+
+[ssndis.Dev.NTAMD64.Wdf]
+KmdfService = ecnssndis, ecnssndis_wdfsect
+KmdfService = ecnssndisfltr, ecnssndis_wdfsect
+
+
+[ecnssndis_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;---------------------------------------------------------------;
+
+[Strings]
+QV="Qvantel Software Solutions"
+Disk_Description=" Mobile Broadband Driver Installation Disk"
+SPSVCINST_ASSOCSERVICE= 0x00000002
+Ericsson.SvcDesc=" Mobile Broadband Driver"
+Ericsson.FltSvcDesc=" Mobile Broadband Driver Filter"
+MfgName="Ericsson AB"
+

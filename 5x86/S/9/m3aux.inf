@@ -1,0 +1,142 @@
+; INF file for Motorola Messenger Modem Audio Device Driver
+; Copyright (c) Motorola Inc., 2005 - 2006
+; Manufacturer: Motorola Inc
+
+[Version]
+Signature="$CHICAGO$"
+Class=Media
+Provider=%Mfg%
+ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
+CatalogFile=m3aux.cat
+DriverVer=07/31/2006, 2.1.2.5
+
+[SourceDisksNames]
+222=%DriverDisk%,"",222
+
+[SourceDisksFiles]
+m3aux.sys=222
+
+[Manufacturer]
+%Mfg%=Motorola
+
+[Motorola]
+%DeviceDesc% = M3AD, PCI\VEN_1543&DEV_3052&SUBSYS_31001543&REV_04  ; PCI 3
+%DeviceDesc% = M3AD, HDAUDIO\FUNC_02&VEN_1543&DEV_3155&SUBSYS_15433C55&REV_1007 ; HDAUDIO
+%DeviceDesc% = M3AD, HDAUDIO\FUNC_02&VEN_1543&DEV_3155&SUBSYS_10431336&REV_1007 ; HDAUDIO
+%DeviceDesc% = M3AD, HDAUDIO\FUNC_02&VEN_1543&DEV_3155&SUBSYS_10431335&REV_1007 ; HDAUDIO
+%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_2446      ; AC-Link Intel ICH2
+%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_2486      ; AC-Link Intel ICH3
+;%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_24C6      ; AC-Link Intel ICH4
+%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_24D6      ; AC-Link Intel ICH5
+%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_266D      ; AC-Link Intel ICH6
+%DeviceDesc% = M3AD, PCI\VEN_8086&DEV_27DD      ; AC-Link Intel ICH7
+%DeviceDesc% = M3AD, PCI\VEN_1039&DEV_7013      ; AC-Link SiS
+
+[DestinationDirs]
+M3AD.CopyList=10,system32\drivers
+
+
+;======================================================
+; M3AD
+;======================================================
+[M3AD]
+Characteristics = 0x4 ; NCF_PHYSICAL
+Include = ks.inf,wdmaudio.inf
+Needs = KS.Registration,WDMAUDIO.Registration
+CopyFiles=M3AD.CopyList
+AddReg=M3AD.AddReg 
+
+[M3AD.HW]
+AddReg=RemSM56.AddReg
+DelReg=RemSM56.DelReg
+AddReg=M3ADSecurity.AddReg
+
+[M3AD.CopyList]
+m3aux.sys
+
+[M3AD.Interfaces]
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Wave%,M3AD.InWave
+AddInterface=%KSCATEGORY_RENDER%,%KSNAME_Wave%,M3AD.InWave
+AddInterface=%KSCATEGORY_CAPTURE%,%KSNAME_Wave%,M3AD.InWave
+AddInterface=%KSCATEGORY_AUDIO%,%KSNAME_Topology%,M3AD.InTopo
+AddInterface=%KSCATEGORY_TOPOLOGY%,%KSNAME_Topology%,M3AD.InTopo
+
+[M3AD.Services]
+AddService=M3AD,0x00000002,M3AD_Service_Inst
+
+[M3AD.AddReg]
+HKR,,AssociatedFilters,,"wdmaud,swmidi,redbook"
+HKR,,Driver,,m3aux.sys
+
+HKR,Drivers,SubClasses,,"wave,midi,mixer"
+
+HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\midi\wdmaud.drv,Driver,,wdmaud.drv
+HKR,Drivers\mixer\wdmaud.drv,Driver,,wdmaud.drv
+
+HKR,Drivers\wave\wdmaud.drv,Description,,%DeviceDesc%
+HKR,Drivers\midi\wdmaud.drv,Description,,%DeviceDesc%
+HKR,Drivers\mixer\wdmaud.drv,Description,,%DeviceDesc%
+
+[RemSM56.AddReg]
+HKR,,FriendlyName,,%M3AD.SvcDesc%
+HKR,,"DeviceWakeEnable",0x00010003,1
+HKR,,"DeviceAllowSuspend",0x00010003,0
+HKR,,"DeviceWORable",0x00010003,0
+
+[RemSM56.DelReg]
+HKR,,LowerFilters
+
+[M3ADSecurity.AddReg]
+; FILE_DEVICE_SOUND
+HKR,,DeviceType,0x10001,0x0000001D
+; SDDL_DEVOBJ_SYS_ALL_ADM_RWX_WORLD_RWX_RES_RWX
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
+
+
+;======================================================
+; M3AD
+;======================================================
+[M3AD.InWave]
+AddReg=M3AD.InWave.AddReg
+[M3AD.InWave.AddReg]
+HKR,,FriendlyName,,%M3AD.Wave.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[M3AD.InTopo]
+AddReg=M3AD.InTopo.AddReg
+[M3AD.InTopo.AddReg]
+HKR,,FriendlyName,,%M3AD.Topo.szPname%
+HKR,,CLSID,,%Proxy.CLSID%
+
+[M3AD_Service_Inst]
+DisplayName=%M3AD.SvcDesc%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%10%\system32\drivers\m3aux.sys
+
+;======================================================
+; COMMON
+;======================================================
+[Strings]
+Mfg="Motorola Inc"
+
+DriverDisk="M3AD Driver Disk"
+DeviceDesc="Motorola Messenger Modem Audio Device"
+
+M3AD.Wave.szPname="M3AD Wave"
+M3AD.Topo.szPname="M3AD Topology"
+
+Proxy.CLSID="{17CCA71B-ECD7-11D0-B908-00A0C9223196}"
+KSCATEGORY_AUDIO="{6994AD04-93EF-11D0-A3CC-00A0C9223196}"
+KSCATEGORY_RENDER="{65E8773E-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_CAPTURE="{65E8773D-8F56-11D0-A3B9-00A0C9223196}"
+KSCATEGORY_TOPOLOGY = "{DDA54A40-1E4C-11D1-A050-405705C10000}"
+
+KSNAME_Wave="Wave"
+KSNAME_Topology="Topology"
+
+M3AD.SvcDesc="Motorola Messenger Modem Audio Device"
+
+MediaCategories="SYSTEM\CurrentControlSet\Control\MediaCategories"

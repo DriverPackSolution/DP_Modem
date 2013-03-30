@@ -1,0 +1,248 @@
+
+This is the listing of the ACER modems debugger once collected.
+When we built 70922 We wrote some references to these foldernames in the supported device list.
+
+We also kept the foldername mumbering like this in AC\
+This is why you see numbers missing.
+
+build 806
+a better scantool and better filters were used.
+34 of the 54 folders survived
+-----------------------------------------------------
+
+
+ACER\1 - AC97 Soft Voice Modem with SmartCP, 06/29/2005, 7.30.00.00
+
+Acer Aspire 3030, 5030
+
+ACER\2 - SoftV90 Data Fax Modem with SmartCP, 01/17/2005, 7.20.00.00
+
+Acer Aspire 3010, 3020, 5010, 5020
+Acer Travelmate 4400
+
+ACER\3 - Conexant Soft 56K Modem, 03/06/2003, 6.01.16.00
+
+Acer Aspire 1310
+
+ACER\4 - SoftV90 Data Fax Modem with SmartCP, 02/01/2005, 7.20.00.00
+
+Acer Aspire 2310, 3500, 3630
+Acer Travelmate 2310, 2430
+
+ACER\5 - HDAUDIO Soft Data Fax Modem with SmartCP, 01/16/2007, 7.62.00.00
+
+Acer TravelMate C200, C210, 2450, 2490, 3010, 3030, 3040, 3240, 3280, 3290, 4060, 4070, 4080, 4200, 4210, 4230, 4260, 4270, 4280, 4320, 4670, 4720, 5210, 5310, 5320, 5510, 5710, 5720, 6410,  6460, 6492, 6592, 7320, 7510, 7720
+Acer Extensa 4010, 5200, 5210, 5220, 5510, 5610, 5620, 6700
+Acer Aspire 1640, 1640z, 1650z, 3040, 3050, 3100, 3650, 3690, 4310, 4710, 4920, 5040, 5050, 5100, 5110, 5220, 5315, 5540, 5560, 5590, 5610, 5620, 5630, 5650, 5670, 5680, 7000, 9110, 9300, 9500, 9800, 9810
+Acer Ferrari 1000, 5000
+
+ACER\6 - Conexant SoftK56 Data Fax Modem, 11/27/2002, 6.00.04.00
+
+Acer Travelmate 42x
+
+ACER\7 - AC97 Soft Data Fax Modem with SmartCP, 11/23/2005, 7.35.00.50
+
+Acer TravelMate 2400, 2410, 2420, 3210, 3210z, 3220, 3300, C310
+Acer Aspire 3600, 3610, 3620, 3620a, 5500, 5500z
+Acer Extenza 2600, 3100
+
+ACER\8 - LT Win Modem, 03/02/2001,5.98.0.0
+
+Acer Aspire 1200
+Acer TravelMate Alpha 550
+
+ACER\9 - Lucent Technologies Soft Modem AMR, 08/02/2001, 3.1.97
+
+Acer Travelmate 62x
+
+ACER\10 - Lucent Technologies Soft Modem AMR, 08/02/2001, 3.1.97
+
+Acer Travelmate 63x
+
+ACER\11 - Lucent Technologies Soft Modem AMR, 08/02/2001, 3.1.97
+
+Acer Travelmate 74x
+
+ACER\12 - Lucent Technologies Soft Modem AMR, 08/02/2001, 3.1.97
+
+Acer TravelMate 36x
+
+ACER\13 - Lucent Technologies Soft Modem AMR, 08/02/2001, 3.1.97
+
+Acer TravelMate 22x, 26x, 61x
+
+ACER\14 - Lucent Technologies Soft Modem AMR, 05/07/2002, 3.1.113
+
+TravelMate C100
+
+ACER\15 - Lucent Technologies Soft Modem AMR, 08/02/2002, 3.1.115
+
+Acer Travelmate 27x
+
+ACER\16 - Smart Link 56K Modem, 04/08/2002, 3.00.00.144
+
+Aspire 1400
+
+ACER\17 - SoftV92 Data Fax Modem with SmartCP, 04/14/2004, 7.12.04.00
+
+Acer Extensa 2300, 3000
+Acer TravelMate 2300, 4000, 4010, 4500
+Acer Aspire 1410, 1680
+
+ACER\18 - SoftV92 Data Fax Modem with SmartCP, 02/22/2005, 7.22.00.00
+
+Acer Extensa 4100, 6600
+Acer Aspire 1650, 1690_DDR, 1690_DDR2, 3510, 5510
+Acer Travelmate 4020, 4100, 4600
+
+ACER\19 - Conexant Soft 56K Modem, 07/23/2002, 5.03.23.00
+
+Acer Aspire 1300
+
+ACER\20 - Agere Systems HDA Modem, 03/09/2007, 2.1.77.9
+
+Acer Aspire 4310, 4710, 4920
+
+ACER\21 - Agere Systems AC'97 Modem, 03/09/2007, 2.1.77.9
+          Agere Systems HDA Modem
+
+Acer Travelmate 35X, 52X, 53X, 210, 3000, 6231, 6291, 6292, 6492, 6592, 7220, 7520, 8100, 8200,  8210
+
+ACER\22 - Agere Systems AC'97 Modem, 10/08/2004, 2.1.47
+
+Acer Aspire 3000, 5000
+
+ACER\23 - Agere Systems AC'97 Modem, 10/18/2002, 2.1.20
+
+Acer Travelmate 65x
+
+ACER\24 - Agere Systems AC'97 Modem, 10/18/2002, 2.1.20
+
+Acer TravelMate 23x, 28x, 53x
+
+ACER\25 - Agere Systems AC'97 Modem, 12/20/2002, 2.1.22
+
+Acer TravelMate 43x
+
+ACER\26 - Agere Systems AC'97 Modem, 12/20/2002, 2.1.22
+
+Acer Aspire 1700
+
+ACER\27 - Agere Systems AC'97 Modem, 01/22/2003, 2.1.23
+
+Acer Aspire 1600
+
+ACER\28 - Agere Systems AC'97 Modem, 02/14/2003, 2.1.25
+
+Acer TravelMate C110, 23x, 28x, 800
+
+ACER\29 - Agere Systems AC'97 Modem, 02/14/2003, 2.1.25
+
+Acer Travelmate 66x
+
+ACER\30 - Agere Systems AC'97 Modem, 02/14/2003, 2.1.25
+
+Acer TravelMate C300, 24x, 25x, 37x, 38x
+
+ACER\31 - Agere Systems AC'97 Modem, 03/31/2003, 2.1.28
+
+Acer Aspire 1350
+
+ACER\32 - Agere Systems AC'97 Modem, 03/31/2003, 2.1.28
+
+Acer Aspire 2000
+
+ACER\33 - Agere Systems AC'97 Modem, 06/27/2003, 2.1.31
+
+Acer Aspire 1450, Ferrari 3000
+
+ACER\34 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Travelmate 54x
+
+ACER\35 - Agere Systems AC'97 Modem, 07/25/2003, 2.1.32
+
+Acer Aspire 1360, 1500, 1520
+
+ACER\36 - Agere Systems AC'97 Modem, 07/25/2003, 2.1.32
+
+Acer Extensa 2900, Travelmate 290
+
+ACER\37 - Agere Systems AC'97 Modem, 08/20/2003, 2.1.33
+
+Acer Aspire 1710
+
+ACER\38 - Agere Systems AC'97 Modem, 09/23/2003, 2.1.34
+
+Acer Travelmate 6000, 8000
+
+ACER\39 - Agere Systems AC'97 Modem, 10/23/2003, 2.1.35
+
+Acer Aspire 1510
+
+ACER\40 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Travelmate 3200
+
+ACER\41 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Aspire 1610
+
+ACER\42 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Extenza 2000, 2500
+Acer TravelMate 2000, 2100, 2500, 2600
+Acer Aspire 1620, 1660
+
+ACER\43 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Ferrari 3200, 3400
+
+ACER\44 - Agere Systems AC'97 Modem, 11/19/2003, 2.1.36
+
+Acer Aspire 2010, 2020
+
+ACER\45 - Agere Systems AC'97 Modem, 06/07/2004, 2.1.41
+
+Acer TravelMate 2200, 2700
+Acer Aspire 1670
+
+ACER\46 - Agere Systems AC'97 Modem, 07/22/2004, 2.1.46
+
+Acer Extensa 2350, 2950, TravelMate 2350
+Acer TravelMate 4050
+
+ACER\47 - Agere Systems HDA Modem, 10/08/2004, 2.1.47
+
+Acer Travelmate 3000, 8100
+
+ACER\48 - Agere Systems AC'97 Modem, 12/20/2004, 2.1.49
+
+Acer Travelmate 4150, 4650
+
+ACER\49 - Agere Systems AC'97 Modem, 12/20/2004, 2.1.49
+
+Acer Aspire 9100
+
+ACER\50 - Agere Systems AC'97 Modem, 05/11/2005, 2.1.53
+
+Acer Aspire 5620
+
+ACER\51 - Agere Systems AC'97 Modem, 08/24/2005, 2.1.59
+
+Acer Ferrari 4000
+
+ACER\52 - Agere Systems HDA Modem, 12/12/2005, 2.1.63
+
+Acer Aspire 3640, 3670, 5540, 7100, 7110, 9400, 9410, 9420, 9510, 9520
+Acer Travelmate 2440, 2470, 3250, 5100, 5110, 5600, 5610, 5620, 6500
+
+ACER\53 - Agere Systems HDA Modem, 12/12/2005, 2.1.63
+
+Acer Aspire 3660, 5600
+Acer Travelmate 2460, 4220
+
+ACER\54 - Agere Systems HDA Modem, 12/12/2005, 2.1.63
+
+Acer Aspire 3680, 5570, 5580
+Acer Travelmate 2480, 3260, 3270

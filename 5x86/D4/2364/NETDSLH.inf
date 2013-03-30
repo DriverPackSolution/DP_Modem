@@ -1,0 +1,411 @@
+;============================================================================================
+;
+; Integrated Telecom Express Inc. ADSL NIC Driver Installation Set, for Apollo, Windows XP
+;
+; Copyright (c) 1998-2001, Integrated Telecom Express Inc.
+;
+;============================================================================================
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %V_DSLH%
+;Following are reserverd for future use
+CatalogFile = ITeXA2.cat
+;DriverVer = mm/dd/yyyy,[a.b.c.d]
+DriverVer = 07/25/2001,2.3.1
+
+[Manufacturer]
+%V_DSLH%=DSLH
+
+[DSLH]
+; DisplayName                        Section            DeviceID
+; -----------                        -------            --------
+%itexadsla2.DeviceDesc%             = itexadsla2.ndi,      PCI\VEN_1471&DEV_0188&SUBSYS_50001186&REV_10;for A2
+%itexadsla2.DeviceDesc%             = itexadsla2.ndi,      PCI\VEN_1471&DEV_0188&SUBSYS_50011186&REV_10;for A3
+;%itexadsla2.DeviceDesc%             = itexadsla2.ndi,      PCI\VEN_1471&DEV_0188
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1471&DEV_0188&SUBSYS_50001186&REV_10, PCI\VEN_1471&DEV_0188&SUBSYS_50011186&REV_10
+;ExcludeFromSelect = PCI\VEN_1471&DEV_0188
+ 
+;=================================================================
+;    Source Files Section 
+;=================================================================
+[SourceDisksNames]
+50="D-Link DSL-100D ADSL Modem Driver Disk",,0
+[SourceDisksFiles]
+;netamgm.inf  = 50,,                 ; on distribution disk 1, in root
+netDSLH.inf  = 50,,                 ; on distribution disk 1, in root
+;amgmwan.sys  = 50,,                 ; on distribution disk 1, in root
+DSLHwana.sys = 50,,                 ; on distribution disk 1, in root
+mapidrv.dll  = 50,,                 ; on distribution disk 1, in root
+mapiicon.exe = 50,,                 ; on distribution disk 1, in root
+ndi9x.dll    = 50,,                 ; on distribution disk 1, in root
+dllmapi2.exe = 50,,                 ; on distribution disk 1, in root
+dllmapi6.exe = 50,,                 ; on distribution disk 1, in root
+dllmapi7.exe = 50,,                 ; on distribution disk 1, in root
+dllmapi8.exe = 50,,                 ; on distribution disk 1, in root
+UInsADSL.exe = 50,,                 ; on distribution disk 1, in root
+UnInst.exe   = 50,,                 ; on distribution disk 1, in root
+AdslCfg.ini  = 50,,                 ; on distribution disk 1, in root
+ReadMe.htm   = 50,,                 ; on distribution disk 1, in root
+NdiNT5.dll   = 50,,                 ; on distribution disk 1, in root
+
+;=======================================================================================
+
+;    Copy Files Section
+;=======================================================================================
+;====================================
+;[Common Part for A2,Winnt]
+;====================================
+
+[itexadsl.CopyFiles.ntinf]
+;netamgm.inf,,,2
+
+
+[itexadsl.CopyFiles.sys]
+;amgmwan.sys,,,2
+
+;====================================
+;[Product Specific Part for A2]
+;====================================
+;[A2, Winnt] 
+[itexadsla2.CopyFiles.sys]
+DSLHwana.sys,,,2
+
+;====================================
+;[MAPI Utility for A2]
+;====================================
+;[A2, MAPI]
+[itexadsla2.CopyFiles.mapiw2k]
+mapiicon.exe,,,2
+mapidrv.dll,,,2
+dllmapi2.exe,,,2
+DllMapi6.exe,,,2
+DllMapi7.exe,,,2
+DllMapi8.exe,,,2
+UInsADSL.exe,,,2
+AdslCfg.ini,,,2
+ReadMe.htm,,,2
+UnInst.exe,,,2
+
+
+;====================================
+;    Destination  Section
+;====================================
+[DestinationDirs] 
+;[Common Part for A2, Winnt]
+itexadsl.CopyFiles.ntinf         = 17           ;Inf
+itexadsl.CopyFiles.sys           = 12           ;System32\Drivers
+
+;itexadsl.CopyFiles.ntdll        = 11           ;LDID_SYS
+itexadsla2.CopyFiles.coinstaller = 11
+
+;[A2, Winnt]
+itexadsla2.CopyFiles.sys         = 12
+
+;[A2, MAPI,w2k]
+itexadsla2.CopyFiles.mapiw2k     = 11  
+
+DefaultDestDir                   = 12
+
+;===========================================================================================
+;       Installer Section for WINNT
+;===========================================================================================
+;[A2, Winnt]
+[itexadsla2.ndi]                    
+BusType         = 5
+Characteristics = 0x84 ;NCF_PHYSICAL
+AddReg          = itexadsla2.ndi.reg ,A2NT5_param.ndi.reg 
+CopyFiles       = itexadsl.CopyFiles.ntinf,itexadsl.CopyFiles.sys,itexadsla2.CopyFiles.sys,itexadsla2.CopyFiles.mapiw2k
+
+;[itexadsla2.ndi.Hw]
+;AddReg = Reg-LowerFilter-NdisTapi
+    
+;[Reg-LowerFilter-NdisTapi]
+;HKR,,LowerFilters,0x00010000,"NdisTapi"
+        
+;===========================================================================================
+;A2, Winnt CoInstaller
+
+[itexadsla2.ndi.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=itexadsla2.CopyFiles.coinstaller   
+
+[itexadsla2.CopyFiles.coinstaller]
+NdiNt5.dll
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"NdiNt5.dll,MyCoInstaller"
+
+;============================================================================================
+;      Service Section (NT only)
+;============================================================================================
+;[A2, Winnt]
+[itexadsla2.ndi.Services]
+AddService = itexadsla2, 2, itexadsla2.AddService, itexadsl.AddEventLog
+
+;============================================================================================
+;      Add Service Section (For WINNT)
+;============================================================================================
+[itexadsla2.AddService]
+DisplayName     = %itexadsla2.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_AUTO_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\DSLHwana.sys                  ;change corresponding driver name if necessary
+LoadOrderGroup  = NDIS
+
+;===========================================================================================
+; Service Removal Section (NT only)
+;===========================================================================================
+;[A2,Winnt]
+;[itexadsla2.ndi.Remove.Services]
+;DelService=itexadsla2
+
+;==============================================================================
+;  Binding/Interface Section 
+;==============================================================================
+;[A2, Winnt]
+[itexadsla2.ndi.reg] 
+HKR, Ndi,               Service,    0, "itexadsla2"
+;HKR, Ndi,               RequiredAll,0 ,"ITEXAMGM5"        ;auto-install amgm protocol
+HKR, Ndi\Interfaces,    LowerRange, 0, "adsl"
+;HKR, Ndi\Interfaces,    UpperRange, 0, "ndiswan,amgmwan"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndiswan"
+
+HKR,, WanEndpoints, 0x00010001, "1"
+
+HKLM,Software\Microsoft\Windows\CurrentVersion\Run,ADSL_A2,,"A2Installed"
+
+[A2NT5_param.ndi.reg]
+
+HKR,, ServerName, 0x00000000, ""
+HKR,, ServiceName, 0x00000000, ""
+
+HKR, Ndi\params\Vpi,ParamDesc,, "VPI"
+HKR, Ndi\params\Vpi,default,  , "0"
+HKR, Ndi\params\Vpi,min,      , "0"
+HKR, Ndi\params\Vpi,max,      , "255"
+HKR, Ndi\params\Vpi,step,     , "1"
+HKR, Ndi\params\Vpi,base,     , "10"
+HKR, Ndi\params\Vpi,type,     , "long"
+
+HKR, Ndi\params\Vci,ParamDesc,, "VCI"
+HKR, Ndi\params\Vci,default,  , "35"
+HKR, Ndi\params\Vci,min,      , "0"
+HKR, Ndi\params\Vci,max,      , "65535"
+HKR, Ndi\params\Vci,step,     , "1"
+HKR, Ndi\params\Vci,base,     , "10"
+HKR, Ndi\params\Vci,type,     , "long"
+
+HKR, Ndi\Params\Framing,         ParamDesc,  0, "Framing"
+HKR, Ndi\Params\Framing,         default,    0, "1"
+HKR, Ndi\Params\Framing\Enum,    "0",        0, "LLC/SNAP"
+HKR, Ndi\Params\Framing\Enum,    "1",        0, "VC Mux"
+HKR, Ndi\Params\Framing,         type,       0, "enum"
+
+HKR, Ndi\Params\Protocol,        ParamDesc,  0, "Protocol"
+HKR, Ndi\Params\Protocol,        default,    0, "0"
+HKR, Ndi\Params\Protocol\Enum,   "0",        0, "PPPoA"
+HKR, Ndi\Params\Protocol\Enum,   "1",        0, "PPPoE"
+HKR, Ndi\Params\Protocol,        type,       0, "enum"
+
+HKR, Ndi\params\Vpi_Bert,ParamDesc,, "VPI (Bit Error Rate Test)"
+HKR, Ndi\params\Vpi_Bert,default,  , "0"
+HKR, Ndi\params\Vpi_Bert,min,      , "0"
+HKR, Ndi\params\Vpi_Bert,max,      , "255"
+HKR, Ndi\params\Vpi_Bert,step,     , "1"
+HKR, Ndi\params\Vpi_Bert,base,     , "10"
+HKR, Ndi\params\Vpi_Bert,type,     , "long"
+
+HKR, Ndi\params\Vci_Bert,ParamDesc,, "VCI (Bit Error Rate Test)"
+HKR, Ndi\params\Vci_Bert,default,  , "21"
+HKR, Ndi\params\Vci_Bert,min,      , "0"
+HKR, Ndi\params\Vci_Bert,max,      , "65535"
+HKR, Ndi\params\Vci_Bert,step,     , "1"
+HKR, Ndi\params\Vci_Bert,base,     , "10"
+HKR, Ndi\params\Vci_Bert,type,     , "long"
+
+HKR, Ndi\params\ModemOpMode,	     ParamDesc,, "ModemOpMode"
+HKR, Ndi\params\ModemOpMode,	     default, 0, "1"
+HKR, Ndi\Params\ModemOpMode\Enum,    "1",        0, "T1.413"
+HKR, Ndi\Params\ModemOpMode\Enum,    "2",        0, "G.Dmt"
+HKR, Ndi\Params\ModemOpMode\Enum,    "3",        0, "T1.413+G.Dmt"
+HKR, Ndi\Params\ModemOpMode\Enum,    "8",        0, "G.Lite"
+HKR, Ndi\Params\ModemOpMode\Enum,    "9",        0, "T1.413+G.Lite"
+HKR, Ndi\Params\ModemOpMode\Enum,    "10",       0, "G.Dmt+G.Lite"
+HKR, Ndi\Params\ModemOpMode\Enum,    "11",       0, "T1.413+G.Dmt+G.Lite"
+HKR, Ndi\params\ModemOpMode,	     type,       0, "enum"
+
+HKR, Ndi\params\QoS,		ParamDesc,, "QoS"
+HKR, Ndi\params\QoS,	   	default, 0, "0"
+HKR, Ndi\Params\QoS\Enum,	"0",        0, "Disable"
+HKR, Ndi\Params\QoS\Enum,   	"1",        0, "Enable"
+HKR, Ndi\params\QoS,	     	type,       0, "enum"
+
+HKR, Ndi\params\PCR,		ParamDesc,, "QoS Option, PCR"
+HKR, Ndi\params\PCR,		default,  , "1811"
+HKR, Ndi\params\PCR,		min,      , "75"
+HKR, Ndi\params\PCR,		max,      , "1811"
+HKR, Ndi\params\PCR,		step,     , "1"
+HKR, Ndi\params\PCR,		base,     , "10"
+HKR, Ndi\params\PCR,		type,     , "long"
+
+HKR, Ndi\params\SCR,		ParamDesc,, "QoS Option, SCR"
+HKR, Ndi\params\SCR,		default,  , "905"
+HKR, Ndi\params\SCR,		min,      , "75"
+HKR, Ndi\params\SCR,		max,      , "1811"
+HKR, Ndi\params\SCR,		step,     , "1"
+HKR, Ndi\params\SCR,		base,     , "10"
+HKR, Ndi\params\SCR,		type,     , "long"
+
+HKR, Ndi\params\MBS,		ParamDesc,, "QoS Option, MBS"
+HKR, Ndi\params\MBS,		default,  , "448"
+HKR, Ndi\params\MBS,		min,      , "0"
+HKR, Ndi\params\MBS,		max,      , "1811"
+HKR, Ndi\params\MBS,		step,     , "1"
+HKR, Ndi\params\MBS,		base,     , "10"
+HKR, Ndi\params\MBS,		type,     , "long"
+
+HKR, Ndi\params\AVR,		ParamDesc,, "QoS Option, AVR"
+HKR, Ndi\params\AVR,		default,  , "905"
+HKR, Ndi\params\AVR,		min,      , "75"
+HKR, Ndi\params\AVR,		max,      , "1811"
+HKR, Ndi\params\AVR,		step,     , "1"
+HKR, Ndi\params\AVR,		base,     , "10"
+HKR, Ndi\params\AVR,		type,     , "long"
+
+HKR, Ndi\params\MinRate,	ParamDesc,, "QoS Option, Min Rate"
+HKR, Ndi\params\MinRate,	default,  , "1358"
+HKR, Ndi\params\MinRate,	min,      , "75"
+HKR, Ndi\params\MinRate,	max,      , "1811"
+HKR, Ndi\params\MinRate,	step,     , "1"
+HKR, Ndi\params\MinRate,	base,     , "10"
+HKR, Ndi\params\MinRate,	type,     , "long"
+
+HKR, Ndi\params\TxCellQueueLength,ParamDesc,, "Transmit Cell Buffer Length"
+HKR, Ndi\params\TxCellQueueLength,default,  , "10240"
+HKR, Ndi\params\TxCellQueueLength,min,      , "256"
+HKR, Ndi\params\TxCellQueueLength,max,      , "16384"
+HKR, Ndi\params\TxCellQueueLength,step,     , "128"
+HKR, Ndi\params\TxCellQueueLength,base,     , "10"
+HKR, Ndi\params\TxCellQueueLength,type,     , "long"
+
+HKR, Ndi\params\RxCellQueueLength,ParamDesc,, "Receive Cell Buffer Length"
+HKR, Ndi\params\RxCellQueueLength,default,  , "10240"
+HKR, Ndi\params\RxCellQueueLength,min,      , "256"
+HKR, Ndi\params\RxCellQueueLength,max,      , "16384"
+HKR, Ndi\params\RxCellQueueLength,step,     , "128"
+HKR, Ndi\params\RxCellQueueLength,base,     , "10"
+HKR, Ndi\params\RxCellQueueLength,type,     , "long"
+
+HKR, Ndi\params\AtuC_VendorID,		ParamDesc,, "AtuC_VendorID"
+HKR, Ndi\params\AtuC_VendorID,          default,  , "0"
+HKR, Ndi\params\AtuC_VendorID,		min,      , "0"
+HKR, Ndi\params\AtuC_VendorID,		max,      , "255"
+HKR, Ndi\params\AtuC_VendorID,		step,     , "1"
+HKR, Ndi\params\AtuC_VendorID,		base,     , "10"
+HKR, Ndi\params\AtuC_VendorID,		type,     , "long"
+
+HKR, Ndi\params\IncTxPower,	        ParamDesc, 0, "IncTxPower"
+HKR, Ndi\params\IncTxPower,         	default,   0, "0"
+HKR, Ndi\params\IncTxPower\Enum,    	"115",     0, "-15"
+HKR, Ndi\params\IncTxPower\Enum,    	"114",     0, "-14"
+HKR, Ndi\params\IncTxPower\Enum,    	"113",     0, "-13"
+HKR, Ndi\params\IncTxPower\Enum,    	"112",     0, "-12"
+HKR, Ndi\params\IncTxPower\Enum,    	"111",     0, "-11"
+HKR, Ndi\params\IncTxPower\Enum,    	"110",     0, "-10"
+HKR, Ndi\params\IncTxPower\Enum,    	"109",     0, "-9"
+HKR, Ndi\params\IncTxPower\Enum,    	"108",     0, "-8"
+HKR, Ndi\params\IncTxPower\Enum,    	"107",     0, "-7"
+HKR, Ndi\params\IncTxPower\Enum,    	"106",     0, "-6"
+HKR, Ndi\params\IncTxPower\Enum,    	"105",     0, "-5"
+HKR, Ndi\params\IncTxPower\Enum,    	"104",     0, "-4"
+HKR, Ndi\params\IncTxPower\Enum,    	"103",     0, "-3"
+HKR, Ndi\params\IncTxPower\Enum,    	"102",     0, "-2"
+HKR, Ndi\params\IncTxPower\Enum,    	"101",     0, "-1"
+HKR, Ndi\params\IncTxPower\Enum,    	"0",       0, "0"
+HKR, Ndi\params\IncTxPower\Enum,    	"1",       0, "1"
+HKR, Ndi\params\IncTxPower\Enum,    	"2",       0, "2"
+HKR, Ndi\params\IncTxPower\Enum,    	"3",       0, "3"
+HKR, Ndi\params\IncTxPower\Enum,    	"4",       0, "4"
+HKR, Ndi\params\IncTxPower\Enum,    	"5",       0, "5"
+HKR, Ndi\params\IncTxPower\Enum,    	"6",       0, "6"
+HKR, Ndi\params\IncTxPower\Enum,    	"7",       0, "7"
+HKR, Ndi\params\IncTxPower\Enum,    	"8",       0, "8"
+HKR, Ndi\params\IncTxPower\Enum,    	"9",       0, "9"
+HKR, Ndi\params\IncTxPower\Enum,    	"10",      0, "10"
+HKR, Ndi\params\IncTxPower\Enum,    	"11",      0, "11"
+HKR, Ndi\params\IncTxPower\Enum,    	"12",      0, "12"
+HKR, Ndi\params\IncTxPower\Enum,    	"13",      0, "13"
+HKR, Ndi\params\IncTxPower\Enum,    	"14",      0, "14"
+HKR, Ndi\params\IncTxPower\Enum,    	"15",      0, "15"
+HKR, Ndi\params\IncTxPower,       	type,      0, "enum"
+
+
+;HKR, Ndi\Params\BoardConf,         	ParamDesc,  0, "Board Config"
+;HKR, Ndi\Params\BoardConf,         	default,    0, "1"
+;HKR, Ndi\Params\BoardConf\Enum,    	"1",        0, "A2"
+;HKR, Ndi\Params\BoardConf\Enum,    	"2",        0, "A3"
+;HKR, Ndi\Params\BoardConf,         	type,       0, "enum"
+
+HKR, Ndi\Params\OAM,			ParamDesc,  0, "OAM"
+HKR, Ndi\Params\OAM,         		default,    0, "1"
+HKR, Ndi\Params\OAM\Enum,    		"0",        0, "Disable"
+HKR, Ndi\Params\OAM\Enum,    		"1",        0, "Enable"
+HKR, Ndi\Params\OAM,         		type,       0, "enum"
+
+HKR, Ndi\Params\BitSwap,		ParamDesc,  0, "BitSwap"
+HKR, Ndi\Params\BitSwap,         	default,    0, "1"
+HKR, Ndi\Params\BitSwap\Enum,    	"0",        0, "Disable"
+HKR, Ndi\Params\BitSwap\Enum,    	"1",        0, "Enable"
+HKR, Ndi\Params\BitSwap,         	type,       0, "enum"
+
+HKR, Ndi\params\LEDType,		ParamDesc,, "LED Type"
+HKR, Ndi\params\LEDType,        	default,  , "0"
+HKR, Ndi\params\LEDType,		min,      , "0"
+HKR, Ndi\params\LEDType,		max,      , "3"
+HKR, Ndi\params\LEDType,		step,     , "1"
+HKR, Ndi\params\LEDType,		base,     , "10"
+HKR, Ndi\params\LEDType,		type,     , "long"
+
+HKR, Ndi\params\EnPower,	        ParamDesc, 0, "Performance Tuning"
+HKR, Ndi\params\EnPower,         	default,   0, "0"
+HKR, Ndi\params\EnPower\Enum,    	"12",      0, "-2"
+HKR, Ndi\params\EnPower\Enum,    	"11",      0, "-1"
+HKR, Ndi\params\EnPower\Enum,    	"0",       0, "0"
+HKR, Ndi\params\EnPower\Enum,    	"1",       0, "1"
+HKR, Ndi\params\EnPower\Enum,    	"2",       0, "2"
+HKR, Ndi\params\EnPower,       		type,      0, "enum"
+
+HKR, Ndi\params\DiscTimeOut,		ParamDesc,, "Disconnect Timeout(sec)"
+HKR, Ndi\params\DiscTimeOut,            default,  , "30"
+HKR, Ndi\params\DiscTimeOut,		min,      , "0"
+HKR, Ndi\params\DiscTimeOut,		max,      , "300"
+HKR, Ndi\params\DiscTimeOut,		step,     , "1"
+HKR, Ndi\params\DiscTimeOut,		base,     , "10"
+HKR, Ndi\params\DiscTimeOut,		type,     , "long"
+
+;========================================================================================
+;  Common Event Log Section for NT
+;========================================================================================
+[itexadsl.AddEventLog]
+AddReg  =  itexadsl.AddEventLog.Reg
+
+[itexadsl.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;========================================================================================
+;  String and Misc Section
+;========================================================================================
+
+[Strings]
+V_DSLH="D-Link"
+
+;[A2]
+itexadsla2.DeviceDesc         = "D-Link DSL-100D ADSL Modem"
+itexadsla2.Service.DispName   = "D-Link DSL-100D ADSL Modem Service"

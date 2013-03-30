@@ -1,0 +1,555 @@
+;*****************************************************************************
+;
+; Mbm3bus.inf   -- Install the F3607gw Mobile Broadband Device drivers
+;
+; Copyright (c) 1997-2011 by MCCI Corporation 
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=04/20/2012,7.1.0.1
+CatalogFile=t36gbus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+t36gWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"Mbm3CBus.sys",,\i386
+
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"Mbm3CBus.sys",,\amd64
+
+
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+Mbm3CBus.sys = 1
+Mbm3whnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%TOSHIBA%=t36g, NTamd64
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[t36g]
+%t36g.CdcBus.Desc% = VID_0930&PID_130cWdm.Install, USB\VID_0930&PID_130c
+%t36g.CdcBus.Desc% = VID_0930&PID_1311Wdm.Install, USB\VID_0930&PID_1311
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1315Wdm.Install, USB\VID_0930&PID_1315
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1316Wdm.Install, USB\VID_0930&PID_1316
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1317Wdm.Install, USB\VID_0930&PID_1317
+%t36g.CdcBus.Desc.3% = VID_0930&PID_1314Wdm.Install, USB\VID_0930&PID_1314
+%t36g.CdcBus.Desc.4% = VID_0930&PID_131FWdm.Install, USB\VID_0930&PID_131F
+%t36g.CdcBus.Desc.5% = VID_0930&PID_131BWdm.Install, USB\VID_0930&PID_131B
+%t36g.CdcBus.Desc.6% = VID_0930&PID_131DWdm.Install, USB\VID_0930&PID_131D
+%t36g.CdcBus.Desc.7% = VID_0930&PID_1319Wdm.Install, USB\VID_0930&PID_1319
+%t36g.CdcBus.Desc.8% = VID_0930&PID_1321Wdm.Install, USB\VID_0930&PID_1321
+
+[t36g.NTamd64]
+%t36g.CdcBus.Desc% = VID_0930&PID_130cWdm.Install, USB\VID_0930&PID_130c
+%t36g.CdcBus.Desc% = VID_0930&PID_1311Wdm.Install, USB\VID_0930&PID_1311
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1315Wdm.Install, USB\VID_0930&PID_1315
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1316Wdm.Install, USB\VID_0930&PID_1316
+%t36g.CdcBus.Desc.2% = VID_0930&PID_1317Wdm.Install, USB\VID_0930&PID_1317
+%t36g.CdcBus.Desc.3% = VID_0930&PID_1314Wdm.Install, USB\VID_0930&PID_1314
+%t36g.CdcBus.Desc.4% = VID_0930&PID_131FWdm.Install, USB\VID_0930&PID_131F
+%t36g.CdcBus.Desc.5% = VID_0930&PID_131BWdm.Install, USB\VID_0930&PID_131B
+%t36g.CdcBus.Desc.6% = VID_0930&PID_131DWdm.Install, USB\VID_0930&PID_131D
+%t36g.CdcBus.Desc.7% = VID_0930&PID_1319Wdm.Install, USB\VID_0930&PID_1319
+%t36g.CdcBus.Desc.8% = VID_0930&PID_1321Wdm.Install, USB\VID_0930&PID_1321
+
+;-----------------------------------------------------------------------------
+; How to install them:  
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[t36g.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+
+[VID_0930&PID_130cWdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_130cWdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1311Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1311Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1315Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1315Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1316Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1316Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1317Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1317Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1314Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1314Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_131FWdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_131FWdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_131BWdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_131BWdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_131DWdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_131DWdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1319Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1319Wdm.AddReg, t36gWdm.NT.AddReg
+[VID_0930&PID_1321Wdm.Install.NT]
+CopyFiles       = t36gWdm.NT.CopyFiles
+AddReg          = VID_0930&PID_1321Wdm.AddReg, t36gWdm.NT.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+
+
+[VID_0930&PID_130cWdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_130cWdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_130cWdm.AddService]
+DisplayName             = %t36g.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1311Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1311Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1311Wdm.AddService]
+DisplayName             = %t36g.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1315Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1315Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1315Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.2%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1316Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1316Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1316Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.2%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1317Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1317Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1317Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.2%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1314Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1314Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1314Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.3%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_131FWdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_131FWdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_131FWdm.AddService]
+DisplayName             = %t36g.Service.Desc.4%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_131BWdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_131BWdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_131BWdm.AddService]
+DisplayName             = %t36g.Service.Desc.5%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_131DWdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_131DWdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_131DWdm.AddService]
+DisplayName             = %t36g.Service.Desc.6%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1319Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1319Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1319Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.7%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+[VID_0930&PID_1321Wdm.Install.NT.Services]
+AddService      = Mbm3CBus, 2, VID_0930&PID_1321Wdm.AddService, t36gWdm.Install.EventLog
+
+[VID_0930&PID_1321Wdm.AddService]
+DisplayName             = %t36g.Service.Desc.8%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\Mbm3CBus.sys
+LoadOrderGroup          = Base
+
+
+
+;-----------------------------------------------------------------------------
+;       Setup event logging, if driver supports it
+;-----------------------------------------------------------------------------
+
+[t36gWdm.Install.EventLog]
+Addreg = t36gWdm.EventLog.AddReg
+
+[t36gWdm.EventLog.AddReg]
+HKR,,EventMessageFile, 0x20000, "%%SystemRoot%%\System32\drivers\Mbm3CBus.sys"
+HKR,,TypesSupported, 0x10001, 7
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[VID_0930&PID_130cWdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_130c\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_130c\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1311Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson F3607gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1311\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1311\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1314Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F5521gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F5521gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson F5521gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1314\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1314\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_131BWdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F5321gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F5321gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson F5321gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131B\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131B\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1319Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson H5321gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson H5321gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson H5321gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1319\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1319\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1321Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson C5621gw for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson C5621gw for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09\AdditionalIfcs, 0000, 0x10001, 0a,00,00,00
+HKR,Scenarios\Scenario_0\ifc_09\Description, default,, "Ericsson C5621gw for TOSHIBA Mobile Broadband GPS Port"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareId,, "TOSHIBA\GPS2$,"
+HKR,Scenarios\Scenario_0\ifc_09,HardwareIdList,, "TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_09,CompatibleIdList,,"TOSHIBA\GPS2$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\GPS2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1321\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1321\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1315Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 02,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1315\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1315\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1316Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 02,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1316\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1316\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_1317Wdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 02,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1317\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_1317\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_131FWdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson F5321w for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson F5321w for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 02,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131F\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131F\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+[VID_0930&PID_131DWdm.AddReg]
+HKR,Scenarios,Scenario,0x10001, 00,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\Description, default,, "Ericsson H5321w for TOSHIBA Mobile Broadband Network Adapter"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareId,, "USB\Vid_$VID&Pid_$PID&Mi_$IFC$,"
+HKR,Scenarios\Scenario_0\ifc_06,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Rev_$REV&Mi_$IFC$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_06,CompatibleIdList,, "USB\Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Class_$CLASS&SubClass_$SUBCLASS$,USB\Class_$CLASS$,$,"
+HKR,Scenarios\Scenario_0\ifc_08\Description, default,, "Ericsson H5321w for TOSHIBA Mobile Broadband USIM Port"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareId,, "TOSHIBA\SMARTCARD2$,"
+HKR,Scenarios\Scenario_0\ifc_08,HardwareIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_0\ifc_08,CompatibleIdList,, "TOSHIBA\SMARTCARD2$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,TOSHIBA\SMARTCARD2\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+HKR,,Configuration,0x10001, 02,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0000, 0x10001, 01,00,00,00
+HKR,Scenarios\Scenario_0\ifc_06\AdditionalIfcs, 0001, 0x10001, 02,00,00,00
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131D\LocationPaths\*", Removable, 0x10001, 0
+HKLM,"SYSTEM\CurrentControlSet\Control\DeviceOverrides\USB#VID_0930&PID_131D\ChildLocationPaths\*", Removable, 0x10001, 0
+HKR,,MCCI_TCPWindowSizeFix_MinValue,0x10001,f0,fa,00,00
+HKR,,MCCI_MCECIDFix,0x10001,07,00,00,00
+
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[t36gWdm.NT.AddReg]
+HKR,,EnableCR3840, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+HKR,,AllowRemoteWakeup, 0x10001, 01,00,00,00
+HKR,,PowerHeuristics,0x10001, 30,00,40,04
+HKR,,EnableCR9111, 0x10001, 01,00,00,00
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[t36gWdm.NT.CopyFiles]
+Mbm3CBus.sys
+Mbm3wh.sys,Mbm3whnt.sys
+Mbm3whnt.sys
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "TOSHIBA Corporation"
+TOSHIBA = "TOSHIBA Corporation"
+
+t36g.CdcBus.Desc = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.2 = "Ericsson F3307 for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.2 = "Ericsson F3307 for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.3 = "Ericsson F5521gw for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.3 = "Ericsson F5521gw for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.4 = "Ericsson F5321w for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.4 = "Ericsson F5321w for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.5 = "Ericsson F5321gw for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.5 = "Ericsson F5321gw for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.6 = "Ericsson H5321w for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.6 = "Ericsson H5321w for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.7 = "Ericsson H5321gw for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.7 = "Ericsson H5321gw for TOSHIBA Mobile Broadband Device (WDM)"
+t36g.CdcBus.Desc.8 = "Ericsson C5621gw for TOSHIBA Mobile Broadband Device"
+t36g.Service.Desc.8 = "Ericsson C5621gw for TOSHIBA Mobile Broadband Device (WDM)"
+
+DiskString = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device Installation Disk"
+CustomerDataPath = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device"
+DriverSet = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device Software"
+UninstallFile = "MBM3Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***
+

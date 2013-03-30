@@ -1,0 +1,201 @@
+;**************************************************************
+;  Copyright (c) ZyXEL Communications Corp. 2003
+;  mdmzdu.inf -- ZyXEL USB Modem INF (Fax+Modem)
+;  Version 2.0.0.1 -- Last revised date: 06/04/2004
+;**************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Modem
+ClassGUID={4D36E96D-E325-11CE-BFC1-08002BE10318}
+Provider=%Mfg%
+DriverVer=06/04/2004,2.0.0.1
+CatalogFile=mdmzdu.cat
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%Mfg% = Models
+
+[Models]
+%ZD56.USB%=ZD56, USB\VID_0ACE&PID_1602
+%ZD56.UNO%=ZD56, USB\VID_0ACE&PID_1608
+%ZD56.USBP%=ZD56, USB\VID_0ACE&PID_1611
+
+[Strings]
+Mfg             ="ZyXEL Communications Corp"
+ZD56.USB        = "ZyXEL OMNI 56K USB"
+ZD56.UNO        = "ZyXEL OMNI 56K UNO"
+ZD56.USBP       = "ZyXEL OMNI 56K USB Plus"
+DriverDisk      = "ZyXEL Modem Driver Disk"
+USBFilterString = "ZyXEL USB modem Driver"
+
+[ZD56.NT]
+CopyFiles=USBModemCopyFileSection
+AddReg=All, OM56.data, OM90.Fax, OM90.Responses
+
+[All]
+HKR,,Logging, 1, 00
+HKR,,LoggingPath,,"modemlog.txt"
+HKR,,DeviceType, 1, 01
+HKR,,FriendlyDriver,,unimodem.vxd
+HKR,,DevLoader,,*vcomm
+HKR,,ConfigDialog,,modemui.dll
+HKR,,PortSubClass,1,02
+HKR,,EnumPropPages,,"modemui.dll,EnumPropPages"
+HKR, Responses, "0<cr>",                                   1, 00, 00, 00,00,00,00, 00,00,00,00 ; OK
+HKR, Responses, "9<cr>",                                   1, 01, 00, 00,00,00,00, 00,00,00,00 ; OK
+HKR, Responses, "1<cr>",                                   1, 02, 00, 00,00,00,00, 00,00,00,00 ; CONNECT
+HKR, Responses, "4<cr>",                                   1, 03, 00, 00,00,00,00, 00,00,00,00 ; ERROR
+HKR, Responses, "3<cr>",                                   1, 04, 00, 00,00,00,00, 00,00,00,00 ; NO CARRIER
+HKR, Responses, "6<cr>",                                   1, 05, 00, 00,00,00,00, 00,00,00,00 ; NO DIALTONE
+HKR, Responses, "7<cr>",                                   1, 06, 00, 00,00,00,00, 00,00,00,00 ; BUSY
+HKR, Responses, "8<cr>",                                   1, 07, 00, 00,00,00,00, 00,00,00,00 ; NO ANSWER
+HKR, Responses, "2<cr>",                                   1, 08, 00, 00,00,00,00, 00,00,00,00 ; RING
+
+HKR, Responses, "<cr><lf>OK<cr><lf>",                      1, 00, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RINGING<cr><lf>",                 1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CONNECT<cr><lf>",                 1, 02, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>ERROR<cr><lf>",                   1, 03, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO CARRIER<cr><lf>",              1, 04, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO DIALTONE<cr><lf>",             1, 05, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>BUSY<cr><lf>",                    1, 06, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>NO ANSWER<cr><lf>",               1, 07, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>RING<cr><lf>",                    1, 08, 00, 00,00,00,00, 00,00,00,00
+
+
+[OM56.data]
+HKR,, Properties, 1, 80,01,00,00, ff,00,00,00, ff,00,00,00, 07,00,00,00, 0f,00,00,00, 77,07,00,00, 00,08,07,00, C0,DA,00,00
+HKR,, DCB,        1, 1c,00,00,00, 00,c2,01,00, 15,20,00,00, 00,00, 0a,00, 0a,00, 08, 00, 00, 11, 13, 00, 00, 00
+HKR,, InactivityScale, 1, 0a,00,00,00
+HKR,,CompatibilityFlags,1,01,00,00,00
+HKR,, Reset,,                                              "ATZ<cr>"
+HKR, Init,      1,,                                        "AT<cr>"
+HKR, Init,      2,,                                        "AT&FE0X4V1&D2&C1S0=0<cr>"
+HKR, Monitor,   1,,                                        "ATS0=0<cr>"
+HKR, Monitor,   2,,                                        "None"
+HKR, Hangup,    1,,                                        "ATH<cr>"
+HKR, Answer,    1,,                                        "ATA<cr>"
+HKR, K56mode,   1,,                                        "AT<cr>"
+HKR, Settings, Blind_Off,,                                 "S41.4=0"
+HKR, Settings, Blind_On,,                                  "S41.4=1"
+HKR, Settings, CallSetupFailTimer,,                        "S7=<#>"
+HKR, Settings, Compression_Off,,                           "&K3"
+HKR, Settings, Compression_On,,                            "&K5"
+HKR, Settings, DialPrefix,,                                "D"
+HKR, Settings, DialSuffix,,                                ""
+HKR, Settings, ErrorControl_Forced,,                       "&K3*E1"
+HKR, Settings, ErrorControl_Off,,                          "&K0*E0"
+HKR, Settings, ErrorControl_On,,                           "&K3*E0"
+HKR, Settings, FlowControl_Hard,,                          "&H3"
+HKR, Settings, FlowControl_Off,,                           "&H0"
+HKR, Settings, FlowControl_Soft,,                          "&H4"
+HKR, Settings, InactivityTimeout,,                         "S50=<#>"
+HKR, Settings, Modulation_Bell,,                           "B1"
+HKR, Settings, Modulation_CCITT,,                          "B0"
+HKR, Settings, Modulation_CCITT_V23,,                      "&N12"
+HKR, Settings, Prefix,,                                    "AT"
+HKR, Settings, Pulse,,                                     "P"
+HKR, Settings, SpeakerMode_Dial,,                          "M1"
+HKR, Settings, SpeakerMode_Off,,                           "M0"
+HKR, Settings, SpeakerMode_On,,                            "M2"
+HKR, Settings, SpeakerMode_Setup,,                         "M3"
+HKR, Settings, SpeakerVolume_High,,                        "L6"
+HKR, Settings, SpeakerVolume_Low,,                         "L1"
+HKR, Settings, SpeakerVolume_Med,,                         "L4"
+HKR, Settings, Terminator,,                                "<cr>"
+HKR, Settings, Tone,,                                      "T"
+
+[OM90.Fax]
+HKR, Fax\Class1\AdaptiveAnswer,SetupCommand,,              "ATS57.7=1+FAE=1"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand,              1,, "ATS57.7=1+FAE=1"
+HKR, Fax\Class1\AdaptiveAnswer\AnswerCommand,              2,, "ATA"
+HKR, Fax\Class1\AdaptiveAnswer,ModemResponseFaxDetect,,    "FAX"
+HKR, Fax\Class1\AdaptiveAnswer,ModemResponseFaxConnect,,   "CONNECT"
+HKR, Fax\Class1\AdaptiveAnswer,ModemResponseDataDetect,,   "DATA"
+HKR, Fax\Class1\AdaptiveAnswer,ModemResponseDataConnect,,  "CONNECT"
+
+[OM90.Responses]
+; standard CARRIER responses
+HKR, Responses, "<cr><lf>CARRIER 300<cr><lf>",              1, 01, 00, 2c,01,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 1200<cr><lf>",             1, 01, 00, b0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 2400<cr><lf>",             1, 01, 00, 60,09,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 4800<cr><lf>",             1, 01, 00, c0,12,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 7200<cr><lf>",             1, 01, 00, 20,1c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 9600<cr><lf>",             1, 01, 00, 80,25,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 12000<cr><lf>",            1, 01, 00, e0,2e,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 14400<cr><lf>",            1, 01, 00, 40,38,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 16800<cr><lf>",            1, 01, 00, a0,41,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 19200<cr><lf>",            1, 01, 00, 00,4b,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 21600<cr><lf>",            1, 01, 00, 60,54,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 24000<cr><lf>",            1, 01, 00, c0,5d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 26400<cr><lf>",            1, 01, 00, 20,67,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 28800<cr><lf>",            1, 01, 00, 80,70,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 31200<cr><lf>",            1, 01, 00, E0,79,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 33600<cr><lf>",            1, 01, 00, 40,83,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 75/1200<cr><lf>",          1, 01, 00, b0,04,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 1200/75<cr><lf>",          1, 01, 00, b0,04,00,00, 00,00,00,00
+
+; extended CARRIER (V.90) responses
+HKR, Responses, "<cr><lf>CARRIER 28000<cr><lf>",            1, 01, 00, 60,6d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 29333<cr><lf>",            1, 01, 00, 95,72,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 30666<cr><lf>",            1, 01, 00, ca,77,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 32000<cr><lf>",            1, 01, 00, 00,7d,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 33333<cr><lf>",            1, 01, 00, 35,82,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 34666<cr><lf>",            1, 01, 00, 6a,87,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 36000<cr><lf>",            1, 01, 00, a0,8c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 37333<cr><lf>",            1, 01, 00, d5,91,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 38666<cr><lf>",            1, 01, 00, 0a,97,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 40000<cr><lf>",            1, 01, 00, 40,9c,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 41333<cr><lf>",            1, 01, 00, 75,a1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 42666<cr><lf>",            1, 01, 00, aa,a6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 44000<cr><lf>",            1, 01, 00, e0,ab,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 45333<cr><lf>",            1, 01, 00, 15,b1,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 46666<cr><lf>",            1, 01, 00, 4a,b6,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 48000<cr><lf>",            1, 01, 00, 80,bb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 49333<cr><lf>",            1, 01, 00, b5,c0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 50666<cr><lf>",            1, 01, 00, ea,c5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 52000<cr><lf>",            1, 01, 00, 20,cb,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 53333<cr><lf>",            1, 01, 00, 55,d0,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 54666<cr><lf>",            1, 01, 00, 8a,d5,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>CARRIER 56000<cr><lf>",            1, 01, 00, c0,da,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>COMPRESSION: None<cr><lf>",        1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>COMPRESSION: MNP5<cr><lf>",        1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>COMPRESSION: V42b<cr><lf>",        1, 01, 01, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>COMPRESSION: V44<cr><lf>",        1, 01, 01, 00,00,00,00, 00,00,00,00
+
+HKR, Responses, "<cr><lf>PROTOCOL: None<cr><lf>",           1, 01, 00, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>PROTOCOL: MNP4<cr><lf>",           1, 01, 02, 00,00,00,00, 00,00,00,00
+HKR, Responses, "<cr><lf>PROTOCOL: V42<cr><lf>",            1, 01, 02, 00,00,00,00, 00,00,00,00
+
+[ZD56.NT.Services]
+AddService=zdcdcdrv, 0x00000000, LowerFilter_Service_Inst
+
+[ZD56.NT.HW]
+AddReg=LowerFilterAddReg
+
+[LowerFilterAddReg]
+HKR,,"LowerFilters",0x00010000,"zdcdcdrv"
+
+[LowerFilter_Service_Inst]
+DisplayName=%USBFilterString%
+ServiceType= 1
+StartType  = 3
+ErrorControl = 0
+ServiceBinary = %12%\zdcdcdrv.sys
+
+[SourceDisksNames]
+1=%DriverDisk%,,1
+
+[SourceDisksFiles]
+ZDCDCDRV.SYS= 1
+
+[USBModemCopyFileSection]
+zdcdcdrv.sys,,,0x20
+
+[DestinationDirs]
+USBModemCopyFileSection=12
+DefaultDestDir = 12
+

@@ -1,0 +1,65 @@
+; Copyright (c) 2009, Ericsson. All rights reserved.
+[Version]
+Signature="$WINDOWS NT$"
+Class=SmartCardReader
+ClassGuid={50DD5230-BA8A-11D1-BF5D-0000F805F530}
+Provider=%InfProvider%
+DriverVer=04/27/2010,6.0.0.8
+CatalogFile=t36wscard.cat
+
+; ================= Files section =====================
+[DestinationDirs]
+
+[SourceDisksNames.x86]
+
+[SourceDisksNames.amd64]
+
+[SourceDisksFiles]
+
+; ================= Class section =====================
+
+; ================= Device install section =====================
+[Manufacturer]
+%ManufacturerName%=SmartCardModel, NTx86.6.1, NTamd64.6.1
+
+[SmartCardModel.NTx86.6.1]
+"TOSHIBA F3507g Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_130b&Mi_06
+"Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_130c&Mi_08
+"Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1311&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1315&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1316&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1317&Mi_08
+"Ericsson F5521gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1314&Mi_08
+"Ericsson F5321w for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131F&Mi_08
+"Ericsson F5321gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131B&Mi_08
+"Ericsson H5321w for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131D&Mi_08
+"Ericsson H5321gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1319&Mi_08
+
+[SmartCardModel.NTamd64.6.1]
+"TOSHIBA F3507g Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_130b&Mi_06
+"Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_130c&Mi_08
+"Ericsson F3607gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1311&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1315&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1316&Mi_08
+"Ericsson F3307 for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1317&Mi_08
+"Ericsson F5521gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1314&Mi_08
+"Ericsson F5321w for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131F&Mi_08
+"Ericsson F5321gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131B&Mi_08
+"Ericsson H5321w for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_131D&Mi_08
+"Ericsson H5321gw for TOSHIBA Mobile Broadband USIM Port" = SmartCardDeviceNull, TOSHIBA\SMARTCARD2\VID_0930&PID_1319&Mi_08
+[SmartCardDeviceNull]
+
+[SmartCardDeviceNull.Services]
+AddService = ,2
+
+; ================= Vendor specific string section =====================
+
+[Strings]
+InfProvider			= "TOSHIBA Corporation"
+ManufacturerName	        = "TOSHIBA Corporation"
+DiskDesc			= "TOSHIBA  Mobile Broadband USIM Port Installation Disk"
+ServiceName			= "TOSHIBA  Mobile Broadband USIM Port"
+ServiceDesc			= "TOSHIBA  Mobile Broadband USIM Port"
+OriginalServiceName		= "t36wscard"
+SPSVCINST_ASSOCSERVICE          = 0x00000002
+

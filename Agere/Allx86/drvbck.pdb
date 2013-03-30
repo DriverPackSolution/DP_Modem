@@ -1,0 +1,13 @@
+[driver backup information]
+driverdesc=Agere Systems PCI-SV92PP Soft Modem
+infpath=oem238.inf                                                                      
+infsection=AGERE_PCI_PP.NT
+MatchingDeviceId=PCI\VEN_11C1&DEV_0620&SUBSYS_062011C1&REV_00
+driverversion=2.1.84.0
+driverdate=10-30-2007
+providername=Agere
+class=Modems
+filenum=6
+signature=Windows Vista
+needrestore=yes
+backuptime=dinsdag, maart 04, 2008

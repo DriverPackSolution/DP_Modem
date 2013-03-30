@@ -1,0 +1,195 @@
+****************************************************
+;
+; Name       :  PTUMWNET.inf  
+;
+; Function   :  Install PANTECH CO., LTD Wrieless WAN device driver on Windows 2000/XP/VISTA
+;
+; Copyright (c) DEVGURU
+;
+;************************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Net
+ClassGUID={4d36e972-e325-11ce-bfc1-08002be10318}
+Provider=%Provider%
+DriverVer=05/17/2012,1.2.8000.0516
+CatalogFile=PTUMWNET.cat
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;--------- DestinationDirs Section -------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12
+CoInstaller_CopyFiles = 11 ; System Dir( system32 on NT )
+PTUMWNET_Files_Driver = 12
+
+;--------- SourceDiskNames and SourceDiskFiles Section -----------------------
+; These sections identify source disks and files for installation.
+
+[SourceDisksNames.x86]
+1 = %DiskString%,,,\i386
+
+[SourceDisksNames.ia64]
+1 = %DiskString%,,,\ia64
+
+[SourceDisksNames.amd64]
+1 = %DiskString%,,,\amd64
+
+; For Win2K
+[SourceDisksFiles]
+PTUMWNET.sys  = 1
+PTUMWFLT.sys = 1
+ptumwcit.dll = 1,,
+
+; For XP and later
+[SourceDisksFiles.NTx86.5.1]
+PTUMWNET.sys  = 1
+ptumwcit.dll = 1,,
+
+[SourceDisksFiles.ia64]
+PTUMWNET.sys  = 1
+ptumwcit.dll = 1,,
+
+[SourceDisksFiles.amd64]
+PTUMWNET.sys  = 1
+ptumwcit.dll = 1,,
+
+
+;--------- Manufacturer and Models Sections ----------------------------------
+
+[Manufacturer]
+%MfgName% = PTUMW, NTx86.5.1, NTia64, NTamd64
+
+
+; For Win2K
+[PTUMW]
+%USB\VID_106C&PID_3716&MI_F0.DeviceDesc% = PTUMW.Install.W2K, USB\VID_106C&PID_3716&MI_F0
+%USB\VID_106C&PID_3717&MI_F0.DeviceDesc% = PTUMW.Install.W2K, USB\VID_106C&PID_3717&MI_F0
+
+; For XP and later
+[PTUMW.NTx86.5.1]
+%USB\VID_106C&PID_3716&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716&MI_F0
+%USB\VID_106C&PID_3717&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717&MI_F0
+
+[PTUMW.NTia64]
+%USB\VID_106C&PID_3716&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716&MI_F0
+%USB\VID_106C&PID_3717&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717&MI_F0
+
+[PTUMW.NTamd64]
+%USB\VID_106C&PID_3716&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3716&MI_F0
+%USB\VID_106C&PID_3717&MI_F0.DeviceDesc% = PTUMW.Install, USB\VID_106C&PID_3717&MI_F0
+
+
+; --------- Windows 2000 -----------------
+
+[PTUMW.Install.W2K.NT]
+Characteristics = 0x81          ; NCF_HAS_UI & NCF_VIRTUAL
+CopyFiles=PTUMWNET_Files_Driver_W2K
+AddReg=PTUMWNET.reg, PTUMWNET.params.reg
+
+[PTUMW.Install.W2K.NT.Services]
+Addservice = PTUMWNET, 0x00000002, PTUMW.Install.AddService
+AddService = PTUMWFLT,,PTUMW.Install.W2K.AddService
+
+[PTUMW.Install.W2K.NT.HW]
+AddReg = PTUMW.Install.W2K.HW.AddReg
+
+[PTUMW.Install.W2K.HW.AddReg]
+HKR,,UpperFilters,0x00010000, "PTUMWFLT"
+
+
+; --------- Windows NT -----------------
+
+[PTUMW.Install.NT]
+Characteristics = 0x81          ; NCF_HAS_UI & NCF_VIRTUAL
+CopyFiles=PTUMWNET_Files_Driver_W2K
+AddReg=PTUMWNET.reg, PTUMWNET.params.reg
+
+[PTUMW.Install.NT.Services]
+Addservice = PTUMWNET, 0x00000002, PTUMW.Install.AddService
+AddService = PTUMWFLT,,PTUMW.Install.W2K.AddService
+
+[PTUMWNET.reg]
+HKR, Ndi, Service, 0, "PTUMWNET"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+[PTUMW.Install.NT.HW]
+AddReg = PTUMW.Install.HW.AddReg
+
+[PTUMW.Install.HW.AddReg]
+HKR,,UpperFilters,0x00010000, "PTUMWFLT"
+
+;=============================================================
+;Coinstaller installation
+;=============================================================
+[PTUMW.Install.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"ptumwcit.dll,DGCoInstaller"
+
+[CoInstaller_CopyFiles]
+ptumwcit.dll
+;=============================================================
+
+; --------- Service ----------------------
+
+[PTUMW.Install.AddService]
+DisplayName    = %PTUMWNET_SvcDesc%
+ServiceType    = 1    ;;%SERVICE_KERNEL_DRIVER%
+StartType      = 3    ;;%SERVICE_DEMAND_START%
+ErrorControl   = 1    ;;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\PTUMWNET.sys
+LoadOrderGroup = NDIS
+
+
+[PTUMW.Install.W2K.AddService]
+DisplayName    = "PTUMWNET Filter Driver"
+ServiceType    = 1    ;;%SERVICE_KERNEL_DRIVER%
+StartType      = 3    ;;%SERVICE_DEMAND_START%
+ErrorControl   = 1    ;;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\PTUMWFLT.sys
+LoadOrderGroup = NDIS
+
+
+; --------- Files ----------------------
+
+[PTUMWNET_Files_Driver]
+PTUMWNET.sys
+
+[PTUMWNET_Files_Driver_W2K]
+PTUMWNET.sys
+PTUMWFLT.sys
+
+
+;-------------------------------------------------------------------------------
+; Optional Custom Parameters in the Registry ("Advanced" menu).
+[PTUMWNET.params.reg]
+;example
+HKR, NDI\params\NetworkAddress,           ParamDesc,      0, %NetworkAddress%
+HKR, NDI\params\NetworkAddress,           type,           0, "edit"
+HKR, NDI\params\NetworkAddress,           LimitText,      0, "12"
+HKR, NDI\params\NetworkAddress,           UpperCase,      0, "1"
+HKR, NDI\params\NetworkAddress,           default,        0, " "
+HKR, NDI\params\NetworkAddress,           optional,       0, "1"
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+Provider = "PANTECH CO., LTD "
+MfgName = "PANTECH CO., LTD "
+
+PTUMWNET_SvcDesc = "PANTECH USB Modem V2 WWAN Driver"
+DiskString = "PANTECH USB Modem V2 WWAN device driver Installation Disk"
+NetworkAddress = "Network Address (MAC)"
+
+USB\VID_106C&PID_3716&MI_F0.DeviceDesc = "PANTECH UMW190 WWAN Driver"
+USB\VID_106C&PID_3717&MI_F0.DeviceDesc = "PANTECH UM185 WWAN Driver"
+
+

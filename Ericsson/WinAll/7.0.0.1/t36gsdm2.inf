@@ -1,0 +1,202 @@
+;*****************************************************************************
+;
+; Name:  Mbm3sdm2.inf
+;
+; Function:
+;	Install F3607gw Mobile Broadband Device Management Drivers on Win2000/XP
+;
+; Copyright (c) 1997-2011 MCCI Corporation 
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation
+;
+;*****************************************************************************
+
+[Version]
+signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider%
+DriverVer=09/01/2011,7.0.0.1
+CatalogFile=t36gmgmt.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"Mbm3DevMt.sys",,\i386
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"Mbm3DevMt.sys",,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+Mbm3DevMt.sys = 1
+Mbm3cmnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12                    ; system32\drivers
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%TOSHIBA%=t36g, NTamd64
+
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[t36g]
+%t36g.Comm.Desc% = t36g.Install, USB\VID_0930&PID_130b&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.2% = t36g.Install, USB\VID_0930&PID_130c&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.2% = t36g.Install, USB\VID_0930&PID_1311&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1315&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1316&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1317&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.4% = t36g.Install, USB\VID_0930&PID_1314&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.5% = t36g.Install, USB\VID_0930&PID_131F&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.6% = t36g.Install, USB\VID_0930&PID_131B&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.7% = t36g.Install, USB\VID_0930&PID_131D&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.8% = t36g.Install, USB\VID_0930&PID_1319&Class_02&SubClass_09&Prot_01&OS_NT
+
+
+[t36g.NTamd64]
+%t36g.Comm.Desc% = t36g.Install, USB\VID_0930&PID_130b&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.2% = t36g.Install, USB\VID_0930&PID_130c&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.2% = t36g.Install, USB\VID_0930&PID_1311&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1315&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1316&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.3% = t36g.Install, USB\VID_0930&PID_1317&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.4% = t36g.Install, USB\VID_0930&PID_1314&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.5% = t36g.Install, USB\VID_0930&PID_131F&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.6% = t36g.Install, USB\VID_0930&PID_131B&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.7% = t36g.Install, USB\VID_0930&PID_131D&Class_02&SubClass_09&Prot_01&OS_NT
+%t36g.Comm.Desc.8% = t36g.Install, USB\VID_0930&PID_1319&Class_02&SubClass_09&Prot_01&OS_NT
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[t36g.Install.nt]
+AddReg		= t36g.AddReg,t36g.NT.AddReg
+CopyFiles	= CopyFiles, CopyFiles.Win2K
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[t36g.AddReg]
+HKR,,NTMPDriver,,Mbm3DevMt.sys
+HKR,,OverrideDefaultPortSettings, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200 initial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+HKR,,EnableSetClearFeatureIdle, 0x10001, 01,00,00,00
+
+; only for NT...
+[t36g.NT.AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKR,,EnableCR3840, 0x10001, 01,00,00,00
+HKR,,AllowSuspendWhileOpen, 0x10001, 01,00,00,00
+HKR,,AllowRemoteWakeup, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspendHeuristics, 0x10001, 01,00,00,00
+HKR,,EnableSelectiveSuspend, 0x10001, 01, 00, 00, 00
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.Win2K]
+Mbm3DevMt.sys
+Mbm3cm.sys,Mbm3cmnt.sys
+Mbm3cmnt.sys
+
+
+
+;-----------------------------------------------------------------------------
+;  NT Services installation
+;-----------------------------------------------------------------------------
+
+
+
+[t36g.Install.NT.Services]
+AddService = Mbm3DevMt, 0x00000002, t36g.Install.AddService, t36gWdm.Install.EventLog
+
+
+
+
+[t36g.Install.AddService]
+DisplayName	= %t36g.Service.Name%
+Description	= %t36g.Service.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\Mbm3DevMt.sys
+
+;-----------------------------------------------------------------------------
+;       Event logging support
+;-----------------------------------------------------------------------------
+
+[t36gWdm.Install.EventLog]
+Addreg = t36gWdm.EventLog.AddReg
+
+[t36gWdm.EventLog.AddReg]
+HKR,,EventMessageFile, 0x20000, "%%SystemRoot%%\System32\drivers\Mbm3DevMt.sys"
+HKR,,TypesSupported, 0x10001, 7
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;<<localize the following>>
+
+;BEGIN ENG - US English Strings
+
+Provider = "TOSHIBA Corporation"
+TOSHIBA = "TOSHIBA Corporation"
+
+t36g.Comm.Desc = "TOSHIBA F3507g Mobile Broadband Device Management"
+t36g.Comm.Desc.2 = "Ericsson F3607gw for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.3 = "Ericsson F3307 for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.4 = "Ericsson F5521gw for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.5 = "Ericsson F5321w for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.6 = "Ericsson F5321gw for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.7 = "Ericsson H5321w for TOSHIBA Mobile Broadband Device Management"
+t36g.Comm.Desc.8 = "Ericsson H5321gw for TOSHIBA Mobile Broadband Device Management"
+
+
+t36g.Service.Name = "TOSHIBA  Mobile Broadband Device Management Driver (WDM)"
+t36g.Service.Desc = "TOSHIBA  Mobile Broadband Device Management Driver (WDM)"
+
+DiskString = "TOSHIBA  Mobile Broadband Device Management Installation Disk"
+CustomerDataPath = "TOSHIBA  Mobile Broadband Device"
+DriverSet = "TOSHIBA  Mobile Broadband Device Software"
+UninstallFile = "MBM3Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***
+

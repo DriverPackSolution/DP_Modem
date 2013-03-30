@@ -1,0 +1,128 @@
+;*********************************************************************************************
+;
+; Name		: PTUMWVsp.inf
+;
+; Function	: Install PANTECH CO., LTD  USB Diagnostic Serial Port Driver on Windows 2000/XP/VISTA
+;
+; Copyright (c) DevGuru
+;
+;*********************************************************************************************
+
+
+[Version]
+signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider%
+DriverVer=05/17/2012,1.2.8000.0516
+CatalogFile=PTUMWVsp.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames.x86]
+1 = %DiskString%,,,\i386
+
+[SourceDisksNames.ia64]
+1 = %DiskString%,,,\ia64
+
+[SourceDisksNames.amd64]
+1 = %DiskString%,,,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+PTUMWVsp.sys = 1
+
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir  = 12             	; system32\drivers
+CopyFiles       = 12                    ; system32\drivers
+CopyFiles.Win2K = 12                    ;
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%PTUMW%=PTUMW, NTx86, NTia64, NTamd64
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[PTUMW]
+%USB\VID_106C&PID_3716&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3716&DIAGPORT
+%USB\VID_106C&PID_3717&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3717&DIAGPORT
+
+[PTUMW.NTx86]
+%USB\VID_106C&PID_3716&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3716&DIAGPORT
+%USB\VID_106C&PID_3717&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3717&DIAGPORT
+
+[PTUMW.NTamd64]
+%USB\VID_106C&PID_3716&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3716&DIAGPORT
+%USB\VID_106C&PID_3717&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3717&DIAGPORT
+
+[PTUMW.NTia64]
+%USB\VID_106C&PID_3716&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3716&DIAGPORT
+%USB\VID_106C&PID_3717&DIAGPORT.Desc%=PTUMW.Install, USB\VID_106C&PID_3717&DIAGPORT
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[PTUMW.Install.NT]
+AddReg		= PTUMW.AddReg,PTUMW.NT.AddReg
+CopyFiles	= CopyFiles, CopyFiles.Win2K
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[PTUMW.AddReg]
+HKR,,NTMPDriver,,PTUMWVsp.sys
+
+; only for NT...
+[PTUMW.NT.AddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.Win2K]
+PTUMWVsp.sys
+
+;-----------------------------------------------------------------------------
+;  NT Services installation
+;-----------------------------------------------------------------------------
+[PTUMW.Install.NT.Services]
+AddService = PTUMWVsp, 0x00000002, PTUMW.Install.AddService
+
+[PTUMW.Install.AddService]
+DisplayName	= %PTUMW.Service.Name%
+Description	= %PTUMW.Service.Desc%
+ServiceType	= 1			;%SERVICE_KERNEL_DRIVER%
+StartType	= 3			;%SERVICE_DEMAND_START%
+ErrorControl	= 1			;%SERVICE_ERROR_NORMAL%	
+ServiceBinary	= %12%\PTUMWVsp.sys
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+Provider   = "PANTECH CO., LTD "
+PTUMW    = "PANTECH CO., LTD "
+
+DiskString = "PANTECH USB Modem V2 Diagnostic Port installation disk"
+USB\VID_106C&PID_3716&DIAGPORT.Desc = "PANTECH UMW190 Diagnostic Port"
+USB\VID_106C&PID_3717&DIAGPORT.Desc = "PANTECH UM185 Diagnostic Port"
+
+PTUMW.Service.Name = "PANTECH USB Modem V2 Diagnostic Port"
+PTUMW.Service.Desc = "PANTECH USB Modem V2 Diagnostic Port device driver"
+

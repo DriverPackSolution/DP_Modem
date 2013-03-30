@@ -1,0 +1,827 @@
+{\rtf1\ansi\ansicpg1251\uc1\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1049\deflangfe1049{\fonttbl{\f0\froman\fcharset204\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset204\fprq2{\*\panose 020b0604020202020204}Arial;}{\f2\fmodern\fcharset204\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+{\f11\froman\fcharset128\fprq1{\*\panose 02020609040205080304}MS Mincho{\*\falt ?l?r ???fc};}{\f35\fswiss\fcharset204\fprq2{\*\panose 020b0604030504040204}Tahoma;}{\f36\froman\fcharset204\fprq2{\*\panose 00000000000000000000}Times;}
+{\f37\fmodern\fcharset128\fprq1{\*\panose 02020609040205080304}@MS Mincho;}{\f52\froman\fcharset0\fprq2 Times New Roman;}{\f50\froman\fcharset238\fprq2 Times New Roman CE;}{\f53\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f54\froman\fcharset162\fprq2 Times New Roman Tur;}{\f55\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f56\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f57\froman\fcharset186\fprq2 Times New Roman Baltic;}
+{\f58\froman\fcharset163\fprq2 Times New Roman (Vietnamese);}{\f62\fswiss\fcharset0\fprq2 Arial;}{\f60\fswiss\fcharset238\fprq2 Arial CE;}{\f63\fswiss\fcharset161\fprq2 Arial Greek;}{\f64\fswiss\fcharset162\fprq2 Arial Tur;}
+{\f65\fswiss\fcharset177\fprq2 Arial (Hebrew);}{\f66\fswiss\fcharset178\fprq2 Arial (Arabic);}{\f67\fswiss\fcharset186\fprq2 Arial Baltic;}{\f68\fswiss\fcharset163\fprq2 Arial (Vietnamese);}{\f72\fmodern\fcharset0\fprq1 Courier New;}
+{\f70\fmodern\fcharset238\fprq1 Courier New CE;}{\f73\fmodern\fcharset161\fprq1 Courier New Greek;}{\f74\fmodern\fcharset162\fprq1 Courier New Tur;}{\f75\fmodern\fcharset177\fprq1 Courier New (Hebrew);}
+{\f76\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f77\fmodern\fcharset186\fprq1 Courier New Baltic;}{\f78\fmodern\fcharset163\fprq1 Courier New (Vietnamese);}{\f402\fswiss\fcharset0\fprq2 Tahoma;}{\f400\fswiss\fcharset238\fprq2 Tahoma CE;}
+{\f403\fswiss\fcharset161\fprq2 Tahoma Greek;}{\f404\fswiss\fcharset162\fprq2 Tahoma Tur;}{\f405\fswiss\fcharset177\fprq2 Tahoma (Hebrew);}{\f406\fswiss\fcharset178\fprq2 Tahoma (Arabic);}{\f407\fswiss\fcharset186\fprq2 Tahoma Baltic;}
+{\f408\fswiss\fcharset163\fprq2 Tahoma (Vietnamese);}{\f409\fswiss\fcharset222\fprq2 Tahoma (Thai);}{\f412\froman\fcharset0\fprq2 Times;}{\f410\froman\fcharset238\fprq2 Times CE;}{\f413\froman\fcharset161\fprq2 Times Greek;}
+{\f414\froman\fcharset162\fprq2 Times Tur;}{\f415\froman\fcharset177\fprq2 Times (Hebrew);}{\f416\froman\fcharset178\fprq2 Times (Arabic);}{\f417\froman\fcharset186\fprq2 Times Baltic;}{\f418\froman\fcharset163\fprq2 Times (Vietnamese);}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;
+\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 
+\fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 \snext0 Normal;}{\s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\fs32\lang1033\langfe1033\kerning32\loch\f1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext0 heading 1;}{\s3\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel2\adjustright\rin0\lin0\itap0 
+\b\fs26\lang1033\langfe1033\loch\f1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext0 heading 3;}{\*\cs10 \additive \ssemihidden Default Paragraph Font;}{\*
+\ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\tscellwidthfts0\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv 
+\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs20\lang1024\langfe1024\cgrid\langnp1024\langfenp1024 \snext11 \ssemihidden Normal Table;}{
+\s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext15 bullet;}{\*\cs16 \additive \f0 \sbasedon10 
+bullet1;}{\*\cs17 \additive \f0\ul\cf2 \sbasedon10 Hyperlink;}{\s18\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 
+\sbasedon0 \snext18 table-heading;}{\s19\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext19 
+Normal (Web);}{\s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext20 table-text;}{
+\s21\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\f0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext0 \sautoupd \ssemihidden toc 1;}{
+\s22\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \cbpat9 \fs24\lang1033\langfe1033\loch\f35\hich\af35\dbch\af11\cgrid\langnp1033\langfenp1033 \sbasedon0 \snext22 \ssemihidden Document Map;}}{\*\listtable
+{\list\listtemplateid981893552\listsimple{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace0\levelindent0{\leveltext\'01*;}{\levelnumbers;}\f0 }{\listname ;}\listid-2}{\list\listtemplateid-348202\listhybrid
+{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0\fbias0 \fi-360\li720\jclisttab\tx720\lin720 }{\listlevel\levelnfc4\levelnfcn4
+\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1440\jclisttab\tx1440\lin1440 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li2160\jclisttab\tx2160\lin2160 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2880\jclisttab\tx2880\lin2880 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3600\jclisttab\tx3600\lin3600 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li4320\jclisttab\tx4320\lin4320 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li5040\jclisttab\tx5040\lin5040 }
+{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5760\jclisttab\tx5760\lin5760 }{\listlevel\levelnfc2\levelnfcn2\leveljc2
+\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6480\jclisttab\tx6480\lin6480 }{\listname ;}\listid293608288}{\list\listtemplateid-38347324\listhybrid{\listlevel
+\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0 \fi-360\li720\jclisttab\tx720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0
+\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1440\jclisttab\tx1440\lin1440 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li2160\jclisttab\tx2160\lin2160 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2880\jclisttab\tx2880\lin2880 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3600\jclisttab\tx3600\lin3600 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li4320\jclisttab\tx4320\lin4320 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li5040\jclisttab\tx5040\lin5040 }
+{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5760\jclisttab\tx5760\lin5760 }{\listlevel\levelnfc2\levelnfcn2\leveljc2
+\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6480\jclisttab\tx6480\lin6480 }{\listname ;}\listid805582967}{\list\listtemplateid223889456\listhybrid{\listlevel
+\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0\fbias0 \fi-360\li360\jclisttab\tx360\lin360 }{\listlevel\levelnfc4\levelnfcn4\leveljc0
+\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1080\jclisttab\tx1080\lin1080 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li1800\jclisttab\tx1800\lin1800 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2520\jclisttab\tx2520\lin2520 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3240\jclisttab\tx3240\lin3240 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li3960\jclisttab\tx3960\lin3960 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li4680\jclisttab\tx4680\lin4680 }
+{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5400\jclisttab\tx5400\lin5400 }{\listlevel\levelnfc2\levelnfcn2\leveljc2
+\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6120\jclisttab\tx6120\lin6120 }{\listname ;}\listid971322663}{\list\listtemplateid1254247066\listhybrid
+{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0\fbias0 \fi-360\li360\jclisttab\tx360\lin360 }{\listlevel\levelnfc4\levelnfcn4
+\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1080\jclisttab\tx1080\lin1080 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li1800\jclisttab\tx1800\lin1800 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2520\jclisttab\tx2520\lin2520 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3240\jclisttab\tx3240\lin3240 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li3960\jclisttab\tx3960\lin3960 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li4680\jclisttab\tx4680\lin4680 }
+{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5400\jclisttab\tx5400\lin5400 }{\listlevel\levelnfc2\levelnfcn2\leveljc2
+\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6120\jclisttab\tx6120\lin6120 }{\listname ;}\listid1381976218}{\list\listtemplateid1505262412\listhybrid
+{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0\fbias0 \fi-360\li360\jclisttab\tx360\lin360 }{\listlevel\levelnfc4\levelnfcn4
+\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1080\jclisttab\tx1080\lin1080 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li1800\jclisttab\tx1800\lin1800 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2520\jclisttab\tx2520\lin2520 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3240\jclisttab\tx3240\lin3240 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li3960\jclisttab\tx3960\lin3960 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li4680\jclisttab\tx4680\lin4680 }
+{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5400\jclisttab\tx5400\lin5400 }{\listlevel\levelnfc2\levelnfcn2\leveljc2
+\leveljcn2\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6120\jclisttab\tx6120\lin6120 }{\listname ;}\listid1624115160}{\list\listtemplateid-1989913140\listhybrid
+{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698703\'02\'00.;}{\levelnumbers\'01;}\f0 \fi-360\li720\jclisttab\tx720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0
+\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698713\'02\'01.;}{\levelnumbers\'01;}\f0 \fi-360\li1440\jclisttab\tx1440\lin1440 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1
+\levelspace360\levelindent0{\leveltext\leveltemplateid67698715\'02\'02.;}{\levelnumbers\'01;}\f0 \fi-180\li2160\jclisttab\tx2160\lin2160 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext
+\leveltemplateid67698703\'02\'03.;}{\levelnumbers\'01;}\f0 \fi-360\li2880\jclisttab\tx2880\lin2880 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698713
+\'02\'04.;}{\levelnumbers\'01;}\f0 \fi-360\li3600\jclisttab\tx3600\lin3600 }{\listlevel\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698715\'02\'05.;}{\levelnumbers\'01;}\f0 
+\fi-180\li4320\jclisttab\tx4320\lin4320 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698703\'02\'06.;}{\levelnumbers\'01;}\f0 \fi-360\li5040
+\jclisttab\tx5040\lin5040 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698713\'02\'07.;}{\levelnumbers\'01;}\f0 \fi-360\li5760\jclisttab\tx5760\lin5760 }{\listlevel
+\levelnfc2\levelnfcn2\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid67698715\'02\'08.;}{\levelnumbers\'01;}\f0 \fi-180\li6480\jclisttab\tx6480\lin6480 }{\listname ;}\listid1901093929}}
+{\*\listoverridetable{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelold\levelspace0\levelindent360{\leveltext\'01\u-3913 ?;}{\levelnumbers;}
+\f3\fbias0 }}\ls1}{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelold\levelspace0\levelindent720{\leveltext\'01\u-3913 ?;}{\levelnumbers;}
+\f3\fbias0 }}\ls2}{\listoverride\listid1381976218\listoverridecount0\ls3}{\listoverride\listid971322663\listoverridecount0\ls4}{\listoverride\listid1624115160\listoverridecount0\ls5}{\listoverride\listid1901093929\listoverridecount0\ls6}
+{\listoverride\listid805582967\listoverridecount0\ls7}{\listoverride\listid293608288\listoverridecount0\ls8}}{\*\rsidtbl \rsid279725\rsid6369913}{\*\generator Microsoft Word 10.0.4524;}{\info{\title Motorola}{\author Ankur Sood}{\operator snl}
+{\creatim\yr2002\mo10\dy21\hr12}{\revtim\yr2005\mo1\dy17\hr16\min24}{\version50}{\edmins299}{\nofpages12}{\nofwords4234}{\nofchars24139}{\*\company  Motorola}{\nofcharsws28317}{\vern16475}}\margl1701\margr850\margt1134\margb1134 
+\widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\horzdoc\dghspace120\dgvspace120\dghorigin1701\dgvorigin1984\dghshow0\dgvshow3\jcompress\viewkind1\viewscale100\nolnhtadjtbl\rsidroot279725 \fet0\sectd 
+\linex0\sectdefaultcl\sftnbj {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4
+\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}
+{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}\pard\plain \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola
+\par \hich\af36\dbch\af11\loch\f36 SM56 Software Modems}{\b\f36\fs20\cf1\insrsid6369913 
+\par }{\b\f36\fs48\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Quick Start User's Guide
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f36\fs28\cf1\insrsid6369913 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387735}\hich\af1\dbch\af11\loch\f1 Contents{\*\bkmkend _Toc79387735}
+\par }\pard\plain \ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+\par }\pard\plain \s21\ql \li0\ri0\widctlpar\tqr\tldot\tx9679\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\field\fldedit{\*\fldinst {\b\f36\fs28\cf2\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36  TOC \\o "1-3" \\h \\z \\u }}{\fldrslt {\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 
+\hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387735"}{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003500000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Contents}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387735 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003500000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 1}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }\pard \s21\ql \li0\ri0\widctlpar\tx480\tqr\tldot\tx9679\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 {\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{
+\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\\hich\af0\dbch\af11\loch\f0 l "_Toc79387736"}{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{
+\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003600000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 
+\hich\af0\dbch\af11\loch\f0 1}{\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Introduction}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387736 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003600000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 1}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387737"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003700000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 2}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Preparing the Computer For Installation}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387737 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003700000020}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 3}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387738"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003800000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 3}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Installing The Modem Hardware}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 
+\tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387738 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003800000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 3}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387739"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003900000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 4}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Installing the Modem on Windows 98SE, Millennium, Windows 2000 and Windows XP}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387739 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370033003900000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 3}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387740"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003000000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 5}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Verifying Correct Installation}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 
+\tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387740 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003000000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 4}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\\hich\af0\dbch\af11\loch\f0 l "_Toc79387741"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003100000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 6}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Troubleshooting}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }
+{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387741 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003100000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 5}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387742"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003200000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 7}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Un-installing and Upgrading}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 
+\tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387742 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003200000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 8}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387743"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003300000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 8}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Changing the Operating System}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 
+\tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387743 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003300000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 9}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 H\hich\af0\dbch\af11\loch\f0 YPERLINK \\l "_Toc79387744"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003400000004}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 9}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Improving Direct X Speakerphone Performance and Quality}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387744 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003400000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 9}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }\pard \s21\ql \li0\ri0\widctlpar\tx720\tqr\tldot\tx9679\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 {\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{
+\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387745"}{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003500000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 10}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 \tab }{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Contact Information}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }
+{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387745 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003500000036}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 10}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }\pard \s21\ql \li0\ri0\widctlpar\tqr\tldot\tx9679\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 {\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{
+\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387746"}{\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003600000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Appendix A:  SM56 Main 
+\hich\af0\dbch\af11\loch\f0 Features}{\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387746 \\h }{
+\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003600000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 
+\hich\af0\dbch\af11\loch\f0 10}}}}}{\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }{\field\fldedit{\*\fldinst {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 HYPERLINK \\l "_Toc79387747"}{
+\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0  }{\ul\cf2\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003700000000}}}{\fldrslt {\cs17\ul\cf2\lang1024\langfe1024\noproof\insrsid6369913 \hich\af0\dbch\af11\loch\f0 SOFTWARE LICENSE AGREEMENT}{
+\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \tab }{\field{\*\fldinst {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0  PAGEREF _Toc79387747 \\h }{\lang1024\langfe1024\noproof\insrsid279725 {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d0000005f0054006f00630037003900330038003700370034003700000000}}}{\fldrslt {\lang1024\langfe1024\noproof\webhidden\insrsid6369913 \hich\af0\dbch\af11\loch\f0 11}}}}}{
+\lang1024\langfe1024\dbch\af0\noproof\langnp1049\langfenp1049\insrsid6369913 
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 }}\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs28\cf2\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387736}\hich\af1\dbch\af11\loch\f1 1\tab Introduction{\*\bkmkend _Toc79387736}\hich\af1\dbch\af11\loch\f1  }{\fs22\insrsid6369913 
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Motorola's SM56 modems a\hich\af36\dbch\af11\loch\f36 re available for use on PCI, and AC-Link (including CNR and MDC) PC's. The SM56 mo}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 dem is a feature-rich, V.90}{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  modem at an attractive price. It supports all fax and data fall back modes, and different driver installs include telephone answering machine\hich\af36\dbch\af11\loch\f36 
+ (TAM) operation and full speakerphone functionality. This document details installation, troubleshooting, and usage of the SM56 software modem.
+\par 
+\par \hich\af36\dbch\af11\loch\f36 The SM56 modems provide high-speed communications between your personal computer and a remote location, such as an Internet Service Provider (ISP), so you can:
+\par 
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Receive da}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 ta at up to 56 Kbps in V.90}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ or K56Flex modes, for faster Internet access.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Use your computer to send and receive }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 faxes}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+, at up to 14.4 Kbps
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Use your computer as a }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Video Phone}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ to place and receive Video Phone calls.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Use your computer as a telephone }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 answering machine}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ (Not available on Data/Fax modems).
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Use your computer as \hich\af36\dbch\af11\loch\f36 a speakerphone, to place and receive }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 voice calls }{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 (Data/Fax/Speakerphone modems only).
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 The SM56 modems supports the following Operating Systems based on the form factor
+\par 
+\par 
+\par }\trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth4331\trftsWidthB3\trftsWidthA3\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 
+\clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2279\clshdrawnil \cellx3853\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr
+\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2662\clshdrawnil \cellx8470\pard\plain \s18\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Product Type}{\insrsid6369913 \cell }{\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Operating Systems}{\insrsid6369913 
+\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt
+\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth4331\trftsWidthB3\trftsWidthA3\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 
+\clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2279\clshdrawnil \cellx3853\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr
+\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2662\clshdrawnil \cellx8470\row }\pard\plain \s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 PCI\cell \hich\af0\dbch\af11\loch\f0 Wi\hich\af0\dbch\af11\loch\f0 ndows 98SE, Windows Millennium, Windows 2000 and Windows XP
+\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow1\irowband1\ts11\trgaph60\trleft-105\trbrdrt
+\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth4331\trftsWidthB3\trftsWidthA3\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 
+\clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2279\clshdrawnil \cellx3853\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr
+\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2662\clshdrawnil \cellx8470\row }\pard\plain \s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 CNR and MDC (AC-Link) \cell \hich\af0\dbch\af11\loch\f0 Windows 98SE, Windows Millennium, Windows 2000 and Windows XP\cell 
+}\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow2\irowband2\lastrow \ts11\trgaph60\trleft-105
+\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth4331\trftsWidthB3\trftsWidthA3\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 
+\clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2279\clshdrawnil \cellx3853\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr
+\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2662\clshdrawnil \cellx8470\row }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par 
+\par }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Note:}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ The modem cannot be used in pure DOS or on any other operating system. Note that Windows 98SE, Windows Millennium, Windows 2000/XP require different modem drivers. The driver for one OS will not work on the other OS. Make sure you have the correct driver
+\hich\af36\dbch\af11\loch\f36 s\hich\af36\dbch\af11\loch\f36  before installing
+\par 
+\par \hich\af36\dbch\af11\loch\f36 
+Computer OEMs that bundle the SM56 modem can benefit from sizable cost reductions, hardware reduction, and lower power consumption. End users benefit from quick, easy and affordable software upgrades, which help them keep current with t
+\hich\af36\dbch\af11\loch\f36 he latest communications technology.
+\par 
+\par }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Important}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 : There are different SM56 modem categories, and each supports a different basic feature-set, as follows:
+\par }\trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth5000\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 
+\clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx3301\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth1000\clshdrawnil \cellx6388\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx9794\pard\plain 
+\s18\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Product Names}{
+\insrsid6369913 \cell }{\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Modem Types}{\insrsid6369913 \cell }{\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Features\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr
+\brdroutset\brdrw15 \trftsWidth2\trwWidth5000\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx3301\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth1000\clshdrawnil \cellx6388\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx9794\row }\pard\plain 
+\s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Motorola SM56 modem
+
+\par \cell \hich\af0\dbch\af11\loch\f0 Data/Fax only\cell }\pard\plain \s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \bullet \hich\af0\dbch\af11\loch\f0  All data and fax modes
+\par \bullet \hich\af0\dbch\af11\loch\f0  No telephone answering machine (TAM)
+\par \bullet \hich\af0\dbch\af11\loch\f0  No caller ID
+\par \bullet \hich\af0\dbch\af11\loch\f0  No distinctive ring
+\par \bullet \hich\af0\dbch\af11\loch\f0  No speakerphone\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 
+\trowd \irow1\irowband1\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth5000\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 
+\clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx3301\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth1000\clshdrawnil \cellx6388\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx9794\row }\pard\plain 
+\s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 
+Motorola SM56 Voice Modem
+\par \cell \hich\af0\dbch\af11\loch\f0 Data/Fax/TAM\cell }\pard\plain \s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 
+{\insrsid6369913 \bullet \hich\af0\dbch\af11\loch\f0  All data and fax modes
+\par \bullet \hich\af0\dbch\af11\loch\f0  Telephone answering machine (TAM)
+\par \bullet \hich\af0\dbch\af11\loch\f0  Caller ID
+\par \bullet \hich\af0\dbch\af11\loch\f0  Distinctive ring
+\par \bullet \hich\af0\dbch\af11\loch\f0  No speakerphone\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 
+\trowd \irow2\irowband2\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth5000\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 
+\clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx3301\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth1000\clshdrawnil \cellx6388\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx9794\row }\pard\plain 
+\s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 
+Motorola SM56 Speakerphone Modem
+\par \cell \hich\af0\dbch\af11\loch\f0 Data/Fax/TAM/Speakerphone\cell }\pard\plain \s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \bullet \hich\af0\dbch\af11\loch\f0  All data and fax modes
+\par \bullet \hich\af0\dbch\af11\loch\f0  Telephone answering machine (TAM)
+\par \bullet \hich\af0\dbch\af11\loch\f0  Caller ID
+\par \bullet \hich\af0\dbch\af11\loch\f0  Distinctive ring
+\par \bullet \hich\af0\dbch\af11\loch\f0  Full-duplex speakerphone\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {
+\fs20\insrsid6369913 \trowd \irow3\irowband3\lastrow \ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth5000\trautofit1\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 
+\clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx3301\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth1000\clshdrawnil \cellx6388\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2000\clshdrawnil \cellx9794\row }\pard 
+\ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 You can check which modem you have by selecting }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Start->Settings->Control P\hich\af36\dbch\af11\loch\f36 anel}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+, and then double click on the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modems}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  icon. The modem name will appear in the Modem Properties window.
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387737}\hich\af1\dbch\af11\loch\f1 2\tab Preparing the Computer For Installation}{\fs22\insrsid6369913 {\*\bkmkend _Toc79387737}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs22\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+To ensure problem-free installation ensure that an unused COM port is available. The SM56 install program interrogates lower COM ports (below COM 5) and installs the modem on the first available and unused port. Although the SM56 functions perfectly on an
+\hich\af36\dbch\af11\loch\f36 y\hich\af36\dbch\af11\loch\f36 
+ available COM port, some communications applications may not be able to use the modem if it gets installed above COM 4. Refer to the Troubleshooting section in this document for information on how to force the modem onto a COM port below COM 5 after inst
+\hich\af36\dbch\af11\loch\f36 a\hich\af36\dbch\af11\loch\f36 ll is complete. 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387738}\hich\af1\dbch\af11\loch\f1 3\tab Installing The Modem Hardware}{\fs26\insrsid6369913 {\*\bkmkend _Toc79387738}
+\par }\pard\plain \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs26\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 1. Power down the computer.  
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 2. Locate the connector (AC-Link, CNR, PCI. Mini PCI, etc.) on the motherboard, and carefully insert the SM56 modem board.
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 3. Connect the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Wall}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36  jack on \hich\af36\dbch\af11\loch\f36 
+the modem board to an analog phone jack using an RJ-11 phone cable. If your modem board also has a telephone handset jack, make sure to not plug the telephone line into that jack. The jacks will be labeled with a little icon and/or text indicating which i
+\hich\af36\dbch\af11\loch\f36 s\hich\af36\dbch\af11\loch\f36  which.
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 4. Power ON the computer.
+\par 
+\par }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Important}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+: When using the SM56 modem, or any modem for that matter, you should always connect the modem line input to a direct analog telephone line. This will maximize modem performance by avoiding any problems introduce\hich\af36\dbch\af11\loch\f36 
+d by internal PBX systems, etc. 
+\par 
+\par }{\b\f36\fs22\cf2\insrsid6369913 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387739}\hich\af1\dbch\af11\loch\f1 4\tab Installing the Modem on Windows 98SE, Millennium, Windows 2000 and Windows XP{\*\bkmkend _Toc79387739}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 (}{\b\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Note}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 : The Install Wizard may vary slightly with different versions of the OS and different service packs)
+\par 
+\par \hich\af36\dbch\af11\loch\f36 On starti\hich\af36\dbch\af11\loch\f36 ng Windows for the first time after installing the modem Plug and Play (PnP) detects the new hardware and begins an install wizard for the modem. The modem is detected as a new }{
+\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 PCI Device }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 or new }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 PCI Communications Device}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 . The wizard fist looks for the mode\hich\af36\dbch\af11\loch\f36 
+m information (INF) file, which is included on Motorola's distribution disk or CD-ROM. This file contains information about the modem, including device type, device driver information, as well as the AT command/response sets that it supports.
+\par 
+\par \hich\af36\dbch\af11\loch\f36 Browse to th\hich\af36\dbch\af11\loch\f36 e SM56 modem files on the Motorola disk/CD-ROM. Windows will find the information on the disk. On older versions of Windows 98SE you may get an error message }{
+\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Cannot Locate File...... }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If you do, simply re-point the install wizard to the Motorola disk/CD-ROM\hich\af36\dbch\af11\loch\f36 
+ and it will find the file the second time around.
+\par 
+\par \hich\af36\dbch\af11\loch\f36 Windows copies the necessary modem files to the computer and transparently runs the necessary installation routines. 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 For D/F/TAM and D/F/TAM/Speakerphone modems, Windows finds a second device after the \hich\af36\dbch\af11\loch\f36 modem has been installed. Windows notifies you that it has found a }{\b\i\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Serial Wave Device}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  for the modem and prompts for a Wave Device driver. Re-point to the Motorola disk/CD-ROM and click }{\b\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 OK}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 . It finds the INF file and installs the appropriate drivers. 
+\par 
+\par }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Note:}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  
+\par \hich\af36\dbch\af11\loch\f36 
+The SM56 also installs a modem Helper utility on the Windows System Tray (right side of the Task Bar). This application includes real time modem status (dialing, negotiating, connect rate, etc.), in addition to user selection for COM port, country and la
+\hich\af36\dbch\af11\loch\f36 
+nguageThere is also an audio test included, which allows you to verify if your sound subsystem supports Direct X 3.0 (or later) -- needed to hear call progress (dialing and negotiation). The SM56 installation auto-detects the country from the OS and defau
+\hich\af36\dbch\af11\loch\f36 l\hich\af36\dbch\af11\loch\f36 ts to that. 
+\par 
+\par }{\b\i\f36\fs22\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387740}\hich\af1\dbch\af11\loch\f1 5\tab Verifying Correct Installation}{\ul\insrsid6369913 {\*\bkmkend _Toc79387740}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 
+\par }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Verifying Modem Software Operation on Windows 98SE and Windows 2000}{\f36\fs22\insrsid6369913 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 1. Open the Windows Control Panel and double click the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modems}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  icon.
+\par \hich\af36\dbch\af11\loch\f36 2. Select the Diagnostics tab, and single cli\hich\af36\dbch\af11\loch\f36 ck the COM port that the Motorola SM56 modem uses. 
+\par \hich\af36\dbch\af11\loch\f36 3. Click on the }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 More Info}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  button. 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 Within a few seconds a window will appear with the modem responses to various ATI commands issued to it. If this happens, the modem software is properly installed and f\hich\af36\dbch\af11\loch\f36 unctioning correctly.
+
+\par 
+\par }{\b\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Verifying Modem Software Operation on Windows XP}{\f36\fs22\insrsid6369913 
+\par 
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li720\ri0\nowidctlpar\jclisttab\tx720\faauto\ls6\rin0\lin720\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Open the Windows Control Panel and double click the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Phone and Modems Options}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  icon.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 2.\tab}\hich\af36\dbch\af11\loch\f36 Select the Modems tab ,and single click the COM port that the Motorola SM56 modem uses
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 3.\tab}\hich\af36\dbch\af11\loch\f36 Cli\hich\af36\dbch\af11\loch\f36 ck on the }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+Properties }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 4.\tab}\hich\af36\dbch\af11\loch\f36 Select the Diagnostics tab.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 5.\tab}\hich\af36\dbch\af11\loch\f36 Click  the }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Query Modem}{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  button
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Within a few seconds a window will appear with the modem responses to various ATI commands issued to it. If this happens, the modem software is properly installed\hich\af36\dbch\af11\loch\f36  and functioning correctly.
+
+\par 
+\par 
+\par }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Verifying Proper Hardware Operation}{\f36\fs22\insrsid6369913 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 To verify correct SM56 modem hardware operation, you can use the following local analog loopback (LAL) test procedure, as follows:
+\par 
+\par {\listtext\pard\plain\b\i\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li720\ri0\nowidctlpar\tx360\jclisttab\tx720\faauto\ls8\rin0\lin720\itap0 {\b\i\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Important: }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Remove the telephone line cable from the modem card.  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 2.\tab}\hich\af36\dbch\af11\loch\f36 Open HyperTerminal (or any terminal application).
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 3.\tab}\hich\af36\dbch\af11\loch\f36 Optionally, select a connection name and icon.  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 4.\tab}\hich\af36\dbch\af11\loch\f36 In the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Connect Using }{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 window, select the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56 ...... }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 modem.  Click }{\b\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 OK}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 5.\tab}\hich\af36\dbch\af11\loch\f36 Enter a num\hich\af36\dbch\af11\loch\f36 ber in the }{\b\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Phone Number }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 box...any number since we will not be dialing it. Click }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 OK}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 .  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 6.\tab}\hich\af36\dbch\af11\loch\f36 On the next screen select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Cancel}{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 7.\tab}\hich\af36\dbch\af11\loch\f36 Enter }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 AT}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36  and hit <Enter>.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li720\ri0\nowidctlpar\tx360\jclisttab\tx720\faauto\ls7\rin0\lin720\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 The response }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 OK}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  should appear.  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 8.\tab}}\pard \ql \fi-360\li720\ri0\nowidctlpar\tx360\jclisttab\tx720\faauto\ls8\rin0\lin720\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Enter }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 ATS46 = 23}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  and hit <Enter>.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 9.\tab}\hich\af36\dbch\af11\loch\f36 Enter }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 AT&T1}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36  and hit <Enter\hich\af36\dbch\af11\loch\f36 >. Wait a few seconds.  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 10.\tab}\hich\af36\dbch\af11\loch\f36 
+Type some letters at the keyboard. If the hardware is functioning correctly, the letters you type appear on the screen.  
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 11.\tab}\hich\af36\dbch\af11\loch\f36 To exit this test mode, type +++ in quick succession (note no carriage return) to escape to command m
+\hich\af36\dbch\af11\loch\f36 ode. After getting the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 OK }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 response type ATH <Enter> to hang up.
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387741}\hich\af1\dbch\af11\loch\f1 6\tab Troubleshooting{\*\bkmkend _Toc79387741}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 If there is a problem when u\hich\af36\dbch\af11\loch\f36 sing the SM56 modem, and your communications application does not explain the problem, check the following list of symptoms and tips.
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-284\li284\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pnf3\pnindent720 {\pntxtb \'b7}}
+\faauto\ls2\rin0\lin284\itap0\pararsid6369913 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 My Communications Software Cannot Use the Modem at COM 5}{\b\f36\fs22\cf11\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Some communications applications\hich\af36\dbch\af11\loch\f36 
+, such as older versions of AOL, do not communicate with a COM port higher than COM4. Sometimes on Windows 98SE platforms the SM56 install program will not be able to map the modem to a COM port number below COM5. If the modem installs on COM 5 or higher 
+\hich\af36\dbch\af11\loch\f36 y\hich\af36\dbch\af11\loch\f36 ou can manually force the modem onto a different COM port using the SM56 Helper application (COM Ports tab) in the Windows System tray (just to the right of the Task Bar).
+\par }{\b\i\f36\fs22\insrsid6369913 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 There is no dial tone}{\b\f36\fs22\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   Ensure that the telephone cable is securely connect\hich\af36\dbch\af11\loch\f36 ed at both ends.  
+\par \hich\af36\dbch\af11\loch\f36 2.   Ensure the telephone cable is plugged into the correct jack on the modem -- some modems provide a second jack for handset support.
+\par \hich\af36\dbch\af11\loch\f36 2.   Unplug the telephone line cable from the computer, and connect it directly to a telephone from t\hich\af36\dbch\af11\loch\f36 
+he wall outlet. Check for a dial tone. If there is none, the problem is in the telephone line or system. Call the service provider.  
+\par 
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par {\pntext\pard\plain\fs22\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs22\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Get An Error Message "You are not connected to a standard phone line"}{\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 When you try to dial a connection an error mes\hich\af36\dbch\af11\loch\f36 
+sage box pops up, indicating that your are not connected to a proper analog phone line. This is the SM56 digital line guard (only available on PCI II and AC-L modems) feature, which protects against hardware damage if the modem is plugged into a high curr
+\hich\af36\dbch\af11\loch\f36 e\hich\af36\dbch\af11\loch\f36 
+nt phone outlet -- such as a digital phone jack. The modem automatically detects the over-current and goes back on-hook before hardware damage occurs. Check the phone outlet and make sure that it is a real analog phone line. Try another analog phone jack.
+
+\par 
+\par }{\b\f36\fs22\cf11\insrsid6369913 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 I}{\b\f36\fs22\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36  Cannot Hear Call Progress
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\b\f36\fs22\cf11\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 1.   Make sure your speakers are connected to the speaker output jack on your sound system.
+\par \hich\af36\dbch\af11\loch\f36 2.\tab Call progress reporting on the SM56 requires Direct X 5.0 (for Win 98SE, Windows Me, an\hich\af36\dbch\af11\loch\f36 
+d Win 2000) or later be installed on your PC, and that your sound system/drivers support Direct X playback. To test, go into the SM56 AC-L Modem helper Desktop Tray application and select the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+Call Progress}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  tab. Then click the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Test}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  button. If you do not hea
+\hich\af36\dbch\af11\loch\f36 r anything then your sound system does not support Direct X (or the correct version). Contact your sound card vendor for driver updates or more information.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem cannot complete a connection to another modem }{\b\f36\fs22\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.  Ensure that your modem is dialin\hich\af36\dbch\af11\loch\f36 g the correct number. Ensure that you've specified the correct area code, if one is required.  
+\par \hich\af36\dbch\af11\loch\f36 2.  Determine whether the remote modem is correctly configured to communicate with yours.  
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem does not answer incoming calls}{\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   Ensure that the \hich\af36\dbch\af11\loch\f36 automatic answer parameter is set to one of the enabled options, using the ATS0 command (ATS0=1 to answer after one ring, ATS0=2 to answer after two rings, and so on).  
+
+\par \hich\af36\dbch\af11\loch\f36 2.   Ensure that no other devices, such as fax or answering machines, are answering ca\hich\af36\dbch\af11\loch\f36 lls before the modem does.  
+\par \hich\af36\dbch\af11\loch\f36 .
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem disconnects d}{\f36\fs28\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 uring a connection
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   Ensure that the telephone cable is securely connected at both ends.
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 2}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .   Another phone extension in the house might have been picked up.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Data is not \hich\af36\dbch\af11\loch\f36 transmitted or received for unusually long periods of time}{\b\f36\fs28\cf11\insrsid6369913 \tab 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36      
+\par \hich\af36\dbch\af11\loch\f36 1.   Re-dial the call.  (The telephone line connection may be poor.) 
+\par \hich\af36\dbch\af11\loch\f36 2.   Try another ISP number, the server could be busy.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Streaming applications like RealPlayer stop receiving data a\hich\af36\dbch\af11\loch\f36 nd report "Net Congestion"}{\f36\fs22\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   This usually occurs when the ISP, Internet, or streaming host side server is busy and there are many users competing for bandwidth. It is not a modem problem.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Poor s}{\f36\fs28\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 peakerphone quality using Direct X}{\b\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\b\f36\fs22\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If you are using \hich\af36\dbch\af11\loch\f36 
+the soft-speakerphone version of the SM56 (that uses Windows Direct X and the PC sound system instead of dedicated voice hardware on the modem board, i.e. no speaker and microphone jacks on the modem board), and the quality is poor refer to section 10, "I
+\hich\af36\dbch\af11\loch\f36 m\hich\af36\dbch\af11\loch\f36 proving Direct X Speakerphone Performance and Quality" for some hints and tips. }{\b\f36\fs22\insrsid6369913 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 You cannot enter tone selections successfully when calling tone-driven applications}{\b\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 When dialing a remote system that requires you to enter selections using the telephon
+\hich\af36\dbch\af11\loch\f36 
+e keys, such as a voice-mail depot or bank-account information provider, you can lengthen the duration of the tones your modem sends, so that the remote system can detect them better.  To adjust DTMF tone length, use the AT+VTD}{
+\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 n}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  command, where }{\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 n}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ specifies \hich\af36\dbch\af11\loch\f36 the tone duration. Check the SM56 online Help (via the SM56 Helper application on the Windows Desktop Tray) for a list of supported AT Commands.
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem does not respond to AT commands}{\b\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   Ensure that your communications software is configured to use the same COM port as the modem's COM port.
+\par \hich\af36\dbch\af11\loch\f36 2.   Reset modem parameters to default options by entering AT&F; then re-enter custom options.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem responds to commands, but they do no\hich\af36\dbch\af11\loch\f36 t appear on the screen}{\b\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36      
+\par \hich\af36\dbch\af11\loch\f36 1.    Usually this is because the local echo is turn OFF. Turn it on by issuing ATE1 and hit <Enter>.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 You've installed a new peripheral device; now the modem does not work}{\b\f36\fs28\cf11\insrsid6369913 \tab 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   In the Windows desktop tray, select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Start}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 . 
+\par \hich\af36\dbch\af11\loch\f36 2.   Select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Help}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 . The }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Windows Help Topics }{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 window appears.
+\par \hich\af36\dbch\af11\loch\f36 3.   Select the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Contents}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  tab.
+\par \hich\af36\dbch\af11\loch\f36 4.   Select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If You Have a Hardware Conflict}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 5.   A series of troubleshooting actions appears.  Follow the appropriate sequence.
+\par 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem connects; then meaningl\hich\af36\dbch\af11\loch\f36 ess characters appear}{\b\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 This is usually caused by Error correction turned off. To correct:
+\par 
+\par \hich\af36\dbch\af11\loch\f36 1.   Open the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Control Panel. }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Double click the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+Modems}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  icon.
+\par \hich\af36\dbch\af11\loch\f36 2.   Click on the COM port that the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56...Modem }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 is installed on
+\par \hich\af36\dbch\af11\loch\f36 3.   Click on }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Properties}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par \hich\af36\dbch\af11\loch\f36 4.   Select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Connection}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par \hich\af36\dbch\af11\loch\f36 5.   Click on }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Advanced}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 6.   Check the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+Use Error Control-Required to Connect }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 box.
+\par 
+\par 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The modem cannot connect; the Error Control option is selected}{\b\f36\fs28\cf11\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 The modem may be connecting at a rate higher than appropriate for the line condit\hich\af36\dbch\af11\loch\f36 ions.
+\par 
+\par \hich\af36\dbch\af11\loch\f36 1.   Use the AT%B command to limit the maximum connection rate. (For a list of AT commands, refer to the on-line }{\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 User's Guide}{\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 .)
+\par \hich\af36\dbch\af11\loch\f36 2.   Lower the rate, using AT commands, until the problem is corrected. You can add AT commands to do this; refer to the \hich\af36\dbch\af11\loch\f36 next section.
+\par 
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par {\pntext\pard\plain\fs26\cf11\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 How Do I Add AT Commands Before the Modem Dials My ISP?
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1.   Open the Control Panel.
+\par \hich\af36\dbch\af11\loch\f36 2.   Double-click the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modems}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  icon.
+\par \hich\af36\dbch\af11\loch\f36 3.   Click on once to select the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56...Modem}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par \hich\af36\dbch\af11\loch\f36 4.   Click on }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Properties}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par \hich\af36\dbch\af11\loch\f36 5.   Select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Connection}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par \hich\af36\dbch\af11\loch\f36 6.   Click\hich\af36\dbch\af11\loch\f36  on }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Advanced}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 .
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 7.   In the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Extra Settings }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+box, chain AT commands as needed. You do not need to enter the AT prefix, but it will not hurt if you do.
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387742}\hich\af1\dbch\af11\loch\f1 7\tab Un-installing and Upgrading{\*\bkmkend _Toc79387742}\hich\af1\dbch\af11\loch\f1  }{\fs22\insrsid6369913 
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs26\cf11\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Modem Un-Install Procedure on Windows 98SE\hich\af36\dbch\af11\loch\f36  and Millennium}{\f36\fs26\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 1. Open the Windows Control Panel
+\par \hich\af36\dbch\af11\loch\f36 2. Double click the Add/Remove Programs icon.
+\par \hich\af36\dbch\af11\loch\f36 3. Select }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56 Modem Un-install}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36  and click Add/Remove.
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 4. Shut down the computer and remove the modem board from the computer. 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modem Un-Install Proce\hich\af36\dbch\af11\loch\f36 dure on Windows 2000 and Windows XP
+\par 
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\jclisttab\tx360\faauto\ls3\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Open the Windows Control Panel
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 2.\tab}\hich\af36\dbch\af11\loch\f36 Double click the System Icon.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 3.\tab}\hich\af36\dbch\af11\loch\f36 Select the hardware tab and Select the Device Manager button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 4.\tab}\hich\af36\dbch\af11\loch\f36 Double Click the Modems item.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 5.\tab}\hich\af36\dbch\af11\loch\f36 Right Click on the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56 Modem }{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 device and s\hich\af36\dbch\af11\loch\f36 elect uninstall from the popup menu.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 6.\tab}\hich\af36\dbch\af11\loch\f36 Shut down the computer and remove the modem board from the computer.
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par }{\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modem Upgrade Procedure on Windows 98SE and Millennium}{\f36\fs26\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\tx360\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 1. Obtain the latest driver set from your direct modem supplier.
+\par \hich\af36\dbch\af11\loch\f36 2. Run the upgrade utility -- }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 sm56set.exe}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 , and follow the prompts
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modem Upgrade Procedure on Windows 2000 and Windows XP
+\par 
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\jclisttab\tx360\faauto\ls4\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Obtain the latest driver set from your direct modem supplier.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 2.\tab}\hich\af36\dbch\af11\loch\f36 Open the Windows Control Panel
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 3.\tab}\hich\af36\dbch\af11\loch\f36 Double click the System Icon.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 4.\tab}\hich\af36\dbch\af11\loch\f36 Select the Hardware tab and Select the Device Manager button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 5.\tab}\hich\af36\dbch\af11\loch\f36 Double Click the Modems item.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 6.\tab}\hich\af36\dbch\af11\loch\f36 Right Click on the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Motorola SM56 Modem }{
+\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 device and select Properties from the popup menu.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 7.\tab}\hich\af36\dbch\af11\loch\f36 Select the Driver tab and press Update Driver button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 8.\tab}\hich\af36\dbch\af11\loch\f36 Follow \hich\af36\dbch\af11\loch\f36 
+the prompts and point to the location where you have stored the latest driver.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 9.\tab}\hich\af36\dbch\af11\loch\f36 Select Yes when asked to reboot the system.
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f36\fs26\cf11\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Modem Rollback Procedure (Windows XP only)
+\par }{\b\f36\fs26\insrsid6369913 
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 1.\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\jclisttab\tx360\faauto\ls5\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\hich\af36\dbch\af11\loch\f36 Open the Windows Control Panel
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 2.\tab}\hich\af36\dbch\af11\loch\f36 Double click the System Icon.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 3.\tab}\hich\af36\dbch\af11\loch\f36 Select the Har\hich\af36\dbch\af11\loch\f36 dware tab and Select the Device Manager button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 4.\tab}\hich\af36\dbch\af11\loch\f36 Double Click the Modems item.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 5.\tab}\hich\af36\dbch\af11\loch\f36 Right Click on the }{\b\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+Motorola SM56 Speakerphone Modem }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 device and select Properties from the popup menu.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 6.\tab}\hich\af36\dbch\af11\loch\f36 Select the Driver tab and press Roll Back Driver button.
+\par {\listtext\pard\plain\fs22\lang1033\langfe1033\dbch\af11\langnp1033\langfenp1033 \hich\af0\dbch\af11\loch\f0 7.\tab}\hich\af36\dbch\af11\loch\f36 Select Yes when asked to reboot the system.
+\par }\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360\faauto\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387743}\hich\af1\dbch\af11\loch\f1 8\tab Changing the Operating System{\*\bkmkend _Toc79387743}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs28\cf2\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The Motorola SM56 modem supports the following Operating Systems. For some operating systems the drivers are the same whereas for others the drivers are \hich\af36\dbch\af11\loch\f36 
+different as explained in the following table.
+\par }{\f36\fs28\cf2\insrsid6369913 
+\par }\trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth3171\trftsWidthB3\trftsWidthA3\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2750\clshdrawnil \cellx3399\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth2170\clshdrawnil \cellx6173\pard\plain \s18\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Operating Systems}{\insrsid6369913 \cell }{\b\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Driver Compatibility\cell 
+}\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow0\irowband0\ts11\trgaph60\trleft-105\trbrdrt
+\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth3171\trftsWidthB3\trftsWidthA3\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2750\clshdrawnil \cellx3399\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth2170\clshdrawnil \cellx6173\row }\pard\plain \s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Windows 98SE\cell }\pard\plain 
+\s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Different\cell 
+}\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow1\irowband1\ts11\trgaph60\trleft-105\trbrdrt
+\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth3171\trftsWidthB3\trftsWidthA3\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2750\clshdrawnil \cellx3399\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth2170\clshdrawnil \cellx6173\row }\pard\plain \s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Windows Millennium\cell }\pard\plain 
+\s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Different\cell 
+}\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow2\irowband2\ts11\trgaph60\trleft-105\trbrdrt
+\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth3171\trftsWidthB3\trftsWidthA3\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2750\clshdrawnil \cellx3399\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth2170\clshdrawnil \cellx6173\row }\pard\plain \s20\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 
+\fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Windows 2000 and XP\cell }\pard\plain 
+\s15\ql \li0\ri0\sb100\sa100\sbauto1\saauto1\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Same\cell 
+}\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs20\insrsid6369913 \trowd \irow3\irowband3\lastrow \ts11\trgaph60\trleft-105
+\trbrdrt\brdroutset\brdrw15 \trbrdrl\brdroutset\brdrw15 \trbrdrb\brdroutset\brdrw15 \trbrdrr\brdroutset\brdrw15 
+\trftsWidth2\trwWidth3171\trftsWidthB3\trftsWidthA3\trspdl15\trspdt15\trspdb15\trspdr15\trspdfl3\trspdft3\trspdfb3\trspdfr3\trpaddl60\trpaddt60\trpaddb60\trpaddr60\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3 \clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl
+\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 \cltxlrtb\clftsWidth2\clwWidth2750\clshdrawnil \cellx3399\clvertalt\clbrdrt\brdroutset\brdrw15 \clbrdrl\brdroutset\brdrw15 \clbrdrb\brdroutset\brdrw15 \clbrdrr\brdroutset\brdrw15 
+\cltxlrtb\clftsWidth2\clwWidth2170\clshdrawnil \cellx6173\row }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 If you upgrade from an OS to another, wh\hich\af36\dbch\af11\loch\f36 ich uses the same driver, the SM56 will continue to function as before. No new drivers are required. 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 However if you upgrade to an OS with a different set of drivers, you must get a new set of drivers for that operating system. Contact your SM56 modem sup\hich\af36\dbch\af11\loch\f36 plier for driver status and updates.
+
+\par \hich\af36\dbch\af11\loch\f36 Therefore, if you change from Windows 95/98FE to Windows 2000 and XP you must get a new set of drivers for that operating system. 
+\par 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387744}\hich\af1\dbch\af11\loch\f1 9\tab Improving Direct X Speakerphone Performance and Quality{\*\bkmkend _Toc79387744}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 
+\par }{\b\i\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Important:}{\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 
+ This section applies only to Data/Fax/Speakerphone driver builds using soft-speakerphone implementations. These drivers use Windows Direct X and the PC sound system instead of dedicated voice hardware on the modem board (i.e. instead of voice co
+\hich\af36\dbch\af11\loch\f36 dec and speaker and microphone jacks on the modem board). 
+\par 
+\par \hich\af36\dbch\af11\loch\f36 The following sound system tuning can be done via the Windows Master Volume control -- double click the speaker icon in the Windows system tray. Please be aware that }{\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 
+different sound systems have d\hich\af0\dbch\af11\loch\f0 ifferent configuration options, so not all volume and recording windows look the same or provide you with the same options. Or indeed some of the window and control names can be different. }{
+\f2\fs20\insrsid6369913 
+\par }{\fs22\insrsid6369913 
+\par }{\b\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Master Volume Control }{\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 (Playback/Speaker)
+\par \hich\af0\dbch\af11\loch\f0 All balances should be m\hich\af0\dbch\af11\loch\f0 uted except for the "Wave Balance" and the "Volume Control Balance".
+\par 
+\par }{\b\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Recording Control }{\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 (Recording/Microphone)
+\par \hich\af0\dbch\af11\loch\f0 The only balance selected should be the "Mic Balance". All the other should not be selected or muted depending on the selections given (somewhat \hich\af0\dbch\af11\loch\f0 
+sound system dependent). To be sure, it is also recommended to keep the levels of the unselected balances in the recording control window to minimum setting. Also in case the Microphone gain is too low (rarely) then you can always boost it up by a multipl
+\hich\af0\dbch\af11\loch\f0 e\hich\af0\dbch\af11\loch\f0 
+ of 10dB by going to "Options" and to "Advanced Controls" and clicking on the "Advanced" icon.  In the "Advanced Controls for Mic" window check the boost box and close the window to boost the mic level. 
+\par 
+\par \hich\af0\dbch\af11\loch\f0 Conversely, if the gain of the mic is too high and \hich\af0\dbch\af11\loch\f0 you talk too close to the mic, then the voice will be saturated and noisy. If this is the case deselect the "Mic Boost" check box.
+\par }{\f36\fs22\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387745}\hich\af1\dbch\af11\loch\f1 10\tab Contact Information{\*\bkmkend _Toc79387745}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\b\f36\fs28\cf2\insrsid6369913 
+\par }{\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If you have a problem with the SM56 modem, ensure that the problem and its \hich\af36\dbch\af11\loch\f36 
+solution are not shown in the Troubleshooting section. If you cannot resolve it through this list first contact your direct SM56 modem or PC supplier.
+\par 
+\par \hich\af36\dbch\af11\loch\f36 Modem related information should include as much detail as possible to allow support teams to qualify an\hich\af36\dbch\af11\loch\f36 d reproduce (if necessary) the problems, including:
+\par 
+\par \hich\af36\dbch\af11\loch\f36 Information about your modem:
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 SM56 modem driver version number (find this by recording the modem's response to the }{\b\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 ATI3}{
+\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36  command)
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\cf1\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Information about your setup:
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The telephone number you are calling from.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The telephone number you are calling to.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If performing a lab test, a detailed description of the equipment used.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The remote modem information.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Direct external analog tele\hich\af36\dbch\af11\loch\f36 phone line or through a PBX -- use direct analog lines where possible.
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\f36\fs22\cf1\insrsid6369913 
+\par \hich\af36\dbch\af11\loch\f36 Information about the problem:
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 The actions and steps that you performed.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 A description of what you saw; be specific.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 A description of what you expected to see.
+\par {\pntext\pard\plain\fs22\cf1\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\cf1\insrsid6369913 \hich\af36\dbch\af11\loch\f36 If possible,\hich\af36\dbch\af11\loch\f36  a description of what you saw using other modems under the same conditions.
+\par }\pard \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 {\b\f36\fs22\insrsid6369913 
+\par }{\f36\fs22\insrsid6369913 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 {\*\bkmkstart _Toc79387746}\hich\af1\dbch\af11\loch\f1 Appendix A:  SM56 Main Features{\*\bkmkend _Toc79387746}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\f36\fs22\insrsid6369913 
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Drivers available for Windows 98SE, Windows Millennium, Windows 2000 and Windows XP
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Full Windows Plug and Play su\hich\af36\dbch\af11\loch\f36 pport.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Powerful modem installation, un-installation, and upgrade engines. 
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Data and fax mode operation.
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033\insrsid6369913 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 
+{\pntxtb \'b7}}\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 The V.90}{\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0  56K standard and K56flex, for maximum ISP interoperability.
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 The V.80 interface to H.234-compliant Video Phone applications.
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 The V.34, V.32bis, V.32, V.23, V.22bis, V.22, V.21, Bell 212A, and Bell 103 modulation standards
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 Fax Class 1 error-correction mode.
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 V.17, V.21, V.29, V.27ter Group III Fax modes
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 V.42, LAP-M, and MNP 2-4 error-correction protocols
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 V.42bis and MNP 5 data-compression protocols
+\par {\pntext\pard\plain\cs16\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\cs16\fs22\insrsid6369913 \hich\af0\dbch\af11\loch\f0 DTE rates from 300 bps to 115.2 Kbps
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Supports distinctive ring on all models except Data/Fax only modems
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Supports US Caller ID on all models except Data/Fax only modems.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Supports Telephone Answering \hich\af36\dbch\af11\loch\f36 Machine (TAM) on all models except Data/Fax only modems.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Supports speakerphone on speakerphone driver versions
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Tone and pulse dialing. 
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Call progress audio channeling through the PC sound system (using Direct X).
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Adaptive rate re-negotiation (u\hich\af36\dbch\af11\loch\f36 p and down) during a connection to compensate for line dynamics.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Includes Local Analog Loopback (LAL) test for quick hardware troubleshooting.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Includes a very useful SM56 Modem helper application to allow country and language selections, report real \hich\af36\dbch\af11\loch\f36 
+time modem status in addition to a sound system test utility for Direct X.
+\par {\pntext\pard\plain\fs22\lang1033\langfe1033\loch\af3\hich\af3\dbch\af11\langnp1033\langfenp1033 \loch\af3\dbch\af11\hich\f3 \'b7\tab}}\pard \ql \fi-360\li360\ri0\nowidctlpar\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pnf3\pnindent360 {\pntxtb \'b7}}
+\faauto\ls1\rin0\lin360\itap0 {\f36\fs22\insrsid6369913 \hich\af36\dbch\af11\loch\f36 Online User's Guide in standard Windows CHM format and in multiple languages. Includes modem usage and troubleshooting details, as well as a comple
+\hich\af36\dbch\af11\loch\f36 te listing of supported AT commands.
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f36\fs22\insrsid6369913 
+\par }\pard\plain \s1\qc \li0\ri0\sb240\sa60\keepn\widctlpar\aspalpha\aspnum\faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\fs32\lang1033\langfe1033\kerning32\loch\af1\hich\af1\dbch\af11\cgrid\langnp1033\langfenp1033 {\insrsid6369913 
+{\*\bkmkstart _Toc79387747}\hich\af1\dbch\af11\loch\f1 SOFTWARE LICENSE AGREEMENT{\*\bkmkend _Toc79387747}
+\par }\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\loch\af0\hich\af0\dbch\af11\cgrid\langnp1033\langfenp1033 {\fs22\insrsid6369913 
+\par \hich\af0\dbch\af11\loch\f0 ATTENTION:  Carefully Read This Important Document
+\par 
+\par \hich\af0\dbch\af11\loch\f0 THE FOLLOWING AGREEMENT IS A LEGAL AGREEMENT BETWEEN YOU (EITHER AN INDIVIDUAL OR ENTITY), AND MOTOROLA, INC. (FOR\hich\af0\dbch\af11\loch\f0 
+ ITSELF AND ITS LICENSORS).  THE RIGHT TO USE THIS PRODUCT IS SOLD ONLY ON THE CONDITION THAT YOU AGREE TO THE FOLLOWING LICENSE.  USING THIS PRODUCT CONSTITUTES ACCEPTANCE OF THE TERMS AND CONDITIONS SET FORTH IN THIS AGREEMENT.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 The enclosed computer pro\hich\af0\dbch\af11\loch\f0 
+gram(s) ("Software") is licensed, not sold, to you by Motorola, Inc. ("Motorola") for use only under the terms of this License, and Motorola reserves any rights not expressly granted to you.  You own the disk(s) on which the Software is recorded or fixed,
+\hich\af0\dbch\af11\loch\f0  \hich\af0\dbch\af11\loch\f0 
+but Motorola and its licensors retain ownership of the Software itself and its accompanying written materials, which are protected by the copyright laws of your country and international treaty provisions.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 1.\tab License.  This License allows you to use one c\hich\af0\dbch\af11\loch\f0 
+opy of the Software on a single computer at a time.  To "use" the Software means that the Software is either loaded in the temporary memory (e.g., RAM) of a computer or installed on the permanent memory of a computer (e.g., hard disk). Licensee hereby ack
+\hich\af0\dbch\af11\loch\f0 n\hich\af0\dbch\af11\loch\f0 
+owledges that the licenses granted under this Agreement may be suspended in some cases if Licensee, Licensee's Customers or End Users assert an Essential patent for an ITU or prior CCITT analog modem standard against Motorola or a third party.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 2.\tab Restrict\hich\af0\dbch\af11\loch\f0 
+ions.  The Software contains trade secrets in a human or machine perceivable form and, to protect them, you may not REVERSE ENGINEER, DECOMPILE, DISASSEMBLE OR OTHERWISE REDUCE THE SOFTWARE TO ANY HUMAN OR MACHINE PERCEIVABLE FORM.  YOU MAY NOT MODIFY, AD
+\hich\af0\dbch\af11\loch\f0 A\hich\af0\dbch\af11\loch\f0 PT, TRANSLATE, RENT, LEASE, LOAN OR CREATE DERIVATIVE WORKS BASED UPON THE SOFTWARE OR ANY PART THEREOF.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 3.\tab Termination.  This License is eff\hich\af0\dbch\af11\loch\f0 
+ective until terminated.  This License will terminate immediately without notice from Motorola or judicial resolution if you fail to comply with any provision of this License.  Upon such termination you must destroy the Software, all accompanying written 
+\hich\af0\dbch\af11\loch\f0 m\hich\af0\dbch\af11\loch\f0 aterials and all copies thereof, and Sections 5, 6, and 7 will survive any termination.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 4.\tab Export Law Assurances.  You agree that neither the Software nor any direct product thereof is being or will be shipped, transferred or re-exported, directly or indi\hich\af0\dbch\af11\loch\f0 
+rectly, into any country prohibited by the United States Export Administration Act and the regulations thereunder or will be used for any purpose prohibited by the Act.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 5.\tab Warranty.  The Software and written materials are provided "AS IS" and without warr\hich\af0\dbch\af11\loch\f0 
+anty of any kind.  Motorola's entire liability and your sole and exclusive remedy for any breach of the foregoing limited warranty will be, at Motorola's option, replacement of the disk(s) or refund the amount paid for this Software License.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 NO OTHER WARR\hich\af0\dbch\af11\loch\f0 
+ANTY IS PROVIDED BY MOTOROLA, AND MOTOROLA AND ITS LICENSORS EXPRESSLY DISCLAIM ALL OTHER WARRANTIES, EITHER EXPRESS OF IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  
+\hich\af0\dbch\af11\loch\f0 M\hich\af0\dbch\af11\loch\f0 
+OTOROLA DOES NOT WARRANT THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE SOFTWARE WILL BE CORRECTED.  NO ORAL OR WRITTEN REPRESENTATIONS MADE BY MOTOROLA OR AN AGENT THEREOF SHALL CREATE A WARRANTY OR IN ANY 
+\hich\af0\dbch\af11\loch\f0 W\hich\af0\dbch\af11\loch\f0 AY INCREASE THE SCOPE OF THIS WARRANTY.  BECAUSE SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF IMPLIED WARRANTIES, THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 6.\tab Limitation of Remedies and Damages.  Regardless of whether any remedy set fo\hich\af0\dbch\af11\loch\f0 
+rth herein fails of its essential purpose, in no event shall Motorola or any of the licensors, directors, officers, employees or affiliates of the foregoing be liable to you for any consequential, incidental, indirect, special or similar damages whatsoeve
+\hich\af0\dbch\af11\loch\f0 r\hich\af0\dbch\af11\loch\f0 
+ (including, without limitation, damages for loss of business profits, business interruption, loss of business information and the like), whether foreseeable or unforeseeable, arising out of the use or inability to use the Software or accompanying written
+\hich\af0\dbch\af11\loch\f0  \hich\af0\dbch\af11\loch\f0 
+materials, regardless of the basis of the claim and even if Motorola or a Motorola representative has been advised of the possibility of such damage.  Motorola's liability to you for direct damages for any cause whatsoever, and regardless of the basis of 
+\hich\af0\dbch\af11\loch\f0 t\hich\af0\dbch\af11\loch\f0 
+he form of the action, will be limited to the price paid for the Software that caused the damages.  THIS LIMITATION WILL NOT APPLY IN CASE OF PERSONAL INJURY ONLY WHERE AND TO THE EXTENT THAT APPLICABLE LAW REQUIRES SUCH LIABILITY WITHOUT THIS LIMITATION.
+\hich\af0\dbch\af11\loch\f0  \hich\af0\dbch\af11\loch\f0  BECAUSE SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+\par 
+\par \hich\af0\dbch\af11\loch\f0 7.\tab Complete Agreement.  This License constitutes the entire agreement between the parties\hich\af0\dbch\af11\loch\f0 
+ with respect to the use of the Software and related documentation, and supersedes all prior or contemporaneous understandings or agreements, written or oral, regarding such matter.  No amendment to or modification of this License will be binding unless i
+\hich\af0\dbch\af11\loch\f0 n\hich\af0\dbch\af11\loch\f0  writing and signed by a duly authorized representative of Motorola.
+\par 
+\par 
+\par 
+\par \hich\af0\dbch\af11\loch\f0 __________
+\par \hich\af0\dbch\af11\loch\f0 Readme 10/25/2002
+\par \hich\af0\dbch\af11\loch\f0 A. Sood}{\b\f36\fs22\cf2\insrsid6369913 
+\par }}

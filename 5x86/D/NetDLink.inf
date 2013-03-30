@@ -1,0 +1,142 @@
+;============================================================================
+;   Installation file for the D-Link USB Cable Modem
+;   Copyright (C) 2000 D-Link Corporation
+;============================================================================
+
+[version]
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+CatalogFile = NetDLink.cat
+Provider    = %D-Link%
+DriverVer   = 12/04/2001, 1.0.2.25
+Compatible  = 1                    ; works with Win2K and Win9x
+
+[Manufacturer]
+%V_MANUFACTURER% = D-Link
+
+[D-Link]
+;
+; Display Name              Section           DeviceID
+;_________________________________________________________________
+%ndiscm9414.DeviceDesc% =   ndiscm9414.ndi,   USB\VID_2001&PID_9414
+
+[ControlFlags]
+;
+; Provides limited control on UI displays and events during installation.
+; Must for any device on an enumerable bus like USB
+;
+ExcludeFromSelect = USB\VID_2001&PID_9414
+
+;
+; Windows 98 specific entry
+;
+[ndiscm9414.ndi]
+AddReg = ndiscm9414.id.reg, ndiscm.9x.reg
+CopyFiles       = ndiscm.9x.CopyFiles
+
+;
+; Windows 2000  specific entry
+;
+[ndiscm9414.ndi.NT]
+Characteristics = 0x84                       ; NCF_PHYSICAL | NCF_HAS_UI ??
+BusType         = 15                         ; PNPBus
+AddReg          = ndiscm.nt.reg
+CopyFiles       = ndiscm.nt.CopyFiles
+
+[ndiscm9414.ndi.nt.Services]
+AddService = ndiscm, 2, ndiscm.Service, common.EventLog
+
+;----------------------------------------------------------------------------
+; Win9x id registry sections
+; These are not needed by NT
+;
+[ndiscm9414.id.reg]
+HKR, Ndi, DeviceID, 0, "USB\VID_2001&PID_9414"
+
+;-----------------------------------------------------------------------------
+; WIN2K (NT) specific
+;
+[ndiscm.nt.reg]
+HKR, Ndi,                       Service,    0, "ndiscm"
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi\Interfaces,            DefUpper,   0, "ndis5"
+HKR, Ndi\Interfaces,            DefLower,   0, "ethernet"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+[ndiscm.Service]
+DisplayName     = %ndiscm.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\NetDLink.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.reg
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[TextModeFlags.reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+
+
+;----------------------------------------------------------------------------
+; Win9x specific
+;
+[ndiscm.9x.reg]
+HKR, ,              DevLoader,          0, "*ndis"
+HKR, ,              DeviceVxDs,         0, "NetDLink.sys"
+HKR, ,              EnumPropPages,      0, "netdi.dll,EnumPropPages"
+; memphis appears to not support the ndis5 upper range, so use ndis3
+HKR, Ndi\Interfaces,DefUpper,           0, "ndis3"
+HKR, Ndi\Interfaces,DefLower,           0, "ethernet"
+HKR, Ndi\Interfaces,UpperRange,         0, "ndis3"
+HKR, Ndi\Interfaces,LowerRange,         0, "ethernet"
+
+
+HKR, NDIS,          LogDriverName,      0, "NDISCM"
+HKR, NDIS,          MajorNdisVersion,   1, 03
+HKR, NDIS,          MinorNdisVersion,   1, 0A
+
+HKR, Ndi\Install,   ndis3,              0, "ndiscm.install"
+
+[SourceDisksNames]
+1 = %Disk1%,,,
+
+[SourceDisksFiles]
+NetDLink.sys = 1
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[ndiscm.nt.CopyFiles]
+NetDLink.sys,,,2
+
+[ndiscm.9x.CopyFiles]
+NetDLink.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir = 10,System32\Drivers
+ndiscm.nt.CopyFiles = 12
+ndiscm.9x.CopyFiles = 11
+
+[Strings]
+D-Link     = "D-Link"
+Disk1    = "Installation disk 1"
+
+;
+; String that gets displayed while installing the device
+;
+ndiscm9414.DeviceDesc = "D-Link USB Cable Modem"
+
+;
+; NT Service name
+;
+ndiscm.Service.DispName = "D-Link USB Cable Modem Driver"
+V_MANUFACTURER = "D-Link Corporation"
+

@@ -1,0 +1,8 @@
+;ISDN for EAGLE
+CW optn 0 80020066
+CW optn 2 23600000
+CW optn 3 00000026
+CW optn 4 0
+CW optn 5 500
+CW optn 15 09090909
+CW cntl 0 2
